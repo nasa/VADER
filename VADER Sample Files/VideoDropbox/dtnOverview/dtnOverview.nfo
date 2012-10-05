@@ -1,0 +1,37 @@
+<movie>
+        <title>DTN Overview</title>
+        <originaltitle>NASA</originaltitle>
+        <sorttitle></sorttitle>
+        <set>NASA</set>
+        <rating></rating>
+        <year></year>
+        <top250>0</top250>
+        <votes></votes>
+        
+	<outline>This video provides an overview of NASA's involvement in the development of Delay Tolerant Networking (DTN) technologies and the corresponding standards.</outline>
+        <plot>This video provides an overview of NASA's involvement in the development of Delay Tolerant Networking (DTN) technologies and the corresponding standards.</plot>
+        
+		<tagline></tagline>
+        <runtime>9</runtime> //runtime in minutes
+        
+		<thumb>/home/user/VideoDropbox/dtnOverview/dtnOverview.jpg</thumb>
+        
+		<mpaa>Not available</mpaa>
+        <playcount>0</playcount>
+        <watched>false</watched>
+        <id>tt0432337</id>
+		
+        <filenameandpath>/home/user/VideoDropbox/dtnOverview/dtnOverview.mp4</filenameandpath>
+        
+		<trailer></trailer>
+        <genre></genre>
+        <credits></credits>
+        <fileinfo>
+            <streamdetails>
+                <subtitle>
+                    <language>spa</language>
+                </subtitle>
+            </streamdetails>
+        </fileinfo>
+        <director></director>
+    </movie>

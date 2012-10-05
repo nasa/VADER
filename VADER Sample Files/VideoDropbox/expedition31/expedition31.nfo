@@ -1,0 +1,37 @@
+<movie>
+        <title>Expedition 31 Heads Home</title>
+        <originaltitle>NASA</originaltitle>
+        <sorttitle></sorttitle>
+        <set>NASA</set>
+        <rating></rating>
+        <year></year>
+        <top250>0</top250>
+        <votes></votes>
+        
+	<outline></outline>
+        <plot>The Soyuz TMA-03M spacecraft carrying Expedition 31 Commander Oleg Kononenko and Flight Engineers Don Pettit and Andre Kuipers undocks from the International Space Station. </plot>
+        
+		<tagline></tagline>
+        <runtime>2</runtime> //runtime in minutes
+        
+		<thumb>/home/user/VideoDropbox/expedition31/expedition31.jpg</thumb>
+        
+		<mpaa>Not available</mpaa>
+        <playcount>0</playcount>
+        <watched>false</watched>
+        <id>tt0432337</id>
+		
+        <filenameandpath>/home/user/VideoDropbox/expedition31/expedition31.mp4</filenameandpath>
+        
+		<trailer></trailer>
+        <genre></genre>
+        <credits></credits>
+        <fileinfo>
+            <streamdetails>
+                <subtitle>
+                    <language>spa</language>
+                </subtitle>
+            </streamdetails>
+        </fileinfo>
+        <director></director>
+    </movie>

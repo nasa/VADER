@@ -1,0 +1,53 @@
+<movie>
+        <title>How Hard Is It to Land Curiosity on Mars?</title>
+        <originaltitle>NASA</originaltitle>
+        <sorttitle></sorttitle>
+        <set>NASA</set>
+        <rating></rating>
+        <year></year>
+        <top250>0</top250>
+        <votes></votes>
+        
+		<outline>Landing the Curiosity rover on Mars is the most difficult and nail-biting part of the whole mission. See just how hard it is to land on Mars in this 60-second video.  </outline>
+        <plot></plot>
+        
+		<tagline></tagline>
+        <runtime>2:11</runtime> //runtime in minutes
+        
+		<thumb>				</thumb>
+        
+		<mpaa>Not available</mpaa>
+        <playcount>0</playcount>
+        <watched>false</watched>
+        <id>tt0432337</id>
+		
+        <filenameandpath>     </filenameandpath>
+        
+		<trailer></trailer>
+        <genre></genre>
+        <credits></credits>
+        <fileinfo>
+            <streamdetails>
+                <video>
+                    <codec>h264</codec>
+                    <aspect>2.35</aspect>
+                    <width>1920</width>
+                    <height>816</height>
+                </video>
+                <audio>
+                    <codec>ac3</codec>
+                    <language>eng</language>
+                    <channels>6</channels>
+                </audio>
+                <audio>
+                    <codec>ac3</codec>
+                    <language>spa</language>
+                   <channels>2</channels>
+                </audio>
+                <subtitle>
+                    <language>spa</language>
+                </subtitle>
+            </streamdetails>
+        </fileinfo>
+        <director></director>
+    </movie>

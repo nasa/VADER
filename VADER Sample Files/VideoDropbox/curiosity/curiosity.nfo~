@@ -1,0 +1,53 @@
+<movie>
+        <title>Curiosity's Seven Minutes of Terror</title>
+        <originaltitle>NASA</originaltitle>
+        <sorttitle></sorttitle>
+        <set>NASA</set>
+        <rating></rating>
+        <year></year>
+        <top250>0</top250>
+        <votes></votes>
+        
+	<outline>Team members share the challenges of Curiosity's final minutes to landing on the surface of Mars.</outline>
+        <plot>Team members share the challenges of Curiosity's final minutes to landing on the surface of Mars.</plot>
+        
+		<tagline></tagline>
+        <runtime>5</runtime> //runtime in minutes
+        
+		<thumb>/home/user/VideoDropbox/curiosity/curiosity.jpg</thumb>
+        
+		<mpaa>Not available</mpaa>
+        <playcount>0</playcount>
+        <watched>false</watched>
+        <id>tt0432337</id>
+		
+        <filenameandpath>/home/user/VideoDropbox/curiosity/curiosity.mp4</filenameandpath>
+        
+		<trailer></trailer>
+        <genre></genre>
+        <credits></credits>
+        <fileinfo>
+            <streamdetails>
+                <video>
+                    <codec>h264</codec>
+                    <aspect>2.35</aspect>
+                    <width>1920</width>
+                    <height>816</height>
+                </video>
+                <audio>
+                    <codec>ac3</codec>
+                    <language>eng</language>
+                    <channels>6</channels>
+                </audio>
+                <audio>
+                    <codec>ac3</codec>
+                    <language>spa</language>
+                   <channels>2</channels>
+                </audio>
+                <subtitle>
+                    <language>spa</language>
+                </subtitle>
+            </streamdetails>
+        </fileinfo>
+        <director></director>
+    </movie>

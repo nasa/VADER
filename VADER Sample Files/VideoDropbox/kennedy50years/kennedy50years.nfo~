@@ -1,0 +1,37 @@
+<movie>
+        <title>Kennedy Space Center's 50th Anniversary</title>
+        <originaltitle>NASA</originaltitle>
+        <sorttitle></sorttitle>
+        <set>NASA</set>
+        <rating></rating>
+        <year></year>
+        <top250>0</top250>
+        <votes></votes>
+       
+	<outline></outline>
+        <plot>Take a look at Kennedy Space Center's rich legacy as the spaceport celebrates its 50th anniversary on July 1, 2012.  </plot>
+        
+		<tagline></tagline>
+        <runtime>2</runtime> //runtime in minutes
+        
+		<thumb>/home/user/VideoDropbox/kennedy50years/kennedy50years.jpg</thumb>
+        
+		<mpaa>Not available</mpaa>
+        <playcount>0</playcount>
+        <watched>false</watched>
+        <id>tt0432337</id>
+		
+        <filenameandpath>/home/user/VideoDropbox/kennedy50years/kennedy50years.mp4</filenameandpath>
+        
+		<trailer></trailer>
+        <genre></genre>
+        <credits></credits>
+        <fileinfo>
+            <streamdetails>
+                <subtitle>
+                    <language>spa</language>
+                </subtitle>
+            </streamdetails>
+        </fileinfo>
+        <director></director>
+    </movie>
