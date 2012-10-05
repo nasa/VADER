@@ -1,0 +1,236 @@
+<!doctype html>
+<!--[if lt IE 7]>	<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta	charset="utf-8">
+	<meta	http-equiv="X-UA-Compatible"	content="IE=edge,chrome=1">
+
+	<title>MCP Media Control</title>
+	<meta name="description"	content="">
+	<meta name="author"	content="">
+
+	<meta name="viewport" content="width=device-width">
+	<meta name="HandheldFriendly" content="True">
+	
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/base/jquery-ui.css" rel="stylesheet">
+	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/dot-luv/jquery-ui.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/mcp.css">
+
+	<script	src="js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
+</head>
+<body style="background-color: rgb(0, 0, 0);">
+<!--[if	lt	IE	7]><p	class=chromeframe>Your	browser	is	<em>ancient	and	a	danger	to	security!</em>	<a	href="http://browsehappy.com/">Upgrade	to	a	different	browser</a>	or	<a	href="http://www.google.com/chromeframe/?redirect=true">install	Google	Chrome	Frame</a>	to	experience	this	site.</p><![endif]-->
+	<script src="js/bootstrap.min.js"></script>
+	
+	<!-- Attempt at working with bootstrap -->
+
+	
+	<div id="main-container">	
+		<div id="screen1LZ" class="lz" data-output="1"> 
+			<h2 style="text-align: center;">Screen 1</h2>
+			<table border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td align="left" colspan="3">
+						<div id="volUp" class="onScreenButtons">Vol up</div>
+					</td>
+					<td align="right"> 
+						<div id ="power" class="onScreenButtons">Power</div>
+					</td>
+				</tr>
+				<tr>
+					<td align ="left" colspan="4">
+						<div id="volDown" class="onScreenButtons">Vol down</div>
+					</td>
+				</tr>
+				<tr>
+					<td align = "right" colspan="4">
+						<div id="volmute" class="onScreenButtons">Mute</div>
+					</td>	
+				</tr>
+			</table>	
+		</div>
+		
+		<div id="screen2LZ" class="lz" data-output="2">
+			<h2 style="text-align: center;">Screen 2</h2>
+		</div>
+		
+		<div id="screen3LZ" class="lz" data-output="3">
+			<h2 style="text-align: center;">Screen 3</h2>
+		</div>
+		
+		<div id="screen4LZ" class="lz" data-output="4">
+			<h2 style="text-align: center;">Screen 4</h2>
+		</div>
+			
+		<div id="screen5LZ" class="lz" data-output="5">
+			<h2 style="text-align: center;">Screen 5</h2>
+		</div>
+			
+		<div id="screen6LZ" class="lz" data-output="6">
+			<h2 style="text-align: center;">Screen 6</h2>
+		</div>
+			
+		<div id="screen7LZ" class="lz" data-output="7">
+			<h2 style="text-align: center;">Screen 7</h2>
+		</div>						
+	</div>	<!--	#main-container	-->
+		<div id="source-container">
+			
+			<div id="widi1" class="ui-widget-content source" data-input="1">
+				<div class="sourcelabel">1</div>
+			</div>
+			
+			<div id="atv1" class="ui-widget-content source" data-input="2">
+				<div class="sourcelabel">1</div>
+			</div>
+				
+			<div id="widi2" class="ui-widget-content source" data-input="3">
+				<div class="sourcelabel">2</div>
+			</div>
+			
+			<div id="atv2" class="ui-widget-content source" data-input="4">
+				<div class="sourcelabel">2</div>
+			</div>
+			
+			<div id="pc1" class="ui-widget-content source" data-input="5">
+				<div class="sourcelabel">1</div>
+			</div>
+
+			<div id="pc2" class="ui-widget-content source" data-input="6">
+				<div class="sourcelabel">2</div>
+			</div>
+			
+			<div id="pc3" class="ui-widget-content source" data-input="7">
+				<div class="sourcelabel">3</div>
+			</div>
+			
+			<div id="pc4" class="ui-widget-content source" data-input="8">
+				<div class="sourcelabel">4</div>
+			</div>
+				
+		</div>	
+	
+<script	src="js/libs/jquery-1.7.2.min.js"></script>
+<script	src="js/libs/jquery-ui.min.js"></script>
+<script	src="js/libs/jquery.ui.touch-punch.min.js"></script>
+<script src="js/libs/jquery.backgroundSize.js"></script>
+<script src="js/libs/jquery.fittext.js"></script>
+<script src="js/libs/bigtext.js"></script>
+
+<script>
+        $(function() {
+          $( "#atv1" ).height( $( "#atv1" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='atv1' class='ui-widget-header source' style='height: " + $( "#atv1" ).width() + "px;'><div class='sourcelabel'>1</div></div>" ); } });
+          $( "#atv2" ).height( $( "#atv2" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='atv2' class='ui-widget-header source' style='height: " + $( "#atv2" ).width() + "px;'><div class='sourcelabel'>2</div></div>" ); }});
+		  $( "#widi1" ).height( $( "#widi1" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='widi1' class='ui-widget-header source' style='height: " + $( "#widi1" ).width() + "px;'><div class='sourcelabel'>1</div></div>" ); }});
+		  $( "#widi2" ).height( $( "#widi2" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='widi2' class='ui-widget-header source' style='height: " + $( "#widi2" ).width() + "px;'><div class='sourcelabel'>2</div></div>" ); }});
+		  $( "#pc1" ).height( $( "#pc1" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='pc1' class='ui-widget-header source' style='height: " + $( "#pc1" ).width() + "px;'><div class='sourcelabel'>1</div></div>" ); }});
+		  $( "#pc2" ).height( $( "#pc2" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='pc2' class='ui-widget-header source' style='height: " + $( "#pc2" ).width() + "px;'><div class='sourcelabel'>2</div></div>" ); }});
+		  $( "#pc3" ).height( $( "#pc3" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='pc3' class='ui-widget-header source' style='height: " + $( "#pc3" ).width() + "px;'><div class='sourcelabel'>3</div></div>" ); }});
+		  $( "#pc4" ).height( $( "#pc4" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='pc4' class='ui-widget-header source' style='height: " + $( "#pc4" ).width() + "px;'><div class='sourcelabel'>4</div></div>" ); }});
+
+          $( "#screen1LZ, #screen2LZ, #screen3LZ, #screen4LZ, #screen5LZ, #screen6LZ, #screen7LZ" ).droppable({
+            activeClass: "active",
+            hoverClass: "hover",
+            drop: function( event, ui ) {
+              $( this )
+                .addClass( "active" )
+                .find( "div" )
+                  .html( $(ui.draggable).find( "p" ).html() )
+			  $( this ).find("div").css({ background: $(ui.draggable).css('background') });
+			  $( this ).find("div").css('background-size', 'contain' );
+			  commandSwitch( ui.draggable, this );
+            }
+          });
+
+		  $( "#screen1LZ" ).height( $( "#screen1LZ" ).width() * 0.8);		  
+		  $( "#screen2LZ" ).height( $( "#screen2LZ" ).width() * 0.8 );
+		  $( "#screen3LZ" ).height( $( "#screen3LZ" ).width() * 0.8);
+		  $( "#screen4LZ" ).height( $( "#screen4LZ" ).width() * 0.8);
+		  $( "#screen5LZ" ).height( $( "#screen5LZ" ).width() * 0.8);
+		  $( "#screen6LZ" ).height( $( "#screen6LZ" ).width() * 0.8);
+		  $( "#screen7LZ" ).height( $( "#screen7LZ" ).width() * 0.8);
+		  
+		  $(window).resize(function() {
+			$( "#screen1LZ" ).height( $( "#screen1LZ" ).width() * 0.8 );			
+		    $( "#screen2LZ" ).height( $( "#screen2LZ" ).width() * 0.8 );
+			$( "#screen3LZ" ).height( $( "#screen3LZ" ).width() * 0.8 );
+			$( "#screen4LZ" ).height( $( "#screen4LZ" ).width() * 0.8 );
+			$( "#screen5LZ" ).height( $( "#screen5LZ" ).width() * 0.8 );
+			$( "#screen6LZ" ).height( $( "#screen6LZ" ).width() * 0.8 );
+			$( "#screen7LZ" ).height( $( "#screen7LZ" ).width() * 0.8 );
+			$( "#atv1" ).height( $( "#atv1" ).width() );
+			$( "#atv2" ).height( $( "#atv2" ).width() );
+			$( "#widi1" ).height( $( "#widi1" ).width() );
+			$( "#widi2" ).height( $( "#widi2" ).width() );
+			$( "#pc1" ).height( $( "#pc1" ).width() );
+			$( "#pc2" ).height( $( "#pc2" ).width() );
+			$( "#pc3" ).height( $( "#pc3" ).width() );
+			$( "#pc4" ).height( $( "#pc4" ).width() );
+		  });
+		  
+		  $( "#allLZ" ).droppable({
+			activeClass: "active",
+			hoverClass: "hover",
+			drop: function( event, ui ) {
+			  commandAllFront( ui.draggable );
+            }
+          });
+		  
+		  $("#resetlabel").fitText();
+		  $("#label-wrapper").bigtext();
+		  //$("#reset").bigtext();
+		  
+		  
+		  $("#reset").click(function() {
+			$.ajax({
+			  type: 'GET',
+			  url: 'index.html?MatrixResetFront'
+			});
+		  });
+		  
+		  function commandSwitch( input, output ) {
+			$.ajax({
+			  type: 'GET',
+			  url: 'index.html?Matrix' + $(input).data("input") + '-' + $(output).data("output")
+			});
+		  };
+		  
+		  function commandAllFront( input ) {
+			//$.ajax({
+			  //type: 'GET',
+			  //url: 'index.html?Matrix' + $(input).data("input") + '-Front',
+			  //username: 'mofdac',
+			  //password: 'mofdac2090'
+			//});
+			
+			//var xtel = new XMLHttpRequest();
+			// replace 123.123.123.123 with the correct IP address
+			//xtel.open("POST", "http://139.169.249.104:31024", true);
+			// you won't be able to get a proper response from the telnet server 
+			//xtel.onreadystatechange = function () {return true;} 
+			//xtel.send('HTTP.Matrix' + $(input).data("input") + '-Front\n ');
+
+
+			//var rsocket = io.connect('http://127.0.0.1',{'port': 1234, 'transports': ['websocket']});
+			//rsocket.on('connect', function () {
+				//console.log('success');
+				//socket.send('DSNER.Matrix' + $(input).data("input") + '-Front\n ');
+				//socket.send('HTTP.Matrix' + $(input).data("input") + '-Front\n ');
+				//rsocket.disconnect();
+			//});
+			//socket.send('HTTP.Matrix' + $(input).data("input") + '-Front\n ');
+			//rsocket.disconnect();
+		  };
+        });
+</script>
+
+<!-- scripts concatenated and minified via ant build script-->
+<script	src="js/plugins.js"></script>
+<script	src="js/script.js"></script>
+<!-- end scripts-->
+
+</body>
+</html>
