@@ -1,0 +1,19 @@
+<keymap>
+	<global>
+		<keyboard name = "Motorola Nyxboard Hybrid">
+			<xf86sleep>RunScript(/home/user/.xbmc/scripts/tvpower.py)</xf86sleep>
+			<home> XBMC.ActivateWindow(Home)</home>
+			<f3> OSD </f3>
+			<f3 mod="shift">RunScript(/home/user/.xbmc/scripts/switch-vader.py)</f3>
+			<f4 mod="shift">RunScript(/home/user/.xbmc/scripts/switch-atv.py)</f4>
+			<f5 mod="shift">RunScript(/home/user/.xbmc/scripts/switch-widi.py)</f5>
+			<f6 mod="shift"> Playlist</f6>
+			<f3> ZoomOut </f3>
+			<f4> ZoomOUt </f4>
+		</keyboard>
+	</global>
+</keymap>
+
+
+
+
