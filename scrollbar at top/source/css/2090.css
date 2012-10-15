@@ -167,7 +167,7 @@ nav a:hover{
 .source { width: 22%; height: 100px; padding: 0em; margin: 0.75% 0% 0.75% 1%; -moz-background-size: contain; background-size: contain; -moz-border-radius: 15px; border-radius: 15px; position: relative; -webkit-box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, .75); -moz-box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, .75); box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, .75);}
 #atv1 { float: left; background-image: url('../img/appletv.gif'); }
 #atv2 { float: left; background-image: url('../img/appletv.gif'); }
-#widi1 { clear: left; float: left; background-image: url('../img/widi.gif'); margin-left: 2%; }
+#widi1 { clear: left; float: left; background-image: url('../img/widi.png'); margin-left: 2%; }
 #widi2 { float: left; background-image: url('../img/widi.gif'); }
 #pc1 { clear: left; float: left; background-image: url('../img/windows.png'); }
 #pc2, #pc3 { float: left; background-image: url('../img/windows.png'); }
