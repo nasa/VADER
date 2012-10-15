@@ -17,10 +17,10 @@ body { margin: 0; font-size: 1em; line-height: 1.4; }
 a { color: #FFF; }
 a:visited { color: #FFF; }
 a:hover { color: #fc3d21; }
-a:focus { outline: thin dotted; }
+/* a:focus { outline: thin dotted; }  */
 a:hover, a:active { outline: 0; }
 
-abbr[title] { border-bottom: 1px dotted; }
+/* abbr[title] { border-bottom: 1px dotted; } */
 b, strong { font-weight: bold; }
 blockquote { margin: 1em 40px; }
 dfn { font-style: italic; }
@@ -156,14 +156,14 @@ nav a:hover{
 /* ===== Primary Styles ========================================================
    Author: Peter Mosbacher
    ========================================================================== */
-#outer-main-div{padding: 5px; -moz-border-radius: 20px; border-radius: 20px; border-style: solid; border-color: rgb(51, 153, 255);  background-color: rgb(11, 61, 145); background-color: rgba(11, 61, 145, 0.5); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)"; }
-#main-container {clear: both; overflow: auto; background-image: url('../img/allDisplays2.jpg'); background-size: 100%; background-repeat: no-repeat; background-position: center top; height: 100%; }
+#outer-main-div{padding: 5px; -moz-border-radius: 20px; border-radius: 20px; border-style: solid; border-color: rgb(50, 205, 50);  background-color: rgb(34, 139, 34); background-color: rgba(34, 139, 34, 0.5); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)"; }
+#main-container {clear: both; overflow: auto; background-image: url('../img/AllDisplays.png'); background-size: 100%; background-repeat: no-repeat; background-position: center top; height: 100%; }
 .tv { width: 120px; height: 120px; padding: 0.5em; margin: 10px; -moz-background-size: contain; background-size: cover; opacity: 1.0; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; }
 #leftTV { float: right; }
 #projector { margin: auto; }
 #rightTV { float: left;}
-#inputText {  font-family:"Georgia", Georgia, serif; color: rgb(51, 153, 255); margin-bottom:0px; margin-left: 0 auto; margin-right: 0 auto;}
-#OutputText {  font-family:"Georgia", Georgia, serif; color: rgb(51, 153, 255); margin-bottom:0px; margin-left: 0 auto; margin-right: 0 auto;}
+#inputText {  font-family:"Georgia", Georgia, serif; color: rgb(255, 255, 255); margin-bottom:0px; margin-left: 0 auto; margin-right: 0 auto;}
+#OutputText {  font-family:"Georgia", Georgia, serif; color: rgb(255, 255, 255); margin-bottom:0px; margin-left: 0 auto; margin-right: 0 auto;}
 .source { width: 22%; height: 100px; padding: 0em; margin: 0.75% 0% 0.75% 1%; -moz-background-size: contain; background-size: contain; -moz-border-radius: 15px; border-radius: 15px; position: relative; -webkit-box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, .75); -moz-box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, .75); box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, .75);}
 #atv1 { float: left; background-image: url('../img/appletv.gif'); }
 #atv2 { float: left; background-image: url('../img/appletv.gif'); }
@@ -179,7 +179,7 @@ nav a:hover{
 .active { border-color: rgb(255, 255, 0); }
 .hover { background-color: rgb(250, 250, 0); background-color: rgba(250,250,0,0.3); }
 .sourcelabel { position: absolute; bottom: 0; right: 1; font-size: 1.7em; }
-#topbar { padding-top: 2px; width: 100%; display: block; line-height: 0.9; margin-top:1%; background-image: url('../img/allDisplays2.jpg'); background-size: 55%; background-repeat: no-repeat; background-position: center bottom;}
+#topbar { padding-top: 2px; width: 100%; display: block; line-height: 0.9; margin-top:1%; background-image: url('../img/AllDisplays.png'); background-size: 55%; background-repeat: no-repeat; background-position: center bottom;}
 #allLZ { width: 54.5%; background-size: 100%;}
 #source-container { margin: 10px;  padding-bottom: 5px; clear: both; overflow: auto; -moz-border-radius: 20px; border-radius: 20px; border-style: solid; border-color: rgb(51, 153, 255); background-color: rgb(11, 61, 145); background-color: rgba(11, 61, 145, 0.5); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)"; }
 #reset { clear: left; float: left; }
