@@ -17,10 +17,10 @@ body { margin: 0; font-size: 1em; line-height: 1.4; }
 a { color: #00e; }
 a:visited { color: #551a8b; }
 a:hover { color: #06e; }
-a:focus { outline: thin dotted; }
+a:focus { outline: thin solid; }
 a:hover, a:active { outline: 0; }
 
-abbr[title] { border-bottom: 1px dotted; }
+abbr[title] { border-bottom: 1px solid; }
 b, strong { font-weight: bold; }
 blockquote { margin: 1em 40px; }
 dfn { font-style: italic; }
