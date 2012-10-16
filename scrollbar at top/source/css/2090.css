@@ -156,7 +156,7 @@ nav a:hover{
 /* ===== Primary Styles ========================================================
    Author: Peter Mosbacher
    ========================================================================== */
-#outer-main-div{padding: 5px; -moz-border-radius: 20px; border-radius: 20px; border-style: solid; border-color: rgb(65,105,225); background-color: rgb(11, 61, 145); background-color: rgba(11, 61, 145, 0.7); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)"; }
+#outer-main-div{ padding: 5px; -moz-border-radius: 20px; border-radius: 20px; border-style: solid; border-color: rgb(65,105,225); background-color: rgb(11, 61, 145); background-color: rgba(11, 61, 145, 0.7); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)"; }
 #main-container {clear: both; overflow: auto; background-image: url('../img/AllDisplays2.png'); background-size: 100%; background-repeat: no-repeat; background-position: center top; height: 100%; }
 .tv { width: 120px; height: 120px; padding: 0.5em; margin: 10px; -moz-background-size: contain; background-size: cover; opacity: 1.0; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; }
 #leftTV { float: right; }
@@ -164,7 +164,7 @@ nav a:hover{
 #rightTV { float: left;}
 #inputText {  font-family:"Georgia", Georgia, serif; color: rgb(255, 255, 255); margin-bottom:0px; margin-left: 0 auto; margin-right: 0 auto;}
 #OutputText {  font-family:"Georgia", Georgia, serif; color: rgb(255, 255, 255); margin-bottom:0px; margin-left: 0 auto; margin-right: 0 auto;}
-.source { height: 100px; padding: 0em; margin: 0.75% 0% 0.75% 1%; -moz-background-size: contain; background-size: contain; -moz-border-radius: 15px; border-radius: 15px; position: relative; -webkit-box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, .75); -moz-box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, .75); box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, .75);}
+.source { width:40%; height: 100px; padding: 0em; margin: 2% 2% 2% 2%; -moz-background-size: contain; background-size: contain; -moz-border-radius: 15px; border-radius: 15px; position: relative; -webkit-box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, .75); -moz-box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, .75); box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, .75);}
 #widi1 { float: left; background-image: url('../img/widi.png');}
 #widi2 { float:left;  background-image: url('../img/widi.png');}
 #atv1 { clear:left; float: left;  background-image: url('../img/appletv.gif');}
@@ -183,11 +183,11 @@ nav a:hover{
 .sourcelabel { position: absolute; bottom: 0; right: 1; font-size: 1.7em; }
 #topbar { padding-top: 2px; width: 100%; display: block; line-height: 0.9; margin-top:1%; background-image: url('../img/AllDisplays2.png'); background-size: 40%; background-repeat: no-repeat; background-position: center bottom;}
 #allLZ { width: 40%; background-size: 100%; margin-top: 0px}
-/* #source-container {width: 20%; float: left; margin-left:20px; margin-right:20px; margin-top: 100px;  padding-bottom: 5px; clear: both; overflow: auto; -moz-border-radius: 20px; border-radius: 20px; border-style: solid; border-color: rgb(0,0,0); background-color: rgb(11, 61, 145); background-color: rgba(0, 0, 0, 0.7); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)"; }
- */#source-container { clear:left; margin: 10px; padding-left: 25px; padding-bottom: 5px; clear: both; overflow: auto; -moz-border-radius: 20px; border-radius: 20px; border-style: solid; border-color: rgb(51, 153, 255); background-color: rgb(11, 61, 145); background-color: rgba(11, 61, 145, 0.5); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)"; }
+/* #source-container {width: 20%; float: left; margin-left:20px; margin-right:20px; margin-top: 100px;  padding-bottom: 5px; clear: both; overflow: auto; -moz-border-radius: 20px; border-radius: 20px; border-style: solid; border-color: rgb(0,0,0); background-color: rgb(11, 61, 145); background-color: rgba(0, 0, 0, 0.7); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)"; }*/
+#source-container { margin: 10px; padding-left: 25px; padding-bottom: 5px; overflow: auto; -moz-border-radius: 20px; border-radius: 20px; border-style: solid; border-color: rgb(0,0,0); background-color: rgb(0,0,0); background-color: rgba(0,0,0, 0.7); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)"; }
 #reset { clear: left; float: left; }
 #helpButtonID { float: center;} 
-
+#outer-outer-div {margin-top: 10%; width: 25%; moz-border-radius: 20px; border-radius: 20px; filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)"; }
 
 
 .panicbutton {
@@ -332,11 +332,11 @@ nav a:hover{
     Responsive Elements
    ======================== */
    
-   .source { margin-left: 2%; }
-/*    #pc1 { margin-left: 2.5%; }*/
+/*    .source { margin-left: 2%; }
+ *//*    #pc1 { margin-left: 2.5%; }*/
 /*   #widi1 { margin-left: 2.5%; }*/
-   #source-container { -moz-border-radius: 25px; border-radius: 25px; padding-top: 0px; padding-bottom: 0px; }
-}
+/*    #source-container { -moz-border-radius: 25px; border-radius: 25px; padding-top: 0px; padding-bottom: 0px; }
+ */}
 
 @media only screen and (min-width: 768px) {
 
@@ -382,11 +382,11 @@ nav a:hover{
     Responsive Elements
    ======================== */
    
-   .source { width: 11%; margin-left: 1%; }
-   /*#widi1 { margin-left: 1%; } */
+/*    .source { width: 11%; margin-left: 1%; }
+ */   /*#widi1 { margin-left: 1%; } */
    /* #pc1 { clear: none; margin-left: 1%; } */
-   #source-container { -moz-border-radius: 30px; border-radius: 30px; }
-}
+/*    #source-container { -moz-border-radius: 30px; border-radius: 30px; }
+ */}
 
 @media only screen and (min-width: 1140px) {
 
@@ -403,8 +403,8 @@ nav a:hover{
     Responsive Elements
    ======================== */
    
-   #source-container { -moz-border-radius: 60px; border-radius: 60px; }
-   /*#widi1 { margin-left: 2%; }*/
+/*    #source-container { -moz-border-radius: 60px; border-radius: 60px; }
+ */   /*#widi1 { margin-left: 2%; }*/
 }
 
 /* =============================================================================
