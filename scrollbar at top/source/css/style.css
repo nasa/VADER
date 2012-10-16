@@ -17,10 +17,10 @@ body { margin: 0; font-size: 1em; line-height: 1.4; }
 a { color: #00e; }
 a:visited { color: #551a8b; }
 a:hover { color: #06e; }
-a:focus { outline: thin solid; }
+a:focus { outline: thin dotted; }
 a:hover, a:active { outline: 0; }
 
-abbr[title] { border-bottom: 1px solid; }
+abbr[title] { border-bottom: 1px dotted; }
 b, strong { font-weight: bold; }
 blockquote { margin: 1em 40px; }
 dfn { font-style: italic; }
@@ -161,7 +161,7 @@ nav a:hover{
 #tv1, #tv3 { clear: left; float: left; }
 #tv2, #tv4 { float: left }
 .source { width: 100px; height: 100px; padding: 0.5em; margin: 5px 5px 5px 0; -moz-background-size: contain; background-size: contain; -moz-border-radius: 15px; border-radius: 15px; }
-#atv1 { clear: left; float: left; background: url('../img/appletv.jpg'); }
+#atv1 {  float: left; background: url('../img/appletv.jpg'); }
 #atv2, #atv3, #atv4 { float: left; background: url('../img/appletv.jpg'); }
 #widi1 { clear: left; float: left; background: url('../img/widi.jpg'); }
 #widi2, #widi3, #widi4 { float: left; background: url('../img/widi.jpg'); }
