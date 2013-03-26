@@ -1,0 +1,146 @@
+<!doctype html>
+<!--[if lt IE 7]>	<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta	charset="utf-8">
+	<meta	http-equiv="X-UA-Compatible"	content="IE=edge,chrome=1">
+
+	<title></title>
+	<meta	name="description"	content="">
+	<meta	name="author"	content="">
+
+	<meta	name="viewport"	content="width=device-width">
+
+	<link rel="stylesheet" href="css/style.css">
+	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/base/jquery-ui.css" rel="stylesheet">
+	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/dot-luv/jquery-ui.css" rel="stylesheet">
+
+	<script	src="js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
+</head>
+<body>
+<!--[if	lt	IE	7]><p	class=chromeframe>Your	browser	is	<em>ancient	and	a	danger	to	security!</em>	<a	href="http://browsehappy.com/">Upgrade	to	a	different	browser</a>	or	<a	href="http://www.google.com/chromeframe/?redirect=true">install	Google	Chrome	Frame</a>	to	experience	this	site.</p><![endif]-->
+
+	<div	id="header-container">
+		<header	class="wrapper clearfix">
+			<h1	id="title">MOFDAC	Media	Control</h1>
+			<nav>
+				<ul>
+					<li><a	href="#">Video</a></li>
+					<li><a	href="#">Audio</a></li>
+					<li><a	href="#">Misc</a></li>
+				</ul>
+			</nav>
+		</header>
+	</div>
+	<div	id="main-container">
+		<div	class="demo">
+		
+			<div id="tv1" class="ui-widget-header tv" data-output="1">
+				<p>TV1</p>
+			</div>
+			
+			<div id="tv2" class="ui-widget-header tv" data-output="2">
+				<p>TV2</p>
+			</div>
+			
+			<div id="tv3" class="ui-widget-header tv" data-output="3">
+				<p>TV3</p>
+			</div>
+			
+			<div id="tv4" class="ui-widget-header tv" data-output="4">
+				<p>TV4</p>
+			</div>
+			
+			<div id="atv1" class="ui-widget-content source" data-input="1">
+				<p>1</p>
+			</div>
+			
+			<div id="atv2" class="ui-widget-content source" data-input="2">
+				<p>2</p>
+			</div>
+			
+			<div id="atv3" class="ui-widget-content source" data-input="3">
+				<p>3</p>
+			</div>
+			
+			<div id="atv4" class="ui-widget-content source" data-input="4">
+				<p>4</p>
+			</div>
+			
+			<div id="widi1" class="ui-widget-content source" data-input="5">
+				<p>1</p>
+			</div>
+
+			<div id="widi2" class="ui-widget-content source" data-input="6">
+				<p>2</p>
+			</div>
+			
+			<div id="widi3" class="ui-widget-content source" data-input="7">
+				<p>3</p>
+			</div>
+			
+			<div id="widi4" class="ui-widget-content source" data-input="8">
+				<p>4</p>
+			</div>
+
+		</div>
+		<div id="main" class="wrapper clearfix">
+			
+			
+			
+		</div>	<!--	#main	-->
+	</div>	<!--	#main-container	-->
+
+	<div	id="footer-container">
+		<footer	class="wrapper">
+			<h3>Pre-decisional. For Internal NASA use only.</h3>
+		</footer>
+	</div>
+
+<script	src="js/libs/jquery-1.7.2.min.js"></script>
+<script	src="js/libs/jquery-ui.min.js"></script>
+<script	src="js/libs/jquery.ui.touch-punch.min.js"></script>
+<script>
+        $(function() {
+          $( "#atv1" ).draggable({ revert: "invalid" , helper: function( event ) { return $( "<div id='atv1' class='ui-widget-header source'>1</div>" ); } });
+          $( "#atv2" ).draggable({ revert: "invalid" , helper: function( event ) { return $( "<div id='atv2' class='ui-widget-header source'>2</div>" ); }});
+		  $( "#atv3" ).draggable({ revert: "invalid" , helper: function( event ) { return $( "<div id='atv3' class='ui-widget-header source'>3</div>" ); }});
+		  $( "#atv4" ).draggable({ revert: "invalid" , helper: function( event ) { return $( "<div id='atv4' class='ui-widget-header source'>4</div>" ); }});
+		  $( "#widi1" ).draggable({ revert: "invalid" , helper: function( event ) { return $( "<div id='widi1' class='ui-widget-header source'>1</div>" ); }});
+		  $( "#widi2" ).draggable({ revert: "invalid" , helper: function( event ) { return $( "<div id='widi2' class='ui-widget-header source'>2</div>" ); }});
+		  $( "#widi3" ).draggable({ revert: "invalid" , helper: function( event ) { return $( "<div id='widi3' class='ui-widget-header source'>3</div>" ); }});
+		  $( "#widi4" ).draggable({ revert: "invalid" , helper: function( event ) { return $( "<div id='widi4' class='ui-widget-header source'>4</div>" ); }});
+
+          $( "#tv1, #tv2, #tv3, #tv4" ).droppable({
+            activeClass: "ui-state-hover",
+            hoverClass: "ui-state-active",
+            drop: function( event, ui ) {
+              $( this )
+                .addClass( "ui-state-highlight" )
+                .find( "p" )
+                  .html( $(ui.draggable).find( "p" ).html() )
+			  $( this ).css({ background: $(ui.draggable).css('background') });
+			  $( this ).css('background-size', 'contain' );
+			  commandSwitch( ui.draggable, this );
+            }
+          });
+		  
+		  function commandSwitch( input, output ) {
+			$.ajax({
+			  type: 'GET',
+			  url: 'index.html?Matrix' + $(input).data("input") + '-' + $(output).data("output")
+			});
+			alert( $(input).data("input") + '-' + $(output).data("output") );
+		  };
+        });
+</script>
+
+<!-- scripts concatenated and minified via ant build script-->
+<script	src="js/plugins.js"></script>
+<script	src="js/script.js"></script>
+<!-- end scripts-->
+
+</body>
+</html>
