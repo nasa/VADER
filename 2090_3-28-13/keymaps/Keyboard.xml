@@ -1,0 +1,14 @@
+<keymap>
+      <global>
+            <keyboard name = "Motorola Nyxboard Hybrid">
+				<!-- <Sleep> RunScript(C:\\vaderScripts\\tvpower-website.py) </Sleep> -->
+				<!-- <Power> RunScript(C:\\vaderScripts\\tvpower-website.py) </Power> -->
+				<!-- <key id='61952'> RunScript(C:\\vaderScripts\\tvpower-website.py) </key> -->
+                <f3 mod="shift">RunScript(C:\\vaderScripts\\serial-POWER.py)</f3>  		<!-- Red button -->
+                <!--<f4 mod="shift">RunScript(C:\\vaderScripts\\switch-widi.py)</f4>-->		<!-- Green button -->
+                <!--<f5 mod="shift">RunScript(C:\\vaderScripts\\switch-wirelessHDMI.py)--></f5>  <!-- Yellow button -->
+				<!--<f6 mod="shift">RunScript(C:\\vaderScripts\\switch-atv.py)</f6>-->		<!-- Blue button -->	
+				<!--<home>RunScript(C:\\vaderScripts\\switch-vader.py)</home> -->				<!-- HOME button -->
+            </keyboard>
+      </global>
+</keymap>

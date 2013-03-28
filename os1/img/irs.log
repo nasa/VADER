@@ -1,0 +1,82 @@
+
+F:\Doc\Mo\Irs.exe   v2012.09.15
+
+  Logging level is 6.
+  Logging to file 'irs.log'.
+
+Batch script for moved files created: G:\OTF\OpsSweetOne\img\irs_move.bat
+Batch script for deleted files created: G:\OTF\OpsSweetOne\img\irs_delete.bat
+ * Unable to open key/directory mapping file 'irs.kdir.txt': No such file or directory
+ * Unable to open key/directory mapping file 'G:\OTF\OpsSweetOne\img\irs.kdir.txt': No such file or directory
+ * Unable to open key/directory mapping file '\irs.kdir.txt': No such file or directory
+ * Unable to open key/directory mapping file 'f:\doc\mo\irs.kdir.txt': No such file or directory
+  File moves will be non-destructive.
+  File deletes will be non-destructive.
+  Files can be moved/deleted.
+
+Reading files matching 'G:\OTF\OpsSweetOne\img*'...
+61 image files found for review and sorting...
+
+Page cache recreated: 7x8, cells 162x123
+Page changed: ALL
+Image #0: 2090.jpg loaded in 0.063000 sec, scaled 14.65% in 0.000000 sec
+Image #1: 2090@2x.jpg loaded in 0.235000 sec, scaled  7.32% in 0.000000 sec
+Image #2: allDisplays.jpg loaded in 0.015000 sec, scaled 13.64% in 0.000000 sec
+Image #3: allDisplays2.jpg loaded in 0.312000 sec, scaled  3.23% in 0.000000 sec
+Image #4: Apple TV Button.png loaded in 0.000000 sec, scaled 43.36% in 0.000000 sec
+Image #5: Apple TV Logo.png loaded in 0.000000 sec, scaled 43.36% in 0.000000 sec
+Image #6: appletv.gif loaded in 0.000000 sec, scaled 55.50% in 0.000000 sec
+Image #7: appletv.jpg loaded in 0.000000 sec, scaled 55.50% in 0.000000 sec
+Image #8: appleTVhelp.png loaded in 0.015000 sec, scaled 17.82% in 0.000000 sec
+Image #9: appletv_2.gif loaded in 0.000000 sec, scaled 55.50% in 0.000000 sec
+Image #10: apple_tv_logo.ico loaded in 0.000000 sec, scaled 86.72% in 0.000000 sec
+Image #11: cbox_chk.gif loaded in 0.000000 sec, scaled 74.00% in 0.000000 sec
+Image #12: cbox_clr.gif loaded in 0.000000 sec, scaled 74.00% in 0.000000 sec
+Image #13: checkbox_checked.png loaded in 0.031000 sec, scaled 13.98% in 0.000000 sec
+Image #14: ClickShareButton.jpg loaded in 0.016000 sec, scaled 20.98% in 0.000000 sec
+Image #15: dd_logo.gif loaded in 0.000000 sec, scaled 61.48% in 0.000000 sec
+Image #16: exit.png loaded in 0.000000 sec, scaled 43.36% in 0.000000 sec
+Image #17: final2090.jpg loaded in 0.390000 sec, scaled  3.01% in 0.000000 sec
+Image #18: icon_deflt.jpg loaded in 0.000000 sec, scaled 74.00% in 0.000000 sec
+Image #19: icon_mute.jpg loaded in 0.016000 sec, scaled 74.00% in 0.000000 sec
+Image #20: icon_pwr.gif loaded in 0.000000 sec, scaled 74.00% in 0.000000 sec
+Image #21: icon_pwr.jpg loaded in 0.000000 sec, scaled 74.00% in 0.000000 sec
+Image #22: image2090.jpg loaded in 0.015000 sec, scaled 14.65% in 0.000000 sec
+Image #23: Intel_Widi_Logo.png loaded in 0.547000 sec, scaled  3.17% in 0.000000 sec
+Image #24: Intel_Widi_Logo_300.png loaded in 0.016000 sec, scaled 37.00% in 0.000000 sec
+Image #25: MCC_Video1.png loaded in 0.015000 sec, scaled 22.47% in 0.000000 sec
+Image #26: MCC_Video2.png loaded in 0.031000 sec, scaled 22.47% in 0.000000 sec
+Image #27: MCC_Video3.png loaded in 0.015000 sec, scaled 22.47% in 0.000000 sec
+Image #28: monitor.jpg loaded in 0.015000 sec, scaled 55.50% in 0.000000 sec
+Image #29: mute.jpg loaded in 0.000000 sec, scaled 60.66% in 0.000000 sec
+Image #30: new2090.jpg loaded in 0.437000 sec, scaled  2.93% in 0.000000 sec
+Image #31: power.jpg loaded in 0.015000 sec, scaled 22.20% in 0.000000 sec
+Image #32: projector.jpg loaded in 0.000000 sec, scaled 55.50% in 0.000000 sec
+Image #33: samsung.gif loaded in 0.000000 sec, scaled 55.50% in 0.000000 sec
+Image #34: sourceHelp.jpg loaded in 0.609000 sec, scaled 20.00% in 0.000000 sec
+Image #35: src-btn-close.jpg loaded in 0.016000 sec, scaled 28.04% in 0.000000 sec
+Image #36: src-btn-mute.jpg loaded in 0.016000 sec, scaled 28.04% in 0.000000 sec
+Image #37: src-btn-power.jpg loaded in 0.016000 sec, scaled 28.04% in 0.000000 sec
+Image #38: src-btn-voldn.jpg loaded in 0.015000 sec, scaled 28.04% in 0.000000 sec
+Image #39: src-btn-volup.jpg loaded in 0.016000 sec, scaled 28.04% in 0.000000 sec
+Image #40: src-btn.jpg loaded in 0.265000 sec, scaled 18.68% in 0.000000 sec
+Image #41: src-controller.jpg loaded in 0.062000 sec, scaled 12.92% in 0.000000 sec
+Image #42: test.jpg loaded in 1.719000 sec, scaled  3.01% in 0.000000 sec
+Image #43: tv-center-1.jpg loaded in 0.016000 sec, scaled 16.52% in 0.000000 sec
+Image #44: tv-center-2.jpg loaded in 0.031000 sec, scaled 16.52% in 0.000000 sec
+Image #45: tv-cr.jpg loaded in 0.031000 sec, scaled 16.52% in 0.000000 sec
+Image #46: tv-left.jpg loaded in 0.016000 sec, scaled 16.52% in 0.000000 sec
+Image #47: tv-right-1.jpg loaded in 0.015000 sec, scaled 16.52% in 0.000000 sec
+Image #48: tv-right-2.jpg loaded in 0.031000 sec, scaled 16.52% in 0.000000 sec
+Image #49: tv.jpg loaded in 0.031000 sec, scaled 16.52% in 0.000000 sec
+Image #50: tv_out_c1.png loaded in 0.031000 sec, scaled 18.09% in 0.000000 sec
+Image #51: tv_out_r1.png loaded in 0.031000 sec, scaled 18.09% in 0.000000 sec
+Image #52: vaderIconSmall.jpg loaded in 0.000000 sec, scaled 48.68% in 0.000000 sec
+Image #53: vol_dn.jpg loaded in 0.000000 sec, scaled 49.33% in 0.016000 sec
+Image #54: vol_up.jpg loaded in 0.000000 sec, scaled 49.33% in 0.000000 sec
+Image #55: widi.gif loaded in 0.000000 sec, scaled 55.50% in 0.000000 sec
+Image #56: widi.jpg loaded in 0.000000 sec
+Image #57: widiHelp.png loaded in 0.015000 sec
+Image #58: widiHelp2.png loaded in 0.000000 sec
+Image #59: widiHelp3.png loaded in 0.016000 sec
+Image #60: windows.png loaded in 0.000000 sec
