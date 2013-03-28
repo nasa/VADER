@@ -161,7 +161,7 @@ nav a:hover{
 #tv1, #tv3 { clear: left; float: left; }
 #tv2, #tv4 { float: left }
 .source { width: 100px; height: 100px; padding: 0.5em; margin: 5px 5px 5px 0; -moz-background-size: contain; background-size: contain; -moz-border-radius: 15px; border-radius: 15px; }
-#atv1 { clear: left; float: left; background: url('../img/appletv.jpg'); }
+#atv1 {  float: left; background: url('../img/appletv.jpg'); }
 #atv2, #atv3, #atv4 { float: left; background: url('../img/appletv.jpg'); }
 #widi1 { clear: left; float: left; background: url('../img/widi.jpg'); }
 #widi2, #widi3, #widi4 { float: left; background: url('../img/widi.jpg'); }
