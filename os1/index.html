@@ -7,15 +7,15 @@
 	<meta	charset="utf-8">
 	<meta	http-equiv="X-UA-Compatible"	content="IE=edge,chrome=1">
 
-	<title>Ops Suite 1 Display Control</title>
+	<title>Ops Suite One Display Control</title>
 	<meta name="description"	content="A website for controlling the displays in Ops Suite 1">
 	<meta name="author"	content="DD12">
 
 	<meta name="viewport" content="width=device-width">
 	<meta name="HandheldFriendly" content="True">
 
-	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/base/jquery-ui.css" rel="stylesheet">
-	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/dot-luv/jquery-ui.css" rel="stylesheet">
+	<link href="css/themes/base/jquery-ui.css" rel="stylesheet">
+	<link href="css/themes/dot-luv/jquery-ui.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/OpsSweetOne.css">
 
 	<script	src="js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
@@ -146,18 +146,6 @@
 
 <script type="text/javascript">
 
-var _stat_debug;
-var el_status = document.getElementById( "otf-status" );
-function status_set( msg )
-{
-	if( el_status )
-	{
-		el_status.innerHTML = msg || "Click on an output device or select devices to which to map an input source.";
-//el_status.innerHTML = _stat_debug;
-	}
-}
-
-
 $(function()
 {
 	var height_body;
@@ -167,6 +155,18 @@ $(function()
 	var width_header_div;
 	var posn_header_div;
 	var jq_single_selected_dest = null;
+	var _stat_debug;
+	var el_status = $( "#otf-status" );
+	
+	function status_set( msg )
+	{
+		if( el_status )
+		{
+			if ( !msg ) msg = "Click on an output device or select devices to which to map an input source.";
+			el_status.html(msg);
+			//el_status.innerHTML = _stat_debug;
+		}
+	}
 
 		// collections of sources and destinations
 	var jq_sources = new Array( $( "#otf-appletv" ), $( "#otf-widi" ), $( "#otf-clickshare" ), $( "#otf-vadertv" ) );//, $( "#otf-tbd" ) );
