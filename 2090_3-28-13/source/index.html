@@ -27,19 +27,15 @@
 		<div id = "inputText">
 			<center><font size = "6"><b> Inputs </b></font></align></center>
 		</div>
-		<div id="widi" class="ui-widget-content source" data-input="1">
-			<div class="sourcelabel">1</div>
-		</div>
+		<div id="widi" class="ui-widget-content source" data-input="1"></div>
 		
-		<div id="clickshare" class="ui-widget-content source" data-input="3">
-			<div class="sourcelabel">CS</div>
-		</div>
+		<div id="clickshare" class="ui-widget-content source" data-input="3"></div>
 		
 		<div id="atv1" class="ui-widget-content source" data-input="2">
-			<div class="sourcelabel">1</div>
+			<div class="sourcelabel">MOFDAC 1</div>
 		</div>		
 		<div id="atv2" class="ui-widget-content source" data-input="4">
-			<div class="sourcelabel">2</div>
+			<div class="sourcelabel">MOFDAC 2</div>
 		</div>
 		
 		<div id="pc1" class="ui-widget-content source" data-input="5">
@@ -54,9 +50,7 @@
 			<div class="sourcelabel">PC Screen 3</div>
 		</div>
 		
-		<div id="vader" class="ui-widget-content source" data-input="8">
-			<div class="sourcelabel">1</div>
-		</div>		
+		<div id="vader" class="ui-widget-content source" data-input="8"></div>		
 	</div>
 	
 	<!-- Surrounded by the second blue border and contains all droppable boxes along with "default" and "help" buttons -->
@@ -67,20 +61,23 @@
 		<div id="main-container" >		
 			<div id="leftLZ" class="lz" data-output="1">
 				<h2>Left TV</h2>
-			</div>
+				<div class="otf-btn-power otf-bkg"></div>
+		</div>
 			
 			<div id="rightLZ" class="lz" data-output="3">
 				<h2 style="text-align: right;">Right TV</h2>
+				<div class="otf-btn-power otf-bkg"></div>	
 			</div>
 			
 			<div id="centerLZ" class="lz" data-output="2">
 				<h2 style="text-align: center;">Projector</h2>
+				<div class="otf-btn-power otf-bkg"></div>			
 			</div>
 
 		</div>	
 		<div id="topbar">
 			<div id="reset" class="panicbutton">
-				<div style="margin: 15% auto;">DEFAULT<p style="margin: 0%; text-align:center;"> SETUP </p></div>
+				<div style="margin: 5% auto;">DEFAULT<p style="margin: 0%; text-align:center;"> SETUP </p></div>
 			</div>
 			<!-- Minor fix for help button *margin:16% should be 23%*-->
 			<div id="helpButtonID" class="helpbutton" onclick="location.href='help.html'">
@@ -108,12 +105,12 @@
           var activeInput = null;
           $( "#atv1" ).height( $( "#atv1" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='atv1' class='ui-widget-header source' style='height: " + $( "#atv1" ).width() + "px;'><div class='sourcelabel'>1</div></div>" ); } });
           $( "#atv2" ).height( $( "#atv2" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='atv2' class='ui-widget-header source' style='height: " + $( "#atv2" ).width() + "px;'><div class='sourcelabel'>2</div></div>" ); }});
-		  $( "#widi" ).height( $( "#widi" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='widi' class='ui-widget-header source' style='height: " + $( "#widi" ).width() + "px;'><div class='sourcelabel'>1</div></div>" ); }});
-		  $( "#clickshare" ).height( $( "#clickshare" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='clickshare' class='ui-widget-header source' style='height: " + $( "#clickshare" ).width() + "px;'><div class='sourcelabel'>2</div></div>" ); }});
+		  $( "#widi" ).height( $( "#widi" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='widi' class='ui-widget-header source' style='height: " + $( "#widi" ).width() + "px;'></div>" ); }});
+		  $( "#clickshare" ).height( $( "#clickshare" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='clickshare' class='ui-widget-header source' style='height: " + $( "#clickshare" ).width() + "px;'></div>" ); }});
 		  $( "#pc1" ).height( $( "#pc1" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='pc1' class='ui-widget-header source' style='height: " + $( "#pc1" ).width() + "px;'><div class='sourcelabel'>PC Screen 1</div></div>" ); }});
 		  $( "#pc2" ).height( $( "#pc2" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='pc2' class='ui-widget-header source' style='height: " + $( "#pc2" ).width() + "px;'><div class='sourcelabel'>2</div></div>" ); }});
 		  $( "#pc3" ).height( $( "#pc3" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='pc3' class='ui-widget-header source' style='height: " + $( "#pc3" ).width() + "px;'><div class='sourcelabel'>3</div></div>" ); }});
-		  $( "#vader" ).height( $( "#vader" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='vader' class='ui-widget-header source' style='height: " + $( "#vader" ).width() + "px;'><div class='sourcelabel'>1</div></div>" ); }});
+		  $( "#vader" ).height( $( "#vader" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='vader' class='ui-widget-header source' style='height: " + $( "#vader" ).width() + "px;'></div>" ); }});
 
 		  $( "#atv1, #atv2, #widi, #clickshare, #pc1, #pc2, #pc3, #vader" ).click(function(){
 		    if ( activeInput == null) {
@@ -160,6 +157,7 @@
 		      activeInput = null;
 		    }
           });
+		  
 		  
 		  $( "#centerLZ" ).height( $( "#centerLZ" ).width() * 0.6 );
 		  $( "#leftLZ" ).height( $( "#leftLZ" ).width() * 0.875);
