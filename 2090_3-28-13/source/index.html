@@ -1,0 +1,236 @@
+<!doctype html>
+<!--[if lt IE 7]>	<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta	charset="utf-8">
+	<meta	http-equiv="X-UA-Compatible"	content="IE=edge,chrome=1">
+
+	<title>MOFDAC Media Control</title>
+	<meta name="description"	content="Control the front displays in the MOFDAC (30A/2090) using this website">
+	<meta name="author"	content="DD12">
+
+	<meta name="viewport" content="width=device-width">
+	<meta name="HandheldFriendly" content="True">
+
+	<link href="css/themes/base/jquery-ui.css" rel="stylesheet">
+	<link href="css/themes/dot-luv/jquery-ui.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/2090.css">
+
+	<script	src="js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
+</head>
+<body style="background-color: rgb(0,0,0);">
+<!--[if	lt	IE	7]><p	class=chromeframe>Your	browser	is	<em>ancient	and	a	danger	to	security!</em>	<a	href="http://browsehappy.com/">Upgrade	to	a	different	browser</a>	or	<a	href="http://www.google.com/chromeframe/?redirect=true">install	Google	Chrome	Frame</a>	to	experience	this	site.</p><![endif]-->
+	<!--<h1 align= "center" margin="0px"> Mission Operations Facility Division Action Center Media Control </h1> -->
+	<div id="source-container">
+		<div id = "inputText">
+			<center><font size = "6"><b> Inputs </b></font></align></center>
+		</div>
+		<div id="widi" class="ui-widget-content source" data-input="1"></div>
+		
+		<div id="clickshare" class="ui-widget-content source" data-input="3"></div>
+		
+		<div id="atv1" class="ui-widget-content source" data-input="2">
+			<div class="sourcelabel">MOFDAC 1</div>
+		</div>		
+		<div id="atv2" class="ui-widget-content source" data-input="4">
+			<div class="sourcelabel">MOFDAC 2</div>
+		</div>
+		
+		<div id="pc1" class="ui-widget-content source" data-input="5">
+			<div class="sourcelabel">PC Screen 1</div>
+		</div>
+
+		<div id="pc2" class="ui-widget-content source" data-input="6">
+			<div class="sourcelabel">PC Screen 2</div>
+		</div>
+		
+		<div id="pc3" class="ui-widget-content source" data-input="7">
+			<div class="sourcelabel">PC Screen 3</div>
+		</div>
+		
+		<div id="vader" class="ui-widget-content source" data-input="8"></div>		
+	</div>
+	
+	<!-- Surrounded by the second blue border and contains all droppable boxes along with "default" and "help" buttons -->
+	<div id="outer-main-div">
+		<div id = "OutputText">
+					<center><font size = "6"><b> Outputs </b></font></align></center>
+		</div>
+		<div id="main-container" >		
+			<div id="leftLZ" class="lz" data-output="1">
+				<h2>Left TV</h2>
+				<div class="otf-btn-power otf-bkg"></div>
+		</div>
+			
+			<div id="rightLZ" class="lz" data-output="3">
+				<h2 style="text-align: right;">Right TV</h2>
+				<div class="otf-btn-power otf-bkg"></div>	
+			</div>
+			
+			<div id="centerLZ" class="lz" data-output="2">
+				<h2 style="text-align: center;">Projector</h2>
+				<div class="otf-btn-power otf-bkg"></div>			
+			</div>
+
+		</div>	
+		<div id="topbar">
+			<div id="reset" class="panicbutton">
+				<div style="margin: 5% auto;">DEFAULT<p style="margin: 0%; text-align:center;"> SETUP </p></div>
+			</div>
+			<!-- Minor fix for help button *margin:16% should be 23%*-->
+			<div id="helpButtonID" class="helpbutton" onclick="location.href='help.html'">
+				<div style="margin: 5% auto;">HELP</div>
+			</div>
+			
+			<div id="allLZ" class="lz">
+				<div id="allLZlabel" style="text-align: center;">
+					<h2 style="text-align: center; margin: 3%;">All Displays</h2>
+				</div>
+			</div>
+		</div>		
+	</div>
+	
+<script	src="js/libs/jquery-1.7.2.min.js"></script>
+<script	src="js/libs/jquery-ui.min.js"></script>
+<script	src="js/libs/jquery.ui.touch-punch.min.js"></script>
+<script src="js/libs/jquery.backgroundSize.js"></script>
+<script src="js/libs/jquery.fittext.js"></script>
+<script src="js/libs/bigtext.js"></script>
+<script src="../js/lib.xbmc.js"></script>
+
+<script>
+        $(function() {
+          var activeInput = null;
+          $( "#atv1" ).height( $( "#atv1" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='atv1' class='ui-widget-header source' style='height: " + $( "#atv1" ).width() + "px;'><div class='sourcelabel'>1</div></div>" ); } });
+          $( "#atv2" ).height( $( "#atv2" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='atv2' class='ui-widget-header source' style='height: " + $( "#atv2" ).width() + "px;'><div class='sourcelabel'>2</div></div>" ); }});
+		  $( "#widi" ).height( $( "#widi" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='widi' class='ui-widget-header source' style='height: " + $( "#widi" ).width() + "px;'></div>" ); }});
+		  $( "#clickshare" ).height( $( "#clickshare" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='clickshare' class='ui-widget-header source' style='height: " + $( "#clickshare" ).width() + "px;'></div>" ); }});
+		  $( "#pc1" ).height( $( "#pc1" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='pc1' class='ui-widget-header source' style='height: " + $( "#pc1" ).width() + "px;'><div class='sourcelabel'>PC Screen 1</div></div>" ); }});
+		  $( "#pc2" ).height( $( "#pc2" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='pc2' class='ui-widget-header source' style='height: " + $( "#pc2" ).width() + "px;'><div class='sourcelabel'>2</div></div>" ); }});
+		  $( "#pc3" ).height( $( "#pc3" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='pc3' class='ui-widget-header source' style='height: " + $( "#pc3" ).width() + "px;'><div class='sourcelabel'>3</div></div>" ); }});
+		  $( "#vader" ).height( $( "#vader" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='vader' class='ui-widget-header source' style='height: " + $( "#vader" ).width() + "px;'></div>" ); }});
+
+		  $( "#atv1, #atv2, #widi, #clickshare, #pc1, #pc2, #pc3, #vader" ).click(function(){
+		    if ( activeInput == null) {
+		      activeInput = $( this );
+		      activeInput.addClass( "active" );
+		    }
+		    else if ( activeInput.data('input') == $( this ).data('input') ) {
+		      activeInput.removeClass( "active" );
+		      activeInput = null;
+		    }
+		    else {
+		      activeInput.removeClass( "active" );
+		      activeInput = $( this );
+		      activeInput.addClass( "active" );
+		    }
+		  });
+
+          $( "#leftLZ, #centerLZ, #rightLZ" ).droppable({
+            activeClass: "active",
+            hoverClass: "hover",
+            drop: function( event, ui ) {
+              $( this )
+                .addClass( "active" )
+                .find( "div" )
+                  .html( $(ui.draggable).find( "p" ).html() )
+			  $( this ).find("div").css({ background: $(ui.draggable).css('background') });
+			  $( this ).find("div").css('background-size', 'contain' );
+			  commandSwitch( ui.draggable, this );
+            }
+          });
+          
+          $( "#leftLZ, #centerLZ, #rightLZ" ).click(function(){
+            if (activeInput != null) {
+              commandSwitch( activeInput, this );
+		      activeInput.removeClass( "active" );
+		      activeInput = null;
+		    }
+          });
+          
+          $( "#allLZ" ).click(function(){
+            if (activeInput != null) {
+              commandAllFront( activeInput );
+		      activeInput.removeClass( "active" );
+		      activeInput = null;
+		    }
+          });
+		  
+		  
+		  $( "#centerLZ" ).height( $( "#centerLZ" ).width() * 0.6 );
+		  $( "#leftLZ" ).height( $( "#leftLZ" ).width() * 0.875);
+		  $( "#rightLZ" ).height( $( "#rightLZ" ).width() * 0.875);
+		  //$( "#allLZ" ).height( $( "#widi" ).width() * 0.7);
+		  $( "#allLZ" ).height( $( "#widi" ).width() * 0.99);
+		  $( "#reset" ).height( $( "#allLZ" ).height() * 0.6);
+		  //$( "#helpbuttonID" ).height( $( "#allLZ" ).height() * 0.5);
+		  
+		  $(window).resize(function() {
+		    //$( "#allLZ" ).height( $( "#widi" ).width() * 0.7);
+		    $( "#allLZ" ).height( $( "#widi" ).width() * 0.99);
+		    $( "#centerLZ" ).height( $( "#centerLZ" ).width() * 0.6 );
+			$( "#leftLZ" ).height( $( "#leftLZ" ).width() * 0.875 );
+			$( "#rightLZ" ).height( $( "#rightLZ" ).width() * 0.875 );
+			$( "#atv1" ).height( $( "#atv1" ).width() );
+			$( "#atv2" ).height( $( "#atv2" ).width() );
+			$( "#widi" ).height( $( "#widi" ).width() );
+			$( "#clickshare" ).height( $( "#clickshare" ).width() );
+			$( "#pc1" ).height( $( "#pc1" ).width() );
+			$( "#pc2" ).height( $( "#pc2" ).width() );
+			$( "#pc3" ).height( $( "#pc3" ).width() );
+			$( "#vader" ).height( $( "#vader" ).width() );
+			$( "#reset" ).height( $( "#allLZ" ).height() * .99 );
+			//$( "#helpbuttonID" ).height( $( "#allLZ" ).height() * 0.7 );
+		  });
+		  
+		  $( "#allLZ" ).droppable({
+			activeClass: "active",
+			hoverClass: "hover",
+			drop: function( event, ui ) {
+			  commandAllFront( ui.draggable );
+            }
+          });
+		  
+		  $("#reset").bigtext();
+		  //$("#titlebar").bigtext();
+		  $("#helpButtonID").bigtext();
+		  $("#allLZlabel").fitText();
+		  
+		  $("#reset").click(function() {
+			xbmc.httpapi('ExecBuiltIn(RunScript(C:\\vaderScripts\\reset.py))');
+		  });
+		  
+		  // Help button doesn't do anything at the moment
+		  $("#helpbuttonID").click(function() {
+			
+		  });
+		  
+		  //getter
+			var buttons = $( ".selector" ).dialog( "option", "buttons" );
+			//setter
+			$( ".selector" ).dialog( "option", "buttons", [
+				{
+					text: "Ok",
+					click: function() { $(this).dialog("close"); }
+				}
+			] );
+			
+		  function commandSwitch( input, output ) {
+			xbmc.httpapi('ExecBuiltIn(RunScript(C:\\vaderScripts\\single_output.py, "' + $(input).data("input") + '", "' + $(output).data("output") + '", "Source", "Display"))');
+		  };
+		  
+		  function commandAllFront( input ) {
+		 	xbmc.httpapi('ExecBuiltIn(RunScript(C:\\vaderScripts\\all_outputs.py, "' + $(input).data("input") + '", "Source", "All Displays"))');
+		  };
+        });
+</script>
+
+<!-- scripts concatenated and minified via ant build script-->
+<script	src="js/plugins.js"></script>
+<script	src="js/script.js"></script>
+<!-- end scripts-->
+
+</body>
+</html>

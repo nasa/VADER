@@ -1,0 +1,965 @@
+<!doctype html>
+<!--[if lt IE 7]>	<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta	charset="utf-8">
+	<meta	http-equiv="X-UA-Compatible"	content="IE=edge,chrome=1">
+
+	<title>Ops Suite One Display Control</title>
+	<meta name="description"	content="A website for controlling the displays in Ops Suite 1">
+	<meta name="author"	content="DD12">
+
+	<meta name="viewport" content="width=device-width">
+	<meta name="HandheldFriendly" content="True">
+
+	<link href="css/themes/base/jquery-ui.css" rel="stylesheet">
+	<link href="css/themes/dot-luv/jquery-ui.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/OpsSweetOne.css">
+
+	<script	src="js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
+</head>
+<body>
+<!--[if	lt	IE	7]><p	class=chromeframe>Your	browser	is	<em>ancient	and	a	danger	to	security!</em>	<a	href="http://browsehappy.com/">Upgrade	to	a	different	browser</a>	or	<a	href="http://www.google.com/chromeframe/?redirect=true">install	Google	Chrome	Frame</a>	to	experience	this	site.</p><![endif]-->
+
+
+<div id="otf-container-outer">
+	<div id="otf-container-header" class="otf-container-border">
+		<div class="otf-header">
+			<span>Ops Suite One Display Control</span>
+		</div>
+	</div>
+
+	<!-- Surrounded by the second blue border and contains all droppable box destinations -->
+	<div id="otf-container-destinations" class="otf-container-border">
+
+		<div id="otf-dest-1" class="otf-dest otf-bkg" data-output="1" data-name_of="Left TV">
+			<div class="otf-connected-to otf-btn-brdr otf-bkg"></div>
+			<div class="otf-btn-power otf-bkg"></div>
+			<!-- <div class="otf-btn-mute otf-btn-brdr otf-bkg"></div> -->
+			<div class="otf-btn-cbox-clr otf-btn-cbox otf-bkg"></div>
+		</div>
+
+		<div id="otf-dest-2" class="otf-dest otf-bkg" data-output="2" data-name_of = "Center TV 1">
+			<div class="otf-connected-to otf-btn-brdr otf-bkg"></div>
+			<div class="otf-btn-power otf-bkg"></div>
+			<div class="otf-btn-cbox-clr otf-btn-cbox otf-bkg"></div>
+		</div>
+
+		<div id="otf-dest-3" class="otf-dest otf-bkg" data-output="3" data-name_of="Center TV 2">
+			<div class="otf-connected-to otf-btn-brdr otf-bkg"></div>
+			<div class="otf-btn-power otf-bkg"></div>
+			<div class="otf-btn-cbox-clr otf-btn-cbox otf-bkg"></div>
+		</div>
+
+		<div id="otf-dest-4" class="otf-dest otf-bkg" data-output="4" data-name_of="Right TV 1">
+			<div class="otf-connected-to otf-btn-brdr otf-bkg"></div>
+			<div class="otf-btn-power otf-bkg"></div>
+			<div class="otf-btn-cbox-clr otf-btn-cbox otf-bkg"></div>
+		</div>
+
+		<div id="otf-dest-5" class="otf-dest otf-bkg" data-output="5" data-name_of="Right TV 2">
+			<div class="otf-connected-to otf-btn-brdr otf-bkg"></div>
+			<div class="otf-btn-power otf-bkg"></div>
+			<div class="otf-btn-cbox-clr otf-btn-cbox otf-bkg"></div>
+		</div>
+
+		<div id="otf-dest-6" class="otf-dest otf-bkg" data-output="6" data-name_of="Action Center TV">
+			<div class="otf-connected-to otf-btn-brdr otf-bkg"></div>
+			<div class="otf-btn-power otf-bkg"></div>
+			<div class="otf-btn-cbox-clr otf-btn-cbox otf-bkg"></div>
+		</div>
+
+		<div class="otf-dest-hevs-div">
+			<div id="otf-dest-hevs1" class="otf-dest otf-bkg" data-output="7" data-name_of="To MCC Video 1">
+				<div class="otf-connected-to otf-connected-to-hevs otf-bkg"></div>
+				<div class="otf-btn-cbox-clr otf-btn-cbox-hevs otf-btn-cbox otf-bkg"></div>
+			</div>
+
+			<div id="otf-dest-hevs2" class="otf-dest otf-bkg" data-output="8" data-name_of="To MCC Video 2">
+				<div class="otf-connected-to otf-connected-to-hevs otf-bkg"></div>
+				<div class="otf-btn-cbox-clr otf-btn-cbox-hevs otf-btn-cbox otf-bkg"></div>
+			</div>
+		</div>
+
+		<div class="otf-dest-btn-div">
+			<div class="otf-dest-btn-default otf-dest-btn otf-bkg">
+				<img class="btn" src="img/Settings_Icon.png">
+				<span class="varitext-btn">Default Configuration</span>
+			</div>
+			<div class="otf-dest-btn-powerall otf-dest-btn otf-bkg">
+				<img class="btn" src="img/PowerBtnTexture.png">
+				<span class="varitext-btn">Power Toggle - Front Five</span>
+			</div>
+			<div class="otf-dest-btn-checkall otf-dest-btn otf-bkg">
+				<img class="cbox" src="img/CheckBox_chk.png">
+				<span class="varitext-btn">Select Front Five</span>
+			</div>
+			<div class="otf-dest-btn-clearall otf-dest-btn otf-bkg">
+				<img class="cbox" src="img/CheckBox_clr.png">
+				<span class="varitext-btn">Clear All Selections</span>
+			</div>
+			<div class="otf-dest-btn-selected otf-dest-btn otf-bkg">
+				<img class="btn" src="img/CheckBox_chk.png">
+				<span class="varitext-btn">Process Selected Devices:</span>
+				<div class="otf-dest-btn-selected-devices">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="otf-container-sources" class="otf-container-sources-border otf-bkg">
+		<div id="otf-src-header">Info</div>
+		<div class="otf-sbtn-exit otf-sbtn otf-bkg"></div>
+
+		<div class="otf-src-input-div">
+			<div id="otf-appletv"    class="otf-source otf-bkg" data-input="5" data-name_of="AppleTV"></div>
+			<div id="otf-widi"       class="otf-source otf-bkg" data-input="6" data-name_of="WiDi"></div>
+			<div id="otf-clickshare" class="otf-source otf-bkg" data-input="1" data-name_of="ClickShare"></div>
+			<div id="otf-vadertv"    class="otf-source otf-bkg" data-input="7" data-name_of="Cable TV"></div>
+			<div id="otf-hevs1"      class="otf-source otf-bkg" data-input="2" data-name_of="MCC Video 1"></div>
+			<div id="otf-hevs2"      class="otf-source otf-bkg" data-input="3" data-name_of="MCC Video 2"></div>
+			<div id="otf-hevs3"      class="otf-source otf-bkg" data-input="4" data-name_of="MCC Video 3"></div>
+		</div>
+
+		<div class="otf-src-btn-div">
+			<div class="otf-sbtn-power otf-sbtn otf-bkg"><span class="otf-sbtn-text"></span></div>
+			<div class="otf-sbtn-mute  otf-sbtn otf-bkg"><span class="otf-sbtn-text"></span></div>
+			<div class="otf-sbtn-volup otf-sbtn otf-bkg"><span class="otf-sbtn-text"></span></div>
+			<div class="otf-sbtn-voldn otf-sbtn otf-bkg"><span class="otf-sbtn-text"></span></div>
+		</div>
+	</div>
+
+	<div id="otf-container-footer">
+		<div id="otf-status" class="otf-container-border">
+			Status goes here.
+		</div>
+	</div>
+</div>	<!-- outer -->
+
+<script	src="js/libs/jquery-1.7.2.min.js"></script>
+<script	src="js/libs/jquery-ui.min.js"></script>
+<script	src="js/libs/jquery.ui.touch-punch.min.js"></script>
+<script src="js/libs/jquery.backgroundSize.js"></script>
+
+
+<script type="text/javascript">
+
+$(function()
+{
+	var height_body;
+	var width_body;
+	var oheight_header;
+	var oheight_footer;
+	var width_header_div;
+	var posn_header_div;
+	var jq_single_selected_dest = null;
+	var _stat_debug;
+	var el_status = $( "#otf-status" );
+	
+	function status_set( msg )
+	{
+		if( el_status )
+		{
+			if ( !msg ) msg = "Click on an output device or select devices to which to map an input source.";
+			el_status.html(msg);
+			//el_status.innerHTML = _stat_debug;
+		}
+	}
+
+		// collections of sources and destinations
+	var jq_sources = new Array( $( "#otf-appletv" ), $( "#otf-widi" ), $( "#otf-clickshare" ), $( "#otf-vadertv" ) );//, $( "#otf-tbd" ) );
+	var src_x_hevs = jq_sources.length; // mark the location of the hevs's in the array
+	jq_sources.push( $( "#otf-hevs1" ) );
+	jq_sources.push( $( "#otf-hevs2" ) );
+	jq_sources.push( $( "#otf-hevs3" ) );
+	var jq_destinations = new Array( $( "#otf-dest-1" ), $( "#otf-dest-2" ), $( "#otf-dest-3" ), $( "#otf-dest-4" ), $( "#otf-dest-5" ), $( "#otf-dest-6" ) );
+	var dest_x_hevs = jq_destinations.length; // mark the location of the hevs's in the array
+	jq_destinations.push( $( "#otf-dest-hevs1" ) );
+	jq_destinations.push( $( "#otf-dest-hevs2" ) );
+
+	var jq_cntr_dest = $( "#otf-container-destinations" );
+	var jq_dest_btn_selected = jq_cntr_dest.find( ".otf-dest-btn-selected" ); // the "process selected devices" button
+	var jq_dest_btn_checkall = jq_cntr_dest.find( ".otf-dest-btn-checkall" ); // the "select all" or "front five" button
+	var jq_dest_btn_clearall = jq_cntr_dest.find( ".otf-dest-btn-clearall" ); // the "clear all selections" button
+
+	var jq_cntr_src = $( "#otf-container-sources" ); // pop-up with input icons and buttons
+	var jq_cntr_src_is_showing = false; // When true, the above pop-up is active
+	var jq_src_hdr = $( "#otf-src-header" );
+
+	function jq_dest_btn_selected_show()
+	{
+		var devices = "";
+		for( dx = 0; dx < jq_destinations.length; dx++ )
+		{
+			if( jq_destinations[dx].data( "is_selected" ) === true )
+				devices += jq_destinations[dx].data( "name_of" ) + "<br/>";
+		}
+		jq_dest_btn_selected.find( ".otf-dest-btn-selected-devices" ).html( devices );
+		jq_dest_btn_selected.show( 200 );
+		jq_dest_btn_checkall.hide();
+		jq_dest_btn_clearall.show();
+	}
+	function jq_dest_btn_selected_hide()
+	{
+		jq_dest_btn_selected.hide( 200 );
+		jq_dest_btn_checkall.show();
+		jq_dest_btn_clearall.hide();
+	}
+
+
+	function class_iostate_set( jqo, new_class )
+	{
+		jqo.removeClass( "otf-iostate-none otf-mouse-down otf-mouse-hover otf-mouse-hover-btn" );
+		if (new_class)
+			jqo.addClass( new_class );
+	}
+
+
+	function source_destination_connection_set( jqo_src, jqo_dst )
+	{
+			// set the src to dest data connection reference
+		jqo_dst.data( "connected_to", jqo_src );
+
+			// add the source icon to the dest icon
+		var icon = jqo_src.css( "background-image" );
+		var jqo_connto = jqo_dst.find( ".otf-connected-to" );
+		jqo_connto.css( "background-image", icon );
+			// give it a size based on the dest element size
+		var dimen = jqo_dst.height() * 0.95;
+		jqo_connto.width( dimen ).height( dimen );
+	}
+
+
+	function destination_cbox_check( jqo, jqo_cbox )
+	{
+		jqo.data( "is_selected", true );
+		if( null === jqo_cbox )
+			jqo_cbox = jqo.find( ".otf-btn-cbox" );
+		jqo_cbox.removeClass( "otf-btn-cbox-clr").addClass("otf-btn-cbox-chk" );
+	}
+	function destination_cbox_uncheck( jqo, jqo_cbox )
+	{
+		jqo.data( "is_selected", false );
+		if( null === jqo_cbox )
+			jqo_cbox = jqo.find( ".otf-btn-cbox" );
+		jqo_cbox.removeClass( "otf-btn-cbox-chk" ).addClass( "otf-btn-cbox-clr" );
+	}
+
+
+
+	/*************************************************************
+	 *************************************************************	I N P U T   (S O U R C E)   D I V
+ 	 *************************************************************/
+
+	 //$( "#otf-dest" ).removeClass( "otf-iostate-none otf-mouse-down otf-mouse-hover otf-mouse-hover-btn" );
+	 //$( "#otf-dest" ).addClass( "otf-iostate-none" );
+	 //$( "#otf-dest" ).click( function()
+
+	for( sx = 0; sx < jq_sources.length; sx++ )
+	{
+		class_iostate_set( jq_sources[sx], "otf-iostate-none" );
+
+		jq_sources[sx].click( function()                                                                    /************* INPUT SOURCE CLICK ************/
+		{
+			if( !!jq_single_selected_dest )
+			{
+				source_destination_connection_set( $(this), jq_single_selected_dest );
+				device_control_switch( this, jq_single_selected_dest );
+				jq_single_selected_dest = null;
+			} else
+			{
+				for( dx = 0; dx < jq_destinations.length; dx++ )
+				{
+					if( jq_destinations[dx].data( "is_selected" ) === true )
+					{
+						destination_cbox_uncheck( jq_destinations[dx], null );
+						source_destination_connection_set( $(this), jq_destinations[dx] );
+						device_control_switch( this, jq_destinations[dx] );
+					}
+				}
+				jq_dest_btn_selected_hide();
+			}
+
+			jq_cntr_src_is_showing = false;
+			jq_cntr_src.hide( 200 );
+
+		} ).mouseenter( function()
+		{
+			$( this ).css( "cursor", "pointer" );
+			class_iostate_set( $(this), "otf-mouse-hover" );
+			status_set( "Click to show the input source '" + $(this).data("name_of") + "'." );
+		} ).mouseleave( function()
+		{
+			$( this ).css( "cursor", "default" );
+			class_iostate_set( $(this), "otf-iostate-none" );
+			status_set( null );
+		} );
+	}
+
+
+	function src_btn_mouseenter( jqo, statmsg )
+	{
+		jqo.css( "cursor", "pointer" );
+		class_iostate_set( jqo, "otf-mouse-hover-btn" );
+		status_set( statmsg );
+	}
+	function src_btn_mouseleave( jqo )
+	{
+		jqo.css( "cursor", "default" );
+		class_iostate_set( jqo, null );
+		status_set( null );
+	}
+	function src_btn_mousedown( jqo )
+	{
+		class_iostate_set( jqo, "otf-mouse-down" );
+		jqo.css( "opacity", 0.4 );
+	}
+	function src_btn_mouseup( jqo )
+	{
+		class_iostate_set( jqo, "otf-mouse-hover-btn" );
+		jqo.css( "opacity", 1.0 );
+	}
+
+	jq_cntr_src.find( ".otf-sbtn-power" ).click( function()                                      /************* SOURCE POWER BUTTON ************/
+	{
+		if( null !== jq_single_selected_dest )
+		{
+			device_control_power( jq_single_selected_dest );
+		} else
+		{
+			for( dx = 0; dx < jq_destinations.length; dx++ )
+			{
+				if( jq_destinations[dx].data("is_selected") === true )
+					device_control_power( jq_destinations[dx] );
+			}
+		}
+	} ).mouseenter( function()
+	{
+		src_btn_mouseenter( $(this), "Click to cycle power on the selected output devices." );
+	} ).mouseleave( function()
+	{
+		src_btn_mouseleave( $(this) );
+	} ).mousedown( function()
+	{
+		src_btn_mousedown( $(this) );
+	} ).mouseup( function()
+	{
+		src_btn_mouseup( $(this) );
+	} );
+
+	jq_cntr_src.find( ".otf-sbtn-mute" ).click( function()                                     /************* SOURCE MUTE BUTTON ************/
+	{
+		if( null !== jq_single_selected_dest )
+		{
+			device_control_mute( jq_single_selected_dest );
+		} else
+		{
+			for( dx = 0; dx < jq_destinations.length; dx++ )
+			{
+				if( jq_destinations[dx].data("is_selected") === true )
+					device_control_mute( jq_destinations[dx] );
+			}
+		}
+	} ).mouseenter( function()
+	{
+		src_btn_mouseenter( $(this), "Click to cycle mute on the selected output devices." );
+	} ).mouseleave( function()
+	{
+		src_btn_mouseleave( $(this) );
+	} ).mousedown( function()
+	{
+		src_btn_mousedown( $(this) );
+	} ).mouseup( function()
+	{
+		src_btn_mouseup( $(this) );
+	} );
+
+	jq_cntr_src.find( ".otf-sbtn-volup" ).click( function()                                   /************* SOURCE VOLUME UP BUTTON ************/
+	{
+		if( null !== jq_single_selected_dest )
+		{
+			device_control_volume( jq_single_selected_dest, 1 );
+		} else
+		{
+			for( dx = 0; dx < jq_destinations.length; dx++ )
+			{
+				if( jq_destinations[dx].data("is_selected") === true )
+					device_control_volume( jq_destinations[dx], 1 );
+			}
+		}
+	} ).mouseenter( function()
+	{
+		src_btn_mouseenter( $(this), "Click to increase volume on the selected output devices." );
+	} ).mouseleave( function()
+	{
+		src_btn_mouseleave( $(this) );
+	} ).mousedown( function()
+	{
+		src_btn_mousedown( $(this) );
+	} ).mouseup( function()
+	{
+		src_btn_mouseup( $(this) );
+	} );
+
+	jq_cntr_src.find( ".otf-sbtn-voldn" ).click( function()                                     /************* SOURCE VOLUME DOWN BUTTON ************/
+	{
+		if( null !== jq_single_selected_dest )
+		{
+			device_control_volume( jq_single_selected_dest, -1 );
+		} else
+		{
+			for( dx = 0; dx < jq_destinations.length; dx++ )
+			{
+				if( jq_destinations[dx].data("is_selected") === true )
+					device_control_volume( jq_destinations[dx], -1 );
+			}
+		}
+	} ).mouseenter( function()
+	{
+		src_btn_mouseenter( $(this), "Click to decrease volume on the selected output devices." );
+	} ).mouseleave( function()
+	{
+		src_btn_mouseleave( $(this) );
+	} ).mousedown( function()
+	{
+		src_btn_mousedown( $(this) );
+	} ).mouseup( function()
+	{
+		src_btn_mouseup( $(this) );
+	} );
+
+	var jq_sbtn_exit = jq_cntr_src.find( ".otf-sbtn-exit" );
+	jq_sbtn_exit.click( function() 	                                     /************* SOURCE EXIT BUTTON ************/
+	{
+		jq_single_selected_dest = null;
+		jq_cntr_src_is_showing = false;
+		jq_cntr_src.hide( 400 );
+/*		for( dx = 0; dx < jq_destinations.length; dx++ )
+		{
+			if( jq_destinations[dx].data("is_selected") === true )
+			{
+				jq_dest_btn_selected_show();
+				break;
+			}
+		}*/
+	} ).mouseenter( function()
+	{
+		$( this ).css( "cursor", "pointer" );
+		status_set( "Exit input source selection." );
+	} ).mouseleave( function()
+	{
+		$( this ).css( "cursor", "default" );
+		status_set( null );
+	} ).mousedown( function()
+	{
+		src_btn_mousedown( $( this ) );
+	} ).mouseup( function()
+	{
+		src_btn_mouseup( $( this ) );
+		class_iostate_set( $(this), null );
+	} );
+
+
+		// Close the source selection pop-up if the escape key was pressed
+	$(document).keyup( function( e )
+	{
+		if( jq_cntr_src_is_showing && (e.keyCode === 27/*escape*/) )
+			jq_sbtn_exit.click();
+	} );
+
+	/*************************************************************
+	 *************************************************************	O U T P U T   (D E S T I N A T I O N)   D I V
+	 *************************************************************/
+
+
+	var dest_btn_clicked = false; // true when a button on one of the destination icons was clicked. Prevents the icon itself from clicking.
+	var cntr_src_posn_calc;
+
+	function source_selection_show()
+	{
+		var a_hevs_is_selected = false;
+		var headermsg = "";
+
+		if( null !== jq_single_selected_dest )
+		{
+			headermsg = jq_single_selected_dest.data( "name_of" );
+		} else
+		{
+			for( dx = 0; dx < jq_destinations.length; dx++ )
+			{
+				if( jq_destinations[dx].data("is_selected") === true )
+				{
+					headermsg += jq_destinations[dx].data( "name_of" ) + ", ";
+					if( dx >= dest_x_hevs )
+						a_hevs_is_selected = true;
+				}
+			}
+			headermsg = headermsg.substring(0, headermsg.length - 2); // strip trailing ", "
+		}
+
+			// if any HEVS destination is selected, remove the HEVS source's as an option
+		for( sx = src_x_hevs; sx < jq_sources.length; sx++ )
+		{
+			if( a_hevs_is_selected )
+				jq_sources[sx].hide();
+			else jq_sources[sx].show();
+		}
+
+		jq_src_hdr.html( headermsg ); // strip trailing ", "
+		jq_cntr_src_is_showing = true;
+		jq_cntr_src.show( 200, function()
+		{
+				// After a screen resize jquery doesn't reset the offset properly when the src pop-up is hidden. This re-centers it.
+			jq_cntr_src.offset( cntr_src_posn_calc );
+		});
+	}//source_selection_show
+
+
+	function dest_btn_mouseenter( jqo, statmsg )
+	{
+		if ( !jq_cntr_src_is_showing )
+		{
+			jqo.css( "cursor", "pointer" );
+			class_iostate_set( jqo, "otf-mouse-hover-btn" );
+			status_set( statmsg );
+		}
+	}
+	function dest_btn_mouseleave( jqo, statmsg )
+	{
+		if( !jq_cntr_src_is_showing )
+		{
+			jqo.css( "cursor", "default" );
+			class_iostate_set( jqo, null );
+			status_set( statmsg );
+		}
+	}
+	function dest_btn_mousedown( jqo )
+	{
+		if( !jq_cntr_src_is_showing )
+		{
+			class_iostate_set( jqo, "otf-mouse-down" );
+			jqo.css( "opacity", 0.4 );
+		}
+	}
+	function dest_btn_mouseup( jqo )
+	{
+		if( !jq_cntr_src_is_showing )
+		{
+			class_iostate_set( jqo, "otf-mouse-hover" );
+			jqo.css( "opacity", 1.0 );
+		}
+	}
+
+
+	for( dx = 0; dx < jq_destinations.length; dx++ )
+	{
+		jq_destinations[dx].data(
+		{
+			connected_to: null,
+			is_selected: false
+		} ).click( function()									/************* OUTPUT DEVICE CLICK ************/
+		{
+			if( jq_cntr_src_is_showing )
+				return;
+			if( dest_btn_clicked )
+			{
+				dest_btn_clicked = false;
+				return;
+			}
+			jq_single_selected_dest = $( this );
+			class_iostate_set( $(this), "otf-iostate-none" );
+			source_selection_show();
+			status_set( "Click to select an input source for '" + $(this).data("name_of") + "'." );
+		} ).mouseenter( function()
+		{
+			if( jq_cntr_src_is_showing )
+				return;
+			$( this ).css( "cursor", "pointer" );
+			class_iostate_set( $( this ), "otf-mouse-hover" );
+			status_set( "Click to select an input source for '" + $( this ).data("name_of") + "'." );
+		} ).mouseleave( function()
+		{
+			if( jq_cntr_src_is_showing )
+				return;
+			$( this ).css( "cursor", "default" );
+			status_set( null );
+			class_iostate_set( $(this), "otf-iostate-none" );
+		} ).find( ".otf-btn-power" ).click( function()							/************* OUTPUT DEVICE POWER BUTTON ************/
+		{
+			if( jq_cntr_src_is_showing )
+				return;
+			dest_btn_clicked = true;
+			device_control_power( $( this ).parent() );
+		} ).mouseenter( function()
+		{
+			dest_btn_mouseenter( $( this ), "Click to cycle power on '" + $( this ).parent().data( "name_of" ) + "'."  );
+		} ).mouseleave( function()
+		{
+			dest_btn_mouseleave( $( this ), "Click to select an input source for '" + $( this ).parent().data( "name_of" ) + "'." );
+		} ).mousedown( function()
+		{
+			dest_btn_mousedown( $( this ) );
+		} ).mouseup( function()
+		{
+			dest_btn_mouseup( $( this ) );
+		} );
+
+		jq_destinations[dx].find(".otf-btn-mute").click(function()					/************* OUTPUT DEVICE MUTE BUTTON ************/
+		{
+			if (jq_cntr_src_is_showing)
+				return;
+			dest_btn_clicked = true;
+			device_control_mute( $(this).parent() );
+		}).mouseenter(function()
+		{
+			dest_btn_mouseenter( $(this), "Click to cycle mute on '" + $(this).parent().data("name_of") + "'." );
+		}).mouseleave(function()
+		{
+			dest_btn_mouseleave( $(this), "Click to select an input source for '" + $(this).parent().data("name_of") + "'.");
+		} ).mousedown( function()
+		{
+			dest_btn_mousedown( $( this ) );
+		} ).mouseup( function()
+		{
+			dest_btn_mouseup( $( this ) );
+		} );
+
+		jq_destinations[dx].find( ".otf-btn-cbox").click( function()					/************* OUTPUT DEVICE CHECKBOX ************/
+		{
+			if( jq_cntr_src_is_showing )
+				return;
+			dest_btn_clicked = true;
+			if( $( this ).parent().data( "is_selected" ) === false)
+			{
+				destination_cbox_check( $( this ).parent(), $( this ) );
+			} else
+			{
+				destination_cbox_uncheck( $( this ).parent(), $( this ) );
+			}
+			var n_selected = 0;
+			for( dxx = 0; dxx < jq_destinations.length; dxx++ )
+			{
+				if( jq_destinations[dxx].data("is_selected") === true )
+					n_selected++;
+			}
+			if( n_selected === 0 ) jq_dest_btn_selected_hide();
+			else jq_dest_btn_selected_show();
+
+		}).mouseenter(function()
+		{
+			dest_btn_mouseenter( $(this), "Click to select '" + $(this).parent().data("name_of") + "'.");
+		}).mouseleave(function()
+		{
+			dest_btn_mouseleave( $(this), "Click to select an input source for '" + $(this).parent().data("name_of") + "'.");
+		});
+
+		class_iostate_set(jq_destinations[dx], "otf-iostate-none");
+
+	}//for dx
+
+	jq_dest_btn_selected.click( function()                                                   /************* OUTPUT SELECTIONS BUTTON ************/
+	{
+		if( jq_cntr_src_is_showing )
+			return;
+		source_selection_show();
+		status_set( "Click to select an input source for the checked devices." );
+	} ).mouseenter( function()
+	{
+		dest_btn_mouseenter( $( this ), "Click to select an input source for the checked devices." );
+	} ).mouseleave( function()
+	{
+		dest_btn_mouseleave( $( this ), null );
+	} ).mousedown( function()
+	{
+		dest_btn_mousedown( $( this ) );
+	} ).mouseup( function()
+	{
+		dest_btn_mouseup( $( this ) );
+	} ).hide();
+
+
+	jq_dest_btn_checkall.click( function()                                                      /************* SELECT ALL BUTTON ************/
+	{
+		if( jq_cntr_src_is_showing )
+			return;
+		for( dx = 0; dx < 5; dx++ )
+		{
+			jq_destinations[dx].data( "is_selected", true );
+			destination_cbox_check( jq_destinations[dx], null );
+		}
+		jq_dest_btn_selected_show();
+	} ).mouseenter( function()
+	{
+		dest_btn_mouseenter( $( this ), "Click to select all the primary output devices." );
+	}).mouseleave( function()
+	{
+		dest_btn_mouseleave( $( this ), null );
+	} ).mousedown( function()
+	{
+		dest_btn_mousedown( $( this ) );
+	} ).mouseup( function()
+	{
+		dest_btn_mouseup( $( this ) );
+	} );
+
+	jq_dest_btn_clearall.click( function()                                                      /************* UN-SELECT ALL BUTTON ************/
+	{
+		if( jq_cntr_src_is_showing )
+			return;
+		for( dx = 0; dx < jq_destinations.length; dx++ )
+		{
+			jq_destinations[dx].data( "is_selected", false );
+			destination_cbox_uncheck( jq_destinations[dx], null );
+		}
+		jq_dest_btn_selected_hide();
+	} ).mouseenter( function()
+	{
+		dest_btn_mouseenter( $( this ), "Click to un-select all the output devices." );
+	}).mouseleave( function()
+	{
+		dest_btn_mouseleave( $( this ), null );
+	} ).mousedown( function()
+	{
+		dest_btn_mousedown( $( this ) );
+	} ).mouseup( function()
+	{
+		dest_btn_mouseup( $( this ) );
+	}).hide();
+
+	jq_cntr_dest.find( ".otf-dest-btn-powerall" ).click( function()                                       /************* POWER ALL BUTTON ************/
+	{
+		if( jq_cntr_src_is_showing )
+			return;
+		for( dx = 0; dx < 5; dx++ )
+		{
+			device_control_power( jq_destinations[dx] );
+		}
+		jq_dest_btn_selected_hide();
+	} ).mouseenter( function()
+	{
+		dest_btn_mouseenter( $( this ), "Click to toggle power on the primary output devices." );
+	}).mouseleave( function()
+	{
+		dest_btn_mouseleave( $( this ), null );
+	} ).mousedown( function()
+	{
+		dest_btn_mousedown( $( this ) );
+	} ).mouseup( function()
+	{
+		dest_btn_mouseup( $( this ) );
+	} );
+
+	jq_cntr_dest.find( ".otf-dest-btn-muteall" ).click( function()                                       /************* MUTE ALL BUTTON ************/
+	{
+		if( jq_cntr_src_is_showing )
+			return;
+		for( dx = 0; dx < 5; dx++ )
+		{
+			device_control_mute( jq_destinations[dx] );
+		}
+	} ).mouseenter( function()
+	{
+		dest_btn_mouseenter( $( this ), "Click to toggle muting on the primary output devices." );
+	}).mouseleave( function()
+	{
+		dest_btn_mouseleave( $( this ), null );
+	} ).mousedown( function()
+	{
+		dest_btn_mousedown( $( this ) );
+	} ).mouseup( function()
+	{
+		dest_btn_mouseup( $( this ) );
+	} );
+
+	jq_cntr_dest.find( ".otf-dest-btn-default" ).click( function()                                       /************* DEFAULT BUTTON ************/
+	{
+		if( jq_cntr_src_is_showing )
+			return;
+		setup_default();
+	} ).mouseenter( function()
+	{
+		dest_btn_mouseenter( $( this ), "Click to set up the default input-output mappings." );
+	}).mouseleave( function()
+	{
+		dest_btn_mouseleave( $( this ), null );
+	} ).mousedown( function()
+	{
+		dest_btn_mousedown( $( this ) );
+	} ).mouseup( function()
+	{
+		dest_btn_mouseup( $( this ) );
+	} );
+
+
+	/*************************************************************
+	 *************************************************************	D I V    I C O N    S I Z I N G
+	 *************************************************************/
+
+
+		// Set the source and destination elements size and location - on init and on screen-resize
+	function size_and_position()
+	{
+		var ratio_tv = 1.7198; // from the actual tv icons
+		var jq = $( "body" );
+		height_body = jq.height();
+		width_body  = jq.width();
+
+			// force the orientation to 16:9 mode landscape
+		var jq_cntr_outer = $( "#otf-container-outer" );
+		var height_outer;
+		var width_outer;
+		if( (height_body * ratio_tv) > width_body ) // portrait or taller: fit to body width, run short in the height
+		{
+			width_outer = width_body * 0.95;
+			height_outer = width_outer / ratio_tv;
+		} else // landscape or wider: fit to body height, run short in the width
+		{
+			height_outer = height_body * 0.95;
+			width_outer =  height_outer * ratio_tv;
+		}
+		if( height_outer < 512 ) // minimum size restriction
+		{
+			height_outer = 512;
+			width_outer =  height_outer * ratio_tv;
+		}
+		jq_cntr_outer.height( height_outer );
+		jq_cntr_outer.width( width_outer );
+
+		var jq_cntr_header = $( "#otf-container-header" );
+		oheight_header = jq_cntr_header.outerHeight( true );
+		oheight_footer = $( "#otf-container-footer" ).outerHeight( true );
+
+		width_header_div = jq_cntr_header.width();
+		var px_borderpadding = (jq_cntr_header.outerWidth() - width_header_div); // width of border and padding, both sides
+
+			// Compute and set the inner height of the destination div...
+		var height_other = oheight_header + oheight_footer + px_borderpadding;
+		var height_dest_div = height_outer - height_other;
+
+		jq_cntr_dest.height( height_dest_div );
+		jq_cntr_dest.width( width_header_div );
+_stat_debug = " WxH:" + Math.round(width_body) + "x" + Math.round(height_body) + ", " + Math.round(width_header_div) + "x" + Math.round(height_dest_div);//" (" + (width_body / height_body) + ")";
+
+			// Compute the output (destination) icon size
+		var height_icon = height_dest_div * 0.21;
+		var width_icon =  height_icon * ratio_tv;
+
+		for( dx = 0; dx < 6; dx++ ) // All the tv icons are the same size
+		{
+			jq_destinations[dx].height( height_icon );
+			jq_destinations[dx].width( width_icon );
+		}
+		for( dx = 6; dx < jq_destinations.length; dx++ ) // Non-tv icons
+		{
+			jq_destinations[dx].height(height_icon);
+			jq_destinations[dx].width(width_icon);
+		}
+
+
+			// Compute and set the size of the source input pop-up
+		var height_src_div = height_dest_div * 0.75;
+		var width_src_div = height_src_div * 1.598;
+		jq_cntr_src.height( height_src_div );
+		jq_cntr_src.width( width_src_div );
+
+		var posn_dest = jq_cntr_dest.offset();
+		cntr_src_posn_calc = { top:posn_dest.top + (height_dest_div - height_src_div) / 2, left:(width_body - width_src_div) / 2 };
+		jq_cntr_src.offset( cntr_src_posn_calc );
+
+		// ...and icons
+		for( sx = 0; sx < jq_sources.length; sx++ )
+		{
+			jq_sources[sx].height( height_src_div * 0.23 );
+			jq_sources[sx].width( height_src_div * 0.23 );
+		}
+
+			// Scale text elements as well
+		jq_cntr_dest.find( ".otf-dest-btn-div" ).find( ".varitext-btn" ).css( "font-size", height_dest_div * 0.030 );
+		jq_dest_btn_selected.find( ".otf-dest-btn-selected-devices" ).css( "font-size", height_dest_div * 0.026 );
+		$( el_status ).css( "font-size", height_dest_div * 0.034 );
+		jq_src_hdr.css( "font-size", height_dest_div * 0.034 );
+
+
+var posch = jq_dest_btn_checkall.position();
+//var poscl = jq_dest_btn_clearall.position();
+		//jq_dest_btn_clearall.offset( jq_dest_btn_checkall.position() ); // Stack the two divs, show and hide as necessary
+//jq_cntr_src.show();
+	}//size_n_posn
+
+
+	size_and_position();
+
+
+	$( window ).resize( function()
+	{
+		size_and_position();
+	});
+
+	function setup_default()
+	{
+		source_destination_connection_set( jq_sources[src_x_hevs], jq_destinations[0] );
+		device_control_switch( jq_sources[src_x_hevs], jq_destinations[0] );
+
+		source_destination_connection_set( jq_sources[src_x_hevs+1], jq_destinations[1] );
+		device_control_switch( jq_sources[src_x_hevs+1], jq_destinations[1] );
+
+		source_destination_connection_set( jq_sources[src_x_hevs+2], jq_destinations[2] );
+		device_control_switch( jq_sources[src_x_hevs+2], jq_destinations[2] );
+
+		source_destination_connection_set( jq_sources[src_x_hevs], jq_destinations[3] );
+		device_control_switch( jq_sources[src_x_hevs], jq_destinations[3] );
+
+		source_destination_connection_set( jq_sources[src_x_hevs+1], jq_destinations[4] );
+		device_control_switch( jq_sources[src_x_hevs+1], jq_destinations[4] );
+
+		source_destination_connection_set( jq_sources[3], jq_destinations[5] );
+		device_control_switch( jq_sources[3], jq_destinations[5] );
+	}
+
+	setup_default();
+
+
+	function device_control_power( output )
+	{
+//alert( "Clicked power button for output device '" + output.data( "name_of" )  + "'." );
+	}
+
+	function device_control_mute( output )
+	{
+//alert( "Clicked mute button for output device '" + output.data( "name_of" )  + "'." );
+	}
+
+	function device_control_volume( output, level )
+	{
+//alert( "Clicked volume " + ((level>0) ? "up" : "down") + " button for output device '" + output.data( "name_of" )  + "'." );
+	}
+
+	function device_control_switch( input, output )
+	{
+	var cmdarg = 'ExecBuiltIn(RunScript(/home/vader/.xbmc/scripts/single_output.py, "' + $(input).data( "input" ) + '", "' + $(output).data( "output" ) + '", "Source", "Display"))';
+//alert( "switch:\n" + cmdarg );
+	//	xbmc.httpapi( 'ExecBuiltIn(RunScript(/home/vader/.xbmc/scripts/single_output.py, "' + $(input).data( "input" ) + '", "' + $(output).data( "output" ) + '", "Source", "Display"))' );
+	};
+
+
+	function device_control_all( input )
+	{
+	var cmdarg = 'ExecBuiltIn(RunScript(/home/vader/.xbmc/scripts/all_outputs.py, "' + $(input).data( "input" ) + '", "Source", "All Displays"))';
+//alert( "all:\n" + cmdarg );
+	//	xbmc.httpapi( 'ExecBuiltIn(RunScript(/home/vader/.xbmc/scripts/all_outputs.py, "' + $(input).data( "input" ) + '", "Source", "All Displays"))' );
+	};
+
+	status_set( null );
+
+});
+</script>
+
+<!-- scripts concatenated and minified via ant build script-->
+<script	src="js/plugins.js"></script>
+<script	src="js/script.js"></script>
+<!-- end scripts-->
+
+</body>
+</html>
