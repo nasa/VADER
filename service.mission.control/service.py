@@ -46,7 +46,7 @@ def startServing(server):
 if (__name__ == "__main__"):
     xbmc.log('Version %s started' % __addonversion__)
     theCounter = 0
-    theStatus = {'left': 1, 'center1': 1, 'center2': 2, 'right1': 1, 'right2':2, 'actionCenter': 3}
+    theStatus = {'left': 1, 'center1': 1, 'center2': 2, 'right1': 1, 'right2':2, 'actionCenter': 3, 'HEVS1': 4, 'HEVS2': 5}
     httpd = SocketServer.TCPServer(('', PORT), SwitchStatus)
     print "serving at port", PORT
     Thread(target=startServing, args=(httpd,)).start()
@@ -115,6 +115,26 @@ if (__name__ == "__main__"):
         foo = binascii.b2a_qp(out)
         source = foo[2]
         theStatus['actionCenter'] = source
+		
+		ser = serial.Serial(2, 9600, timeout=1)
+        ser.flushInput()
+        ser.write('\x05\x80\x87\x81')
+        ser.read(2)
+        out = ser.read()
+        ser.close()
+        foo = binascii.b2a_qp(out)
+        source = foo[2]
+        theStatus['HEVS1'] = source
+		
+		ser = serial.Serial(2, 9600, timeout=1)
+        ser.flushInput()
+        ser.write('\x05\x80\x88\x81')
+        ser.read(2)
+        out = ser.read()
+        ser.close()
+        foo = binascii.b2a_qp(out)
+        source = foo[2]
+        theStatus['HEVS2'] = source
     print "starting server shutdown"
     httpd.shutdown()
     print "finished server shutdown"
