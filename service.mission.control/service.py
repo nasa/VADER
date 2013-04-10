@@ -30,7 +30,7 @@ import serial
 
 PORT = 8000
 
-class SwitchStatus(SimpleHTTPServer.SimpleHTTPRequestHandler):
+class DeviceStatus(SimpleHTTPServer.SimpleHTTPRequestHandler):
     
     def do_GET(self):
         if self.path == '/':
@@ -47,7 +47,7 @@ if (__name__ == "__main__"):
     xbmc.log('Version %s started' % __addonversion__)
     theCounter = 0
     theStatus = {'left': 1, 'center1': 1, 'center2': 2, 'right1': 1, 'right2':2, 'actionCenter': 3, 'HEVS1': 4, 'HEVS2': 5}
-    httpd = SocketServer.TCPServer(('', PORT), SwitchStatus)
+    httpd = SocketServer.TCPServer(('', PORT), DeviceStatus)
     print "serving at port", PORT
     Thread(target=startServing, args=(httpd,)).start()
     print "starting the counter"
