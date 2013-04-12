@@ -1,6 +1,6 @@
 Example:
 {
-	"output":[
+	"outputs":[
 		{
 			"outputName": "Action Center",
 			"outputNumber": "6",
@@ -22,9 +22,9 @@ Schema:
 	"id": "http://jsonschema.net",
 	"required":false,
 	"properties":{
-		"output": {
+		"outputs": {
 			"type":"array",
-			"id": "http://jsonschema.net/output",
+			"id": "http://jsonschema.net/outputs",
 			"required":false,
 			"items":
 				{

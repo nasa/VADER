@@ -38,6 +38,24 @@ class DeviceStatus(SimpleHTTPServer.SimpleHTTPRequestHandler):
         if self.path == '/run':
             print 'Patience is a virtue...'
             print >>self.wfile, "<html><body>" + str(theCounter) + "<a href='/'>Impatient Test</a>" + str(theStatus) + "</body></html>"
+        if 'tuner' in self.path:
+            print 'command for tuner'
+            print self.path
+            tunerParams = self.path.split('/')
+            # Tuner functions
+            if tunerParams[1] == 'channel':
+                if tunerParams [2] == '+':
+                    # Channel Up
+                    print 'channel up'
+                elif tunerParams [2] == '-':
+                    # Channel Down
+                    print 'channel down'
+                else:
+                    # Tune to specified channel
+                    print 'tune to specified channel'
+            else:
+                # What else is there?
+                print 'invalid command area'
 
 def startServing(server):
     print "begin serving requests"
@@ -56,85 +74,109 @@ if (__name__ == "__main__"):
         theCounter += 1
         
         # This is where the serial stuff begins
-        ser = serial.Serial(2, 9600, timeout=1)
-        ser.flushInput()
-        ser.write('\x05\x80\x81\x81')
-        ser.read(2)
-        out = ser.read()
-        ser.close()
-        foo = binascii.b2a_qp(out)
-        source = foo[2]
-        theStatus['left'] = source
+        try:
+            ser = serial.Serial(2, 9600, timeout=1)
+            ser.flushInput()
+            ser.write('\x05\x80\x81\x81')
+            ser.read(2)
+            out = ser.read()
+            ser.close()
+            foo = binascii.b2a_qp(out)
+            source = foo[2]
+            theStatus['left'] = source
+        except:
+            continue
+
+        try:
+            ser = serial.Serial(2, 9600, timeout=1)
+            ser.flushInput()
+            ser.write('\x05\x80\x82\x81')
+            ser.read(2)
+            out = ser.read()
+            ser.close()
+            foo = binascii.b2a_qp(out)
+            source = foo[2]
+            theStatus['center1'] = source
+        except:
+            continue
+
+        try:
+            ser = serial.Serial(2, 9600, timeout=1)
+            ser.flushInput()
+            ser.write('\x05\x80\x83\x81')
+            ser.read(2)
+            out = ser.read()
+            ser.close()
+            foo = binascii.b2a_qp(out)
+            source = foo[2]
+            theStatus['center2'] = source
+        except:
+            continue
+
+        try:
+            ser = serial.Serial(2, 9600, timeout=1)
+            ser.flushInput()
+            ser.write('\x05\x80\x84\x81')
+            ser.read(2)
+            out = ser.read()
+            ser.close()
+            foo = binascii.b2a_qp(out)
+            source = foo[2]
+            theStatus['right1'] = source
+        except:
+            continue
+
+        try:
+            ser = serial.Serial(2, 9600, timeout=1)
+            ser.flushInput()
+            ser.write('\x05\x80\x85\x81')
+            ser.read(2)
+            out = ser.read()
+            ser.close()
+            foo = binascii.b2a_qp(out)
+            source = foo[2]
+            theStatus['right2'] = source
+        except:
+            continue
+
+        try:
+            ser = serial.Serial(2, 9600, timeout=1)
+            ser.flushInput()
+            ser.write('\x05\x80\x86\x81')
+            ser.read(2)
+            out = ser.read()
+            ser.close()
+            foo = binascii.b2a_qp(out)
+            source = foo[2]
+            theStatus['actionCenter'] = source
+        except:
+            continue
+
+        try:
+            ser = serial.Serial(2, 9600, timeout=1)
+            ser.flushInput()
+            ser.write('\x05\x80\x87\x81')
+            ser.read(2)
+            out = ser.read()
+            ser.close()
+            foo = binascii.b2a_qp(out)
+            source = foo[2]
+            theStatus['HEVS1'] = source
+        except:
+            continue
         
-        ser = serial.Serial(2, 9600, timeout=1)
-        ser.flushInput()
-        ser.write('\x05\x80\x82\x81')
-        ser.read(2)
-        out = ser.read()
-        ser.close()
-        foo = binascii.b2a_qp(out)
-        source = foo[2]
-        theStatus['center1'] = source
-        
-        ser = serial.Serial(2, 9600, timeout=1)
-        ser.flushInput()
-        ser.write('\x05\x80\x83\x81')
-        ser.read(2)
-        out = ser.read()
-        ser.close()
-        foo = binascii.b2a_qp(out)
-        source = foo[2]
-        theStatus['center2'] = source
-        
-        ser = serial.Serial(2, 9600, timeout=1)
-        ser.flushInput()
-        ser.write('\x05\x80\x84\x81')
-        ser.read(2)
-        out = ser.read()
-        ser.close()
-        foo = binascii.b2a_qp(out)
-        source = foo[2]
-        theStatus['right1'] = source
-        
-        ser = serial.Serial(2, 9600, timeout=1)
-        ser.flushInput()
-        ser.write('\x05\x80\x85\x81')
-        ser.read(2)
-        out = ser.read()
-        ser.close()
-        foo = binascii.b2a_qp(out)
-        source = foo[2]
-        theStatus['right2'] = source
-        
-        ser = serial.Serial(2, 9600, timeout=1)
-        ser.flushInput()
-        ser.write('\x05\x80\x86\x81')
-        ser.read(2)
-        out = ser.read()
-        ser.close()
-        foo = binascii.b2a_qp(out)
-        source = foo[2]
-        theStatus['actionCenter'] = source
-		
-		ser = serial.Serial(2, 9600, timeout=1)
-        ser.flushInput()
-        ser.write('\x05\x80\x87\x81')
-        ser.read(2)
-        out = ser.read()
-        ser.close()
-        foo = binascii.b2a_qp(out)
-        source = foo[2]
-        theStatus['HEVS1'] = source
-		
-		ser = serial.Serial(2, 9600, timeout=1)
-        ser.flushInput()
-        ser.write('\x05\x80\x88\x81')
-        ser.read(2)
-        out = ser.read()
-        ser.close()
-        foo = binascii.b2a_qp(out)
-        source = foo[2]
-        theStatus['HEVS2'] = source
+        try:
+            ser = serial.Serial(2, 9600, timeout=1)
+            ser.flushInput()
+            ser.write('\x05\x80\x88\x81')
+            ser.read(2)
+            out = ser.read()
+            ser.close()
+            foo = binascii.b2a_qp(out)
+            source = foo[2]
+            theStatus['HEVS2'] = source
+        except:
+            continue
     print "starting server shutdown"
     httpd.shutdown()
     print "finished server shutdown"
