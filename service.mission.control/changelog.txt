@@ -1,1 +1,5 @@
 0.1 Initial Version
+
+0.2 Updates for HEVS.
+
+0.3 Initial tuner test (non-functional). Error handling for switch.
