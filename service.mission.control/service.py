@@ -44,6 +44,11 @@ class DeviceStatus(SimpleHTTPServer.SimpleHTTPRequestHandler):
             tunerParams = self.path.split('/')
             print >>self.wfile, tunerParams
             theCommandQueue.append(tunerParams[1:])
+        if 'executor' in self.path:
+            print >>self.wfile, '<html><body>command from executor'
+            execParams = self.path.split('/')
+            print >>self.wfile, execParams
+            theCommandQueue.append(execParams[1:])
 
 def startServing(server):
     print "begin serving requests"
@@ -84,6 +89,8 @@ if (__name__ == "__main__"):
                         serial.Serial(3, 9600, timeout=1).write('>P0\x0d')
                     elif command[2] == 'toggle':
                         serial.Serial(3, 9600, timeout=1).write('>PT\x0d')
+            elif command[0] == 'exec':
+                pass
 
         #serial.Serial(3, 9600, timeout=1).write('\x3e\x50\x31\x0d')
         
