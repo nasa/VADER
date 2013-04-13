@@ -5,6 +5,7 @@ import time
 import SocketServer
 import SimpleHTTPServer
 from threading import Thread
+from collections import deque
 import xbmc
 import xbmcaddon
 import xbmcgui
@@ -39,23 +40,10 @@ class DeviceStatus(SimpleHTTPServer.SimpleHTTPRequestHandler):
             print 'Patience is a virtue...'
             print >>self.wfile, "<html><body>" + str(theCounter) + "<a href='/'>Impatient Test</a>" + str(theStatus) + "</body></html>"
         if 'tuner' in self.path:
-            print 'command for tuner'
-            print self.path
+            print >>self.wfile, '<html><body>command for tuner'
             tunerParams = self.path.split('/')
-            # Tuner functions
-            if tunerParams[1] == 'channel':
-                if tunerParams [2] == '+':
-                    # Channel Up
-                    print 'channel up'
-                elif tunerParams [2] == '-':
-                    # Channel Down
-                    print 'channel down'
-                else:
-                    # Tune to specified channel
-                    print 'tune to specified channel'
-            else:
-                # What else is there?
-                print 'invalid command area'
+            print >>self.wfile, tunerParams
+            theCommandQueue.append(tunerParams[1:])
 
 def startServing(server):
     print "begin serving requests"
@@ -63,6 +51,7 @@ def startServing(server):
 
 if (__name__ == "__main__"):
     xbmc.log('Version %s started' % __addonversion__)
+    theCommandQueue = deque()
     theCounter = 0
     theStatus = {'left': 1, 'center1': 1, 'center2': 2, 'right1': 1, 'right2':2, 'actionCenter': 3, 'HEVS1': 4, 'HEVS2': 5}
     httpd = SocketServer.TCPServer(('', PORT), DeviceStatus)
@@ -70,8 +59,33 @@ if (__name__ == "__main__"):
     Thread(target=startServing, args=(httpd,)).start()
     print "starting the counter"
     while (not xbmc.abortRequested):
-        time.sleep(2.5)
+        time.sleep(1)
         theCounter += 1
+        while theCommandQueue:
+            command = theCommandQueue.popleft()
+            if command[0] == 'tuner':
+                if command[1] == 'channel':
+                    if command[2] == '+':
+                        serial.Serial(3, 9600, timeout=1).write('>P1\x0d')
+                        #serial.Serial(3, 9600, timeout=1).write('\x3e\x54\x55\x0d')
+                        serial.Serial(3, 9600, timeout=1).write('>TU\x0d')
+                    elif command[2] == '-':
+                        serial.Serial(3, 9600, timeout=1).write('>P1\x0d')
+                        serial.Serial(3, 9600, timeout=1).write('>TD\x0d')
+                    else:
+                        serial.Serial(3, 9600, timeout=1).write('>P1\x0d')
+                        serial.Serial(3, 9600, timeout=1).write('>TC=' + command[2] + '\x0d')
+                        print command[2]
+                elif command[1] == 'power':
+                    print command
+                    if command[2] == 'on':
+                        serial.Serial(3, 9600, timeout=1).write('>P1\x0d')
+                    elif command[2] == 'off':
+                        serial.Serial(3, 9600, timeout=1).write('>P0\x0d')
+                    elif command[2] == 'toggle':
+                        serial.Serial(3, 9600, timeout=1).write('>PT\x0d')
+
+        #serial.Serial(3, 9600, timeout=1).write('\x3e\x50\x31\x0d')
         
         # This is where the serial stuff begins
         try:
@@ -86,7 +100,7 @@ if (__name__ == "__main__"):
             theStatus['left'] = source
         except:
             continue
-
+        
         try:
             ser = serial.Serial(2, 9600, timeout=1)
             ser.flushInput()
@@ -99,7 +113,7 @@ if (__name__ == "__main__"):
             theStatus['center1'] = source
         except:
             continue
-
+        
         try:
             ser = serial.Serial(2, 9600, timeout=1)
             ser.flushInput()
@@ -125,7 +139,7 @@ if (__name__ == "__main__"):
             theStatus['right1'] = source
         except:
             continue
-
+        
         try:
             ser = serial.Serial(2, 9600, timeout=1)
             ser.flushInput()
@@ -138,7 +152,7 @@ if (__name__ == "__main__"):
             theStatus['right2'] = source
         except:
             continue
-
+        
         try:
             ser = serial.Serial(2, 9600, timeout=1)
             ser.flushInput()
@@ -151,7 +165,7 @@ if (__name__ == "__main__"):
             theStatus['actionCenter'] = source
         except:
             continue
-
+        
         try:
             ser = serial.Serial(2, 9600, timeout=1)
             ser.flushInput()
