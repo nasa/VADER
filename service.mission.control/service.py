@@ -58,7 +58,7 @@ if (__name__ == "__main__"):
     xbmc.log('Version %s started' % __addonversion__)
     theCommandQueue = deque()
     theCounter = 0
-	theStatus = {"outputs":[{"outputName":"Left","outputNumber":"1","inputNumber":"1","inputName":"ClickShare"},{"outputName":"Center A","outputNumber":"2","inputNumber":"1","inputName":"ClickShare"},{"outputName":"Center B","outputNumber":"3","inputNumber":"2","inputName":"MCC Video 1"},{"outputName":"Right A","outputNumber":"4","inputNumber":"1","inputName":"ClickShare"},{"outputName":"Right B","outputNumber":"5","inputNumber":"2","inputName":"MCC Video 1"},{"outputName":"Action Center","outputNumber":"6","inputNumber":"3","inputName":"MCC Video 2"},{"outputName":"HEVS 1","outputNumber":"7","inputNumber":"5","inputName":"Apple TV"},{"outputName":"HEVS 2","outputNumber":"8","inputNumber":"6","inputName":"WiDi"}],"tuner":{"majorChannel":"008","minorChannel":"001","channelName":"KUHT-HD","programName":"Daytripper"}}
+    theStatus = {"outputs":[{"outputName":"Left","outputNumber":"1","inputNumber":"1","inputName":"ClickShare"},{"outputName":"Center A","outputNumber":"2","inputNumber":"1","inputName":"ClickShare"},{"outputName":"Center B","outputNumber":"3","inputNumber":"2","inputName":"MCC Video 1"},{"outputName":"Right A","outputNumber":"4","inputNumber":"1","inputName":"ClickShare"},{"outputName":"Right B","outputNumber":"5","inputNumber":"2","inputName":"MCC Video 1"},{"outputName":"Action Center","outputNumber":"6","inputNumber":"3","inputName":"MCC Video 2"},{"outputName":"HEVS 1","outputNumber":"7","inputNumber":"5","inputName":"Apple TV"},{"outputName":"HEVS 2","outputNumber":"8","inputNumber":"6","inputName":"WiDi"}],"tuner":{"majorChannel":"008","minorChannel":"001","channelName":"KUHT-HD","programName":"Daytripper"}}
     #theStatus = {'left': 1, 'center1': 1, 'center2': 2, 'right1': 1, 'right2':2, 'actionCenter': 3, 'HEVS1': 5, 'HEVS2': 6}
     httpd = SocketServer.TCPServer(('', PORT), DeviceStatus)
     print "serving at port", PORT
@@ -72,15 +72,21 @@ if (__name__ == "__main__"):
             if command[0] == 'tuner':
                 if command[1] == 'channel':
                     if command[2] == '+':
-                        serial.Serial(3, 9600, timeout=1).write('>P1\x0d')
+                        #serial.Serial(3, 9600, timeout=1).write('>P1\x0d')
                         #serial.Serial(3, 9600, timeout=1).write('\x3e\x54\x55\x0d')
-                        serial.Serial(3, 9600, timeout=1).write('>TU\x0d')
+                        ser = serial.Serial(3, 9600, timeout=0.3)
+                        ser.write('>TU\x0d')
+                        ser.close()
                     elif command[2] == '-':
-                        serial.Serial(3, 9600, timeout=1).write('>P1\x0d')
-                        serial.Serial(3, 9600, timeout=1).write('>TD\x0d')
+                        #serial.Serial(3, 9600, timeout=1).write('>P1\x0d')
+                        ser = serial.Serial(3, 9600, timeout=0.3)
+                        ser.write('>TD\x0d')
+                        ser.close()
                     else:
-                        serial.Serial(3, 9600, timeout=1).write('>P1\x0d')
-                        serial.Serial(3, 9600, timeout=1).write('>TC=' + command[2] + '\x0d')
+                        #serial.Serial(3, 9600, timeout=1).write('>P1\x0d')
+                        ser = serial.Serial(3, 9600, timeout=0.3)
+                        ser.write('>TC=' + command[2] + '\x0d')
+                        ser.close()
                         print command[2]
                 elif command[1] == 'power':
                     print command
@@ -94,112 +100,162 @@ if (__name__ == "__main__"):
                 pass
 
         #serial.Serial(3, 9600, timeout=1).write('\x3e\x50\x31\x0d')
-		time.sleep(0.5)
+        time.sleep(0.5)
         
         # This is where the serial status stuff begins
-        try:
-            ser = serial.Serial(2, 9600, timeout=1)
-            ser.flushInput()
-            ser.write('\x05\x80\x81\x81')
-            ser.read(2)
-            out = ser.read()
-            ser.close()
-            foo = binascii.b2a_qp(out)
-            source = foo[2]
-            theStatus['left'] = source
-        except:
-            continue
+        # try:
+            # ser = serial.Serial(2, 9600, timeout=1)
+            # ser.flushInput()
+            # ser.write('\x05\x80\x81\x81')
+            # ser.read(2)
+            # out = ser.read()
+            # ser.close()
+            # foo = binascii.b2a_qp(out)
+            # source = foo[2]
+            # theStatus['outputs'][0]['inputNumber'] = source
+            # #theStatus['left'] = source
+        # except:
+            # continue
         
-        try:
-            ser = serial.Serial(2, 9600, timeout=1)
-            ser.flushInput()
-            ser.write('\x05\x80\x82\x81')
-            ser.read(2)
-            out = ser.read()
-            ser.close()
-            foo = binascii.b2a_qp(out)
-            source = foo[2]
-            theStatus['center1'] = source
-        except:
-            continue
+        # try:
+            # ser = serial.Serial(2, 9600, timeout=1)
+            # ser.flushInput()
+            # ser.write('\x05\x80\x82\x81')
+            # ser.read(2)
+            # out = ser.read()
+            # ser.close()
+            # foo = binascii.b2a_qp(out)
+            # source = foo[2]
+            # theStatus['outputs'][1]['inputNumber'] = source
+            # #theStatus['center1'] = source
+        # except:
+            # continue
         
-        try:
-            ser = serial.Serial(2, 9600, timeout=1)
-            ser.flushInput()
-            ser.write('\x05\x80\x83\x81')
-            ser.read(2)
-            out = ser.read()
-            ser.close()
-            foo = binascii.b2a_qp(out)
-            source = foo[2]
-            theStatus['center2'] = source
-        except:
-            continue
+        # try:
+            # ser = serial.Serial(2, 9600, timeout=1)
+            # ser.flushInput()
+            # ser.write('\x05\x80\x83\x81')
+            # ser.read(2)
+            # out = ser.read()
+            # ser.close()
+            # foo = binascii.b2a_qp(out)
+            # source = foo[2]
+            # theStatus['outputs'][2]['inputNumber'] = source
+            # #theStatus['center2'] = source
+        # except:
+            # continue
 
+        # try:
+            # ser = serial.Serial(2, 9600, timeout=1)
+            # ser.flushInput()
+            # ser.write('\x05\x80\x84\x81')
+            # ser.read(2)
+            # out = ser.read()
+            # ser.close()
+            # foo = binascii.b2a_qp(out)
+            # source = foo[2]
+            # theStatus['outputs'][3]['inputNumber'] = source
+            # #theStatus['right1'] = source
+        # except:
+            # continue
+        
+        # try:
+            # ser = serial.Serial(2, 9600, timeout=1)
+            # ser.flushInput()
+            # ser.write('\x05\x80\x85\x81')
+            # ser.read(2)
+            # out = ser.read()
+            # ser.close()
+            # foo = binascii.b2a_qp(out)
+            # source = foo[2]
+            # theStatus['outputs'][4]['inputNumber'] = source
+            # #theStatus['right2'] = source
+        # except:
+            # continue
+        
+        # try:
+            # ser = serial.Serial(2, 9600, timeout=1)
+            # ser.flushInput()
+            # ser.write('\x05\x80\x86\x81')
+            # ser.read(2)
+            # out = ser.read()
+            # ser.close()
+            # foo = binascii.b2a_qp(out)
+            # source = foo[2]
+            # theStatus['outputs'][5]['inputNumber'] = source
+            # #theStatus['actionCenter'] = source
+        # except:
+            # continue
+        
+        # try:
+            # ser = serial.Serial(2, 9600, timeout=1)
+            # ser.flushInput()
+            # ser.write('\x05\x80\x87\x81')
+            # ser.read(2)
+            # out = ser.read()
+            # ser.close()
+            # foo = binascii.b2a_qp(out)
+            # source = foo[2]
+            # theStatus['outputs'][6]['inputNumber'] = source
+            # #theStatus['HEVS1'] = source
+        # except:
+            # continue
+        
+        # try:
+            # ser = serial.Serial(2, 9600, timeout=1)
+            # ser.flushInput()
+            # ser.write('\x05\x80\x88\x81')
+            # ser.read(2)
+            # out = ser.read()
+            # ser.close()
+            # foo = binascii.b2a_qp(out)
+            # source = foo[2]
+            # theStatus['outputs'][7]['inputNumber'] = source
+            # #theStatus['HEVS2'] = source
+        # except:
+            # continue
+        
+        # Tuner read
         try:
-            ser = serial.Serial(2, 9600, timeout=1)
-            ser.flushInput()
-            ser.write('\x05\x80\x84\x81')
-            ser.read(2)
-            out = ser.read()
+            print 'starting tuner read'
+            ser = serial.Serial(3, 9600, timeout=0.5)
+            ser.flush()
+            ser.write('>ST\x0d')
+            ser.read(4)
+            majorChannel = ser.read(3)
+            print majorChannel
+            ser.read(4)
+            minorChannel = ser.read(3)
+            print minorChannel
             ser.close()
-            foo = binascii.b2a_qp(out)
-            source = foo[2]
-            theStatus['right1'] = source
+            theStatus['tuner']['majorChannel'] = majorChannel
+            theStatus['tuner']['minorChannel'] = minorChannel
         except:
             continue
         
-        try:
-            ser = serial.Serial(2, 9600, timeout=1)
-            ser.flushInput()
-            ser.write('\x05\x80\x85\x81')
-            ser.read(2)
-            out = ser.read()
-            ser.close()
-            foo = binascii.b2a_qp(out)
-            source = foo[2]
-            theStatus['right2'] = source
-        except:
-            continue
+        # try:
+            # ser = serial.Serial(3, 9600, timeout=0.3)
+            # ser.flush()
+            # ser.write('>NC\x0d')
+            # ser.read(4)
+            # channelName = ser.read(20)
+            # print channelName
+            # ser.close()
+            # theStatus['tuner']['channelName'] = channelName
+        # except:
+            # continue
         
-        try:
-            ser = serial.Serial(2, 9600, timeout=1)
-            ser.flushInput()
-            ser.write('\x05\x80\x86\x81')
-            ser.read(2)
-            out = ser.read()
-            ser.close()
-            foo = binascii.b2a_qp(out)
-            source = foo[2]
-            theStatus['actionCenter'] = source
-        except:
-            continue
-        
-        try:
-            ser = serial.Serial(2, 9600, timeout=1)
-            ser.flushInput()
-            ser.write('\x05\x80\x87\x81')
-            ser.read(2)
-            out = ser.read()
-            ser.close()
-            foo = binascii.b2a_qp(out)
-            source = foo[2]
-            theStatus['HEVS1'] = source
-        except:
-            continue
-        
-        try:
-            ser = serial.Serial(2, 9600, timeout=1)
-            ser.flushInput()
-            ser.write('\x05\x80\x88\x81')
-            ser.read(2)
-            out = ser.read()
-            ser.close()
-            foo = binascii.b2a_qp(out)
-            source = foo[2]
-            theStatus['HEVS2'] = source
-        except:
-            continue
+        # try:
+            # ser = serial.Serial(3, 9600, timeout=0.3)
+            # ser.flush()
+            # ser.write('>NP\x0d')
+            # ser.read(4)
+            # programName = ser.read(30)
+            # print programName
+            # ser.close()
+            # theStatus['tuner']['programName'] = programName
+        # except:
+            # continue
     print "starting server shutdown"
     httpd.shutdown()
     print "finished server shutdown"
