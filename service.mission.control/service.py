@@ -30,6 +30,8 @@ sys.path.append(__resource__)
 import serial
 
 PORT = 8000
+SWITCH_COM = 2
+TUNER_COM = 2
 
 class DeviceStatus(SimpleHTTPServer.SimpleHTTPRequestHandler):
     
@@ -72,34 +74,32 @@ if (__name__ == "__main__"):
             if command[0] == 'tuner':
                 if command[1] == 'channel':
                     if command[2] == '+':
-                        #serial.Serial(3, 9600, timeout=1).write('>P1\x0d')
-                        #serial.Serial(3, 9600, timeout=1).write('\x3e\x54\x55\x0d')
-                        ser = serial.Serial(3, 9600, timeout=0.3)
+                        ser = serial.Serial(TUNER_COM, 9600, timeout=0.3)
+                        ser.write('>P1\x0d')
                         ser.write('>TU\x0d')
                         ser.close()
                     elif command[2] == '-':
-                        #serial.Serial(3, 9600, timeout=1).write('>P1\x0d')
-                        ser = serial.Serial(3, 9600, timeout=0.3)
+                        ser = serial.Serial(TUNER_COM, 9600, timeout=0.3)
+                        ser.write('>P1\x0d')
                         ser.write('>TD\x0d')
                         ser.close()
                     else:
-                        #serial.Serial(3, 9600, timeout=1).write('>P1\x0d')
-                        ser = serial.Serial(3, 9600, timeout=0.3)
+                        ser = serial.Serial(TUNER_COM, 9600, timeout=0.3)
+                        ser.write('>P1\x0d')
                         ser.write('>TC=' + command[2] + '\x0d')
                         ser.close()
                         print command[2]
                 elif command[1] == 'power':
                     print command
                     if command[2] == 'on':
-                        serial.Serial(3, 9600, timeout=1).write('>P1\x0d')
+                        serial.Serial(TUNER_COM, 9600, timeout=1).write('>P1\x0d')
                     elif command[2] == 'off':
-                        serial.Serial(3, 9600, timeout=1).write('>P0\x0d')
+                        serial.Serial(TUNER_COM, 9600, timeout=1).write('>P0\x0d')
                     elif command[2] == 'toggle':
-                        serial.Serial(3, 9600, timeout=1).write('>PT\x0d')
+                        serial.Serial(TUNER_COM, 9600, timeout=1).write('>PT\x0d')
             elif command[0] == 'exec':
                 pass
 
-        #serial.Serial(3, 9600, timeout=1).write('\x3e\x50\x31\x0d')
         time.sleep(0.5)
         
         # This is where the serial status stuff begins
@@ -217,45 +217,55 @@ if (__name__ == "__main__"):
         
         # Tuner read
         try:
-            print 'starting tuner read'
-            ser = serial.Serial(3, 9600, timeout=0.5)
-            ser.flush()
+            #print 'starting tuner read'
+            ser = serial.Serial(TUNER_COM, 9600, timeout=0.5)
+            ser.flushInput()
             ser.write('>ST\x0d')
             ser.read(4)
             majorChannel = ser.read(3)
-            print majorChannel
+            #print majorChannel
             ser.read(4)
             minorChannel = ser.read(3)
-            print minorChannel
+            #print minorChannel
             ser.close()
             theStatus['tuner']['majorChannel'] = majorChannel
             theStatus['tuner']['minorChannel'] = minorChannel
         except:
             continue
         
-        # try:
-            # ser = serial.Serial(3, 9600, timeout=0.3)
-            # ser.flush()
-            # ser.write('>NC\x0d')
-            # ser.read(4)
-            # channelName = ser.read(20)
-            # print channelName
-            # ser.close()
-            # theStatus['tuner']['channelName'] = channelName
-        # except:
-            # continue
+        try:
+            ser = serial.Serial(TUNER_COM, 9600, timeout=0.3)
+            ser.flushInput()
+            ser.write('>NC\x0d')
+            ser.read(4)
+            channelName = ''
+            while True:
+                byte=ser.read()
+                if byte == '\r':
+                    break
+                channelName += byte
+            #print channelName
+            ser.close()
+            theStatus['tuner']['channelName'] = channelName
+        except:
+            continue
         
-        # try:
-            # ser = serial.Serial(3, 9600, timeout=0.3)
-            # ser.flush()
-            # ser.write('>NP\x0d')
-            # ser.read(4)
-            # programName = ser.read(30)
-            # print programName
-            # ser.close()
-            # theStatus['tuner']['programName'] = programName
-        # except:
-            # continue
+        try:
+            ser = serial.Serial(TUNER_COM, 9600, timeout=0.3)
+            ser.flushInput()
+            ser.write('>NP\x0d')
+            ser.read(4)
+            programName = ''
+            while True:
+                byte=ser.read()
+                if byte == '\r':
+                    break
+                programName += byte
+            #print programName
+            ser.close()
+            theStatus['tuner']['programName'] = programName
+        except:
+            continue
     print "starting server shutdown"
     httpd.shutdown()
     print "finished server shutdown"

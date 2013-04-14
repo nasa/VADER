@@ -3,3 +3,5 @@
 0.2 Updates for HEVS.
 
 0.3 Initial tuner test (non-functional). Error handling for switch.
+
+0.4 Tuner code stabilized.
