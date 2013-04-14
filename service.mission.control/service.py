@@ -103,117 +103,117 @@ if (__name__ == "__main__"):
         time.sleep(0.5)
         
         # This is where the serial status stuff begins
-        # try:
-            # ser = serial.Serial(2, 9600, timeout=1)
-            # ser.flushInput()
-            # ser.write('\x05\x80\x81\x81')
-            # ser.read(2)
-            # out = ser.read()
-            # ser.close()
-            # foo = binascii.b2a_qp(out)
-            # source = foo[2]
-            # theStatus['outputs'][0]['inputNumber'] = source
-            # #theStatus['left'] = source
-        # except:
-            # continue
+        try:
+            ser = serial.Serial(SWITCH_COM, 9600, timeout=1)
+            ser.flushInput()
+            ser.write('\x05\x80\x81\x81')
+            ser.read(2)
+            out = ser.read()
+            ser.close()
+            foo = binascii.b2a_qp(out)
+            source = foo[2]
+            theStatus['outputs'][0]['inputNumber'] = source
+            #theStatus['left'] = source
+        except:
+            continue
         
-        # try:
-            # ser = serial.Serial(2, 9600, timeout=1)
-            # ser.flushInput()
-            # ser.write('\x05\x80\x82\x81')
-            # ser.read(2)
-            # out = ser.read()
-            # ser.close()
-            # foo = binascii.b2a_qp(out)
-            # source = foo[2]
-            # theStatus['outputs'][1]['inputNumber'] = source
-            # #theStatus['center1'] = source
-        # except:
-            # continue
+        try:
+            ser = serial.Serial(SWITCH_COM, 9600, timeout=1)
+            ser.flushInput()
+            ser.write('\x05\x80\x82\x81')
+            ser.read(2)
+            out = ser.read()
+            ser.close()
+            foo = binascii.b2a_qp(out)
+            source = foo[2]
+            theStatus['outputs'][1]['inputNumber'] = source
+            #theStatus['center1'] = source
+        except:
+            continue
         
-        # try:
-            # ser = serial.Serial(2, 9600, timeout=1)
-            # ser.flushInput()
-            # ser.write('\x05\x80\x83\x81')
-            # ser.read(2)
-            # out = ser.read()
-            # ser.close()
-            # foo = binascii.b2a_qp(out)
-            # source = foo[2]
-            # theStatus['outputs'][2]['inputNumber'] = source
-            # #theStatus['center2'] = source
-        # except:
-            # continue
+        try:
+            ser = serial.Serial(SWITCH_COM, 9600, timeout=1)
+            ser.flushInput()
+            ser.write('\x05\x80\x83\x81')
+            ser.read(2)
+            out = ser.read()
+            ser.close()
+            foo = binascii.b2a_qp(out)
+            source = foo[2]
+            theStatus['outputs'][2]['inputNumber'] = source
+            #theStatus['center2'] = source
+        except:
+            continue
 
-        # try:
-            # ser = serial.Serial(2, 9600, timeout=1)
-            # ser.flushInput()
-            # ser.write('\x05\x80\x84\x81')
-            # ser.read(2)
-            # out = ser.read()
-            # ser.close()
-            # foo = binascii.b2a_qp(out)
-            # source = foo[2]
-            # theStatus['outputs'][3]['inputNumber'] = source
-            # #theStatus['right1'] = source
-        # except:
-            # continue
+        try:
+            ser = serial.Serial(SWITCH_COM, 9600, timeout=1)
+            ser.flushInput()
+            ser.write('\x05\x80\x84\x81')
+            ser.read(2)
+            out = ser.read()
+            ser.close()
+            foo = binascii.b2a_qp(out)
+            source = foo[2]
+            theStatus['outputs'][3]['inputNumber'] = source
+            #theStatus['right1'] = source
+        except:
+            continue
         
-        # try:
-            # ser = serial.Serial(2, 9600, timeout=1)
-            # ser.flushInput()
-            # ser.write('\x05\x80\x85\x81')
-            # ser.read(2)
-            # out = ser.read()
-            # ser.close()
-            # foo = binascii.b2a_qp(out)
-            # source = foo[2]
-            # theStatus['outputs'][4]['inputNumber'] = source
-            # #theStatus['right2'] = source
-        # except:
-            # continue
+        try:
+            ser = serial.Serial(SWITCH_COM, 9600, timeout=1)
+            ser.flushInput()
+            ser.write('\x05\x80\x85\x81')
+            ser.read(2)
+            out = ser.read()
+            ser.close()
+            foo = binascii.b2a_qp(out)
+            source = foo[2]
+            theStatus['outputs'][4]['inputNumber'] = source
+            #theStatus['right2'] = source
+        except:
+            continue
         
-        # try:
-            # ser = serial.Serial(2, 9600, timeout=1)
-            # ser.flushInput()
-            # ser.write('\x05\x80\x86\x81')
-            # ser.read(2)
-            # out = ser.read()
-            # ser.close()
-            # foo = binascii.b2a_qp(out)
-            # source = foo[2]
-            # theStatus['outputs'][5]['inputNumber'] = source
-            # #theStatus['actionCenter'] = source
-        # except:
-            # continue
+        try:
+            ser = serial.Serial(SWITCH_COM, 9600, timeout=1)
+            ser.flushInput()
+            ser.write('\x05\x80\x86\x81')
+            ser.read(2)
+            out = ser.read()
+            ser.close()
+            foo = binascii.b2a_qp(out)
+            source = foo[2]
+            theStatus['outputs'][5]['inputNumber'] = source
+            #theStatus['actionCenter'] = source
+        except:
+            continue
         
-        # try:
-            # ser = serial.Serial(2, 9600, timeout=1)
-            # ser.flushInput()
-            # ser.write('\x05\x80\x87\x81')
-            # ser.read(2)
-            # out = ser.read()
-            # ser.close()
-            # foo = binascii.b2a_qp(out)
-            # source = foo[2]
-            # theStatus['outputs'][6]['inputNumber'] = source
-            # #theStatus['HEVS1'] = source
-        # except:
-            # continue
+        try:
+            ser = serial.Serial(SWITCH_COM, 9600, timeout=1)
+            ser.flushInput()
+            ser.write('\x05\x80\x87\x81')
+            ser.read(2)
+            out = ser.read()
+            ser.close()
+            foo = binascii.b2a_qp(out)
+            source = foo[2]
+            theStatus['outputs'][6]['inputNumber'] = source
+            #theStatus['HEVS1'] = source
+        except:
+            continue
         
-        # try:
-            # ser = serial.Serial(2, 9600, timeout=1)
-            # ser.flushInput()
-            # ser.write('\x05\x80\x88\x81')
-            # ser.read(2)
-            # out = ser.read()
-            # ser.close()
-            # foo = binascii.b2a_qp(out)
-            # source = foo[2]
-            # theStatus['outputs'][7]['inputNumber'] = source
-            # #theStatus['HEVS2'] = source
-        # except:
-            # continue
+        try:
+            ser = serial.Serial(SWITCH_COM, 9600, timeout=1)
+            ser.flushInput()
+            ser.write('\x05\x80\x88\x81')
+            ser.read(2)
+            out = ser.read()
+            ser.close()
+            foo = binascii.b2a_qp(out)
+            source = foo[2]
+            theStatus['outputs'][7]['inputNumber'] = source
+            #theStatus['HEVS2'] = source
+        except:
+            continue
         
         # Tuner read
         try:
