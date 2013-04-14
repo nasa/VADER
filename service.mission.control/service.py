@@ -58,13 +58,14 @@ if (__name__ == "__main__"):
     xbmc.log('Version %s started' % __addonversion__)
     theCommandQueue = deque()
     theCounter = 0
-    theStatus = {'left': 1, 'center1': 1, 'center2': 2, 'right1': 1, 'right2':2, 'actionCenter': 3, 'HEVS1': 4, 'HEVS2': 5}
+	theStatus = {"outputs":[{"outputName":"Left","outputNumber":"1","inputNumber":"1","inputName":"ClickShare"},{"outputName":"Center A","outputNumber":"2","inputNumber":"1","inputName":"ClickShare"},{"outputName":"Center B","outputNumber":"3","inputNumber":"2","inputName":"MCC Video 1"},{"outputName":"Right A","outputNumber":"4","inputNumber":"1","inputName":"ClickShare"},{"outputName":"Right B","outputNumber":"5","inputNumber":"2","inputName":"MCC Video 1"},{"outputName":"Action Center","outputNumber":"6","inputNumber":"3","inputName":"MCC Video 2"},{"outputName":"HEVS 1","outputNumber":"7","inputNumber":"5","inputName":"Apple TV"},{"outputName":"HEVS 2","outputNumber":"8","inputNumber":"6","inputName":"WiDi"}],"tuner":{"majorChannel":"008","minorChannel":"001","channelName":"KUHT-HD","programName":"Daytripper"}}
+    #theStatus = {'left': 1, 'center1': 1, 'center2': 2, 'right1': 1, 'right2':2, 'actionCenter': 3, 'HEVS1': 5, 'HEVS2': 6}
     httpd = SocketServer.TCPServer(('', PORT), DeviceStatus)
     print "serving at port", PORT
     Thread(target=startServing, args=(httpd,)).start()
     print "starting the counter"
     while (not xbmc.abortRequested):
-        time.sleep(1)
+        time.sleep(0.5)
         theCounter += 1
         while theCommandQueue:
             command = theCommandQueue.popleft()
@@ -93,8 +94,9 @@ if (__name__ == "__main__"):
                 pass
 
         #serial.Serial(3, 9600, timeout=1).write('\x3e\x50\x31\x0d')
+		time.sleep(0.5)
         
-        # This is where the serial stuff begins
+        # This is where the serial status stuff begins
         try:
             ser = serial.Serial(2, 9600, timeout=1)
             ser.flushInput()
