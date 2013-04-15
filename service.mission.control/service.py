@@ -2,6 +2,8 @@ import re
 import os
 import sys
 import time
+import binascii
+import urllib
 import SocketServer
 import SimpleHTTPServer
 from threading import Thread
@@ -9,7 +11,6 @@ from collections import deque
 import xbmc
 import xbmcaddon
 import xbmcgui
-import binascii
 
 if sys.version_info < (2, 7):
     import simplejson
@@ -37,20 +38,28 @@ class DeviceStatus(SimpleHTTPServer.SimpleHTTPRequestHandler):
     
     def do_GET(self):
         if self.path == '/':
-            print >>self.wfile, "<html><body>" + str(theCounter) + "<a href='/run'>Patient Test</a>" + str(theStatus) + "</body></html>"
-        if self.path == '/run':
-            print 'Patience is a virtue...'
-            print >>self.wfile, "<html><body>" + str(theCounter) + "<a href='/'>Impatient Test</a>" + str(theStatus) + "</body></html>"
+            print >>self.wfile, "<html><body>" + str(theCounter) + "<a href='/json'>Patient Test</a>" + str(theStatus) + "</body></html>"
+        if self.path == '/json':
+            print 'Printing JSON...'
+            self.send_response(200)
+            self.send_header("content-type", "application/json")
+            self.end_headers()
+            self.wfile.write(simplejson.dumps(theStatus))
         if 'tuner' in self.path:
             print >>self.wfile, '<html><body>command for tuner'
             tunerParams = self.path.split('/')
             print >>self.wfile, tunerParams
             theCommandQueue.append(tunerParams[1:])
-        if 'executor' in self.path:
+        if 'exec' in self.path:
             print >>self.wfile, '<html><body>command from executor'
             execParams = self.path.split('/')
             print >>self.wfile, execParams
             theCommandQueue.append(execParams[1:])
+        if 'switch' in self.path:
+            print >>self.wfile, '<html><body>command for switch'
+            switchParams = self.path.split('/')
+            print >>self.wfile, switchParams
+            theCommandQueue.append(switchParams[1:])
 
 def startServing(server):
     print "begin serving requests"
@@ -60,6 +69,8 @@ if (__name__ == "__main__"):
     xbmc.log('Version %s started' % __addonversion__)
     theCommandQueue = deque()
     theCounter = 0
+    theInputs = {"1":{"name":"ClickShare","hexChar":'\x81'},"2":{"name":"MCC Video 1","hexChar":'\x82'},"3":{"name":"MCC Video 2","hexChar":'\x83'},"4":{"name":"MCC Video 4","hexChar":'\x84'},"5":{"name":"Apple TV","hexChar":'\x85'},"6":{"name":"WiDi","hexChar":'\x86'},"7":{"name":"VADER","hexChar":'\x87'},"8":{"name":"TV Tuner","hexChar":'\x88'}}
+    theOutputs = {"1":{"name":"Left","hexChar":'\x81'},"2":{"name":"Center A","hexChar":'\x82'},"3":{"name":"Center B","hexChar":'\x83'},"4":{"name":"Right A","hexChar":'\x84'},"5":{"name":"Right B","hexChar":'\x85'},"6":{"name":"Action Center","hexChar":'\x86'},"7":{"name":"HEVS 1","hexChar":'\x87'},"8":{"name":"HEVS 2","hexChar":'\x88'}}
     theStatus = {"outputs":[{"outputName":"Left","outputNumber":"1","inputNumber":"1","inputName":"ClickShare"},{"outputName":"Center A","outputNumber":"2","inputNumber":"1","inputName":"ClickShare"},{"outputName":"Center B","outputNumber":"3","inputNumber":"2","inputName":"MCC Video 1"},{"outputName":"Right A","outputNumber":"4","inputNumber":"1","inputName":"ClickShare"},{"outputName":"Right B","outputNumber":"5","inputNumber":"2","inputName":"MCC Video 1"},{"outputName":"Action Center","outputNumber":"6","inputNumber":"3","inputName":"MCC Video 2"},{"outputName":"HEVS 1","outputNumber":"7","inputNumber":"5","inputName":"Apple TV"},{"outputName":"HEVS 2","outputNumber":"8","inputNumber":"6","inputName":"WiDi"}],"tuner":{"majorChannel":"008","minorChannel":"001","channelName":"KUHT-HD","programName":"Daytripper"}}
     #theStatus = {'left': 1, 'center1': 1, 'center2': 2, 'right1': 1, 'right2':2, 'actionCenter': 3, 'HEVS1': 5, 'HEVS2': 6}
     httpd = SocketServer.TCPServer(('', PORT), DeviceStatus)
@@ -98,7 +109,35 @@ if (__name__ == "__main__"):
                     elif command[2] == 'toggle':
                         serial.Serial(TUNER_COM, 9600, timeout=1).write('>PT\x0d')
             elif command[0] == 'exec':
-                pass
+                if len(command) == 1:
+                    xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%('Executor Error','No script specified for execution',5000,__icon__))
+                elif len(command) == 2:
+                    xbmc.executebuiltin('RunScript(' + urllib.unquote_plus(command[1]) + ')')
+                elif len(command) == 3:
+                    xbmc.executebuiltin('RunScript(' + urllib.unquote_plus(command[1]) + ',' + urllib.unquote_plus(command[2]) + ')')
+                else:
+                    xbmc.executebuiltin('RunScript(' + urllib.unquote_plus(command[1]) + ',' + urllib.unquote_plus(command[2]) + ',' + urllib.unquote_plus(command[3]) + ')')
+            elif command[0] == 'switch':
+                if command[1] == 'reset':
+                    xbmc.executebuiltin('Notification(Video Source Control, Resetting All Displays to Default')
+                    ser = serial.Serial(SWITCH_COM, 9600, timeout=0.3)
+                    ser.write('\x01\x82\x81\x81')
+                    time.sleep(0.1)
+                    ser.write('\x01\x83\x82\x81')
+                    time.sleep(0.1)
+                    ser.write('\x01\x84\x83\x81')
+                    time.sleep(0.1)
+                    ser.write('\x01\x83\x84\x81')
+                    time.sleep(0.1)
+                    ser.write('\x01\x82\x85\x81')
+                    time.sleep(0.1)
+                    ser.write('\x01\x87\x86\x81')
+                    ser.close()
+                else:
+                    xbmc.executebuiltin('Notification(Video Source Control, Switching ' + theOutputs[command[2]]["name"] + ' to ' + theInputs[command[1]]["name"] + ')')
+                    ser = serial.Serial(SWITCH_COM, 9600, timeout=0.3)
+                    ser.write('\x01' + theInputs[command[1]]["hexChar"] + theOutputs[command[2]]["hexChar"] + '\x81')
+                    ser.close()
 
         time.sleep(0.5)
         
@@ -113,6 +152,7 @@ if (__name__ == "__main__"):
             foo = binascii.b2a_qp(out)
             source = foo[2]
             theStatus['outputs'][0]['inputNumber'] = source
+            theStatus['outputs'][0]['inputName'] = theInputs[source]['name']
             #theStatus['left'] = source
         except:
             continue
@@ -127,6 +167,7 @@ if (__name__ == "__main__"):
             foo = binascii.b2a_qp(out)
             source = foo[2]
             theStatus['outputs'][1]['inputNumber'] = source
+            theStatus['outputs'][1]['inputName'] = theInputs[source]['name']
             #theStatus['center1'] = source
         except:
             continue
@@ -141,6 +182,7 @@ if (__name__ == "__main__"):
             foo = binascii.b2a_qp(out)
             source = foo[2]
             theStatus['outputs'][2]['inputNumber'] = source
+            theStatus['outputs'][2]['inputName'] = theInputs[source]['name']
             #theStatus['center2'] = source
         except:
             continue
@@ -155,6 +197,7 @@ if (__name__ == "__main__"):
             foo = binascii.b2a_qp(out)
             source = foo[2]
             theStatus['outputs'][3]['inputNumber'] = source
+            theStatus['outputs'][3]['inputName'] = theInputs[source]['name']
             #theStatus['right1'] = source
         except:
             continue
@@ -169,6 +212,7 @@ if (__name__ == "__main__"):
             foo = binascii.b2a_qp(out)
             source = foo[2]
             theStatus['outputs'][4]['inputNumber'] = source
+            theStatus['outputs'][4]['inputName'] = theInputs[source]['name']
             #theStatus['right2'] = source
         except:
             continue
@@ -183,6 +227,7 @@ if (__name__ == "__main__"):
             foo = binascii.b2a_qp(out)
             source = foo[2]
             theStatus['outputs'][5]['inputNumber'] = source
+            theStatus['outputs'][5]['inputName'] = theInputs[source]['name']
             #theStatus['actionCenter'] = source
         except:
             continue
@@ -197,6 +242,7 @@ if (__name__ == "__main__"):
             foo = binascii.b2a_qp(out)
             source = foo[2]
             theStatus['outputs'][6]['inputNumber'] = source
+            theStatus['outputs'][6]['inputName'] = theInputs[source]['name']
             #theStatus['HEVS1'] = source
         except:
             continue
@@ -211,6 +257,7 @@ if (__name__ == "__main__"):
             foo = binascii.b2a_qp(out)
             source = foo[2]
             theStatus['outputs'][7]['inputNumber'] = source
+            theStatus['outputs'][7]['inputName'] = theInputs[source]['name']
             #theStatus['HEVS2'] = source
         except:
             continue
