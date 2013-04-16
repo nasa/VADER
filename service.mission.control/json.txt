@@ -11,7 +11,9 @@ Example:
 	"tuner":
 	{
 			"majorChannel":"013",
-			"minorChannel":"001"
+			"minorChannel":"001",
+			"channelName":"KUHT-HD",
+			"programName":"Daytripper"
 	}
 }
 
@@ -29,27 +31,27 @@ Schema:
 			"items":
 				{
 					"type":"object",
-					"id": "http://jsonschema.net/output/0",
+					"id": "http://jsonschema.net/outputs/0",
 					"required":false,
 					"properties":{
 						"inputName": {
 							"type":"string",
-							"id": "http://jsonschema.net/output/0/inputName",
+							"id": "http://jsonschema.net/outputs/0/inputName",
 							"required":false
 						},
 						"inputNumber": {
 							"type":"string",
-							"id": "http://jsonschema.net/output/0/inputNumber",
+							"id": "http://jsonschema.net/outputs/0/inputNumber",
 							"required":false
 						},
 						"outputName": {
 							"type":"string",
-							"id": "http://jsonschema.net/output/0/outputName",
+							"id": "http://jsonschema.net/outputs/0/outputName",
 							"required":false
 						},
 						"outputNumber": {
 							"type":"string",
-							"id": "http://jsonschema.net/output/0/outputNumber",
+							"id": "http://jsonschema.net/outputs/0/outputNumber",
 							"required":false
 						}
 					}
@@ -62,6 +64,11 @@ Schema:
 			"id": "http://jsonschema.net/tuner",
 			"required":false,
 			"properties":{
+				"channelName": {
+					"type":"string",
+					"id": "http://jsonschema.net/tuner/channelName",
+					"required":false
+				},
 				"majorChannel": {
 					"type":"string",
 					"id": "http://jsonschema.net/tuner/majorChannel",
@@ -70,6 +77,11 @@ Schema:
 				"minorChannel": {
 					"type":"string",
 					"id": "http://jsonschema.net/tuner/minorChannel",
+					"required":false
+				},
+				"programName": {
+					"type":"string",
+					"id": "http://jsonschema.net/tuner/programName",
 					"required":false
 				}
 			}
