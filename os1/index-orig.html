@@ -158,14 +158,6 @@ $(function()
 	var vsource_is_showing = false; // When true, the vsource pop-up is active
 	var numpad_is_showing = false; // When true, the numpad pop-up is active
 
-	function vdest_for_outputnumber( outputn )
-	{
-		for( var dx = 0; dx < $_vdestinations.length; dx++ )
-		{
-			if( outputn == $_vdestinations[dx].data( "output" ) )
-				return $_vdestinations[dx];
-		}
-	}
 
 	vsources_create( status_set, function() // called when input selector is closed
 	{
@@ -242,10 +234,10 @@ $(function()
 	{
 		if( chan_text.charAt(0) === "+" )
 		{
-			device_control_tv_channel_bump( "+" );
+			device_control_tv_channel_bump( 1 );
 		} else if( chan_text.charAt(0) === "-" )
 		{
-			device_control_tv_channel_bump( "-" );
+			device_control_tv_channel_bump( -1 );
 		} else
 		{
 			device_control_tv_channel_set( chan_text );
@@ -751,71 +743,28 @@ $(function()
 
 	function setup_default()
 	{
+		source_destination_connection_set( vsources_$_hevs1(), $_vdestinations[0] );
 		device_control_switch( vsources_$_hevs1(), $_vdestinations[0] );
+
+		source_destination_connection_set( vsources_$_hevs2(), $_vdestinations[1] );
 		device_control_switch( vsources_$_hevs2(), $_vdestinations[1] );
+
+		source_destination_connection_set( vsources_$_hevs3(), $_vdestinations[2] );
 		device_control_switch( vsources_$_hevs3(), $_vdestinations[2] );
+
+		source_destination_connection_set( vsources_$_hevs1(), $_vdestinations[3] );
 		device_control_switch( vsources_$_hevs1(), $_vdestinations[3] );
+
+		source_destination_connection_set( vsources_$_hevs2(), $_vdestinations[4] );
 		device_control_switch( vsources_$_hevs2(), $_vdestinations[4] );
+
+		source_destination_connection_set( vsources_$_tv(), $_vdestinations[5] );
 		device_control_switch( vsources_$_tv(), $_vdestinations[5] );
 	}
-/*
-	var test_str = '{"outputs": [{"outputName": "Left", "inputNumber": "5", "outputNumber": "1", "inputName": "Apple TV"}, {"outputName": "Center A", "inputNumber": "7", "outputNumber": "2", "inputName": "VADER"}, {"outputName": "Center B", "inputNumber": "8", "outputNumber": "3", "inputName": "TV Tuner"}, {"outputName": "Right A", "inputNumber": "1", "outputNumber": "4", "inputName": "ClickShare"}, {"outputName": "Right B", "inputNumber": "5", "outputNumber": "5", "inputName": "Apple TV"}, {"outputName": "Action Center", "inputNumber": "8", "outputNumber": "6", "inputName": "TV Tuner"}, {"outputName": "HEVS 1", "inputNumber": "1", "outputNumber": "7", "inputName": "ClickShare"}, {"outputName": "HEVS 2", "inputNumber": "1", "outputNumber": "8", "inputName": "ClickShare"}], "tuner": {"majorChannel": "011", "channelName": "KHOU-DT", "minorChannel": "001", "programName": "Jeopardy!"}}';
-	var mappings = $.parseJSON( test_str );
-	for( var outx = 0; outx < mappings.outputs.length; outx++ )
-	{
-		var vdest = vdest_for_outputnumber( mappings.outputs[outx].outputNumber );
-		var vsrc = vsource_for_inputnumber( mappings.outputs[outx].inputNumber );
-		source_destination_connection_set( vsrc, vdest );
-	}
-	var ch_maj = parseInt( mappings.tuner.majorChannel, 10 );
-	var ch_min = parseInt( mappings.tuner.minorChannel, 10 );
-	numpad_channelnumber_set( ch_maj + "-" + ch_min );
-*/
-	function mappings_get()
-	{
-	$.get( "http://139.169.124.222:8000/json", function( mappings )
-	{
-	//alert(mappings);
-		//var j_mappings = $.parseJSON( mappings );
 
-		 for( var outx = 0; outx < mappings.outputs.length; outx++ )
-		 {
-			 var vdest = vdest_for_outputnumber( mappings.outputs[outx].outputNumber );
-			 var vsrc = vsource_for_inputnumber( mappings.outputs[outx].inputNumber );
-			 source_destination_connection_set( vsrc, vdest );
-		 }
+	setup_default();
 
-		var ch_maj = parseInt( mappings.tuner.majorChannel, 10 );
-		var ch_min = parseInt( mappings.tuner.minorChannel, 10 );
-		numpad_channelnumber_set( ch_maj + "-" + ch_min );
-		vdest_btn_chn_text_set( ch_maj + "-" + ch_min );
-	}, 'json' );
-	}
-	mappings_get();
-	/*$.ajax({
-		type: "GET",
-		contentType: "text/html",
-		//dataType: "jsonp",
-		url: "http://139.169.124.222:8000/json",
-		error: function(whocares, msg) { alert("failed: " + msg); },
-		success: function( mappings )
-	 {
-	 alert("ia m here");
-		var j_mappings = $.parseJSON( mappings );
-		alert( j_mappings );
 
-		 for( var outx = 0; outx < mappings.outputs.length; outx++ )
-		 {
-			 var vdest = vdest_for_outputnumber( mappings.outputs[outx].outputNumber );
-			 var vsrc = vsource_for_inputnumber( mappings.outputs[outx].inputNumber );
-			 source_destination_connection_set( vsrc, vdest );
-		 }
-
-		var ch_maj = parseInt( mappings.tuner.majorChannel, 10 );
-		var ch_min = parseInt( mappings.tuner.minorChannel, 10 );
-		numpad_channelnumber_set( ch_maj + "-" + ch_min );
-	 }} );
-*/
 
 	/*************************************************************
 	 *************************************************************	D E V I C E   C O N T R O L
@@ -838,32 +787,45 @@ $(function()
 		return '{"jsonrpc": "2.0", "method": "Addons.ExecuteAddon", "params": { "wait": true, "addonid": "script.executor", "params": [ ' + parm_str + ' ]}, "id": 0}';
 	}
 
+
 	function device_control_power( $_output )
 	{
-		var json_bs = "http://139.169.124.222:8000/display/" + $_output.data( "output" ) + "/power";
-		$.get( json_bs );
-		status_set( json_bs );
+		var parm = json_parms_build( "serial-POWER.py", [$_output.data( "output" )] );
+		var json_bs = json_build( parm );
+		//xbmc.sendCommand( json_bs );
+alert( json_bs );
+		status_set( "Power toggled for output device '" + $_output.data( "name_of" )  + "'." );
+status_set( parm );
 	}
 
 	function device_control_mute( $_output )
 	{
-		var json_bs = "http://139.169.124.222:8000/display/" + $_output.data( "output" ) + "/volume/mute";
-		$.get( json_bs );
-		status_set( json_bs );
+		var parm = json_parms_build( "serial-volumeMUTE.py", [$_output.data( "output" )] );
+		var json_bs = json_build( parm );
+		//xbmc.sendCommand( json_bs );
+alert( json_bs );
+		status_set( "Mute toggled for output device '" + $_output.data( "name_of" )  + "'." );
+status_set( parm );
 	}
 
 	function device_control_volume( $_output, level )
 	{
-		var json_bs = "http://139.169.124.222:8000/display/" + $_output.data( "output" ) + "/volume/" + ((level > 0) ? "+" : "-");
-		$.get( json_bs );
-		status_set( json_bs );
+		if( level > 0 )
+			var parm = json_parms_build( "serial-volumeUP.py", [$_output.data( "output" )] );
+		else parm = json_parms_build( "serial-volumeDOWN.py", [$_output.data( "output" )] );
+		var json_bs = json_build( parm );
+		//xbmc.sendCommand( json_bs );
+alert( json_bs );
+		status_set( "Volume " + ((level>0) ? "UP" : "DOWN") + " for output device '" + $_output.data( "name_of" )  + "'." );
+status_set( parm );
 	}
 
 	function device_control_switch( $_input, $_output )
 	{
-		var json_bs = "http://139.169.124.222:8000/switch/" + $_input.data( "input" ) + "/" + $_output.data( "output" );
-		$.get( json_bs );
-		status_set( json_bs );
+		var parm = json_parms_build( "single_output.py", [$_input.data( "input" ), $_output.data( "output" )] );
+		var json_bs = json_build( parm );
+		//xbmc.sendCommand( json_bs );
+status_set( parm );
 	}
 
 
@@ -879,23 +841,34 @@ status_set( parm );
 
 	function device_control_tv_channel_set( channum )
 	{
-		var json_bs = "http://139.169.124.222:8000/tuner/channel/" + channum.replace( ".", "-" );
-		$.get( json_bs );
-		status_set( json_bs );
+		var parm = json_parms_build( "serial-CHANNEL.py", [vsources_$_tv().data( "input" ), channum] );
+		var json_bs = json_build( parm );
+		//xbmc.sendCommand( json_bs );
+		status_set( "TV channel set to '" + channum + "' for input device '" + vsources_$_tv().data( "name_of" )  + "'." );
+alert( json_bs );
+status_set( parm );
 	}
 
-	function device_control_tv_channel_bump( ch_pm )
+	function device_control_tv_channel_bump( nchan )
 	{
-		var json_bs = "http://139.169.124.222:8000/tuner/channel/" + ch_pm;
-		$.get( json_bs );
-		status_set( json_bs );
+		if( nchan > 0 )
+			var parm = json_parms_build( "serial-CHANNELUP.py", [vsources_$_tv().data( "input" )] );
+		else parm = json_parms_build( "serial-CHANNELDOWN.py", [vsources_$_tv().data( "input" )] );
+		var json_bs = json_build( parm );
+		//xbmc.sendCommand( json_bs );
+		status_set( "TV channel bumped " + ((nchan>0) ? "UP" : "DOWN") + " for input device '" + vsources_$_tv().data( "name_of" )  + "'." );
+alert( json_bs );
+status_set( parm );
 	}
 
 		// Get input/output mappings
 	setInterval(function()
 	{
-		mappings_get();
-	}, 15000);
+	/*	$.getJSON( "localhost:8000/io_status.apsx", function( mappings )
+		{
+			alert( mappings );
+		} );*/
+	}, 60000);
 
 
 	status_set( null );
