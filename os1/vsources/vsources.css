@@ -1,0 +1,53 @@
+
+.vsrc-bkg	{ background-repeat:no-repeat;  -moz-background-size:contain;  background-size:contain;  background-position:center }
+
+#vsource-cntnr	    	{ margin:auto;  padding:0.3%;  overflow:auto;  position:absolute;  display:none;
+	-webkit-box-shadow: 4px 4px 9px 7px rgba(  0,   0,   0, .80); -moz-box-shadow: 4px 4px 9px 7px rgba(  0,   0,   0, .80); box-shadow: 4px 4px 9px 7px rgba(  0,   0,   0, .80); }
+
+.vsource-cntnr-brdr	{ -moz-border-radius:13px;  border-radius:13px;  border:4px solid #000;  background-image:url("img/src-controller.jpg");  background-color:black; }
+
+#vsource-header	{ float:left;  height:13.5%;  width:81%;  padding:0.4%;  padding-left:1.0%;  margin:0.2%;  font-size:1.4em;  color:#ffe;  /*white-space:nowrap;  overflow:hidden;  text-overflow:ellipsis;*/ }
+
+.vsource-cntnr-inputs	{ float:left;  width:76.8%;  height:69.4%;  margin:3.7% 0 0 3.7%; }
+.vsource		{ float:left;  margin:5.5% 0 0 5.0%;  -moz-border-radius:8px;  border-radius:8px; }
+#vsrc-appletv	{ clear:both; }
+/*#vsrc-appletv	{ clear:both; }*/
+#vsrc-widi       {  }
+#vsrc-clickshare	{  }
+#vsrc-vadertv	{  }
+#vsrc-hevs1      { clear:both; }
+#vsrc-hevs2      {  }
+#vsrc-hevs3      {  }
+
+.vsource-cntnr-btns	{ float:right;  height:72%;  width:14.5%;  margin:5% 1.3% 0 0; }
+.vsrc-btn       { height:15.3%;  width:90%;  margin:23% 0 0 4.8%;  border:2px solid #000;  -moz-border-radius:8px;  border-radius:8px;
+	-webkit-box-shadow: 0px 0px 2px 2px rgba(  0,   0,   0, .65); -moz-box-shadow: 0px 0px 2px 2px rgba(  0,   0,   0, .65); box-shadow: 0px 0px 2px 2px rgba(  0,   0,   0, .65); }
+.vsrc-btn-power {              float:left;  margin-top:25%;  }
+.vsrc-btn-mute  { clear:left;  float:left; }
+.vsrc-btn-volup { clear:left;  float:left; }
+.vsrc-btn-voldn { clear:left;  float:left; }
+
+.vsrc-btn-exit  { float:right;  height:8.5%;  width:10%;  margin:0.5% 2.0% 0 0; }
+
+
+.vsrc-effect-none   	{  }
+
+/* Green*/
+.vsrc-effect-hover	{   /*border:2px solid #0f0;*/  /*--moz-border-radius:4px;  border-radius:4px;*/
+	-webkit-box-shadow: 0px 0px 5px 5px rgba( 35, 146,  35, .70); -moz-box-shadow: 0px 0px 5px 5px rgba( 35, 146,  35, .70); box-shadow: 0px 0px 5px 5px rgba( 35, 146,  35, .70);
+	background-color: rgb( 35, 146,  35); background-color: rgba( 35, 146,  35, .50);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#7f239223, endColorstr=#7f239223); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#7f239223, endColorstr=#7f239223)"; }
+
+.vsrc-effect-hover-btn	{   -moz-border-radius:4px;  border-radius:4px;
+	-webkit-box-shadow: 0px 0px 2px 1px rgba( 35, 146,  35, .50); -moz-box-shadow: 0px 0px 2px 1px rgba( 35, 146,  35, .50); box-shadow: 0px 0px 2px 1px rgba( 35, 146,  35, .50);
+	background-color: rgb( 35, 146,  35); background-color: rgba( 35, 146,  35, .50);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#7f239223, endColorstr=#7f239223); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#7f239223, endColorstr=#7f239223)"; }
+
+.vsrc-effect-click		{ -webkit-box-shadow: 0px 0px 8px 5px rgba( 95,  95,  95, .85); -moz-box-shadow: 0px 0px 8px 5px rgba( 95,  95,  95, .85); box-shadow: 0px 0px 8px 5px rgba( 95,  95,  95, .85); }
+
+.vsrc-effect-connected	{ -webkit-box-shadow: 0px 0px 4px 1px rgba(255, 255,   0, .65); -moz-box-shadow: 0px 0px 4px 1px rgba(255, 255,   0, .65); box-shadow: 0px 0px 4px 1px rgba(255, 255,   0, .65);
+	background-color: rgb(255, 255,   0); background-color: rgba(255, 255,   0, 0.3);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4cffff00, endColorstr=#4cffff00); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#4cffff00, endColorstr=#4cffff00)"; }
+
+
+

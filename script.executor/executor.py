@@ -6,6 +6,7 @@ import xbmcaddon
 import xbmcgui
 import time
 import urlparse
+import urllib
 
 if sys.version_info < (2, 7):
     import simplejson
@@ -24,6 +25,7 @@ class Executor:
         self.path = ''
         self.arg1 = ''
         self.arg2 = ''
+        self.url = 'http://127.0.0.1:8000/exec'
         try:
             xbmc.log('## arg 0: %s' % sys.argv[0])
             xbmc.log('## arg 1: %s' % sys.argv[1])
@@ -35,13 +37,25 @@ class Executor:
         except:
             pass
         if self.path == '':
-            xbmc.executebuiltin('Notification(Executor Error, No script specified for execution,5000,__icon__)')
+            #xbmc.executebuiltin('Notification(Executor Error, No script specified for execution,5000,__icon__)')
+            #xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%('Executor Error','No script specified for execution',5000, __icon__))
+            print self.url
+            urllib.urlopen(self.url)
         elif self.path != '' and self.arg1 == '':
-            xbmc.executebuiltin('RunScript(' + self.path + ')')
+            #xbmc.executebuiltin('RunScript(' + self.path + ')')
+            mcURL = self.url + '/' + urllib.quote_plus(self.path)
+            print mcURL
+            urllib.urlopen(mcURL)
         elif self.path != '' and self.arg1 != '' and self.arg2 == '':
-            xbmc.executebuiltin('RunScript(' + self.path + ',' + self.arg1 + ')')
+            #xbmc.executebuiltin('RunScript(' + self.path + ',' + self.arg1 + ')')
+            mcURL = self.url + '/' + urllib.quote_plus(self.path) + '/' + urllib.quote_plus(self.arg1)
+            print mcURL
+            urllib.urlopen(mcURL)
         else:
-            xbmc.executebuiltin('RunScript(' + self.path + ',' + self.arg1 + ',' + self.arg2 + ')')
+            #xbmc.executebuiltin('RunScript(' + self.path + ',' + self.arg1 + ',' + self.arg2 + ')')
+            mcURL = self.url + '/' + urllib.quote_plus(self.path) + '/' + urllib.quote_plus(self.arg1) + '/' + urllib.quote_plus(self.arg2)
+            print mcURL
+            urllib.urlopen(mcURL)
 
 if __name__ == '__main__':
     xbmc.log('######## Script Executor: Testing...')
