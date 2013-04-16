@@ -32,17 +32,17 @@ import serial
 
 PORT = 8000
 SWITCH_COM = 2
-TUNER_COM = 2
+TUNER_COM = 12
 
 class DeviceStatus(SimpleHTTPServer.SimpleHTTPRequestHandler):
     
     def do_GET(self):
         if self.path == '/':
             print >>self.wfile, "<html><body>" + str(theCounter) + "<a href='/json'>Patient Test</a>" + str(theStatus) + "</body></html>"
-        if self.path == '/json':
-            print 'Printing JSON...'
+        if 'json' in self.path:
             self.send_response(200)
             self.send_header("content-type", "application/json")
+            self.send_header("Access-Control-Allow-Origin", '*')
             self.end_headers()
             self.wfile.write(simplejson.dumps(theStatus))
         if 'tuner' in self.path:
@@ -60,6 +60,11 @@ class DeviceStatus(SimpleHTTPServer.SimpleHTTPRequestHandler):
             switchParams = self.path.split('/')
             print >>self.wfile, switchParams
             theCommandQueue.append(switchParams[1:])
+        if 'display' in self.path:
+            print >>self.wfile, '<html><body>command for display'
+            displayParams = self.path.split('/')
+            print >>self.wfile, displayParams
+            theCommandQueue.append(displayParams[1:])
 
 def startServing(server):
     print "begin serving requests"
@@ -69,8 +74,8 @@ if (__name__ == "__main__"):
     xbmc.log('Version %s started' % __addonversion__)
     theCommandQueue = deque()
     theCounter = 0
-    theInputs = {"1":{"name":"ClickShare","hexChar":'\x81'},"2":{"name":"MCC Video 1","hexChar":'\x82'},"3":{"name":"MCC Video 2","hexChar":'\x83'},"4":{"name":"MCC Video 4","hexChar":'\x84'},"5":{"name":"Apple TV","hexChar":'\x85'},"6":{"name":"WiDi","hexChar":'\x86'},"7":{"name":"VADER","hexChar":'\x87'},"8":{"name":"TV Tuner","hexChar":'\x88'}}
-    theOutputs = {"1":{"name":"Left","hexChar":'\x81'},"2":{"name":"Center A","hexChar":'\x82'},"3":{"name":"Center B","hexChar":'\x83'},"4":{"name":"Right A","hexChar":'\x84'},"5":{"name":"Right B","hexChar":'\x85'},"6":{"name":"Action Center","hexChar":'\x86'},"7":{"name":"HEVS 1","hexChar":'\x87'},"8":{"name":"HEVS 2","hexChar":'\x88'}}
+    theInputs = {"1":{"name":"ClickShare","hexChar":'\x81'},"2":{"name":"MCC Video 1","hexChar":'\x82'},"3":{"name":"MCC Video 2","hexChar":'\x83'},"4":{"name":"MCC Video 4","hexChar":'\x84'},"5":{"name":"Apple TV","hexChar":'\x85'},"6":{"name":"WiDi","hexChar":'\x86'},"7":{"name":"VADER","hexChar":'\x87'},"8":{"name":"TV Tuner","hexChar":'\x88'},"0":{"name":"N/A","hexChar":'\x80'}}
+    theOutputs = {"1":{"name":"Left","hexChar":'\x81',"comPort":"6"},"2":{"name":"Center A","hexChar":'\x82',"comPort":"9"},"3":{"name":"Center B","hexChar":'\x83',"comPort":"10"},"4":{"name":"Right A","hexChar":'\x84',"comPort":"8"},"5":{"name":"Right B","hexChar":'\x85',"comPort":"7"},"6":{"name":"Action Center","hexChar":'\x86',"comPort":"11"},"7":{"name":"HEVS 1","hexChar":'\x87',"comPort":"0"},"8":{"name":"HEVS 2","hexChar":'\x88',"comPort":"0"}}
     theStatus = {"outputs":[{"outputName":"Left","outputNumber":"1","inputNumber":"1","inputName":"ClickShare"},{"outputName":"Center A","outputNumber":"2","inputNumber":"1","inputName":"ClickShare"},{"outputName":"Center B","outputNumber":"3","inputNumber":"2","inputName":"MCC Video 1"},{"outputName":"Right A","outputNumber":"4","inputNumber":"1","inputName":"ClickShare"},{"outputName":"Right B","outputNumber":"5","inputNumber":"2","inputName":"MCC Video 1"},{"outputName":"Action Center","outputNumber":"6","inputNumber":"3","inputName":"MCC Video 2"},{"outputName":"HEVS 1","outputNumber":"7","inputNumber":"5","inputName":"Apple TV"},{"outputName":"HEVS 2","outputNumber":"8","inputNumber":"6","inputName":"WiDi"}],"tuner":{"majorChannel":"008","minorChannel":"001","channelName":"KUHT-HD","programName":"Daytripper"}}
     #theStatus = {'left': 1, 'center1': 1, 'center2': 2, 'right1': 1, 'right2':2, 'actionCenter': 3, 'HEVS1': 5, 'HEVS2': 6}
     httpd = SocketServer.TCPServer(('', PORT), DeviceStatus)
@@ -78,24 +83,24 @@ if (__name__ == "__main__"):
     Thread(target=startServing, args=(httpd,)).start()
     print "starting the counter"
     while (not xbmc.abortRequested):
-        time.sleep(0.5)
+        time.sleep(0.1)
         theCounter += 1
         while theCommandQueue:
             command = theCommandQueue.popleft()
             if command[0] == 'tuner':
                 if command[1] == 'channel':
                     if command[2] == '+':
-                        ser = serial.Serial(TUNER_COM, 9600, timeout=0.3)
+                        ser = serial.Serial(TUNER_COM, 9600, timeout=0.2)
                         ser.write('>P1\x0d')
                         ser.write('>TU\x0d')
                         ser.close()
                     elif command[2] == '-':
-                        ser = serial.Serial(TUNER_COM, 9600, timeout=0.3)
+                        ser = serial.Serial(TUNER_COM, 9600, timeout=0.2)
                         ser.write('>P1\x0d')
                         ser.write('>TD\x0d')
                         ser.close()
                     else:
-                        ser = serial.Serial(TUNER_COM, 9600, timeout=0.3)
+                        ser = serial.Serial(TUNER_COM, 9600, timeout=0.2)
                         ser.write('>P1\x0d')
                         ser.write('>TC=' + command[2] + '\x0d')
                         ser.close()
@@ -103,11 +108,11 @@ if (__name__ == "__main__"):
                 elif command[1] == 'power':
                     print command
                     if command[2] == 'on':
-                        serial.Serial(TUNER_COM, 9600, timeout=1).write('>P1\x0d')
+                        serial.Serial(TUNER_COM, 9600, timeout=0.2).write('>P1\x0d')
                     elif command[2] == 'off':
-                        serial.Serial(TUNER_COM, 9600, timeout=1).write('>P0\x0d')
+                        serial.Serial(TUNER_COM, 9600, timeout=0.2).write('>P0\x0d')
                     elif command[2] == 'toggle':
-                        serial.Serial(TUNER_COM, 9600, timeout=1).write('>PT\x0d')
+                        serial.Serial(TUNER_COM, 9600, timeout=0.2).write('>PT\x0d')
             elif command[0] == 'exec':
                 if len(command) == 1:
                     xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%('Executor Error','No script specified for execution',5000,__icon__))
@@ -122,15 +127,15 @@ if (__name__ == "__main__"):
                     xbmc.executebuiltin('Notification(Video Source Control, Resetting All Displays to Default')
                     ser = serial.Serial(SWITCH_COM, 9600, timeout=0.3)
                     ser.write('\x01\x82\x81\x81')
-                    time.sleep(0.1)
+                    time.sleep(0.02)
                     ser.write('\x01\x83\x82\x81')
-                    time.sleep(0.1)
+                    time.sleep(0.02)
                     ser.write('\x01\x84\x83\x81')
-                    time.sleep(0.1)
+                    time.sleep(0.02)
                     ser.write('\x01\x83\x84\x81')
-                    time.sleep(0.1)
+                    time.sleep(0.02)
                     ser.write('\x01\x82\x85\x81')
-                    time.sleep(0.1)
+                    time.sleep(0.02)
                     ser.write('\x01\x87\x86\x81')
                     ser.close()
                 else:
@@ -138,12 +143,31 @@ if (__name__ == "__main__"):
                     ser = serial.Serial(SWITCH_COM, 9600, timeout=0.3)
                     ser.write('\x01' + theInputs[command[1]]["hexChar"] + theOutputs[command[2]]["hexChar"] + '\x81')
                     ser.close()
+            elif command[0] == 'display':
+                if command[2] == 'power':
+                    # print theOutputs[command[1]]["comPort"]
+                    ser = serial.Serial(int(theOutputs[command[1]]["comPort"]), 9600, timeout=0.3)
+                    ser.write('\x08\x22\x00\x00\x00\x00\xd6')
+                    ser.close()
+                elif command[2] == 'volume':
+                    if command[3] == '+':
+                        ser = serial.Serial(int(theOutputs[command[1]]["comPort"]), 9600, timeout=0.3)
+                        ser.write('\x08\x22\x01\x00\x01\x00\xd4')
+                        ser.close()
+                    elif command[3] == '-':
+                        ser = serial.Serial(int(theOutputs[command[1]]["comPort"]), 9600, timeout=0.3)
+                        ser.write('\x08\x22\x01\x00\x02\x00\xd3')
+                        ser.close()
+                    else:
+                        ser = serial.Serial(int(theOutputs[command[1]]["comPort"]), 9600, timeout=0.3)
+                        ser.write('\x08\x22\x02\x00\x00\x00\xd4')
+                        ser.close()
 
-        time.sleep(0.5)
+        time.sleep(0.1)
         
         # This is where the serial status stuff begins
         try:
-            ser = serial.Serial(SWITCH_COM, 9600, timeout=1)
+            ser = serial.Serial(SWITCH_COM, 9600, timeout=0.3)
             ser.flushInput()
             ser.write('\x05\x80\x81\x81')
             ser.read(2)
@@ -158,7 +182,7 @@ if (__name__ == "__main__"):
             continue
         
         try:
-            ser = serial.Serial(SWITCH_COM, 9600, timeout=1)
+            ser = serial.Serial(SWITCH_COM, 9600, timeout=0.3)
             ser.flushInput()
             ser.write('\x05\x80\x82\x81')
             ser.read(2)
@@ -173,7 +197,7 @@ if (__name__ == "__main__"):
             continue
         
         try:
-            ser = serial.Serial(SWITCH_COM, 9600, timeout=1)
+            ser = serial.Serial(SWITCH_COM, 9600, timeout=0.3)
             ser.flushInput()
             ser.write('\x05\x80\x83\x81')
             ser.read(2)
@@ -188,7 +212,7 @@ if (__name__ == "__main__"):
             continue
 
         try:
-            ser = serial.Serial(SWITCH_COM, 9600, timeout=1)
+            ser = serial.Serial(SWITCH_COM, 9600, timeout=0.3)
             ser.flushInput()
             ser.write('\x05\x80\x84\x81')
             ser.read(2)
@@ -203,7 +227,7 @@ if (__name__ == "__main__"):
             continue
         
         try:
-            ser = serial.Serial(SWITCH_COM, 9600, timeout=1)
+            ser = serial.Serial(SWITCH_COM, 9600, timeout=0.3)
             ser.flushInput()
             ser.write('\x05\x80\x85\x81')
             ser.read(2)
@@ -216,9 +240,9 @@ if (__name__ == "__main__"):
             #theStatus['right2'] = source
         except:
             continue
-        
+              
         try:
-            ser = serial.Serial(SWITCH_COM, 9600, timeout=1)
+            ser = serial.Serial(SWITCH_COM, 9600, timeout=0.3)
             ser.flushInput()
             ser.write('\x05\x80\x86\x81')
             ser.read(2)
@@ -231,9 +255,9 @@ if (__name__ == "__main__"):
             #theStatus['actionCenter'] = source
         except:
             continue
-        
+              
         try:
-            ser = serial.Serial(SWITCH_COM, 9600, timeout=1)
+            ser = serial.Serial(SWITCH_COM, 9600, timeout=0.3)
             ser.flushInput()
             ser.write('\x05\x80\x87\x81')
             ser.read(2)
@@ -246,9 +270,9 @@ if (__name__ == "__main__"):
             #theStatus['HEVS1'] = source
         except:
             continue
-        
+                
         try:
-            ser = serial.Serial(SWITCH_COM, 9600, timeout=1)
+            ser = serial.Serial(SWITCH_COM, 9600, timeout=0.3)
             ser.flushInput()
             ser.write('\x05\x80\x88\x81')
             ser.read(2)
@@ -261,19 +285,19 @@ if (__name__ == "__main__"):
             #theStatus['HEVS2'] = source
         except:
             continue
-        
+            
         # Tuner read
         try:
-            #print 'starting tuner read'
-            ser = serial.Serial(TUNER_COM, 9600, timeout=0.5)
+            # print 'starting tuner read'
+            ser = serial.Serial(TUNER_COM, 9600, timeout=0.3)
             ser.flushInput()
             ser.write('>ST\x0d')
             ser.read(4)
             majorChannel = ser.read(3)
-            #print majorChannel
+            # print majorChannel
             ser.read(4)
             minorChannel = ser.read(3)
-            #print minorChannel
+            # print minorChannel
             ser.close()
             theStatus['tuner']['majorChannel'] = majorChannel
             theStatus['tuner']['minorChannel'] = minorChannel
@@ -291,7 +315,7 @@ if (__name__ == "__main__"):
                 if byte == '\r':
                     break
                 channelName += byte
-            #print channelName
+            # print channelName
             ser.close()
             theStatus['tuner']['channelName'] = channelName
         except:
@@ -308,7 +332,7 @@ if (__name__ == "__main__"):
                 if byte == '\r':
                     break
                 programName += byte
-            #print programName
+            # print programName
             ser.close()
             theStatus['tuner']['programName'] = programName
         except:
