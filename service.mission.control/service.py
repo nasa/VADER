@@ -6,7 +6,7 @@ import binascii
 import urllib
 import SocketServer
 import SimpleHTTPServer
-from threading import Thread
+import threading
 from collections import deque
 import xbmc
 import xbmcaddon
@@ -33,6 +33,9 @@ import serial
 PORT = 8000
 SWITCH_COM = 2
 TUNER_COM = 12
+
+class ThreadedTCPServer(SocketServer.ThreadingMixIn, SocketServer.TCPServer):
+    pass
 
 class DeviceStatus(SimpleHTTPServer.SimpleHTTPRequestHandler):
     
@@ -66,21 +69,19 @@ class DeviceStatus(SimpleHTTPServer.SimpleHTTPRequestHandler):
             print >>self.wfile, displayParams
             theCommandQueue.append(displayParams[1:])
 
-def startServing(server):
-    print "begin serving requests"
-    server.serve_forever()
-
 if (__name__ == "__main__"):
     xbmc.log('Version %s started' % __addonversion__)
     theCommandQueue = deque()
     theCounter = 0
-    theInputs = {"1":{"name":"ClickShare","hexChar":'\x81'},"2":{"name":"MCC Video 1","hexChar":'\x82'},"3":{"name":"MCC Video 2","hexChar":'\x83'},"4":{"name":"MCC Video 4","hexChar":'\x84'},"5":{"name":"Apple TV","hexChar":'\x85'},"6":{"name":"WiDi","hexChar":'\x86'},"7":{"name":"VADER","hexChar":'\x87'},"8":{"name":"TV Tuner","hexChar":'\x88'},"0":{"name":"N/A","hexChar":'\x80'}}
+    theInputs = {"1":{"name":"ClickShare","hexChar":'\x81'},"2":{"name":"MCC Video 1","hexChar":'\x82'},"3":{"name":"MCC Video 2","hexChar":'\x83'},"4":{"name":"MCC Video 3","hexChar":'\x84'},"5":{"name":"Apple TV","hexChar":'\x85'},"6":{"name":"WiDi","hexChar":'\x86'},"7":{"name":"VADER","hexChar":'\x87'},"8":{"name":"TV Tuner","hexChar":'\x88'},"0":{"name":"N/A","hexChar":'\x80'}}
     theOutputs = {"1":{"name":"Left","hexChar":'\x81',"comPort":"6"},"2":{"name":"Center A","hexChar":'\x82',"comPort":"9"},"3":{"name":"Center B","hexChar":'\x83',"comPort":"10"},"4":{"name":"Right A","hexChar":'\x84',"comPort":"8"},"5":{"name":"Right B","hexChar":'\x85',"comPort":"7"},"6":{"name":"Action Center","hexChar":'\x86',"comPort":"11"},"7":{"name":"HEVS 1","hexChar":'\x87',"comPort":"0"},"8":{"name":"HEVS 2","hexChar":'\x88',"comPort":"0"}}
     theStatus = {"outputs":[{"outputName":"Left","outputNumber":"1","inputNumber":"1","inputName":"ClickShare"},{"outputName":"Center A","outputNumber":"2","inputNumber":"1","inputName":"ClickShare"},{"outputName":"Center B","outputNumber":"3","inputNumber":"2","inputName":"MCC Video 1"},{"outputName":"Right A","outputNumber":"4","inputNumber":"1","inputName":"ClickShare"},{"outputName":"Right B","outputNumber":"5","inputNumber":"2","inputName":"MCC Video 1"},{"outputName":"Action Center","outputNumber":"6","inputNumber":"3","inputName":"MCC Video 2"},{"outputName":"HEVS 1","outputNumber":"7","inputNumber":"5","inputName":"Apple TV"},{"outputName":"HEVS 2","outputNumber":"8","inputNumber":"6","inputName":"WiDi"}],"tuner":{"majorChannel":"008","minorChannel":"001","channelName":"KUHT-HD","programName":"Daytripper"}}
     #theStatus = {'left': 1, 'center1': 1, 'center2': 2, 'right1': 1, 'right2':2, 'actionCenter': 3, 'HEVS1': 5, 'HEVS2': 6}
-    httpd = SocketServer.TCPServer(('', PORT), DeviceStatus)
+    httpd = ThreadedTCPServer(('', PORT), DeviceStatus)
     print "serving at port", PORT
-    Thread(target=startServing, args=(httpd,)).start()
+    server_thread = threading.Thread(target=httpd.serve_forever)
+    server_thread.daemon = True
+    server_thread.start()
     print "starting the counter"
     while (not xbmc.abortRequested):
         time.sleep(0.1)
