@@ -49,25 +49,35 @@ class DeviceStatus(SimpleHTTPServer.SimpleHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(simplejson.dumps(theStatus))
         if 'tuner' in self.path:
-            print >>self.wfile, '<html><body>command for tuner'
             tunerParams = self.path.split('/')
-            print >>self.wfile, tunerParams
+            #print tunerParams
             theCommandQueue.append(tunerParams[1:])
+            self.send_response(200)
+            self.send_header("content-type", "application/json")
+            self.send_header("Access-Control-Allow-Origin", '*')
+            self.end_headers()
+            self.wfile.write(simplejson.dumps(theStatus['tuner']))
         if 'exec' in self.path:
             print >>self.wfile, '<html><body>command from executor'
             execParams = self.path.split('/')
             print >>self.wfile, execParams
             theCommandQueue.append(execParams[1:])
         if 'switch' in self.path:
-            print >>self.wfile, '<html><body>command for switch'
             switchParams = self.path.split('/')
-            print >>self.wfile, switchParams
+            #print switchParams
             theCommandQueue.append(switchParams[1:])
+            self.send_header("content-type", "application/json")
+            self.send_header("Access-Control-Allow-Origin", '*')
+            self.end_headers()
+            self.wfile.write(simplejson.dumps(theStatus['outputs']))
         if 'display' in self.path:
-            print >>self.wfile, '<html><body>command for display'
             displayParams = self.path.split('/')
-            print >>self.wfile, displayParams
+            #print displayParams
             theCommandQueue.append(displayParams[1:])
+            self.send_header("content-type", "application/json")
+            self.send_header("Access-Control-Allow-Origin", '*')
+            self.end_headers()
+            self.wfile.write(simplejson.dumps(theStatus['outputs'][displayParams[2]]))
 
 if (__name__ == "__main__"):
     xbmc.log('Version %s started' % __addonversion__)
@@ -86,6 +96,7 @@ if (__name__ == "__main__"):
     while (not xbmc.abortRequested):
         time.sleep(0.1)
         theCounter += 1
+        #print '*** Begin command section'
         while theCommandQueue:
             command = theCommandQueue.popleft()
             if command[0] == 'tuner':
@@ -109,11 +120,17 @@ if (__name__ == "__main__"):
                 elif command[1] == 'power':
                     print command
                     if command[2] == 'on':
-                        serial.Serial(TUNER_COM, 9600, timeout=0.2).write('>P1\x0d')
+                        ser = serial.Serial(TUNER_COM, 9600, timeout=0.2)
+                        ser.write('>P1\x0d')
+                        ser.close()
                     elif command[2] == 'off':
-                        serial.Serial(TUNER_COM, 9600, timeout=0.2).write('>P0\x0d')
+                        ser = serial.Serial(TUNER_COM, 9600, timeout=0.2)
+                        ser.write('>P0\x0d')
+                        ser.close()
                     elif command[2] == 'toggle':
-                        serial.Serial(TUNER_COM, 9600, timeout=0.2).write('>PT\x0d')
+                        ser = serial.Serial(TUNER_COM, 9600, timeout=0.2)
+                        ser.write('>PT\x0d')
+                        ser.close()
             elif command[0] == 'exec':
                 if len(command) == 1:
                     xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%('Executor Error','No script specified for execution',5000,__icon__))
@@ -164,9 +181,11 @@ if (__name__ == "__main__"):
                         ser.write('\x08\x22\x02\x00\x00\x00\xd4')
                         ser.close()
 
+        #print '*** End command section'
         time.sleep(0.1)
         
         # This is where the serial status stuff begins
+        #print '*** Begin status section'
         try:
             ser = serial.Serial(SWITCH_COM, 9600, timeout=0.3)
             ser.flushInput()
@@ -178,8 +197,8 @@ if (__name__ == "__main__"):
             source = foo[2]
             theStatus['outputs'][0]['inputNumber'] = source
             theStatus['outputs'][0]['inputName'] = theInputs[source]['name']
-            #theStatus['left'] = source
         except:
+            print 'Exception in reading status of Switch Output 1'
             continue
         
         try:
@@ -193,8 +212,8 @@ if (__name__ == "__main__"):
             source = foo[2]
             theStatus['outputs'][1]['inputNumber'] = source
             theStatus['outputs'][1]['inputName'] = theInputs[source]['name']
-            #theStatus['center1'] = source
         except:
+            print 'Exception in reading status of Switch Output 2'
             continue
         
         try:
@@ -208,8 +227,8 @@ if (__name__ == "__main__"):
             source = foo[2]
             theStatus['outputs'][2]['inputNumber'] = source
             theStatus['outputs'][2]['inputName'] = theInputs[source]['name']
-            #theStatus['center2'] = source
         except:
+            print 'Exception in reading status of Switch Output 3'
             continue
 
         try:
@@ -223,8 +242,8 @@ if (__name__ == "__main__"):
             source = foo[2]
             theStatus['outputs'][3]['inputNumber'] = source
             theStatus['outputs'][3]['inputName'] = theInputs[source]['name']
-            #theStatus['right1'] = source
         except:
+            print 'Exception in reading status of Switch Output 4'
             continue
         
         try:
@@ -238,8 +257,8 @@ if (__name__ == "__main__"):
             source = foo[2]
             theStatus['outputs'][4]['inputNumber'] = source
             theStatus['outputs'][4]['inputName'] = theInputs[source]['name']
-            #theStatus['right2'] = source
         except:
+            print 'Exception in reading status of Switch Output 5'
             continue
               
         try:
@@ -253,8 +272,8 @@ if (__name__ == "__main__"):
             source = foo[2]
             theStatus['outputs'][5]['inputNumber'] = source
             theStatus['outputs'][5]['inputName'] = theInputs[source]['name']
-            #theStatus['actionCenter'] = source
         except:
+            print 'Exception in reading status of Switch Output 6'
             continue
               
         try:
@@ -268,8 +287,8 @@ if (__name__ == "__main__"):
             source = foo[2]
             theStatus['outputs'][6]['inputNumber'] = source
             theStatus['outputs'][6]['inputName'] = theInputs[source]['name']
-            #theStatus['HEVS1'] = source
         except:
+            print 'Exception in reading status of Switch Output 7'
             continue
                 
         try:
@@ -283,11 +302,12 @@ if (__name__ == "__main__"):
             source = foo[2]
             theStatus['outputs'][7]['inputNumber'] = source
             theStatus['outputs'][7]['inputName'] = theInputs[source]['name']
-            #theStatus['HEVS2'] = source
         except:
+            print 'Exception in reading status of Switch Output 8'
             continue
             
         # Tuner read
+        #print '* End Switch status and begin Tuner status'
         try:
             # print 'starting tuner read'
             ser = serial.Serial(TUNER_COM, 9600, timeout=0.3)
@@ -303,6 +323,7 @@ if (__name__ == "__main__"):
             theStatus['tuner']['majorChannel'] = majorChannel
             theStatus['tuner']['minorChannel'] = minorChannel
         except:
+            print 'Exception in reading Tuner Channel Info'
             continue
         
         try:
@@ -320,6 +341,7 @@ if (__name__ == "__main__"):
             ser.close()
             theStatus['tuner']['channelName'] = channelName
         except:
+            print 'Exception in reading Tuner Channel Name'
             continue
         
         try:
@@ -337,7 +359,9 @@ if (__name__ == "__main__"):
             ser.close()
             theStatus['tuner']['programName'] = programName
         except:
+            print 'Exception in reading Tuner Program Name'
             continue
+        #print '*** End status section'
     print "starting server shutdown"
     httpd.shutdown()
     print "finished server shutdown"

@@ -1,0 +1,9 @@
+0.5 Working configuration for OS1
+
+0.4 Tuner code stabilized.
+
+0.3 Initial tuner test (non-functional). Error handling for switch.
+
+0.2 Updates for HEVS.
+
+0.1 Initial Version
