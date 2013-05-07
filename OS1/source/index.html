@@ -1,0 +1,1000 @@
+<!doctype html>
+	<!-- Need to know the IE version -->
+<!--[if lt IE 7 ]> <html class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class=""> <!--<![endif]-->
+<head>
+	<meta	charset="utf-8">
+	<meta	http-equiv="X-UA-Compatible"	content="IE=edge,chrome=1">
+
+	<title>Ops Suite One Display Control</title>
+	<meta name="description"	content="A website for controlling the displays in Ops Suite 1">
+	<meta name="author"	content="DD12">
+
+		<<!-- 0.75 scale factor gives a more reasonable viewport of 640 pixels on an ipod -->
+	<meta name="viewport" content="width=device-width, initial-scale=0.75">
+
+	<!--link rel="stylesheet" href="js/libs/jquery.mobile.structure-1.3.1.min.css"-->
+	<link rel="stylesheet" href="css/os1.css">
+	<link rel="stylesheet" href="numpad/numpad.css">
+	<link rel="stylesheet" href="vsources/vsources.css">
+	<link rel="stylesheet" href="vhelp/vhelp.css">
+
+</head>
+<body>
+
+<div id="vdest-cntnr-outer">
+	<div id="vdest-cntnr-header" class="vdest-cntnr-brdr">
+	</div>
+	<img class="header-img" src="img/header1.png"> <!-- The header image won't fit in the header div, so it is positioned absolutely and sized and located with javascript -->
+
+	<div id="vdest-cntnr-destinations" class="vdest-cntnr-brdr">
+
+		<div id="vdest-1" class="vdest-1-bkg vdest vdest-bkg" data-output="1" data-name_of="Left TV">
+			<img class="vdest-connto" src="img/transp.png">
+			<img class="vdest-tvbtn-power" src="img/btn_power.png">
+			<img class="vdest-tvbtn-cbox-clr vdest-tvbtn-cbox" src="img/cbox_clr.png">
+			<div class="vdest-tv-label-ie"></div>
+		</div>
+
+		<div id="vdest-2" class="vdest-2-bkg vdest vdest-bkg" data-output="2" data-name_of = "Center TV A">
+			<img class="vdest-connto" src="img/transp.png">
+			<img class="vdest-tvbtn-power" src="img/btn_power.png">
+			<img class="vdest-tvbtn-cbox-clr vdest-tvbtn-cbox" src="img/cbox_clr.png">
+			<div class="vdest-tv-label-ie"></div>
+		</div>
+
+		<div id="vdest-3" class="vdest-3-bkg vdest vdest-bkg" data-output="3" data-name_of="Center TV B">
+			<img class="vdest-connto" src="img/transp.png">
+			<img class="vdest-tvbtn-power" src="img/btn_power.png">
+			<img class="vdest-tvbtn-cbox-clr vdest-tvbtn-cbox" src="img/cbox_clr.png">
+			<div class="vdest-tv-label-ie"></div>
+		</div>
+
+		<div id="vdest-4" class="vdest-4-bkg vdest vdest-bkg" data-output="4" data-name_of="Right TV A">
+			<img class="vdest-connto" src="img/transp.png">
+			<img class="vdest-tvbtn-power" src="img/btn_power.png">
+			<img class="vdest-tvbtn-cbox-clr vdest-tvbtn-cbox" src="img/cbox_clr.png">
+			<div class="vdest-tv-label-ie"></div>
+		</div>
+
+		<div id="vdest-5" class="vdest-5-bkg vdest vdest-bkg" data-output="5" data-name_of="Right TV B">
+			<img class="vdest-connto" src="img/transp.png">
+			<img class="vdest-tvbtn-power" src="img/btn_power.png">
+			<img class="vdest-tvbtn-cbox-clr vdest-tvbtn-cbox" src="img/cbox_clr.png">
+			<div class="vdest-tv-label-ie"></div>
+		</div>
+
+		<div id="vdest-6" class="vdest-6-bkg vdest vdest-bkg" data-output="6" data-name_of="Action Center TV">
+			<img class="vdest-connto" src="img/transp.png">
+			<img class="vdest-tvbtn-power" src="img/btn_power.png">
+			<img class="vdest-tvbtn-cbox-clr vdest-tvbtn-cbox" src="img/cbox_clr.png">
+			<div class="vdest-tv-label-ie"></div>
+		</div>
+
+		<div class="vdest-hevs-cntnr">
+			<div id="vdest-hevs1" class="vdest-hevs-bkg vdest vdest-bkg" data-output="7" data-name_of="To MCC Video 1">
+				<img class="vdest-connto vdest-connto-hevs" src="img/transp.png">
+				<img class="vdest-tvbtn-cbox-clr vdest-tvbtn-cbox" src="img/cbox_clr.png">
+				<div class="vdest-tv-label-ie"></div>
+			</div>
+
+			<div id="vdest-hevs2" class="vdest-hevs-bkg vdest vdest-bkg" data-output="8" data-name_of="To MCC Video 2">
+				<img class="vdest-connto vdest-connto-hevs" src="img/transp.png">
+				<img class="vdest-tvbtn-cbox-clr vdest-tvbtn-cbox" src="img/cbox_clr.png">
+				<div class="vdest-tv-label-ie"></div>
+			</div>
+		</div>
+
+		<div class="vdest-btn-cntnr">
+			<div class="vdest-btn-info vdest-btn vdest-bkg">
+				<img class="btn" src="img/help-info.png">
+				<span class="btn-varitext">Help</span>
+			</div>
+			<div class="vdest-btn-default vdest-btn vdest-bkg">
+				<img class="btn" src="img/settings.png">
+				<span class="btn-varitext">Default Configuration</span>
+			</div>
+			<div class="vdest-btn-numpad vdest-btn vdest-bkg">
+				<img class="btn" src="vsources/img/tv.png">
+				<span id="vdest-btn-chn-text" class="btn-varitext">Change TV Channel</span>
+			</div>
+			<div class="vdest-btn-clearall vdest-btn vdest-bkg">
+				<img class="btn" src="img/cbox_clr.png">
+				<span class="btn-varitext">Clear All Selections</span>
+			</div>
+			<div class="vdest-btn-selected vdest-btn vdest-bkg">
+				<img class="btn" src="img/cbox_chk.png">
+				<span class="btn-varitext">Process Selected Devices:</span>
+				<div class="vdest-btn-selected-devices">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="vdest-cntnr-footer" class="vdest-cntnr-brdr">
+		<div id="vdest-status">&nbsp;</div>
+	</div>
+<center><font size="1.5"><a href="http://www.jsc.nasa.gov/policies.html">Web Accessibility and Policy Notes</a> | <b>Website Curator:</b> <a href="mailto:elena.buhay@nasa.gov">Elena C. Buhay</a> | <b>Responsible NASA Official:</b> <a href="mailto:eric.j.wolfer@nasa.gov">Eric Wolfer</a> | <b>Last Updated:</b> 5/1/2013 11:20:00 AM</font></center>
+</div> <!-- outer -->
+
+
+<script src="js/libs/jquery-1.7.2.min.js"></script>
+<!--script src="/js/libs/jquery.mobile-1.3.1.min.js"></script-->
+<!--script src="/js/libs/jquery-ui.min.js"></script-->
+<!--script src="/js/libs/jquery.ui.touch-punch.min.js"></script-->
+
+<script src="numpad/numpad.js"></script>
+<script src="vsources/vsources.js"></script>
+<script src="vhelp/vhelp.js"></script>
+
+
+<script type="text/javascript">
+
+													/*****************
+													 *****************  Global parameters and funcs that need to be accessed by the pop-up's too
+													 *****************/
+
+	// Realtime status message in footer
+var el_status = document.getElementById( "vdest-status" );
+function status_set( msg )
+{
+	if( el_status )
+		el_status.innerHTML = msg || "Click on an Output device or select the checkbox of each Output to control.";
+}
+
+	// Mobile device detection. Likely not a complete list
+var os1_nav_is_mobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) );
+var os1_is_low_res = false; // When the screen size falls below a certain threshold, set to true and turn off some features
+function os1_is_small_device() { return os1_nav_is_mobile || os1_is_low_res; }
+
+	// ID IE. Uglify if necessary
+var os1_ie_vers = 0; // 0 = not IE
+function os1_ie_uglify()
+{
+	return( (os1_ie_vers > 0) && (os1_ie_vers < 10) ); // The site renders fine on IE 9... except for the IE9 at the console in the ops suite. Don't know why... so uglify if .lt. IE10
+}
+
+
+	// Show/hide animation... Set the $o (jquery object) at the starting position, and animate to the ending position
+function os1_popup_show( $o, duration, posn_start, posn_end )
+{
+	if( os1_is_small_device() ) // No ani on mobile devices - they're too slow
+	{
+		$o.show();
+	} else
+	{
+		$o.css( { left:posn_start.left, top:posn_start.top } );
+		$o.animate(
+				{
+					opacity: 1.0,
+					left: posn_end.left,
+					top: posn_end.top,
+					height: "toggle",
+					width: "toggle"
+				}, duration );
+	}
+}
+
+function os1_popup_hide( $o, duration, posn_end )
+{
+	if( os1_is_small_device() )
+	{
+		$o.hide();
+	} else
+	{
+		$o.animate(
+				{
+					opacity: 0.10,
+					left: posn_end.left,
+					top: posn_end.top,
+					height: "toggle",
+					width: "toggle"
+				}, duration );
+	}
+}
+
+
+	// Global cursor style functions where the "wait" style has priority
+var vdest_css_cursor_iswait = false;
+
+function vdest_css_cursor_wait( onoff )
+{
+	vdest_css_cursor_iswait = onoff;
+}
+function vdest_css_cursor_default( $o )
+{
+	if( !vdest_css_cursor_iswait )
+		$o.css( "cursor", "default" );
+	else $o.css( "cursor", "wait" );
+}
+function vdest_css_cursor_pointer( $o )
+{
+	if( !vdest_css_cursor_iswait )
+		$o.css( "cursor", "pointer" );
+	else $o.css( "cursor", "wait" );
+}
+
+
+var $_btn_cntnr;
+var $_btns_varitext;
+var btn_varitext_fontsize;
+
+function vdest_btn_selected_show()
+{
+	var devices = "";
+	for( var dx = 0; dx < $_vdestinations.length; dx++ )
+	{
+		if( true === $_vdestinations[dx].data( "is_selected" ) )
+			devices += $_vdestinations[dx].data( "name_of" ) + "<br/>";
+	}
+	$_btns_varitext.css( "font-size", btn_varitext_fontsize * 0.85 );
+	$_vdest_btn_selected.find( ".vdest-btn-selected-devices" ).html( devices );
+	$_vdest_btn_selected.show( os1_is_small_device() ? 0 : 200 );
+	$_vdest_btn_clearall.show();
+}
+
+function vdest_btn_selected_hide()
+{
+	$_vdest_btn_selected.hide( os1_is_small_device() ? 0 : 200 );
+	$_vdest_btn_clearall.hide();
+	$_btns_varitext.css( "font-size", btn_varitext_fontsize );
+}
+
+var vdest_cbox_checked_count = 0;
+
+function vdest_cbox_check( $o, $_cbox )
+{
+	vdest_cbox_checked_count++;
+	$o.data( "is_selected", true );
+	if( null === $_cbox )
+		$_cbox = $o.find( ".vdest-tvbtn-cbox" );
+	$_cbox.attr( "src", "img/cbox_chk.png" );
+}
+
+function vdest_cbox_uncheck( $o, $_cbox )
+{
+	if( true === $o.data( "is_selected" ) )
+		vdest_cbox_checked_count--;
+	if( vdest_cbox_checked_count < 0 ) // insurance
+		vdest_cbox_checked_count = 0;
+	$o.data( "is_selected", false );
+	if( null === $_cbox )
+		$_cbox = $o.find( ".vdest-tvbtn-cbox" );
+	$_cbox.attr( "src", "img/cbox_clr.png" );
+}
+
+
+var $_vdestinations; // global so help can access
+var $_vdest_cntnr = $( "#vdest-cntnr-destinations" );
+var $_vdest_btn_clearall = $_vdest_cntnr.find( ".vdest-btn-clearall" ); // the "clear all selections" button
+var $_vdest_btn_selected = $_vdest_cntnr.find( ".vdest-btn-selected" ); // the "process selected devices" button
+
+
+$(function()
+{
+	var height_body;
+	var width_body;
+	var oheight_header;
+	var oheight_footer;
+	var width_header_div;
+	var $_vdest_single_selection = null;
+
+	var $_h = $( "html" );
+	os1_ie_vers = $_h.is( ".ie6" ) ? 6 : ($_h.is( ".ie7" ) ? 7 : ($_h.is( ".ie8" ) ? 8 : ($_h.is( ".ie9" ) ? 9 : 0))); // assumes ie10 will be close enuf to FF, Chrome, etc
+
+	$_vdestinations = new Array( $( "#vdest-1" ), $( "#vdest-2" ), $( "#vdest-3" ), $( "#vdest-4" ), $( "#vdest-5" ), $( "#vdest-6" ), $( "#vdest-hevs1" ), $( "#vdest-hevs2" ) );
+	var vsource_is_showing = false; // When true, the vsource pop-up is active
+	var numpad_is_showing = false; // When true, the numpad pop-up is active
+	var vhelp_is_showing = false;
+	var tv_channel_number = "";
+	$_btn_cntnr = $_vdest_cntnr.find( ".vdest-btn-cntnr" );
+	$_btns_varitext = $_btn_cntnr.find( ".btn-varitext" );
+
+
+	function vdest_popup_showing()
+	{  return vsource_is_showing || numpad_is_showing || vhelp_is_showing;  }
+
+
+	function vdest_for_outputnumber( outputn )
+	{
+		for( var dx = 0; dx < $_vdestinations.length; dx++ )
+		{
+			if( outputn == $_vdestinations[dx].data( "output" ) )
+				return $_vdestinations[dx];
+		}
+		return null;
+	}
+
+	vsources_create( status_set, function() // called when input selector is closed
+	{
+		$_vdest_single_selection = null;
+		vsource_is_showing = false;
+	}, function( vol_level )  // called when volume or mute btns clicked
+	{
+		if( null !== $_vdest_single_selection )
+		{
+			if( vol_level === 0 )
+				device_control_mute( $_vdest_single_selection );
+			else device_control_volume( $_vdest_single_selection, vol_level );
+		} else
+		{
+			for( var dx = 0; dx < $_vdestinations.length; dx++ )
+			{
+				if( true === $_vdestinations[dx].data("is_selected") )
+				{
+					if( vol_level === 0 )
+						device_control_mute( $_vdestinations[dx] );
+					else device_control_volume( $_vdestinations[dx], vol_level );
+				}
+			}
+		}
+	}, function() // called when power btn clicked
+	{
+		if( null !== $_vdest_single_selection )
+		{
+			device_control_power( $_vdest_single_selection );
+		} else
+		{
+			for( var dx = 0; dx < $_vdestinations.length; dx++ )
+			{
+				if( true === $_vdestinations[dx].data("is_selected") )
+					device_control_power( $_vdestinations[dx] );
+			}
+		}
+	}, function( $_vsrc_clicked ) // called when source object is clicked
+	{
+		if( null !== $_vdest_single_selection )
+		{
+			source_destination_connection_set( $_vsrc_clicked, $_vdest_single_selection );
+			device_control_switch( $_vsrc_clicked, $_vdest_single_selection, true );
+			$_vdest_single_selection = null;
+		} else
+		{
+			for( var dx = 0; dx < $_vdestinations.length; dx++ )
+			{
+				if( true === $_vdestinations[dx].data( "is_selected" ) )
+				{
+					vdest_cbox_uncheck( $_vdestinations[dx], null );
+					source_destination_connection_set( $_vsrc_clicked, $_vdestinations[dx] );
+					device_control_switch( $_vsrc_clicked, $_vdestinations[dx], false );
+				}
+			}
+			device_control_mappings_reload();
+			vdest_btn_selected_hide();
+		}
+		vsource_is_showing = false;
+	}, function() // returns what is currently connected to the singly-selected destination
+	{
+		return (null !== $_vdest_single_selection) ? $_vdest_single_selection.data( "connected_to") : null;
+	} );
+
+
+	numpad_create( function() // called when numpad is closed
+	{
+		numpad_is_showing = false;
+	}, function( chan_text ) // called when a channel was entered
+	{
+		if( chan_text.charAt(0) === "+" )
+		{
+			device_control_tv_channel_bump( "+" );
+		} else if( chan_text.charAt(0) === "-" )
+		{
+			device_control_tv_channel_bump( "-" );
+		} else
+		{
+			device_control_tv_channel_set( chan_text );
+		}
+	} );
+
+
+	vhelp_create( function() // called when help is closed
+	{
+		vhelp_is_showing = false;
+	} );
+
+	if( os1_ie_uglify() )
+	{
+		$_vdestinations[0].removeClass( "vdest-1-bkg" ).addClass( "vdest-bkg-ie" );
+		$_vdestinations[1].removeClass( "vdest-2-bkg" ).addClass( "vdest-bkg-ie" );
+		$_vdestinations[2].removeClass( "vdest-3-bkg" ).addClass( "vdest-bkg-ie" );
+		$_vdestinations[3].removeClass( "vdest-4-bkg" ).addClass( "vdest-bkg-ie" );
+		$_vdestinations[4].removeClass( "vdest-5-bkg" ).addClass( "vdest-bkg-ie" );
+		$_vdestinations[5].removeClass( "vdest-6-bkg" ).addClass( "vdest-bkg-ie" );
+		$_vdestinations[6].removeClass( "vdest-hevs-bkg" ).addClass( "vdest-bkg-ie" );
+		$_vdestinations[7].removeClass( "vdest-hevs-bkg" ).addClass( "vdest-bkg-ie" );
+		$_vdestinations[0].find( ".vdest-tv-label-ie" ).addClass( "vdest-tv-label-bkg-ie" ).html( "LEFT" );
+		$_vdestinations[1].find( ".vdest-tv-label-ie" ).addClass( "vdest-tv-label-bkg-ie" ).html( "CENTER A" );
+		$_vdestinations[2].find( ".vdest-tv-label-ie" ).addClass( "vdest-tv-label-bkg-ie" ).html( "CENTER B" );
+		$_vdestinations[3].find( ".vdest-tv-label-ie" ).addClass( "vdest-tv-label-bkg-ie" ).html( "RIGHT A" );
+		$_vdestinations[4].find( ".vdest-tv-label-ie" ).addClass( "vdest-tv-label-bkg-ie" ).html( "RIGHT B" );
+		$_vdestinations[5].find( ".vdest-tv-label-ie" ).addClass( "vdest-tv-label-bkg-ie" ).html( "ACTION CTR" );
+		$_vdestinations[6].find( ".vdest-tv-label-ie" ).addClass( "vdest-tv-label-bkg-ie" ).html( "To MCC Video" );
+		$_vdestinations[7].find( ".vdest-tv-label-ie" ).addClass( "vdest-tv-label-bkg-ie" ).html( "To MCC Video" );
+	}
+
+	$(document).keyup( function( evt )
+	{
+		if( vsource_is_showing )
+		{
+			vsources_keyup( evt );
+		} else if( numpad_is_showing )
+		{
+			numpad_keyup( evt );
+		} else if( vhelp_is_showing )
+		{
+			vhelp_keyup( evt );
+		}
+	} );
+
+
+	function vdest_effect_set( $o, new_class )
+	{
+		if( $o )
+		{
+			$o.removeClass( "vdest-effect-none vdest-effect-click vdest-effect-hover vdest-effect-hover-btn vdest-effect-connected" );
+			if( new_class )
+				$o.addClass( new_class );
+		}
+	}
+
+
+	function source_destination_connection_set( $_src, $_dst )
+	{
+			// set the src to dest data connection reference and vice versa
+		$_dst.data( "connected_to", $_src );
+		$_src.data( "connected_to", $_dst );
+
+		var $_connto = $_dst.find( ".vdest-connto" );
+		var icon = $_src.attr( "src" );
+		$_connto.attr( "src", icon );
+		$_connto.addClass( "vdest-connto-brdr" );
+	}
+
+
+
+	/*****************************************************************************
+	 *****************************************************************************	O U T P U T   (D E S T I N A T I O N)   D I V
+	 *****************************************************************************/
+
+
+	function source_selection_show( offset )
+	{
+		var a_hevs_is_selected = false;
+		var headermsg = "";
+		var n_checked = 0;
+		var $_vsrc_connected_to = null;
+
+		if( null !== $_vdest_single_selection )
+		{
+			headermsg = $_vdest_single_selection.data( "name_of" );
+
+			var output = $_vdest_single_selection.data( "output" );
+			if( (output === 7) || (output === 8) ) // hevs... must match the html "data-output"s above
+				a_hevs_is_selected = true;
+
+				// Highlight the source icon that the $_vdest_single_selection is connected to
+			$_vsrc_connected_to = $_vdest_single_selection.data( "connected_to" );
+		} else
+		{
+			for( var dx = 0; dx < $_vdestinations.length; dx++ )
+			{
+				if( true === $_vdestinations[dx].data("is_selected") )
+				{
+					n_checked++;
+					headermsg += $_vdestinations[dx].data( "name_of" ) + ", ";
+					if( dx >= 6 )
+						a_hevs_is_selected = true;
+				}
+			}
+			headermsg = headermsg.substring(0, headermsg.length - 2); // strip trailing ", "
+		}
+
+		vsources_show( headermsg, a_hevs_is_selected, $_vsrc_connected_to, offset );
+		vsource_is_showing = true;
+	}//source_selection_show
+
+
+	function vdest_btn_mouseenter( $o, statmsg )
+	{
+		if ( !vdest_popup_showing() )
+		{
+			vdest_css_cursor_pointer( $o );
+			vdest_effect_set( $o, "vdest-effect-hover-btn" );
+			status_set( statmsg );
+		}
+	}
+	function vdest_btn_mouseleave( $o, statmsg )
+	{
+		if ( !vdest_popup_showing() )
+		{
+			vdest_css_cursor_default( $o );
+			vdest_effect_set( $o, null );
+			status_set( statmsg );
+		}
+	}
+	function vdest_btn_mousedown( $o )
+	{
+		if ( !vdest_popup_showing() )
+		{
+			vdest_effect_set( $o, "vdest-effect-click" );
+			$o.css( "opacity", 0.3 );
+		}
+	}
+	function vdest_btn_mouseup( $o )
+	{
+		if ( !vdest_popup_showing() )
+		{
+			vdest_effect_set( $o, "vdest-effect-hover" );
+			$o.css( "opacity", 1.0 );
+		}
+	}
+
+
+	for( var dx = 0; dx < $_vdestinations.length; dx++ )
+	{
+		$_vdestinations[dx].data(
+		{
+			connected_to: null,
+			is_selected: false
+		} ).click( function()									/************* OUTPUT DEVICE CLICK ************/
+		{
+			if( vdest_popup_showing() || (vdest_cbox_checked_count > 0) )
+				return false;
+			$_vdest_single_selection = $(this);
+			vdest_effect_set( $(this), "vdest-effect-none" );
+			source_selection_show( $(this ).offset() );
+			status_set( "Click to select an input source for '" + $(this).data("name_of") + "'." );
+			return false;
+		} ).mouseenter( function()
+		{
+			if( vdest_popup_showing() )
+				return false;
+			vdest_css_cursor_pointer( $(this) );
+			vdest_effect_set( $(this), "vdest-effect-hover" );
+			status_set( "Click to select an input source for '" + $(this).data("name_of") + "'." );
+			return false;
+		} ).mouseleave( function()
+		{
+			if( vdest_popup_showing() )
+				return false;
+			vdest_css_cursor_default( $(this) );
+			status_set( null );
+			vdest_effect_set( $(this), "vdest-effect-none" );
+			return false;
+		} );
+
+		$_vdestinations[dx].find( ".vdest-tvbtn-power" ).click( function()							/************* OUTPUT DEVICE POWER BUTTON ************/
+		{
+			if( vdest_popup_showing() )
+				return false;
+			device_control_power( $(this).parent() );
+			return false;
+		} ).mouseenter( function()
+		{
+			vdest_btn_mouseenter( $(this), "Click to cycle power on '" + $(this).parent().data( "name_of" ) + "'."  );
+		} ).mouseleave( function()
+		{
+			vdest_btn_mouseleave( $(this), "Click to select an input source for '" + $(this).parent().data( "name_of" ) + "'." );
+			// DO NOT: return false; the mouseleave needs to bubble up
+		} ).mousedown( function()
+		{
+			vdest_btn_mousedown( $(this) );
+			return false;
+		} ).mouseup( function()
+		{
+			vdest_btn_mouseup( $(this) );
+			return false;
+		} );
+
+		$_vdestinations[dx].find( ".vdest-tvbtn-cbox").click( function()					/************* OUTPUT DEVICE CHECKBOX ************/
+		{
+			if( vdest_popup_showing() )
+				return false;
+			if( false === $(this).parent().data( "is_selected" ) )
+			{
+				vdest_cbox_check( $(this).parent(), $(this) );
+			} else
+			{
+				vdest_cbox_uncheck( $(this).parent(), $(this) );
+			}
+
+			if( vdest_cbox_checked_count === 0 ) vdest_btn_selected_hide();
+			else vdest_btn_selected_show();
+
+			return false;
+		} ).mouseenter(function()
+		{
+			vdest_btn_mouseenter( $(this), "Click to select '" + $(this).parent().data("name_of") + "'.");
+		} ).mouseleave(function()
+		{
+			vdest_btn_mouseleave( $(this), "Click to select an input source for '" + $(this).parent().data("name_of") + "'.");
+			// DO NOT: return false; the mouseleave needs to bubble up
+		} );
+
+		vdest_effect_set($_vdestinations[dx], "vdest-effect-none");
+
+	}//for dx
+
+	$_vdest_cntnr.find( ".vdest-btn-info" ).click( function()                                       /************* HELP BUTTON ************/
+	{
+		if( vdest_popup_showing() )
+			return false;
+		for( var dx = 0; dx < $_vdestinations.length; dx++ )
+			vdest_cbox_uncheck( $_vdestinations[dx], null );
+		vhelp_show($(this ).offset());
+		vhelp_is_showing = true;
+		vdest_effect_set( $(this), "vdest-effect-none" );
+		return false;
+	} )
+	.mouseenter( function() { vdest_btn_mouseenter( $(this), "Click to get help information." ); return false; } )
+	.mouseleave( function() { vdest_btn_mouseleave( $(this), null ); return false; } )
+	.mousedown(  function() { vdest_btn_mousedown( $(this) ); return false; } )
+	.mouseup(    function() { vdest_btn_mouseup( $(this) ); return false; } );
+
+	$_vdest_cntnr.find( ".vdest-btn-default" ).click( function()                                       /************* DEFAULT I/O MAPPING BUTTON ************/
+	{
+		if( vdest_popup_showing() )
+			return false;
+		if( true === confirm( "This action will change all the Input-to-Output mappings to their default configuration.\nAre you sure you want to do this?" ) )
+			device_control_setup_default();
+		return false;
+	} )
+	.mouseenter( function() { vdest_btn_mouseenter( $(this), "Click to set up the default input-output mappings." ); return false; } )
+	.mouseleave( function() { vdest_btn_mouseleave( $(this), null ); return false; } )
+	.mousedown(  function() { vdest_btn_mousedown( $(this) ); return false; } )
+	.mouseup(    function() { vdest_btn_mouseup( $(this) ); return false; } );
+
+	$_vdest_cntnr.find( ".vdest-btn-numpad" ).click( function()                                       /************* CHANGE CHANNEL POPUP BUTTON ************/
+	{
+		if( vdest_popup_showing() )
+			return false;
+		numpad_show( tv_channel_number, true, true, $(this).offset() );
+		numpad_is_showing = true;
+		vdest_effect_set( $(this), "vdest-effect-none" );
+		status_set( "Enter in the channel number for the TV source." );
+		return false;
+	} )
+	.mouseenter( function() { vdest_btn_mouseenter( $(this), "Click to change the cable-TV channel." ); return false; } )
+	.mouseleave( function() { vdest_btn_mouseleave( $(this), null ); return false; } )
+	.mousedown(  function() { vdest_btn_mousedown( $(this) ); return false; } )
+	.mouseup(    function() { vdest_btn_mouseup( $(this) ); return false; } );
+
+	$_vdest_btn_clearall.click( function()                                                      /************* CLEAR ALL CHECKED BOXES BUTTON ************/
+	{
+		if( vdest_popup_showing() )
+			return false;
+		for( var dx = 0; dx < $_vdestinations.length; dx++ )
+		{
+			vdest_cbox_uncheck( $_vdestinations[dx], null );
+		}
+		vdest_btn_selected_hide();
+		return false;
+	} )
+	.mouseenter( function() { vdest_btn_mouseenter( $(this), "Click to un-select all the output devices." ); return false; } )
+	.mouseleave( function() { vdest_btn_mouseleave( $(this), null ); return false; } )
+	.mousedown(  function() { vdest_btn_mousedown( $(this) ); return false; } )
+	.mouseup(    function() { vdest_btn_mouseup( $(this) ); return false; } )
+	.hide();
+
+	$_vdest_btn_selected.click( function()                                                   /************* CHECKED BOXES SELECTION BUTTON ************/
+	{
+		if( vdest_popup_showing() )
+			return false;
+		source_selection_show( $(this ).offset() );
+		status_set( "Click to select an input source for the checked devices." );
+		return false;
+	} )
+	.mouseenter( function() { vdest_btn_mouseenter( $(this), "Click to select an input source for the checked devices." ); return false; } )
+	.mouseleave( function() { vdest_btn_mouseleave( $(this), null ); return false; } )
+	.mousedown(  function() { vdest_btn_mousedown( $(this) ); return false; } )
+	.mouseup(    function() { vdest_btn_mouseup( $(this) ); return false; } )
+	.hide();
+
+
+
+	/*************************************************************
+	 *************************************************************	D I V    I C O N    S I Z I N G
+	 *************************************************************/
+
+
+		// Set the source and destination elements size and location - on init and on screen-resize
+	function resize()
+	{
+		var ratio_tv = 499.0/296.0; // from the dimensions of the tv bkgd images
+		var ratio_page = (16.0/9.0) - 0.054/*adjust until the bkgd image fits nicely in the otf-container-destinations bkg-size'd as "contain", then set the div bkg-size to 100%*/;
+		var dx;
+		var height_minimum;
+		var pup_scalefactor = 0.75;
+		
+		var $_body = $( "body" );
+		height_body = $_body.height();
+		width_body  = $_body.width();
+
+		var $_cntnr_outer = $( "#vdest-cntnr-outer" );
+		var $_cntnr_header = $( "#vdest-cntnr-header" );
+		var $_header_img = $_cntnr_outer.find( ".header-img" );
+
+			// force the orientation to 16:9 mode landscape
+		var height_outer;
+		var width_outer;
+		if( (height_body * ratio_page) > width_body ) // portrait or taller: fit to body width, run short in the height
+		{
+			width_outer = width_body * 0.95;
+			height_outer = width_outer / ratio_page;
+		} else // landscape or wider: fit to body height, run short in the width
+		{
+			height_outer = height_body * 0.95;
+			width_outer =  height_outer * ratio_page;
+		}
+		os1_is_low_res = (height_outer <= 384);
+		height_minimum = os1_is_small_device() ? 320 : 384;
+//alert("hgt_outer: " + height_outer + ", hgt_min: " + height_minimum );
+		if( (height_outer < height_minimum) || os1_is_small_device() ) // minimum size restriction
+		{
+//alert(height_outer + "    UA: " + navigator.userAgent);
+			height_outer = height_minimum;
+			width_outer =  height_outer * ratio_page;
+
+				// Small devices... remove some functionality, make other stuff easier to touch
+			if( os1_is_small_device() )
+			{
+				for( dx = 0; dx < $_vdestinations.length; dx++ )
+				{
+					$_vdestinations[dx].find( ".vdest-tvbtn-power, .vdest-tvbtn-cbox" ).hide();
+				}
+				$_btn_cntnr.addClass( "vdest-btn-cntnr-ipod" );
+				$_btn_cntnr.find( ".vdest-btn" ).addClass( "vdest-btn-ipod" );
+				$_btn_cntnr.find( ".btn" ).addClass( "btn-ipod" );
+				pup_scalefactor = 1.0;
+			}
+		} else
+		{
+			for( dx = 0; dx < $_vdestinations.length; dx++ )
+			{
+				if( !$_vdestinations[dx].find( ".vdest-tvbtn-power" ).is( ":visible" ) )
+					$_vdestinations[dx].find( ".vdest-tvbtn-power, .vdest-tvbtn-cbox" ).show();
+			}
+			$_btn_cntnr.removeClass( "vdest-btn-cntnr-ipod" );
+			$_btn_cntnr.find( ".vdest-btn" ).removeClass( "vdest-btn-ipod" );
+			$_btn_cntnr.find( ".btn" ).removeClass( "btn-ipod" );
+			pup_scalefactor = 0.75;
+		}
+		$_cntnr_outer.height( height_outer );
+		$_cntnr_outer.width( width_outer );
+
+		oheight_header = $_cntnr_header.outerHeight( true );
+		oheight_footer = $( "#vdest-cntnr-footer" ).outerHeight( true );
+
+		width_header_div = $_cntnr_header.width();
+		var px_borderpadding = ($_cntnr_header.outerWidth() - width_header_div); // width of border and padding, both sides
+
+			// size and position the header image - it is absolutely positioned so the graphic can extend outside the header div
+		var doc_posn_header = $_cntnr_header.offset(); // get the absolute position of the header div
+		doc_posn_header.left += (width_header_div * 0.03); // offset it a bit based upon the size of the header div (positions it relative to the header div)
+		doc_posn_header.top += (oheight_header * 0.11);
+		$_header_img.width( width_header_div * 0.95);
+		// Not working in Chrome, Safari: $_header_img.offset( doc_posn_header );
+		$_header_img.css( { left:doc_posn_header.left, top:doc_posn_header.top } ); // Works in Chrome, Safari
+
+		// Compute and set the inner height of the destination div...
+		var height_other = oheight_header + oheight_footer + px_borderpadding;
+		var height_dest_div = height_outer - height_other;
+
+		$_vdest_cntnr.height( height_dest_div );
+		$_vdest_cntnr.width( width_header_div );
+
+		// Compute the output (destination) icon size
+		var height_icon = height_dest_div * 0.23/*whatever works*/;
+		if( os1_ie_uglify() )
+			height_icon *= 0.95;
+		var width_icon =  height_icon * ratio_tv;
+
+		for( dx = 0; dx < 6; dx++ ) // All the tv icons are the same size
+		{
+			$_vdestinations[dx].height( height_icon );
+			$_vdestinations[dx].width( width_icon );
+
+				// size the connected_to div square based on the tv icon height
+			var dimen = height_icon * 0.70;
+			$_vdestinations[dx].find( ".vdest-connto" ).width( dimen ).height( dimen );
+		}
+		for( dx = 6; dx < $_vdestinations.length; dx++ ) // Non-tv icons
+		{
+			$_vdestinations[dx].height(height_icon);
+			$_vdestinations[dx].width(width_icon);
+
+			dimen = height_icon * 0.65;
+			$_vdestinations[dx].find( ".vdest-connto" ).width( dimen ).height( dimen );
+		}
+
+			// Compute and set the size of the source input pop-up - it will be contained within the dest div
+
+		var posn_dest = $_vdest_cntnr.offset();
+		vsources_size_and_offset_set_center( height_dest_div * pup_scalefactor, height_outer );
+
+			// Make the numpad the same height as the source popup
+		numpad_size_and_offset_set_center( height_dest_div * pup_scalefactor, height_outer );
+
+		vhelp_size_and_offset_set( height_dest_div * 0.90, posn_dest.top + (height_dest_div * 0.19), posn_dest.left + (width_header_div * 0.27) );
+
+		// Scale text elements as well
+		btn_varitext_fontsize = height_dest_div * 0.033;
+		if( os1_is_small_device() )
+			btn_varitext_fontsize *= 1.3;
+		$_btns_varitext.css( "font-size", btn_varitext_fontsize );
+		$_vdest_btn_selected.find( ".vdest-btn-selected-devices" ).css( "font-size", height_dest_div * 0.023 );
+		$( el_status ).css( "font-size", height_dest_div * 0.033 );
+
+	}//size_n_posn
+
+	resize();
+
+	$( window ).resize( function()
+	{
+		resize();
+	});
+
+
+
+	/*************************************************************
+	 *************************************************************	D E V I C E   C O N T R O L
+	 *************************************************************/
+
+
+
+//	var jrest_uri = "http://localhost:8080/";
+ 	var jrest_uri = "http://opssuite1.vader.jsc.nasa.gov:8000/";
+	var reload_mapping = false;
+
+	function device_control_mappings_reload()
+	{
+		reload_mapping = true;
+	}
+
+
+	function x_req( uri, statechg )
+	{
+		var xmlh = (window.XMLHttpRequest ? new XMLHttpRequest() : (window.ActiveXObject ? new ActiveXObject( "Microsoft.XMLHTTP" ) : null));
+		if( xmlh )
+		{
+			xmlh.onreadystatechange = function()
+			{
+				if( xmlh.readyState === 4 )
+				{
+					if( xmlh.status === 200 )
+					{
+						if( statechg )
+							statechg( xmlh );
+					} else if( xmlh.status === 0 )
+					{
+						status_set( "** Ajax mappings request status 0")
+					}
+				}
+			};
+			xmlh.open( "GET", uri, true );
+			xmlh.send( null );
+		} else
+		{
+			status_set( "** XMLHttpRequest object failed!" );
+		}
+		return xmlh;
+	}
+
+	function device_control_mappings_get()
+	{
+		x_req( jrest_uri + "json/?cacheout=" + new Date().getTime(), function( xmlhttp )
+		{
+			if( xmlhttp.responseText.length > 0 )
+			{
+				var mappings_json = $.parseJSON( xmlhttp.responseText );
+
+				for( var outx = 0; outx < mappings_json.outputs.length; outx++ )
+				{
+					var vdest = vdest_for_outputnumber( mappings_json.outputs[outx].outputNumber );
+					var vsrc = vsource_for_inputnumber( mappings_json.outputs[outx].inputNumber );
+					source_destination_connection_set( vsrc, vdest );
+				}
+
+				var ch_maj = parseInt( mappings_json.tuner.majorChannel, 10 );
+				var ch_min = parseInt( mappings_json.tuner.minorChannel, 10 );
+				tv_channel_number = ch_maj + "-" + ch_min;
+//status_set( "Current TV channel: " + tv_channel_number );
+				$( "#vdest-btn-chn-text" ).html( "Change TV Channel" + ((tv_channel_number.length > 0) ? (": <span style='color:green'>" + tv_channel_number + "</span>") : "") ); // The text for the channel number button to show current channel number
+				numpad_channelnumber_set( tv_channel_number ); // in case it's still popped up
+			} else
+			{
+				status_set( "** Empty data set received from mappings request." );
+			}
+		} );
+	}
+
+
+	device_control_mappings_get();
+
+	setInterval(function()
+	{
+		device_control_mappings_get();
+	}, 20000);
+
+	
+	var dev_ctrl_timoutid_remap = 0; // timeout handle for mapping refresh
+
+	function device_control_get( uri )
+	{
+		x_req( uri + "/?cacheout=" + new Date().getTime(), function( xmlhttp ){} );
+
+		if( reload_mapping )
+		{
+			reload_mapping = false;
+
+				// If a remap was already scheduled, reschedule it
+			if( dev_ctrl_timoutid_remap !== 0 )
+				clearTimeout( dev_ctrl_timoutid_remap );
+
+				// Retrieve the new mappings if desired after a short delay to give the other side time to refresh
+			dev_ctrl_timoutid_remap = setTimeout( function()
+			{
+				device_control_mappings_get();
+			}, 6000 );
+		}
+	}
+
+
+	function device_control_setup_default()
+	{
+		device_control_switch( vsources_$_hevs1(), $_vdestinations[0], false );
+		device_control_switch( vsources_$_hevs2(), $_vdestinations[1], false );
+		device_control_switch( vsources_$_hevs3(), $_vdestinations[2], false );
+		device_control_switch( vsources_$_hevs1(), $_vdestinations[3], false );
+		device_control_switch( vsources_$_hevs2(), $_vdestinations[4], false );
+		device_control_switch( vsources_$_tv(),    $_vdestinations[5], false );
+		device_control_mappings_reload();
+	}
+
+	function device_control_power( $_output )
+	{
+		device_control_get( jrest_uri + "display/" + $_output.data( "output" ) + "/power");
+	}
+
+	function device_control_mute( $_output )
+	{
+		device_control_get( jrest_uri + "display/" + $_output.data( "output" ) + "/volume/mute");
+	}
+
+	function device_control_volume( $_output, level )
+	{
+		device_control_get( jrest_uri + "display/" + $_output.data( "output" ) + "/volume/" + ((level > 0) ? "+" : "-"));
+	}
+
+	function device_control_switch( $_input, $_output, remap )
+	{
+		device_control_get( jrest_uri + "switch/" + $_input.data( "input" ) + "/" + $_output.data( "output" ));
+		if( remap )
+			device_control_mappings_reload();
+	}
+
+	function device_control_tv_channel_set( channum )
+	{
+		device_control_get( jrest_uri + "tuner/channel/" + channum.replace( ".", "-" ));
+		device_control_mappings_reload();
+	}
+
+	function device_control_tv_channel_bump( ch_pm )
+	{
+		device_control_get( jrest_uri + "tuner/channel/" + ch_pm);
+		device_control_mappings_reload();
+	}
+
+
+	status_set( null );
+
+});
+</script>
+
+
+</body>
+</html>
+
