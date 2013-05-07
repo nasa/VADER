@@ -1,0 +1,55 @@
+
+.vhelp-bkg     { background-repeat:no-repeat;  -moz-background-size:100% 100%;  background-size:100% 100%;  background-position:center }
+
+#vhelp-cntnr-mn		{ width:25%;  background-image:url("img/vhelp.png"); }
+.vhelp-cntnr		{ position:absolute;  display:none;  color:#fffee1;
+	-moz-border-radius:5%;  border-radius:5%;  /*border:4px solid #001906;*/
+	-webkit-box-shadow: 4px 4px 6px 6px rgba(  1,  14,   6, .70); -moz-box-shadow: 4px 4px 6px 6px rgba(  1,  14,   6, .70); box-shadow: 4px 4px 6px 6px rgba(  1,  14,   6, .70); }
+
+#vhelp-cntnr-mn img		{ float:left;  width:1.6%;  margin:1.4% 0 0 0.5%; }
+#vhelp-cntnr-mn .info-icon	{ float:left;  width:12%;  margin-left:-3.0% }
+#vhelp-cntnr-mn .indent		{ margin-left:7.5%; }
+#vhelp-cntnr-mn .newln		{ clear:both; }
+#vhelp-cntnr-mn .disclaimer { clear:both;  float:left;  width:90%;  margin:2.5% 0 0 9%;  font-size:smaller;  font-size:smaller;  font-style:italic; }
+
+.vhelp-title		{ float:left;  width:70%;  margin:2.0% 0 0 6.5%;  padding-left:2.0%;  background-image:url("img/vhelp-hdr-bkg.png"); }
+.vhelp-info-cntnr	{ float:left;  width:97%;  margin:0.5% 0 0 1.0%; /*border:2px solid red;*/ }
+.vhelp-info-intro	{ float:left;  width:88%;  margin:0.5% 0 0 -1.0%; /*border:1px solid yellow;*/ }
+.vhelp-info-item	{ float:left;  /*width:93%;*/  margin:0.5% 0 0 0.8%; /*border:1px solid blue;*/ }
+img#vhelp-btn-x		{ float:right;  width:7.0%;  margin:-1.0% 5.0% 0 0; }
+
+
+.vhelp-cap-bkg	{  }
+
+.vhelp-btn-brdr		{ border:2px solid #000;  -moz-border-radius:8px;  border-radius:8px;
+	-webkit-box-shadow: 0px 0px 1px 1px rgba(  0,   0,   0, .65); -moz-box-shadow: 0px 0px 1px 1px rgba(  0,   0,   0, .65); box-shadow: 0px 0px 1px 1px rgba(    0,   0,   0, .65); }
+
+
+.vhelp-effect-none {  }
+.vhelp-effect-hover	{ /*border:2px solid #0f0;*/  --moz-border-radius:2px;  border-radius:2px;
+	-webkit-box-shadow: 0px 0px 2px 2px rgba(255,2546, 225, .50);  -moz-box-shadow: 0px 0px 2px 2px rgba(255,2546, 225, .50); box-shadow: 0px 0px 2px 2px rgba(255,2546, 225, .50);
+	background-color:rgb(255,2546, 225);  background-color:rgba(255,2546, 225, .50);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#7ffffee1, endColorstr=#7ffffee1); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#7ffffee1, endColorstr=#7ffffee1)"; }
+.vhelp-vdest-effect-bigger	{ -moz-border-radius:4px;  border-radius:4px;
+	-webkit-box-shadow: 3px 3px 4px 4px rgba( 35, 146,  35, .40); -moz-box-shadow: 3px 3px 4px 4px rgba( 35, 146,  35, .40); box-shadow: 3px 3px 4px 4px rgba( 35, 146,  35, .40);
+	background-color: rgb( 35, 146,  35);  background-color: rgba( 35, 146,  35, .40);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#66239223, endColorstr=#66239223);  -ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorstr=#66239223, endColorstr=#66239223)"; }
+.vhelp-effect-click		{ -webkit-box-shadow: 0px 0px 8px 5px rgba( 95,  95,  95, .85); -moz-box-shadow: 0px 0px 8px 5px rgba( 95,  95,  95, .85); box-shadow: 0px 0px 8px 5px rgba( 95,  95,  95, .85); }
+
+
+#vhelp-cntnr-subup	    		{ background-image:url("img/vhelp-subup.png");  display:none; }
+#vhelp-cntnr-subup img 	    	{ float:left;  width:3.5%;  margin:1.0% 0 0 0.5%; }
+#vhelp-cntnr-subup .info-icon	{ float:left;  width:12%;  margin-left:-3.0% }
+#vhelp-cntnr-subup .vsrc-icon 	{ clear:both;  float:right;  width:40%;  margin:1.0%; }
+#vhelp-cntnr-subup .vsrc-icon-mlt      { clear:both;  float:left;  width:29%;  margin:1.0%; }
+#vhelp-cntnr-subup .indent		{ margin-left:7.5%; }
+#vhelp-cntnr-subup .newln		{ clear:both; }
+img#vhelp-subup-x          		{ float:right;  width:6.5%;  margin:-1.0% 5.0% 0 0; }
+#vhelp-subup-back i             { float:left;  margin:3.0% 0 0 1.5%; }
+#vhelp-cntnr-subup img.back-icon   { float:left; width:8%;  margin:3.0% 0 0 4.0%; }
+#vhelp-cntnr-subup .vhelp-arrow 	{ width:30%;  position:absolute;  left:85%;  top:30%; }
+#vhelp-cntnr-subup .vhelp-arrow-sgl                { width:5.0%; position:absolute;  left:77%;  top:25%; }
+#vhelp-cntnr-subup .vhelp-arrow-pwr                { width:35%;  position:absolute;  left:-19%;  top:70%; }
+#vhelp-cntnr-subup .vhelp-arrow-dflt               { width:40%;  position:absolute;  left:80%;  top:50%; }
+#vhelp-cntnr-subup .vhelp-arrow-chn                { width:40%;  position:absolute;  left:80%;  top:50%; }
+.vhelp-goback               	{ float:left;  margin:2.0% 0 0 1.5%; }
