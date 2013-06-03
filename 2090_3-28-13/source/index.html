@@ -11,7 +11,7 @@
 	<meta name="description"	content="Control the front displays in the MOFDAC (30A/2090) using this website">
 	<meta name="author"	content="DD12">
 
-	<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="width=device-width, height=device-height">
 	<meta name="HandheldFriendly" content="True">
 
 	<link href="css/themes/base/jquery-ui.css" rel="stylesheet">
@@ -20,7 +20,7 @@
 
 	<script	src="js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
 </head>
-<body style="background-color: rgb(0,0,0);">
+<body style="background-color: rgb(0,0,0); min-height=100%">
 <!--[if	lt	IE	7]><p	class=chromeframe>Your	browser	is	<em>ancient	and	a	danger	to	security!</em>	<a	href="http://browsehappy.com/">Upgrade	to	a	different	browser</a>	or	<a	href="http://www.google.com/chromeframe/?redirect=true">install	Google	Chrome	Frame</a>	to	experience	this	site.</p><![endif]-->
 	<!--<h1 align= "center" margin="0px"> Mission Operations Facility Division Action Center Media Control </h1> -->
 	<div id="source-container">
@@ -61,17 +61,17 @@
 		<div id="main-container" >		
 			<div id="leftLZ" class="lz" data-output="1">
 				<h2>Left TV</h2>
-				<img class="otf-btn-power" src="img/btn_power.png"></img>			
-		</div>
+				<div id="LeftPower" class="otf-btn-power"> </div>			
+			</div>
 			
 			<div id="rightLZ" class="lz" data-output="3">
 				<h2 style="text-align: right;">Right TV</h2>
-				<img class="otf-btn-power" src="img/btn_power.png"></img>			
+				<div id="RightPower" class="otf-btn-power"> </div>			
 			</div>
 			
 			<div id="centerLZ" class="lz" data-output="2">
 				<h2 style="text-align: center;">Projector</h2>
-				<img class="otf-btn-power" src="img/btn_power.png"></img>			
+				<div id="CenterPower" class="otf-btn-power"> </div>			
 			</div>
 
 		</div>	
@@ -164,8 +164,12 @@
 		  $( "#rightLZ" ).height( $( "#rightLZ" ).width() * 0.875);
 		  //$( "#allLZ" ).height( $( "#widi" ).width() * 0.7);
 		  $( "#allLZ" ).height( $( "#widi" ).width() * 0.99);
-		  $( "#reset" ).height( $( "#allLZ" ).height() * 0.6);
+		  //$( "#reset" ).height( $( "#allLZ" ).height() * 0.6);
 		  //$( "#helpbuttonID" ).height( $( "#allLZ" ).height() * 0.5);
+		  $( "#LeftPower" ).height( $( "#LeftPower" ).width());
+		  $( "#RightPower" ).height( $( "#RightPower" ).width());
+		  $( "#CenterPower" ).width( $( "#LeftPower" ).width());
+		  $( "#CenterPower" ).height( $( "#LeftPower" ).width());
 		  
 		  $(window).resize(function() {
 		    //$( "#allLZ" ).height( $( "#widi" ).width() * 0.7);
@@ -181,7 +185,11 @@
 			$( "#pc2" ).height( $( "#pc2" ).width() );
 			$( "#pc3" ).height( $( "#pc3" ).width() );
 			$( "#vader" ).height( $( "#vader" ).width() );
-			$( "#reset" ).height( $( "#allLZ" ).height() * .99 );
+			//$( "#reset" ).height( $( "#allLZ" ).height() * .99 );
+			$( "#LeftPower" ).height( $( "#LeftPower" ).width());
+			$( "#RightPower" ).height( $( "#RightPower" ).width());
+		    $( "#CenterPower" ).width( $( "#LeftPower" ).width());
+		    $( "#CenterPower" ).height( $( "#LeftPower" ).width());
 			//$( "#helpbuttonID" ).height( $( "#allLZ" ).height() * 0.7 );
 		  });
 		  
