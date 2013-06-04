@@ -1,0 +1,14 @@
+<keymap>
+      <global>
+            <keyboard name = "Motorola Nyxboard Hybrid">
+				<!-- <Sleep> RunScript(C:\\vaderScripts\\tvpower-website.py) </Sleep> -->
+				<!-- <Power> RunScript(C:\\vaderScripts\\tvpower-website.py) </Power> -->
+				<!-- <key id='61952'> RunScript(C:\\vaderScripts\\tvpower-website.py) </key> -->
+                <f3 mod="shift">ExecuteAddon(script.executor,"display","1","power")</f3>  		<!-- Red button -->
+                <f4 mod="shift">ExecuteAddon(script.executor,"switch","2","1")</f4>			<!-- Green button -->
+                <f5 mod="shift">ExecuteAddon(script.executor,"switch","3","1")</f5>  <!-- Yellow button -->
+				<f6 mod="shift">ExecuteAddon(script.executor,"switch","4","1")</f6>	 		<!-- Blue button -->	
+				<home>ExecuteAddon(script.executor,"switch","1","1")</home> 				<!-- HOME button -->
+            </keyboard>
+      </global>
+</keymap>
