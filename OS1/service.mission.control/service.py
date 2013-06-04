@@ -42,6 +42,8 @@ class DeviceStatus(SimpleHTTPServer.SimpleHTTPRequestHandler):
     def do_GET(self):
         if self.path == '/':
             print >>self.wfile, "<html><body>" + str(theCounter) + "<a href='/json'>Patient Test</a>" + str(theStatus) + "</body></html>"
+        if self.path == '/counter':
+            print >>self.wfile, "<html><body>" + str(theCounter) + "</body></html>"
         if 'json' in self.path:
             self.send_response(200)
             self.send_header("content-type", "application/json")
