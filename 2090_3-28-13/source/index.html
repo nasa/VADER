@@ -56,21 +56,24 @@
 	<!-- Surrounded by the second blue border and contains all droppable boxes along with "default" and "help" buttons -->
 	<div id="outer-main-div">
 		<div id = "OutputText">
-					<center><font size = "6"><b> Outputs </b></font></align></center>
+			<center><font size = "6"><b> Outputs </b></font></align></center>
 		</div>
 		<div id="main-container" >		
 			<div id="leftLZ" class="lz" data-output="1">
 				<h2>Left TV</h2>
+				<div id="LeftSource" class="inputSource"> </div>
 				<div id="LeftPower" class="otf-btn-power"> </div>			
 			</div>
 			
 			<div id="rightLZ" class="lz" data-output="3">
 				<h2 style="text-align: right;">Right TV</h2>
+				<div id="RightSource" class="inputSource"> </div>
 				<div id="RightPower" class="otf-btn-power"> </div>			
 			</div>
 			
 			<div id="centerLZ" class="lz" data-output="2">
 				<h2 style="text-align: center;">Projector</h2>
+				<div id="CenterSource" class="inputSource"> </div>		
 				<div id="CenterPower" class="otf-btn-power"> </div>			
 			</div>
 
@@ -101,30 +104,37 @@
 <script src="../js/lib.xbmc.js"></script>
 
 <script>
-        $(function() {
+		
+		//
+	   $(function() {
           var activeInput = null;
-          $( "#atv1" ).height( $( "#atv1" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='atv1' class='ui-widget-header source' style='height: " + $( "#atv1" ).width() + "px;'><div class='sourcelabel'>1</div></div>" ); } });
-          $( "#atv2" ).height( $( "#atv2" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='atv2' class='ui-widget-header source' style='height: " + $( "#atv2" ).width() + "px;'><div class='sourcelabel'>2</div></div>" ); }});
-		  $( "#widi" ).height( $( "#widi" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='widi' class='ui-widget-header source' style='height: " + $( "#widi" ).width() + "px;'></div>" ); }});
-		  $( "#clickshare" ).height( $( "#clickshare" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='clickshare' class='ui-widget-header source' style='height: " + $( "#clickshare" ).width() + "px;'></div>" ); }});
-		  $( "#pc1" ).height( $( "#pc1" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='pc1' class='ui-widget-header source' style='height: " + $( "#pc1" ).width() + "px;'><div class='sourcelabel'>PC Screen 1</div></div>" ); }});
-		  $( "#pc2" ).height( $( "#pc2" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='pc2' class='ui-widget-header source' style='height: " + $( "#pc2" ).width() + "px;'><div class='sourcelabel'>2</div></div>" ); }});
-		  $( "#pc3" ).height( $( "#pc3" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='pc3' class='ui-widget-header source' style='height: " + $( "#pc3" ).width() + "px;'><div class='sourcelabel'>3</div></div>" ); }});
-		  $( "#vader" ).height( $( "#vader" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='vader' class='ui-widget-header source' style='height: " + $( "#vader" ).width() + "px;'></div>" ); }});
+          $( "#atv1" ).height( $( "#atv1" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='atv1' class='ui-widget-content source glowActive' style='height: " + $( "#atv1" ).width() + "px;'><div class='sourcelabel'>1</div></div>" ); } });
+          $( "#atv2" ).height( $( "#atv2" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='atv2' class='ui-widget-content source glowActive' style='height: " + $( "#atv2" ).width() + "px;'><div class='sourcelabel'>2</div></div>" ); }});
+		  $( "#widi" ).height( $( "#widi" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='widi' class='ui-widget-content source glowActive' style='height: " + $( "#widi" ).width() + "px;'></div>" ); }});
+		  $( "#clickshare" ).height( $( "#clickshare" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='clickshare' class='ui-widget-content source glowActive' style='height: " + $( "#clickshare" ).width() + "px;'></div>" ); }});
+		  $( "#pc1" ).height( $( "#pc1" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='pc1' class='ui-widget-content source glowActive' style='height: " + $( "#pc1" ).width() + "px;'><div class='sourcelabel'>PC Screen 1</div></div>" ); }});
+		  $( "#pc2" ).height( $( "#pc2" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='pc2' class='ui-widget-content source glowActive' style='height: " + $( "#pc2" ).width() + "px;'><div class='sourcelabel'>2</div></div>" ); }});
+		  $( "#pc3" ).height( $( "#pc3" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='pc3' class='ui-widget-content source glowActive' style='height: " + $( "#pc3" ).width() + "px;'><div class='sourcelabel'>3</div></div>" ); }});
+		  $( "#vader" ).height( $( "#vader" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='vader' class='ui-widget-content source glowActive' style='height: " + $( "#vader" ).width() + "px;'></div>" ); }});
 
 		  $( "#atv1, #atv2, #widi, #clickshare, #pc1, #pc2, #pc3, #vader" ).click(function(){
 		    if ( activeInput == null) {
 		      activeInput = $( this );
-		      activeInput.addClass( "active" );
+		      activeInput.addClass( "glowActive" );
+			  $("#leftLZ").addClass("active");
+			  $("#centerLZ").addClass("active");
+			  $("#rightLZ").addClass("active");		
+			  $("#allLZ").addClass("active");
+			  			  
 		    }
 		    else if ( activeInput.data('input') == $( this ).data('input') ) {
-		      activeInput.removeClass( "active" );
+		      activeInput.removeClass( "glowActive" );
 		      activeInput = null;
 		    }
 		    else {
-		      activeInput.removeClass( "active" );
+		      activeInput.removeClass( "glowActive" );
 		      activeInput = $( this );
-		      activeInput.addClass( "active" );
+		      activeInput.addClass( "glowActive" );
 		    }
 		  });
 
@@ -136,26 +146,45 @@
                 .addClass( "active" )
                 .find( "div" )
                   .html( $(ui.draggable).find( "p" ).html() )
-			  $( this ).find("div").css({ background: $(ui.draggable).css('background') });
-			  $( this ).find("div").css('background-size', 'contain' );
-			  commandSwitch( ui.draggable, this );
+			  // $( this ).find("div").css({ background: $(ui.draggable).css('background') });
+			  // $( this ).find("div").css('background-size', 'contain' );
+			  commandSwitch( ui.draggable, this);
             }
           });
+		  
+		  $( "#allLZ" ).droppable({
+			activeClass: "active",
+			hoverClass: "hover",
+			drop: function( event, ui ) {
+			  
+			  commandAllFront( ui.draggable );
+            }
+          });		  
           
           $( "#leftLZ, #centerLZ, #rightLZ" ).click(function(){
-            if (activeInput != null) {
+		   if (activeInput != null) {
+			  $(this).addClass("active")
               commandSwitch( activeInput, this );
-		      activeInput.removeClass( "active" );
+		      activeInput.removeClass( "glowActive" );
 		      activeInput = null;
 		    }
+			$("#leftLZ").removeClass("active");
+			$("#rightLZ").removeClass("active");
+			$("#centerLZ").removeClass("active");
+			$("#allLZ").removeClass("active")
+			
           });
           
           $( "#allLZ" ).click(function(){
             if (activeInput != null) {
               commandAllFront( activeInput );
-		      activeInput.removeClass( "active" );
+		      activeInput.removeClass( "glowActive" );
 		      activeInput = null;
 		    }
+			$("#leftLZ").removeClass("active");
+			$("#rightLZ").removeClass("active");
+			$("#centerLZ").removeClass("active");
+			$("#allLZ").removeClass("active")
           });
 		  
 		  
@@ -170,6 +199,10 @@
 		  $( "#RightPower" ).height( $( "#RightPower" ).width());
 		  $( "#CenterPower" ).width( $( "#LeftPower" ).width());
 		  $( "#CenterPower" ).height( $( "#LeftPower" ).width());
+		  $( "#LeftSource" ).height( $( "#LeftSource" ).width());
+		  $( "#RightSource" ).height( $( "#RightSource" ).width());
+		  $( "#CenterSource" ).height( $( "#CenterSource" ).width());
+
 		  
 		  $(window).resize(function() {
 		    //$( "#allLZ" ).height( $( "#widi" ).width() * 0.7);
@@ -190,16 +223,12 @@
 			$( "#RightPower" ).height( $( "#RightPower" ).width());
 		    $( "#CenterPower" ).width( $( "#LeftPower" ).width());
 		    $( "#CenterPower" ).height( $( "#LeftPower" ).width());
+		   $( "#LeftSource" ).height($( "#LeftSource" ).width());
+		  $( "#RightSource" ).height( $( "#RightSource" ).width());
+		  $( "#CenterSource" ).height( $( "#CenterSource" ).width());		   
+		
 			//$( "#helpbuttonID" ).height( $( "#allLZ" ).height() * 0.7 );
 		  });
-		  
-		  $( "#allLZ" ).droppable({
-			activeClass: "active",
-			hoverClass: "hover",
-			drop: function( event, ui ) {
-			  commandAllFront( ui.draggable );
-            }
-          });
 		  
 		  $("#reset").bigtext();
 		  //$("#titlebar").bigtext();
@@ -207,32 +236,66 @@
 		  $("#allLZlabel").fitText();
 		  
 		  $("#reset").click(function() {
-			xbmc.httpapi('ExecBuiltIn(RunScript(C:\\vaderScripts\\reset.py))');
+			$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $('#pc1').data('input') + '/' + $('#leftLZ').data('output'));
+			$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $('#pc2').data('input') + '/' + $('#centerLZ').data('output'));		  
+			$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $('#pc3').data('input') + '/' + $('#rightLZ').data('output'));
+			//xbmc.httpapi('ExecBuiltIn(RunScript(C:\\vaderScripts\\reset.py))');
 		  });
 		  
 		  // Help button doesn't do anything at the moment
 		  $("#helpbuttonID").click(function() {
 			
 		  });
-		  
-		  //getter
-			var buttons = $( ".selector" ).dialog( "option", "buttons" );
-			//setter
-			$( ".selector" ).dialog( "option", "buttons", [
-				{
-					text: "Ok",
-					click: function() { $(this).dialog("close"); }
-				}
-			] );
-			
+		  			
 		  function commandSwitch( input, output ) {
-			xbmc.httpapi('ExecBuiltIn(RunScript(C:\\vaderScripts\\single_output.py, "' + $(input).data("input") + '", "' + $(output).data("output") + '", "Source", "Display"))');
+		  $.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $(output).data('output'));
+		  $( output ).find('div.inputSource').css({ background: $(input).css('background') });
+		  $( output ).find('div.inputSource').css('background-size', 'contain' ); 
+ 		  // $( output).css({ background: $(ui.draggable).css('background') });
+ 		  // $( "#LeftSource").css({ background: $(input).css('background') });
+		  // xbmc.httpapi('ExecBuiltIn(RunScript(C:\\vaderScripts\\single_output.py, "' + $(input).data("input") + '", "' + $(output).data("output") + '", "Source", "Display"))');
 		  };
 		  
 		  function commandAllFront( input ) {
-		 	xbmc.httpapi('ExecBuiltIn(RunScript(C:\\vaderScripts\\all_outputs.py, "' + $(input).data("input") + '", "Source", "All Displays"))');
+  		  $.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#leftLZ').data('output'));
+  		  $.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#rightLZ').data('output'));
+  		  $.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#centerLZ').data('output'));		  
+		 //	xbmc.httpapi('ExecBuiltIn(RunScript(C:\\vaderScripts\\all_outputs.py, "' + $(input).data("input") + '", "Source", "All Displays"))');
+		  $( "#leftLZ" ).find('div.inputSource').css({ background: $(input).css('background') });
+		  $( "#leftLZ" ).find('div.inputSource').css('background-size', 'contain' ); 
+		  $( "#rightLZ" ).find('div.inputSource').css({ background: $(input).css('background') });
+		  $( "#rightLZ" ).find('div.inputSource').css('background-size', 'contain' ); 
+		  $( "#centerLZ" ).find('div.inputSource').css({ background: $(input).css('background') });
+		  $( "#centerLZ" ).find('div.inputSource').css('background-size', 'contain' ); 
 		  };
-        });
+
+		function mappings_get()
+		{
+		$.get( "http://mofdac.vader.jsc.nasa.gov:8000/json", function( mappings )
+		{
+		//alert(mappings);
+			//var j_mappings = $.parseJSON( mappings );
+
+		  $( "#leftLZ" ).find('div.inputSource').css({ background: $("div").find('[data-input="' + mappings.outputs[0].inputNumber + '"]').css('background') });
+		  $( "#leftLZ" ).find('div.inputSource').css('background-size', 'contain' ); 
+		  $( "#rightLZ" ).find('div.inputSource').css({ background: $("div").find('[data-input="' + mappings.outputs[1].inputNumber + '"]').css('background') });
+		  $( "#rightLZ" ).find('div.inputSource').css('background-size', 'contain' ); 
+		  $( "#centerLZ" ).find('div.inputSource').css({ background: $("div").find('[data-input="' + mappings.outputs[2].inputNumber + '"]').css('background') });
+		  $( "#centerLZ" ).find('div.inputSource').css('background-size', 'contain' ); 
+			
+			
+			 for( var outx = 0; outx < mappings.outputs.length; outx++ )
+			 {
+				 var vdest = vdest_for_outputnumber( mappings.outputs[outx].outputNumber );
+				 var vsrc = vsource_for_inputnumber( mappings.outputs[outx].inputNumber );
+				 source_destination_connection_set( vsrc, vdest );
+			 }
+
+		}, 'json' );
+		}		  
+		
+		mappings_get();
+		});
 </script>
 
 <!-- scripts concatenated and minified via ant build script-->
