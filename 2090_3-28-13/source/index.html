@@ -236,9 +236,9 @@
 		  $("#allLZlabel").fitText();
 		  
 		  $("#reset").click(function() {
-			$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $('#pc1').data('input') + '/' + $('#leftLZ').data('output'));
-			$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $('#pc2').data('input') + '/' + $('#centerLZ').data('output'));		  
-			$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $('#pc3').data('input') + '/' + $('#rightLZ').data('output'));
+			//$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $('#pc1').data('input') + '/' + $('#leftLZ').data('output'));
+			//$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $('#pc2').data('input') + '/' + $('#centerLZ').data('output'));		  
+			//$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $('#pc3').data('input') + '/' + $('#rightLZ').data('output'));
 			//xbmc.httpapi('ExecBuiltIn(RunScript(C:\\vaderScripts\\reset.py))');
 		  });
 		  
@@ -248,7 +248,7 @@
 		  });
 		  			
 		  function commandSwitch( input, output ) {
-		  $.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $(output).data('output'));
+		  //$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $(output).data('output'));
 		  $( output ).find('div.inputSource').css({ background: $(input).css('background') });
 		  $( output ).find('div.inputSource').css('background-size', 'contain' ); 
  		  // $( output).css({ background: $(ui.draggable).css('background') });
@@ -257,9 +257,9 @@
 		  };
 		  
 		  function commandAllFront( input ) {
-  		  $.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#leftLZ').data('output'));
-  		  $.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#rightLZ').data('output'));
-  		  $.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#centerLZ').data('output'));		  
+  		  //$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#leftLZ').data('output'));
+  		  //$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#rightLZ').data('output'));
+  		  //$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#centerLZ').data('output'));		  
 		 //	xbmc.httpapi('ExecBuiltIn(RunScript(C:\\vaderScripts\\all_outputs.py, "' + $(input).data("input") + '", "Source", "All Displays"))');
 		  $( "#leftLZ" ).find('div.inputSource').css({ background: $(input).css('background') });
 		  $( "#leftLZ" ).find('div.inputSource').css('background-size', 'contain' ); 

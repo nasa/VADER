@@ -32,22 +32,22 @@
 		<div id="clickshare" class="ui-widget-content source" data-input="3"></div>
 		
 		<div id="atv1" class="ui-widget-content source" data-input="2">
-			<div class="sourcelabel">MOFDAC 1</div>
+			<!--<div class="sourcelabel">MOFDAC 1</div>-->
 		</div>		
 		<div id="atv2" class="ui-widget-content source" data-input="4">
-			<div class="sourcelabel">MOFDAC 2</div>
+			<!--<div class="sourcelabel">MOFDAC 2</div>-->
 		</div>
 		
 		<div id="pc1" class="ui-widget-content source" data-input="5">
-			<div class="sourcelabel">PC Screen 1</div>
+			<!--<div class="sourcelabel">PC Screen 1</div>-->
 		</div>
 
 		<div id="pc2" class="ui-widget-content source" data-input="6">
-			<div class="sourcelabel">PC Screen 2</div>
+			<!--<div class="sourcelabel">PC Screen 2</div>-->
 		</div>
 		
 		<div id="pc3" class="ui-widget-content source" data-input="7">
-			<div class="sourcelabel">PC Screen 3</div>
+			<!--<div class="sourcelabel">PC Screen 3</div>-->
 		</div>
 		
 		<div id="vader" class="ui-widget-content source" data-input="8"></div>		
@@ -62,19 +62,19 @@
 			<div id="leftLZ" class="lz" data-output="1">
 				<h2>Left TV</h2>
 				<div id="LeftSource" class="inputSource"> </div>
-				<div id="LeftPower" class="otf-btn-power"> </div>			
+				<div id="LeftPower" class="btnPower"> </div>			
 			</div>
 			
 			<div id="rightLZ" class="lz" data-output="3">
 				<h2 style="text-align: right;">Right TV</h2>
 				<div id="RightSource" class="inputSource"> </div>
-				<div id="RightPower" class="otf-btn-power"> </div>			
+				<div id="RightPower" class="btnPower"> </div>			
 			</div>
 			
 			<div id="centerLZ" class="lz" data-output="2">
 				<h2 style="text-align: center;">Projector</h2>
 				<div id="CenterSource" class="inputSource"> </div>		
-				<div id="CenterPower" class="otf-btn-power"> </div>			
+				<div id="CenterPower" class="btnPower"> </div>			
 			</div>
 
 		</div>	
@@ -231,46 +231,61 @@
 		$("#allLZlabel").fitText();
 	  
 		$("#reset").click(function() {
-			$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $('#pc1').data('input') + '/' + $('#leftLZ').data('output'));
-			$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $('#pc2').data('input') + '/' + $('#centerLZ').data('output'));
-			$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $('#pc3').data('input') + '/' + $('#rightLZ').data('output'));
+			commandSwitch( $("#pc1"), $("#leftLZ"));
+			commandSwitch( $("#pc2"), $("#centerLZ"));
+			commandSwitch( $("#pc3"), $("#rightLZ"));
+
+			//$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $('#pc1').data('input') + '/' + $('#leftLZ').data('output'));
+			//$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $('#pc2').data('input') + '/' + $('#centerLZ').data('output'));
+			//$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $('#pc3').data('input') + '/' + $('#rightLZ').data('output'));
 		});
 	  
 		// Help button doesn't do anything at the moment
 		$("#helpbuttonID").click(function() {
 
 		});
-				
+			
+		$(".btnPower").click(function() {
+			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().data('output') + '/power');
+		});
+
+			
 		function commandSwitch( input, output ) {
 			$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $(output).data('output'));
-			$( output ).find('div.inputSource').css({ background: $(input).css('background') });
+			$( output ).find('div.inputSource').css({ 'background-image': $(input).css('background-image') });
 			$( output ).find('div.inputSource').css('background-size', 'contain' ); 
-			// $( output).css({ background: $(ui.draggable).css('background') });
-			// $( "#LeftSource").css({ background: $(input).css('background') });
 		};
 	  
 		function commandAllFront( input ) {
 			$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#leftLZ').data('output'));
 			$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#rightLZ').data('output'));
 			$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#centerLZ').data('output'));		  
-			$( "#leftLZ" ).find('div.inputSource').css({ background: $(input).css('background') });
-			$( "#leftLZ" ).find('div.inputSource').css('background-size', 'contain' );
-			$( "#centerLZ" ).find('div.inputSource').css({ background: $(input).css('background') });
+			$( "#leftLZ" ).find('div.inputSource').css( 'background-image', $(input).css('background-image') );
+			$( "#leftLZ" ).find('div.inputSource').css( 'background-size', 'contain' );
+			$( "#centerLZ" ).find('div.inputSource').css( 'background-image', $(input).css('background-image') );
 			$( "#centerLZ" ).find('div.inputSource').css('background-size', 'contain' );
-			$( "#rightLZ" ).find('div.inputSource').css({ background: $(input).css('background') });
+			$( "#rightLZ" ).find('div.inputSource').css( 'background-image', $(input).css('background-image') );
 			$( "#rightLZ" ).find('div.inputSource').css('background-size', 'contain' );
 		};
 
 		function mappings_get() {
 			$.get( "http://mofdac.vader.jsc.nasa.gov:8000/json", function( mappings ) {
 
-				$( "#leftLZ" ).find('div.inputSource').css({ background: $("div").find('[data-input="' + mappings.outputs[0].inputNumber + '"]').css('background') });
+				$( "#leftLZ" ).find('div.inputSource').css( 'background-image', $('div').find('[data-input="' + mappings.outputs[0].inputNumber + '"]').css('background-image'));
 				$( "#leftLZ" ).find('div.inputSource').css('background-size', 'contain' ); 
-				$( "#centerLZ" ).find('div.inputSource').css({ background: $("div").find('[data-input="' + mappings.outputs[1].inputNumber + '"]').css('background') });
+				$( "#centerLZ" ).find('div.inputSource').css( 'background-image', $('div').find('[data-input="' + mappings.outputs[1].inputNumber + '"]').css('background-image'));
 				$( "#centerLZ" ).find('div.inputSource').css('background-size', 'contain' ); 
-				$( "#rightLZ" ).find('div.inputSource').css({ background: $("div").find('[data-input="' + mappings.outputs[2].inputNumber + '"]').css('background') });
+				$( "#rightLZ" ).find('div.inputSource').css( 'background-image', $('div').find('[data-input="' + mappings.outputs[2].inputNumber + '"]').css('background-image'));
 				$( "#rightLZ" ).find('div.inputSource').css('background-size', 'contain' ); 
 
+				//Add get power function status and update picture
+				if ( mappings.outputs[1].powerStatus == "ON") {
+					$("#CenterPower").css('background-image', 'url(img/btn_power_on2.png)');
+				} else {
+					$("#CenterPower").css('background-image', 'url(img/btn_power.png)');
+
+				}
+				
 			}, 'json' );
 		};	  
 	
