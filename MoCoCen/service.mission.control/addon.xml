@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="service.mission.control" name="Mission Control" version="0.6" provider-name="pmosbach">
+    <requires>
+        <import addon="xbmc.addon" version="12.0.0"/>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.simplejson" version="2.0.10"/>
+    </requires>
+    <extension point="xbmc.service" library="service.py" start="login"/>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">Mission Control allows you to make XBMC the nerve center of your living room, conference room, or other space.</summary>
+        <description lang="en">Mission Control allows you to control external devices such as televisions, projectors, A/V switches and receivers, and other digital devices via serial, web, or CEC control. This control can be achieved using Mission controls built-in Python interface inside XBMC or with a web interface using XBMC's JSON-RPC API.</description>
+        <disclaimer lang="en">If you use this improperly, there's a strong chance Santa Claus will bring you nothing but coal until the end of time. Choose wisely. No kittens were harmed in the making of this addon.</disclaimer>
+    </extension>
+</addon>
