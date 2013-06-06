@@ -22,7 +22,6 @@
 </head>
 <body style="background-color: rgb(0,0,0); min-height: 100%">
 <!--[if	lt	IE	7]><p	class=chromeframe>Your	browser	is	<em>ancient	and	a	danger	to	security!</em>	<a	href="http://browsehappy.com/">Upgrade	to	a	different	browser</a>	or	<a	href="http://www.google.com/chromeframe/?redirect=true">install	Google	Chrome	Frame</a>	to	experience	this	site.</p><![endif]-->
-	<!--<h1 align= "center" margin="0px"> Mission Operations Facility Division Action Center Media Control </h1> -->
 	<div id="source-container">
 		<div id = "inputText">
 			<center><font size = "6"><b> Inputs </b></font></align></center>
@@ -106,14 +105,16 @@
 <script>
 	$(function() {
 		var activeInput = null;
-		$( "#atv1" ).height( $( "#atv1" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='atv1' class='ui-widget-content source glowActive' style='height: " + $( "#atv1" ).width() + "px;'><div class='sourcelabel'>1</div></div>" ); } });
-		$( "#atv2" ).height( $( "#atv2" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='atv2' class='ui-widget-content source glowActive' style='height: " + $( "#atv2" ).width() + "px;'><div class='sourcelabel'>2</div></div>" ); }});
-		$( "#widi" ).height( $( "#widi" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='widi' class='ui-widget-content source glowActive' style='height: " + $( "#widi" ).width() + "px;'></div>" ); }});
-		$( "#clickshare" ).height( $( "#clickshare" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='clickshare' class='ui-widget-content source glowActive' style='height: " + $( "#clickshare" ).width() + "px;'></div>" ); }});
-		$( "#pc1" ).height( $( "#pc1" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='pc1' class='ui-widget-content source glowActive' style='height: " + $( "#pc1" ).width() + "px;'><div class='sourcelabel'>PC Screen 1</div></div>" ); }});
-		$( "#pc2" ).height( $( "#pc2" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='pc2' class='ui-widget-content source glowActive' style='height: " + $( "#pc2" ).width() + "px;'><div class='sourcelabel'>2</div></div>" ); }});
-		$( "#pc3" ).height( $( "#pc3" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='pc3' class='ui-widget-content source glowActive' style='height: " + $( "#pc3" ).width() + "px;'><div class='sourcelabel'>3</div></div>" ); }});
-		$( "#vader" ).height( $( "#vader" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='vader' class='ui-widget-content source glowActive' style='height: " + $( "#vader" ).width() + "px;'></div>" ); }});
+		var timeoutId = null;
+		var intervalId = null;
+		$( "#atv1" ).height( $( "#atv1" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='atv1' class='ui-widget-content source glowActive theFront' style='height: " + $( "#atv1" ).width() + "px;'></div>" ); } });
+		$( "#atv2" ).height( $( "#atv2" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='atv2' class='ui-widget-content source glowActive theFront' style='height: " + $( "#atv2" ).width() + "px;'></div>" ); }});
+		$( "#widi" ).height( $( "#widi" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='widi' class='ui-widget-content source glowActive theFront' style='height: " + $( "#widi" ).width() + "px;'></div>" ); }});
+		$( "#clickshare" ).height( $( "#clickshare" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='clickshare' class='ui-widget-content source glowActive theFront' style='height: " + $( "#clickshare" ).width() + "px;'></div>" ); }});
+		$( "#pc1" ).height( $( "#pc1" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='pc1' class='ui-widget-content source glowActive theFront' style='height: " + $( "#pc1" ).width() + "px;'></div>" ); }});
+		$( "#pc2" ).height( $( "#pc2" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='pc2' class='ui-widget-content source glowActive theFront' style='height: " + $( "#pc2" ).width() + "px;'></div>" ); }});
+		$( "#pc3" ).height( $( "#pc3" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='pc3' class='ui-widget-content source glowActive theFront' style='height: " + $( "#pc3" ).width() + "px;'></div>" ); }});
+		$( "#vader" ).height( $( "#vader" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='vader' class='ui-widget-content source glowActive theFront' style='height: " + $( "#vader" ).width() + "px;'></div>" ); }});
 
 		$( "#atv1, #atv2, #widi, #clickshare, #pc1, #pc2, #pc3, #vader" ).click(function(){
 			if ( activeInput == null) {
@@ -246,17 +247,27 @@
 		});
 			
 		$(".btnPower").click(function() {
+			clearInterval(timeoutId);
+			clearInterval(intervalId);
 			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().data('output') + '/power');
+			timeoutId = setTimeout( function() { mappings_get(); }, 5000);
+			intervalId = setInterval( function() { mappings_get(); }, 10000);
 		});
 
 			
 		function commandSwitch( input, output ) {
+			clearInterval(timeoutId);
+			clearInterval(intervalId);
 			$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $(output).data('output'));
 			$( output ).find('div.inputSource').css({ 'background-image': $(input).css('background-image') });
-			$( output ).find('div.inputSource').css('background-size', 'contain' ); 
+			$( output ).find('div.inputSource').css('background-size', 'contain' );
+			timeoutId = setTimeout( function() { mappings_get(); }, 5000);
+			intervalId = setInterval( function() { mappings_get(); }, 10000);
 		};
 	  
 		function commandAllFront( input ) {
+			clearInterval(timeoutId);
+			clearInterval(intervalId);
 			$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#leftLZ').data('output'));
 			$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#rightLZ').data('output'));
 			$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#centerLZ').data('output'));		  
@@ -266,6 +277,8 @@
 			$( "#centerLZ" ).find('div.inputSource').css('background-size', 'contain' );
 			$( "#rightLZ" ).find('div.inputSource').css( 'background-image', $(input).css('background-image') );
 			$( "#rightLZ" ).find('div.inputSource').css('background-size', 'contain' );
+			timeoutId = setTimeout( function() { mappings_get(); }, 5000);
+			intervalId = setInterval( function() { mappings_get(); }, 10000);
 		};
 
 		function mappings_get() {
@@ -290,7 +303,7 @@
 		};	  
 	
 		mappings_get();
-		setInterval( function() { mappings_get(); }, 10000); // Yes, Virginia, there really is a Santa Claus. It really is this easy. And a pure javascript call even.
+		intervalId = setInterval( function() { mappings_get(); }, 10000); // Yes, Virginia, there really is a Santa Claus. It really is this easy. And a pure javascript call even.
 	});
 </script>
 
