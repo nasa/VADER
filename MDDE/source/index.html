@@ -1,0 +1,271 @@
+<!doctype html>
+<!--[if lt IE 7]>	<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta	charset="utf-8">
+	<meta	http-equiv="X-UA-Compatible"	content="IE=edge,chrome=1">
+
+	<title>MOFDAC Media Control</title>
+	<meta name="description"	content="Control the front displays in the MOFDAC (30A/2090) using this website">
+	<meta name="author"	content="DD12">
+
+	<meta name="viewport" content="width=device-width">
+	<meta name="HandheldFriendly" content="True">
+
+	<link href="css/themes/base/jquery-ui.css" rel="stylesheet">
+	<link href="css/themes/dot-luv/jquery-ui.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/2090.css">
+
+	<script	src="js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
+</head>
+<body style="background-color: rgb(0,0,0);">
+<!--[if	lt	IE	7]><p	class=chromeframe>Your	browser	is	<em>ancient	and	a	danger	to	security!</em>	<a	href="http://browsehappy.com/">Upgrade	to	a	different	browser</a>	or	<a	href="http://www.google.com/chromeframe/?redirect=true">install	Google	Chrome	Frame</a>	to	experience	this	site.</p><![endif]-->
+	<!--<h1 align= "center" margin="0px"> Mission Operations Facility Division Action Center Media Control </h1> -->
+	<div id="source-container">
+		<div id = "inputText">
+			<center><font size = "6"><b> Inputs </b></font></center>
+		</div>
+		<div id="widi1" class="ui-widget-content source" data-input="1">
+			<div class="sourcelabel">1</div>
+		</div>
+		
+		<div id="widi2" class="ui-widget-content source" data-input="3">
+			<div class="sourcelabel">2</div>
+		</div>
+		
+		<div id="atv1" class="ui-widget-content source" data-input="2">
+			<div class="sourcelabel">Test 1</div>
+		</div>		
+		<div id="atv2" class="ui-widget-content source" data-input="4">
+			<div class="sourcelabel">Test 2</div>
+		</div>
+		
+		<div id="clickshare" class="ui-widget-content source" data-input="5">
+		</div>
+
+		<div id="vader" class="ui-widget-content source" data-input="6">
+		</div>
+		
+		<div id="tuner" class="ui-widget-content source" data-input="7">
+		</div>
+		
+	</div>
+	
+	<!-- Surrounded by the second blue border and contains all droppable boxes along with "default" and "help" buttons -->
+	<div id="outer-main-div">
+		<div id = "OutputText">
+					<center><font size = "6"><b> Outputs </b></font></center>
+		</div>
+		<div id="main-container" >		
+			<div id="leftLZ" class="lz" data-output="1">
+				<h2>Left TV</h2>
+				<div class="otf-btn-power otf-bkg"></div>
+		</div>
+			
+			<div id="rightLZ" class="lz" data-output="3">
+				<h2 style="text-align: right;">Right TV</h2>
+				<div class="otf-btn-power otf-bkg"></div>	
+			</div>
+			
+			<div id="centerLZ" class="lz" data-output="2">
+				<h2 style="text-align: center;">Projector</h2>
+				<div class="otf-btn-power otf-bkg"></div>			
+			</div>
+
+		</div>	
+		<div id="topbar">
+			<div id="reset" class="panicbutton">
+				<div style="margin: 5% auto;">DEFAULT<p style="margin: 0%; text-align:center;"> SETUP </p></div>
+			</div>
+			<!-- Minor fix for help button *margin:16% should be 23%*-->
+			<div id="helpButtonID" class="helpbutton" onclick="location.href='help.html'">
+				<div style="margin: 5% auto;">HELP</div>
+			</div>
+			
+			<div id="allLZ" class="lz">
+				<div id="allLZlabel" style="text-align: center;">
+					<h2 style="text-align: center; margin: 3%;">All Displays</h2>
+				</div>
+			</div>
+		</div>		
+	</div>
+	
+<script	src="js/libs/jquery-1.9.1.min.js"></script>
+<script	src="js/libs/jquery-ui.js"></script>
+<script	src="js/libs/jquery.ui.touch-punch.min.js"></script>
+<script src="js/libs/jquery.backgroundSize.js"></script>
+<script src="js/libs/jquery.fittext.js"></script>
+<script src="js/libs/bigtext.js"></script>
+<script src="../js/lib.xbmc.js"></script>
+
+<script>
+        $(function() {
+          var activeInput = null;
+          $( "#atv1" ).height( $( "#atv1" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='atv1' class='ui-widget-header source' style='height: " + $( "#atv1" ).width() + "px;'><div class='sourcelabel'>1</div></div>" ); } });
+          $( "#atv2" ).height( $( "#atv2" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='atv2' class='ui-widget-header source' style='height: " + $( "#atv2" ).width() + "px;'><div class='sourcelabel'>2</div></div>" ); }});
+		  $( "#widi1" ).height( $( "#widi1" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='widi1' class='ui-widget-header source' style='height: " + $( "#widi1" ).width() + "px;'><div class='sourcelabel'>Test 1</div></div>" ); }});
+		  $( "#widi2" ).height( $( "#widi2" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='widi2' class='ui-widget-header source' style='height: " + $( "#widi2" ).width() + "px;'><div class='sourcelabel'>Test 2</div></div>" ); }});
+		  $( "#clickshare" ).height( $( "#clickshare" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='clickshare' class='ui-widget-header source' style='height: " + $( "#clickshare" ).width() + "px;'></div>" ); }});
+		  $( "#vader" ).height( $( "#vader" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='vader' class='ui-widget-header source' style='height: " + $( "#vader" ).width() + "px;'></div>" ); }});
+		  $( "#tuner" ).height( $( "#tuner" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='tuner' class='ui-widget-header source' style='height: " + $( "#tuner" ).width() + "px;'></div>" ); }});
+		  
+
+		  $( "#atv1, #atv2, #widi1, #widi2, #clickshare, #tuner, #vader" ).click(function(){
+		    if ( activeInput == null) {
+		      activeInput = $( this );
+		      activeInput.addClass( "active" );
+		    }
+		    else if ( activeInput.data('input') == $( this ).data('input') ) {
+		      activeInput.removeClass( "active" );
+		      activeInput = null;
+		    }
+		    else {
+		      activeInput.removeClass( "active" );
+		      activeInput = $( this );
+		      activeInput.addClass( "active" );
+		    }
+		  });
+
+          $( "#leftLZ, #centerLZ, #rightLZ" ).droppable({
+            activeClass: "active",
+            hoverClass: "hover",
+            drop: function( event, ui ) {
+              $( this )
+                .addClass( "active" )
+                .find( "div" )
+                  .html( $(ui.draggable).find( "p" ).html() )
+			  $( this ).find("div").css({ background: $(ui.draggable).css('background') });
+			  $( this ).find("div").css('background-size', 'contain' );
+			  commandSwitch( ui.draggable, this );
+            }
+          });
+          
+          $( "#leftLZ, #centerLZ, #rightLZ" ).click(function(){
+            if (activeInput != null) {
+              commandSwitch( activeInput, this );
+		      activeInput.removeClass( "active" );
+		      activeInput = null;
+		    }
+          });
+          
+          $( "#allLZ" ).click(function(){
+            if (activeInput != null) {
+              commandAllFront( activeInput );
+		      activeInput.removeClass( "active" );
+		      activeInput = null;
+		    }
+          });
+		  
+		  
+		  $( "#centerLZ" ).height( $( "#centerLZ" ).width() * 0.6 );
+		  $( "#leftLZ" ).height( $( "#leftLZ" ).width() * 0.875);
+		  $( "#rightLZ" ).height( $( "#rightLZ" ).width() * 0.875);
+		  //$( "#allLZ" ).height( $( "#widi" ).width() * 0.7);
+		  $( "#allLZ" ).height( $( "#widi1" ).width() * 0.99);
+		  $( "#reset" ).height( $( "#allLZ" ).height() * 0.6);
+		  //$( "#helpbuttonID" ).height( $( "#allLZ" ).height() * 0.5);
+		  
+		  $(window).resize(function() {
+		    //$( "#allLZ" ).height( $( "#widi" ).width() * 0.7);
+		    $( "#allLZ" ).height( $( "#widi1" ).width() * 0.99);
+		    $( "#centerLZ" ).height( $( "#centerLZ" ).width() * 0.6 );
+			$( "#leftLZ" ).height( $( "#leftLZ" ).width() * 0.875 );
+			$( "#rightLZ" ).height( $( "#rightLZ" ).width() * 0.875 );
+			$( "#atv1" ).height( $( "#atv1" ).width() );
+			$( "#atv2" ).height( $( "#atv2" ).width() );
+			$( "#widi1" ).height( $( "#widi1" ).width() );
+			$( "#widi2" ).height( $( "#widi2" ).width() );
+			$( "#clickshare" ).height( $( "#clickshare" ).width() );
+			$( "#vader" ).height( $( "#vader" ).width() );
+			$( "#tuner" ).height( $( "#tuner" ).width() );
+			$( "#reset" ).height( $( "#allLZ" ).height() * 0.6 );
+			//$( "#helpbuttonID" ).height( $( "#allLZ" ).height() * 0.7 );
+		  });
+		  
+		  $( "#allLZ" ).droppable({
+			activeClass: "active",
+			hoverClass: "hover",
+			drop: function( event, ui ) {
+			  commandAllFront( ui.draggable );
+            }
+          });
+		  
+		  $("#reset").bigtext();
+		  //$("#titlebar").bigtext();
+		  $("#helpButtonID").bigtext();
+		  $("#allLZlabel").fitText();
+		  
+		  $("#reset").click(function() {
+			//xbmc.httpapi('ExecBuiltIn(RunScript(C:\\vaderScripts\\reset.py))');
+			var json_bs = "http://127.0.0.1:8000/switch/1/1";
+			$.get( json_bs );
+			var json_bs = "http://127.0.0.1:8000/switch/5/2";
+			$.get( json_bs );
+			var json_bs = "http://127.0.0.1:8000/switch/6/3";
+			$.get( json_bs );
+		  });
+		  
+		  // Help button doesn't do anything at the moment
+		  $("#helpbuttonID").click(function() {
+			
+		  });
+		  
+		  //getter
+			var buttons = $( ".selector" ).dialog( "option", "buttons" );
+			//setter
+			$( ".selector" ).dialog( "option", "buttons", [
+				{
+					text: "Ok",
+					click: function() { $(this).dialog("close"); }
+				}
+			] );
+			
+		  function commandSwitch( input, output ) {
+			//xbmc.httpapi('ExecBuiltIn(RunScript(C:\\vaderScripts\\single_output.py, "' + $(input).data("input") + '", "' + $(output).data("output") + '", "Source", "Display"))');
+			var json_bs = "http://127.0.0.1:8000/switch/" + $(input).data( "input" ) + "/" + $(output).data( "output" );
+			$.get( json_bs );
+		  };
+		  
+		  function commandAllFront( input ) {
+		 	//xbmc.httpapi('ExecBuiltIn(RunScript(C:\\vaderScripts\\all_outputs.py, "' + $(input).data("input") + '", "Source", "All Displays"))');
+			var json_bs = "http://127.0.0.1:8000/switch/" + $(input).data( "input" ) + "/1";
+			$.get( json_bs );
+			var json_bs = "http://127.0.0.1:8000/switch/" + $(input).data( "input" ) + "/2";
+			$.get( json_bs );
+			var json_bs = "http://127.0.0.1:8000/switch/" + $(input).data( "input" ) + "/3";
+			$.get( json_bs );
+		  };
+		  function getStatus() {
+			//alert("My message");
+			$.get( "http://127.0.0.1:8000/json", function( mappings )
+			{
+
+				// DO CRAP HERE
+				//alert(mappings.outputs[1].inputName);
+				//for( var outx = 0; outx < mappings.outputs.length; outx++ )
+				//{
+					//var vdest = vdest_for_outputnumber( mappings.outputs[outx].outputNumber );
+					//var vsrc = vsource_for_inputnumber( mappings.outputs[outx].inputNumber );
+					//source_destination_connection_set( vsrc, vdest );
+				//}
+
+				//var ch_maj = parseInt( mappings.tuner.majorChannel, 10 );
+				//var ch_min = parseInt( mappings.tuner.minorChannel, 10 );
+				//numpad_channelnumber_set( ch_maj + "-" + ch_min );
+				//vdest_btn_chn_text_set( ch_maj + "-" + ch_min );
+			}, 'json' );
+			setTimeout(function () { getStatus(); }, 5000);
+		  }
+		  setTimeout(function () { getStatus(); }, 5000);
+        });
+</script>
+
+<!-- scripts concatenated and minified via ant build script-->
+<script	src="js/plugins.js"></script>
+<script	src="js/script.js"></script>
+<!-- end scripts-->
+
+</body>
+</html>

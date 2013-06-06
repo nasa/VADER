@@ -1,0 +1,80 @@
+Example:
+{
+	"outputs":[
+		{
+			"outputName": "Action Center",
+			"outputNumber": "6",
+			"inputNumber": "1",
+			"inputName":"ClickShare"
+		}
+	],
+	"tuner":
+	{
+			"majorChannel":"013",
+			"minorChannel":"001",
+			"channelName":"KUHT-HD",
+			"programName":"Daytripper"
+	}
+}
+
+Schema:
+{
+	"type":"object",
+	"$schema": "http://json-schema.org/draft-03/schema",
+	"id": "http://jsonschema.net",
+	"required":false,
+	"properties":{
+		"output": {
+			"type":"array",
+			"id": "http://jsonschema.net/output",
+			"required":false,
+			"items":
+				{
+					"type":"object",
+					"id": "http://jsonschema.net/output/0",
+					"required":false,
+					"properties":{
+						"inputName": {
+							"type":"string",
+							"id": "http://jsonschema.net/output/0/inputName",
+							"required":false
+						},
+						"inputNumber": {
+							"type":"string",
+							"id": "http://jsonschema.net/output/0/inputNumber",
+							"required":false
+						},
+						"outputName": {
+							"type":"string",
+							"id": "http://jsonschema.net/output/0/outputName",
+							"required":false
+						},
+						"outputNumber": {
+							"type":"string",
+							"id": "http://jsonschema.net/output/0/outputNumber",
+							"required":false
+						}
+					}
+				}
+			
+
+		},
+		"tuner": {
+			"type":"object",
+			"id": "http://jsonschema.net/tuner",
+			"required":false,
+			"properties":{
+				"majorChannel": {
+					"type":"string",
+					"id": "http://jsonschema.net/tuner/majorChannel",
+					"required":false
+				},
+				"minorChannel": {
+					"type":"string",
+					"id": "http://jsonschema.net/tuner/minorChannel",
+					"required":false
+				}
+			}
+		}
+	}
+}
