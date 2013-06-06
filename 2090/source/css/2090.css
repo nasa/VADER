@@ -190,17 +190,26 @@ nav a:hover{
 #source-container { margin: 10px;  padding-bottom: 5px; clear: both; overflow: hidden; -moz-border-radius: 20px; border-radius: 20px; border-style: solid; border-color: rgb(51, 153, 255); background-color: rgb(11, 61, 145); background-color: rgba(11, 61, 145, 0.5); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)"; }
 #reset { clear: left; float: left; }
 #helpButtonID { float: right;}
-
 .theFront { z-index: 50;}
-
 .btnPower { float: right; position: absolute; background-image: url('../img/btn_power.png'); background-size: cover; width:20%; bottom: 0; right: 0;} 
+#leftMute {}
+#rightMute {}
+#centerMute {}
+.btnMute { position: absolute; background-image: url('../img/sound.png'); -moz-border-radius: 15px; border-radius: 15px;  background-size: cover; width:13%; bottom: 0; right: 175px;}
+.powerOn {} 
 
 .btnPower:active {
-	bottom:-4px;
-}
-
-.btnPower:hover{
 	background-image:url('../img/btn_power_glow.png');
+}
+.btnMute:active {
+	background-image:url('../img/sound2.png'); 
+}
+.btnMute:hover {
+	bottom:4px;
+}
+.btnPower:hover{
+	/*background-image:url('../img/btn_power_glow.png');*/
+	bottom:4px;
 }
 	
 .panicbutton {

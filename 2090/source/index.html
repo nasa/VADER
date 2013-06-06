@@ -61,18 +61,21 @@
 			<div id="leftLZ" class="lz" data-output="1">
 				<h2>Left TV</h2>
 				<div id="LeftSource" class="inputSource"> </div>
-				<div id="LeftPower" class="btnPower"> </div>			
+				<div id="leftMute" class="btnMute"></div>
+				<div id="LeftPower" class="btnPower"> </div>				
 			</div>
 			
 			<div id="rightLZ" class="lz" data-output="3">
 				<h2 style="text-align: right;">Right TV</h2>
 				<div id="RightSource" class="inputSource"> </div>
+				<div id="rightMute" class="btnMute"></div>
 				<div id="RightPower" class="btnPower"> </div>			
 			</div>
 			
 			<div id="centerLZ" class="lz" data-output="2">
 				<h2 style="text-align: center;">Projector</h2>
-				<div id="CenterSource" class="inputSource"> </div>		
+				<div id="CenterSource" class="inputSource"></div>		
+				<div id="centerMute" class="btnMute"></div>		
 				<div id="CenterPower" class="btnPower"> </div>			
 			</div>
 
@@ -199,6 +202,10 @@
 		$( "#LeftSource" ).height( $( "#LeftSource" ).width());
 		$( "#RightSource" ).height( $( "#RightSource" ).width());
 		$( "#CenterSource" ).height( $( "#CenterSource" ).width());
+		$( "#leftMute").height($("#leftMute").width() );
+		$( "#rightMute").height($("#rightMute").width() );
+		$( "#centerMute").width($("#leftMute").width() );
+		$( "#centerMute").height($("#leftMute").width() );
 
 	  
 		$(window).resize(function() {
@@ -222,7 +229,11 @@
 			$( "#LeftSource" ).height($( "#LeftSource" ).width());
 			$( "#RightSource" ).height( $( "#RightSource" ).width());
 			$( "#CenterSource" ).height( $( "#CenterSource" ).width());		   
-
+			$( "#leftMute").height($("#leftMute").width() );
+			$( "#rightMute").height($("#rightMute").width() );
+			$( "#centerMute").width($("#leftMute").width() );
+			$( "#centerMute").height($("#leftMute").width() );
+			
 			//$( "#helpbuttonID" ).height( $( "#allLZ" ).height() * 0.7 );
 		});
 	  
@@ -254,6 +265,12 @@
 			intervalId = setInterval( function() { mappings_get(); }, 10000);
 		});
 
+		$(".btnMute").click(function() {
+			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().data('output') + '/volume/+');
+			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().data('output') + '/volume/+');
+			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().data('output') + '/volume/+');
+			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().data('output') + '/volume/+');	
+		});	
 			
 		function commandSwitch( input, output ) {
 			clearInterval(timeoutId);
