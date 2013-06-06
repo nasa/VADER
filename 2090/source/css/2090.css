@@ -154,7 +154,7 @@ nav a:hover{
 
 
 /* ===== Primary Styles ========================================================
-   Author: Peter Mosbacher
+   Author: Peter Mosbacher, Elena Buhay
    ========================================================================== */
 #outer-main-div{padding: 5px; -moz-border-radius: 20px; border-radius: 20px; border-style: solid; border-color: rgb(51, 153, 255);  background-color: rgb(11, 61, 145); background-color: rgba(11, 61, 145, 0.5); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)"; }
 #main-container {clear: both; overflow: hidden; background-image: url('../img/allDisplays2.png'); background-size: 100%; background-repeat: no-repeat; background-position: center top; height: 100%; }
@@ -191,7 +191,9 @@ nav a:hover{
 #reset { clear: left; float: left; }
 #helpButtonID { float: right;}
 
-.btnPower      {float:right; position: absolute; background-image: url('../img/btn_power.png'); background-size: cover; width:20%; bottom: 0; right: 0;} 
+.theFront { z-index: 50;}
+
+.btnPower { float: right; position: absolute; background-image: url('../img/btn_power.png'); background-size: cover; width:20%; bottom: 0; right: 0;} 
 
 .btnPower:active {
 	bottom:-4px;
