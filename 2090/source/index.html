@@ -301,15 +301,15 @@
 		});
 
 		$(".btnMute").click(function() {
-			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().data('output') + '/volume/mute');
+			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().parent().data('output') + '/volume/mute');
 		});	
 		
 		$(".btnVolUp").click(function() {
-			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().data('output') + '/volume/+');
+			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().parent().data('output') + '/volume/+');
 		});	
 		
 		$(".btnVolDown").click(function() {
-			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().data('output') + '/volume/-');
+			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().parent().data('output') + '/volume/-');
 		});				
 		function commandSwitch( input, output ) {
 			clearInterval(timeoutId);
