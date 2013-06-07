@@ -60,23 +60,35 @@
 		<div id="main-container" >		
 			<div id="leftLZ" class="lz" data-output="1">
 				<h2>Left TV</h2>
-				<div id="LeftSource" class="inputSource"> </div>
-				<div id="leftMute" class="btnMute"></div>
-				<div id="LeftPower" class="btnPower"> </div>				
+				<div id="leftSource" class="inputSource"> </div>
+				<div class="soundPanel">
+					<div id="leftMute" class="btnMute"></div>
+					<div id="leftVolDown" class="btnVolDown"></div>
+					<div id="leftVolUp" class="btnVolUp"></div>
+				</div>
+				<div id="leftPower" class="btnPower"> </div>				
 			</div>
 			
 			<div id="rightLZ" class="lz" data-output="3">
 				<h2 style="text-align: right;">Right TV</h2>
-				<div id="RightSource" class="inputSource"> </div>
-				<div id="rightMute" class="btnMute"></div>
-				<div id="RightPower" class="btnPower"> </div>			
+				<div id="rightSource" class="inputSource"> </div>
+				<div class="soundPanel">
+					<div id="rightMute" class="btnMute"></div>
+					<div id="rightVolDown" class="btnVolDown"></div>
+					<div id="rightVolUp" class="btnVolUp"></div>
+				</div>
+				<div id="rightPower" class="btnPower"> </div>			
 			</div>
 			
 			<div id="centerLZ" class="lz" data-output="2">
 				<h2 style="text-align: center;">Projector</h2>
-				<div id="CenterSource" class="inputSource"></div>		
-				<div id="centerMute" class="btnMute"></div>		
-				<div id="CenterPower" class="btnPower"> </div>			
+				<div id="centerSource" class="inputSource"></div>		
+				<div class="soundPanel">
+					<div id="centerMute" class="btnMute"></div>
+					<div id="centerVolDown" class="btnVolDown"></div>
+					<div id="centerVolUp" class="btnVolUp"></div>
+				</div>
+				<div id="centerPower" class="btnPower"> </div>			
 			</div>
 
 		</div>	
@@ -195,18 +207,31 @@
 		$( "#allLZ" ).height( $( "#widi" ).width() * 0.99);
 		//$( "#reset" ).height( $( "#allLZ" ).height() * 0.6);
 		//$( "#helpbuttonID" ).height( $( "#allLZ" ).height() * 0.5);
-		$( "#LeftPower" ).height( $( "#LeftPower" ).width());
-		$( "#RightPower" ).height( $( "#RightPower" ).width());
-		$( "#CenterPower" ).width( $( "#LeftPower" ).width());
-		$( "#CenterPower" ).height( $( "#LeftPower" ).width());
-		$( "#LeftSource" ).height( $( "#LeftSource" ).width());
-		$( "#RightSource" ).height( $( "#RightSource" ).width());
-		$( "#CenterSource" ).height( $( "#CenterSource" ).width());
+		$( "#leftPower" ).height( $( "#leftPower" ).width());
+		$( "#rightPower" ).height( $( "#rightPower" ).width());
+		$( "#centerPower" ).width( $( "#leftPower" ).width());
+		$( "#centerPower" ).height( $( "#leftPower" ).width());
+		$( "#leftSource" ).height( $( "#leftSource" ).width());
+		$( "#rightSource" ).height( $( "#rightSource" ).width());
+		$( "#centerSource" ).height( $( "#centerSource" ).width());
+		$( "#leftMute").width($("#leftPower").width() * 0.65 );
 		$( "#leftMute").height($("#leftMute").width() );
+		$( "#leftVolUp").width($("#leftPower").width() * 0.65 );
+		$( "#leftVolUp").height($("#leftVolUp").width() );
+		$( "#leftVolDown").width($("#leftPower").width() * 0.65);
+		$( "#leftVolDown").height($("#leftVolDown").width() );
+		$( "#rightMute").width($("#leftPower").width() * 0.65 );
 		$( "#rightMute").height($("#rightMute").width() );
-		$( "#centerMute").width($("#leftMute").width() );
-		$( "#centerMute").height($("#leftMute").width() );
-
+		$( "#rightVolUp").width($("#leftPower").width() * 0.65 );
+		$( "#rightVolUp").height($("#rightVolUp").width() );
+		$( "#rightVolDown").width($("#leftPower").width() * 0.65);
+		$( "#rightVolDown").height($("#rightVolDown").width() );
+		$( "#centerMute").width($("#leftPower").width() * 0.65 );
+		$( "#centerMute").height($("#centerMute").width() );
+		$( "#centerVolUp").width($("#leftPower").width() * 0.65 );
+		$( "#centerVolUp").height($("#centerVolUp").width() );
+		$( "#centerVolDown").width($("#leftPower").width() * 0.65);
+		$( "#centerVolDown").height($("#centerVolDown").width() );
 	  
 		$(window).resize(function() {
 			$( "#allLZ" ).height( $( "#widi" ).width() * 0.99);
@@ -222,17 +247,31 @@
 			$( "#pc3" ).height( $( "#pc3" ).width() );
 			$( "#vader" ).height( $( "#vader" ).width() );
 			//$( "#reset" ).height( $( "#allLZ" ).height() * .99 );
-			$( "#LeftPower" ).height( $( "#LeftPower" ).width());
-			$( "#RightPower" ).height( $( "#RightPower" ).width());
-			$( "#CenterPower" ).width( $( "#LeftPower" ).width());
-			$( "#CenterPower" ).height( $( "#LeftPower" ).width());
-			$( "#LeftSource" ).height($( "#LeftSource" ).width());
-			$( "#RightSource" ).height( $( "#RightSource" ).width());
-			$( "#CenterSource" ).height( $( "#CenterSource" ).width());		   
+			$( "#leftPower" ).height( $( "#leftPower" ).width());
+			$( "#rightPower" ).height( $( "#rightPower" ).width());
+			$( "#centerPower" ).width( $( "#leftPower" ).width());
+			$( "#centerPower" ).height( $( "#leftPower" ).width());
+			$( "#leftSource" ).height($( "#leftSource" ).width());
+			$( "#rightSource" ).height( $( "#rightSource" ).width());
+			$( "#centerSource" ).height( $( "#centerSource" ).width());		   
+			$( "#leftMute").width($("#leftPower").width() * 0.65 );
 			$( "#leftMute").height($("#leftMute").width() );
+			$( "#leftVolUp").width($("#leftPower").width() * 0.65 );
+			$( "#leftVolUp").height($("#leftVolUp").width() );
+			$( "#leftVolDown").width($("#leftPower").width() * 0.65);
+			$( "#leftVolDown").height($("#leftVolDown").width() );
+			$( "#rightMute").width($("#leftPower").width() * 0.65 );
 			$( "#rightMute").height($("#rightMute").width() );
-			$( "#centerMute").width($("#leftMute").width() );
-			$( "#centerMute").height($("#leftMute").width() );
+			$( "#rightVolUp").width($("#leftPower").width() * 0.65 );
+			$( "#rightVolUp").height($("#rightVolUp").width() );
+			$( "#rightVolDown").width($("#leftPower").width() * 0.65);
+			$( "#rightVolDown").height($("#rightVolDown").width() );
+			$( "#centerMute").width($("#leftPower").width() * 0.65 );
+			$( "#centerMute").height($("#centerMute").width() );
+			$( "#centerVolUp").width($("#leftPower").width() * 0.65 );
+			$( "#centerVolUp").height($("#centerVolUp").width() );
+			$( "#centerVolDown").width($("#leftPower").width() * 0.65);
+			$( "#centerVolDown").height($("#centerVolDown").width() );
 			
 			//$( "#helpbuttonID" ).height( $( "#allLZ" ).height() * 0.7 );
 		});
@@ -246,10 +285,6 @@
 			commandSwitch( $("#pc1"), $("#leftLZ"));
 			commandSwitch( $("#pc2"), $("#centerLZ"));
 			commandSwitch( $("#pc3"), $("#rightLZ"));
-
-			//$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $('#pc1').data('input') + '/' + $('#leftLZ').data('output'));
-			//$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $('#pc2').data('input') + '/' + $('#centerLZ').data('output'));
-			//$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $('#pc3').data('input') + '/' + $('#rightLZ').data('output'));
 		});
 	  
 		// Help button doesn't do anything at the moment
@@ -266,12 +301,16 @@
 		});
 
 		$(".btnMute").click(function() {
-			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().data('output') + '/volume/+');
-			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().data('output') + '/volume/+');
-			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().data('output') + '/volume/+');
-			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().data('output') + '/volume/+');	
+			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().data('output') + '/volume/mute');
 		});	
-			
+		
+		$(".btnVolUp").click(function() {
+			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().data('output') + '/volume/+');
+		});	
+		
+		$(".btnVolDown").click(function() {
+			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().data('output') + '/volume/-');
+		});				
 		function commandSwitch( input, output ) {
 			clearInterval(timeoutId);
 			clearInterval(intervalId);
@@ -310,9 +349,9 @@
 
 				//Add get power function status and update picture
 				if ( mappings.outputs[1].powerStatus == "ON") {
-					$("#CenterPower").css('background-image', 'url(img/btn_power_on2.png)');
+					$("#centerPower").css('background-image', 'url(img/btn_power_on2.png)');
 				} else {
-					$("#CenterPower").css('background-image', 'url(img/btn_power.png)');
+					$("#centerPower").css('background-image', 'url(img/btn_power.png)');
 
 				}
 				

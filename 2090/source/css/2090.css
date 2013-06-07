@@ -177,9 +177,9 @@ nav a:hover{
 #leftLZ { float: left; width: 27.5%; padding-right: 0em; margin: 0.4% 1.5% 0.25% 0.5%; }
 #centerLZ { clear: none; width: 40%; padding-top: 0em; padding-left: 0em; padding-right: 0em; margin: 0.4% auto 0.25% auto; }
 #rightLZ { float: right; width: 27.5%; padding-left: 0em; margin: 0.4% 0.5% 0.25% 1.5%; }
-#LeftSource {left: 22%; bottom: 20%;}
-#RightSource {right: 22%; bottom: 20%;}
-#CenterSource {left: 33%; bottom: 20%; width: 34.2%}
+#leftSource {left: 22%; bottom: 20%;}
+#rightSource {right: 22%; bottom: 20%;}
+#centerSource {left: 33%; bottom: 20%; width: 34.2%}
 .inputSource{position: absolute;  width: 50%; -moz-border-radius: 15px; border-radius: 15px; }
 .glowActive { -webkit-box-shadow: 0px 0px 10px 5px rgba(255, 255, 0, .75); -moz-box-shadow: 0px 0px 10px 5px rgba(255, 255, 0, .75); box-shadow: 0px 0px 10px 5px rgba(255, 255, 0, .75); }
 .active { border-color: rgb(255, 255, 0); }
@@ -191,15 +191,22 @@ nav a:hover{
 #reset { clear: left; float: left; }
 #helpButtonID { float: right;}
 .theFront { z-index: 50;}
-.btnPower { float: right; position: absolute; background-image: url('../img/btn_power.png'); background-size: cover; width:20%; bottom: 0; right: 0;} 
+.btnPower { position: absolute; background-image: url('../img/btn_power.png'); background-size: cover; width:20%; bottom: 0; right: 0;} 
+.powerOn {} 
 #leftMute {}
 #rightMute {}
 #centerMute {}
-.btnMute { position: absolute; background-image: url('../img/sound.png'); -moz-border-radius: 15px; border-radius: 15px;  background-size: cover; width:13%; bottom: 0; right: 175px;}
-.powerOn {} 
+.btnMute { background-image: url('../img/sound.png'); background-size: cover; width:13%; float: left;}
+.btnVolUp { background-image: url('../img/soundUp.png'); -moz-border-radius: 15px; border-radius: 15px;  background-size: cover; width:13%; float: left; }
+.btnVolDown { background-image: url('../img/soundDown.png'); -moz-border-radius: 15px; border-radius: 15px;  background-size: cover; width:13%; float: left; }
+.soundPanel { position: absolute; bottom: 0; left: 0; -moz-border-radius: 15px; border-radius: 15px; border-style: ridge;}
 
 .btnPower:active {
 	background-image:url('../img/btn_power_glow.png');
+}
+.btnPower:hover{
+	/*background-image:url('../img/btn_power_glow.png');*/
+	bottom:4px;
 }
 .btnMute:active {
 	background-image:url('../img/sound2.png'); 
@@ -207,10 +214,18 @@ nav a:hover{
 .btnMute:hover {
 	bottom:4px;
 }
-.btnPower:hover{
-	/*background-image:url('../img/btn_power_glow.png');*/
+.btnVolUp:active {
+	background-image:url('../img/soundUp2.png'); 
+}
+.btnVolUp:hover {
 	bottom:4px;
 }
+.btnVolDown:active {
+	background-image:url('../img/soundDown2.png'); 
+}
+.btnVolDown:hover {
+	bottom:4px;
+}	
 	
 .panicbutton {
 	-moz-box-shadow:inset 0px 1px 0px 0px #0099FF;
