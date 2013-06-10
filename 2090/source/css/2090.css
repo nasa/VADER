@@ -177,21 +177,21 @@ nav a:hover{
 #leftLZ { float: left; width: 27.5%; padding-right: 0em; margin: 0.4% 1.5% 0.25% 0.5%; }
 #centerLZ { clear: none; width: 40%; padding-top: 0em; padding-left: 0em; padding-right: 0em; margin: 0.4% auto 0.25% auto; }
 #rightLZ { float: right; width: 27.5%; padding-left: 0em; margin: 0.4% 0.5% 0.25% 1.5%; }
-#leftSource {left: 22%; bottom: 20%;}
-#rightSource {right: 22%; bottom: 20%;}
-#centerSource {left: 33%; bottom: 20%; width: 34.2%}
+#leftSource {right: 0%; top: 0%;}
+#rightSource {left: 0%; top: 0%;}
+#centerSource {left: 33%; top: 0%; width: 34.2%}
 .inputSource{position: absolute;  width: 50%; -moz-border-radius: 15px; border-radius: 15px; }
 .glowActive { -webkit-box-shadow: 0px 0px 10px 5px rgba(255, 255, 0, .75); -moz-box-shadow: 0px 0px 10px 5px rgba(255, 255, 0, .75); box-shadow: 0px 0px 10px 5px rgba(255, 255, 0, .75); }
 .active { border-color: rgb(255, 255, 0); }
 .hover { background-color: rgb(250, 250, 0); background-color: rgba(250,250,0,0.3); }
 .sourcelabel {position: absolute; padding-left:5%; bottom:0; right:1; font-size: 1.5em; }
-#topbar { padding-top: 2px; width: 100%; display: block; line-height: 0.9; margin-top:1%; background-image: url('../img/allDisplays2.png'); background-size: 45%; background-repeat: no-repeat; background-position: center bottom;}
+#topbar { padding-top: 2px; width: 100%; display: block; line-height: 0.6; margin-top:0.5%; background-image: url('../img/allDisplays2.png'); background-size: 45%; background-repeat: no-repeat; background-position: center bottom;}
 #allLZ { width: 54.5%; background-size: 100%;}
-#source-container { margin: 10px;  padding-bottom: 5px; clear: both; overflow: hidden; -moz-border-radius: 20px; border-radius: 20px; border-style: solid; border-color: rgb(51, 153, 255); background-color: rgb(11, 61, 145); background-color: rgba(11, 61, 145, 0.5); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)"; }
+#source-container { margin: 5px;  padding-bottom: 5px; clear: both; overflow: hidden; -moz-border-radius: 20px; border-radius: 20px; border-style: solid; border-color: rgb(51, 153, 255); background-color: rgb(11, 61, 145); background-color: rgba(11, 61, 145, 0.5); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)"; }
 #reset { clear: left; float: left; }
 #helpButtonID { float: right;}
 .theFront { z-index: 50;}
-.btnPower { position: absolute; background-image: url('../img/btn_power.png'); background-size: cover; width:20%; bottom: 0; right: 0;} 
+.btnPower { position: absolute; background-image: url('../img/btn_power.png'); background-size: cover; width:30%; bottom: 0; right: 0;}
 .powerOn {} 
 #leftMute {}
 #rightMute {}
@@ -424,6 +424,11 @@ nav a:hover{
    #widi { margin-left: 1%; }
    #pc1 { clear: none; margin-left: 1%; }
    #source-container { -moz-border-radius: 30px; border-radius: 30px; }
+   #leftSource {right: 22%; top: 20%;}
+   #rightSource {left: 22%; top: 20%;}
+   #centerSource {left: 33%; top: 20%; width: 34.2%}
+   .btnPower { width:20%; }
+
 }
 
 @media only screen and (min-width: 1140px) {

@@ -23,9 +23,6 @@
 <body style="background-color: rgb(0,0,0); min-height: 100%">
 <!--[if	lt	IE	7]><p	class=chromeframe>Your	browser	is	<em>ancient	and	a	danger	to	security!</em>	<a	href="http://browsehappy.com/">Upgrade	to	a	different	browser</a>	or	<a	href="http://www.google.com/chromeframe/?redirect=true">install	Google	Chrome	Frame</a>	to	experience	this	site.</p><![endif]-->
 	<div id="source-container">
-		<div id = "inputText">
-			<center><font size = "6"><b> Inputs </b></font></align></center>
-		</div>
 		<div id="widi" class="ui-widget-content source" data-input="1"></div>
 		
 		<div id="clickshare" class="ui-widget-content source" data-input="3"></div>
@@ -54,9 +51,6 @@
 	
 	<!-- Surrounded by the second blue border and contains all droppable boxes along with "default" and "help" buttons -->
 	<div id="outer-main-div">
-		<div id = "OutputText">
-			<center><font size = "6"><b> Outputs </b></font></align></center>
-		</div>
 		<div id="main-container" >		
 			<div id="leftLZ" class="lz" data-output="1">
 				<h2>Left TV</h2>
@@ -155,10 +149,10 @@
 			activeClass: "active",
 			hoverClass: "hover",
 			drop: function( event, ui ) {
-				$( this )
-					.addClass( "active" )
-					.find( "div" )
-						.html( $(ui.draggable).find( "p" ).html() )
+				//$( this )
+					//.addClass( "active" )
+					//.find( "div" )
+						//.html( $(ui.draggable).find( "p" ).html() )
 				// $( this ).find("div").css({ background: $(ui.draggable).css('background') });
 				// $( this ).find("div").css('background-size', 'contain' );
 				commandSwitch( ui.draggable, this);
@@ -200,11 +194,11 @@
 		});
 	  
 	  
-		$( "#centerLZ" ).height( $( "#centerLZ" ).width() * 0.6 );
-		$( "#leftLZ" ).height( $( "#leftLZ" ).width() * 0.875);
-		$( "#rightLZ" ).height( $( "#rightLZ" ).width() * 0.875);
+		$( "#centerLZ" ).height( $( "#centerLZ" ).width() * 0.55 );
+		$( "#leftLZ" ).height( $( "#leftLZ" ).width() * 0.8);
+		$( "#rightLZ" ).height( $( "#rightLZ" ).width() * 0.8);
 		//$( "#allLZ" ).height( $( "#widi" ).width() * 0.7);
-		$( "#allLZ" ).height( $( "#widi" ).width() * 0.99);
+		$( "#allLZ" ).height( $( "#widi" ).width() * 0.8);
 		//$( "#reset" ).height( $( "#allLZ" ).height() * 0.6);
 		//$( "#helpbuttonID" ).height( $( "#allLZ" ).height() * 0.5);
 		$( "#leftPower" ).height( $( "#leftPower" ).width());
@@ -234,10 +228,10 @@
 		$( "#centerVolDown").height($("#centerVolDown").width() );
 	  
 		$(window).resize(function() {
-			$( "#allLZ" ).height( $( "#widi" ).width() * 0.99);
-			$( "#centerLZ" ).height( $( "#centerLZ" ).width() * 0.6 );
-			$( "#leftLZ" ).height( $( "#leftLZ" ).width() * 0.875 );
-			$( "#rightLZ" ).height( $( "#rightLZ" ).width() * 0.875 );
+			$( "#allLZ" ).height( $( "#widi" ).width() * 0.8);
+			$( "#centerLZ" ).height( $( "#centerLZ" ).width() * 0.55 );
+			$( "#leftLZ" ).height( $( "#leftLZ" ).width() * 0.8 );
+			$( "#rightLZ" ).height( $( "#rightLZ" ).width() * 0.8 );
 			$( "#atv1" ).height( $( "#atv1" ).width() );
 			$( "#atv2" ).height( $( "#atv2" ).width() );
 			$( "#widi" ).height( $( "#widi" ).width() );
@@ -290,6 +284,18 @@
 		// Help button doesn't do anything at the moment
 		$("#helpbuttonID").click(function() {
 
+		});
+		
+		$(".btnMute").mouseenter(function() {
+			$(this).effect('bounce',100);
+		});
+		
+		$(".btnVolDown").hover(function() {
+			$(this).effect('shake',100);
+		});
+		
+		$(".btnVolUp").mouseenter(function() {
+			$(this).effect('pulsate',500);
 		});
 			
 		$(".btnPower").click(function() {
