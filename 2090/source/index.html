@@ -60,7 +60,9 @@
 					<div id="leftVolDown" class="btnVolDown"></div>
 					<div id="leftVolUp" class="btnVolUp"></div>
 				</div>
-				<div id="leftPower" class="btnPower"> </div>				
+				<div class="powerContainer">
+					<div id="leftPower" class="btnPower"> </div>
+				</div>
 			</div>
 			
 			<div id="rightLZ" class="lz" data-output="3">
@@ -71,7 +73,9 @@
 					<div id="rightVolDown" class="btnVolDown"></div>
 					<div id="rightVolUp" class="btnVolUp"></div>
 				</div>
-				<div id="rightPower" class="btnPower"> </div>			
+				<div class="powerContainer">
+					<div id="rightPower" class="btnPower"> </div>
+				</div>
 			</div>
 			
 			<div id="centerLZ" class="lz" data-output="2">
@@ -82,7 +86,9 @@
 					<div id="centerVolDown" class="btnVolDown"></div>
 					<div id="centerVolUp" class="btnVolUp"></div>
 				</div>
-				<div id="centerPower" class="btnPower"> </div>			
+				<div class="powerContainer">
+					<div id="centerPower" class="btnPower"> </div>
+				</div>
 			</div>
 
 		</div>	
@@ -287,6 +293,9 @@
 		});
 		
 		$(".btnMute").mouseenter(function() {
+			$(this).effect('bounce',100);
+		});
+		$(".btnPower").mouseenter(function() {
 			$(this).effect('bounce',100);
 		});
 		

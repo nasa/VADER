@@ -191,7 +191,8 @@ nav a:hover{
 #reset { clear: left; float: left; }
 #helpButtonID { float: right;}
 .theFront { z-index: 50;}
-.btnPower { position: absolute; background-image: url('../img/btn_power.png'); background-size: cover; width:30%; bottom: 0; right: 0;}
+.powerContainer { position: absolute; width:30%; bottom: 0; right: 0;}
+.btnPower { float: right; background-image: url('../img/btn_power.png'); background-size: cover; width: 100%; }
 .powerOn {} 
 #leftMute {}
 #rightMute {}
@@ -204,10 +205,10 @@ nav a:hover{
 .btnPower:active {
 	background-image:url('../img/btn_power_glow.png');
 }
-.btnPower:hover{
+/*.btnPower:hover{
 	/*background-image:url('../img/btn_power_glow.png');*/
 	bottom:4px;
-}
+}*/
 .btnMute:active {
 	background-image:url('../img/sound2.png'); 
 }
@@ -427,7 +428,7 @@ nav a:hover{
    #leftSource {right: 22%; top: 20%;}
    #rightSource {left: 22%; top: 20%;}
    #centerSource {left: 33%; top: 20%; width: 34.2%}
-   .btnPower { width:20%; }
+   .powerContainer { width:20%; }
 
 }
 
