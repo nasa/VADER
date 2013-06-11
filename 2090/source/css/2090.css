@@ -188,7 +188,7 @@ nav a:hover{
 .sourcelabel {position: absolute; padding-left:5%; bottom:0; right:1; font-size: 1.5em; }
 #topbar { padding-top: 2px; width: 100%; display: block; line-height: 0.9; margin-top:1%; background-image: url('../img/allDisplays2.png'); background-size: 45%; background-repeat: no-repeat; background-position: center bottom;}
 #allLZ { width: 54.5%; background-size: 100%; }
-#source-container { margin: 10px;  padding-bottom: 5px; clear: both; overflow: hidden; -moz-border-radius: 20px; border-radius: 20px; border-style: solid; border-color: rgb(51, 153, 255); background-color: rgb(11, 61, 145); background-color: rgba(11, 61, 145, 0.5); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)"; }
+#source-container { margin: 10px;  padding-bottom: 5px; clear: both; overflow: hidden; -moz-border-radius: 15px; border-radius: 15px; border-style: solid; border-color: rgb(51, 153, 255); background-color: rgb(11, 61, 145); background-color: rgba(11, 61, 145, 0.5); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)"; }
 #helpButtonID { float: right; background-image: url('../img/Help.png'); }
 #defaultButton { float: left; background-image: url('../img/Default.png');} 
 .theFront { z-index: 50;}
@@ -203,6 +203,10 @@ nav a:hover{
 .btnVolDown { background-image: url('../img/soundDown.png'); -moz-border-radius: 15px; border-radius: 15px;  background-size: cover; width:13%; float: left; }
 .soundPanel { position: absolute; bottom: 0; left: 0; -moz-border-radius: 15px; border-radius: 15px; border-style: inset; background-color: rgba(175,176,179,.75);}
 .bottomButtons { position:relative; background-repeat: no-repeat; -moz-background-size: contain; background-size: contain; 	width: 20%; -moz-border-radius: 15px; border-radius: 15px; border-style: outset; border-color: rgb(51, 173, 255) ;background-color: rgba(51, 173, 255,.75);}
+
+#source-container:highlighted {
+	background-color: rgba(255,255,255);
+}
 
 .btnPower:active {
 	background-image:url('../img/btn_power_glow.png');
@@ -448,7 +452,7 @@ nav a:hover{
     Responsive Elements
    ======================== */
    
-   #source-container { -moz-border-radius: 60px; border-radius: 60px; }
+   #source-container { -moz-border-radius: 15px; border-radius: 15px; }
    #widi { margin-left: 2%; }
    
 }

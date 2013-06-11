@@ -19,18 +19,25 @@
 	<link rel="stylesheet" href="css/2090.css">
 
 	<script	src="js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+	<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>-->
 
+    <!-- styles -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/demo.css" rel="stylesheet">
+
+    <!-- Add IntroJs styles -->
+    <link href="css/introjs.css" rel="stylesheet">
+
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+	
+	
 <meta charset=utf-8 /> 
 	
 </head>
 <body style="background-color: rgb(0,0,0); min-height: 100%">
 <!--[if	lt	IE	7]><p	class=chromeframe>Your	browser	is	<em>ancient	and	a	danger	to	security!</em>	<a	href="http://browsehappy.com/">Upgrade	to	a	different	browser</a>	or	<a	href="http://www.google.com/chromeframe/?redirect=true">install	Google	Chrome	Frame</a>	to	experience	this	site.</p><![endif]-->
-	<div id="source-container">
-		<div id = "inputText">
-			<center><font size = "6"><b> Inputs </b></font></align></center>
-		</div>
+	<div id="source-container" data-step="1" data-intro="1. Click or drag an input source." data-position="bottom">
 		<div id="widi" class="ui-widget-content source" data-input="1"></div>
 		
 		<div id="clickshare" class="ui-widget-content source" data-input="3"></div>
@@ -58,10 +65,7 @@
 	</div>
 	
 	<!-- Surrounded by the second blue border and contains all droppable boxes along with "default" and "help" buttons -->
-	<div id="outer-main-div">
-		<div id = "OutputText">
-			<center><font size = "6"><b> Outputs </b></font></align></center>
-		</div>
+	<div id="outer-main-div" data-step="2" data-intro="2. Then either click or drop the input source on the output you'd like to see that input on." data-position="top">
 		<div id="main-container" >		
 			<div id="leftLZ" class="lz" data-output="1">
 				<h2>Left TV</h2>
@@ -85,7 +89,7 @@
 				<div id="rightPower" class="btnPower"> </div>			
 			</div>
 			
-			<div id="centerLZ" class="lz" data-output="2">
+			<div id="centerLZ" class="lz" data-output="2" >
 				<h2 style="text-align: center;">Projector</h2>
 				<div id="centerSource" class="inputSource"></div>		
 				<div class="soundPanel">
@@ -100,7 +104,7 @@
 		<div id="topbar">
 			<div id="defaultButton" class="bottomButtons"></div>
 			
-			<div id="helpButtonID" class="bottomButtons"></div>
+			<div id="helpButtonID" class="bottomButtons" href="javascript:void(0);" onclick="startIntro();"></div>
 			
 			<div id="allLZ" class="lz">
 				<div id="allLZlabel" style="text-align: center;">
@@ -118,7 +122,33 @@
 <script src="js/libs/jquery.fittext.js"></script>
 <script src="js/libs/bigtext.js"></script>
 <script src="../js/lib.xbmc.js"></script>
+<script src="js/libs/intro.js"></script>
 
+<script type="text/javascript">
+	function startIntro () {
+	  var intro = introJs();
+	  intro.setOptions({
+		steps: [
+		  {
+			element: '#source-container',
+			intro: "Click or drag an input source."
+		  },
+		  {
+			element: '#main-container',
+			intro: "Ok, wasn't that fun?",
+		  },
+		  {
+			element: '#allLZ',
+			intro: "You can also click on or drag to All Displays to display you input on all three displays",
+			position: 'top'
+		  }	
+		]
+	  });
+
+	  intro.start();
+	
+	}
+</script>
 <script>
 	$(function() {
 		var activeInput = null;
@@ -207,6 +237,7 @@
 			$( '#centerVolDown').width($('#leftPower').width() * 0.65);
 			$( '#centerVolDown').height($('#centerVolDown').width() );
 		});
+
 		
 		$( '#atv1, #atv2, #widi, #clickshare, #pc1, #pc2, #pc3, #vader' ).click(function(){
 			if ( activeInput == null) {
@@ -279,19 +310,15 @@
 		//$('#helpButtonID').bigtext();
 		$('#allLZlabel').fitText();
 	  
-		$('#defaultSetup').click(function() {
+		$('#defaultButton').click(function() {
 			commandSwitch( $('#pc1'), $('#leftLZ'));
 			commandSwitch( $('#pc2'), $('#centerLZ'));
 			commandSwitch( $('#pc3'), $('#rightLZ'));
 		});
 	  
 		$('#helpbuttonID').click(function() {
-
 		});
 
-		$('#defaultButton').click(function() {
-
-		});
 		
 		$('.btnPower').click(function() {
 			clearInterval(timeoutId);
@@ -305,7 +332,7 @@
 			$('#centerPower').addClass('btnPowerOn');
 			clearInterval(timeoutId);
 			clearInterval(intervalId);
-			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().data('output') + '/power');
+			//$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().data('output') + '/power');
 			timeoutId = setTimeout( function() { mappings_get(); }, 5000);
 			intervalId = setInterval( function() { mappings_get(); }, 10000);
 		});
@@ -360,21 +387,21 @@
 		});	*/		
 		
 		$('.btnMute').click(function() {
-			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().parent().data('output') + '/volume/mute');
+			//$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().parent().data('output') + '/volume/mute');
 		});	
 		
 		$('.btnVolUp').click(function() {
-			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().parent().data('output') + '/volume/+');
+			//$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().parent().data('output') + '/volume/+');
 		});	
 		
 		$('.btnVolDown').click(function() {
-			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().parent().data('output') + '/volume/-');
+			//$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().parent().data('output') + '/volume/-');
 		});
 			
 		function commandSwitch( input, output ) {
 			clearInterval(timeoutId);
 			clearInterval(intervalId);
-			$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $(output).data('output'));
+			//$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $(output).data('output'));
 			$( output ).find('div.inputSource').css({ 'background-image': $(input).css('background-image') });
 			$( output ).find('div.inputSource').css('background-size', 'contain' );
 			timeoutId = setTimeout( function() { mappings_get(); }, 5000);
@@ -384,9 +411,9 @@
 		function commandAllFront( input ) {
 			clearInterval(timeoutId);
 			clearInterval(intervalId);
-			$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#leftLZ').data('output'));
-			$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#rightLZ').data('output'));
-			$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#centerLZ').data('output'));		  
+			//$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#leftLZ').data('output'));
+			//$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#rightLZ').data('output'));
+			//$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#centerLZ').data('output'));		  
 			$( "#leftLZ" ).find('div.inputSource').css( 'background-image', $(input).css('background-image') );
 			$( "#leftLZ" ).find('div.inputSource').css( 'background-size', 'contain' );
 			$( "#centerLZ" ).find('div.inputSource').css( 'background-image', $(input).css('background-image') );
