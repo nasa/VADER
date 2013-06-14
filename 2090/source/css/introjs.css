@@ -75,15 +75,15 @@
 }
 
 .introjs-arrow {
-  border: 5px solid white;
+  border: 15px solid white;
   content:'';
   position: absolute;
 }
 .introjs-arrow.top {
-  top: -10px;
+  top: -30px;
   border-top-color:transparent;
   border-right-color:transparent;
-  border-bottom-color:white;
+  border-bottom-color:#cde0ff;
   border-left-color:transparent;
 }
 .introjs-arrow.right {
@@ -92,11 +92,11 @@
   border-top-color:transparent;
   border-right-color:transparent;
   border-bottom-color:transparent;
-  border-left-color:white;
+  border-left-color:#cde0ff;
 }
 .introjs-arrow.bottom {
   bottom: -10px;
-  border-top-color:white;
+  border-top-color:#cde0ff;
   border-right-color:transparent;
   border-bottom-color:transparent;
   border-left-color:transparent;
@@ -105,7 +105,7 @@
   left: -10px;
   top: 10px;
   border-top-color:transparent;
-  border-right-color:white;
+  border-right-color:#cde0ff;
   border-bottom-color:transparent;
   border-left-color:transparent;
 }
@@ -113,9 +113,9 @@
 .introjs-tooltip {
   position: absolute;
   padding: 10px;
-  background-color: white;
-  min-width: 200px;
-  max-width: 300px;
+  background-color: #cde0ff;
+  min-width: 300px;
+  max-width: 400px;
   border-radius: 3px;
   box-shadow: 0 1px 10px rgba(0,0,0,.4);
   -webkit-transition: opacity 0.1s ease-out;
@@ -143,6 +143,8 @@
   text-decoration: none;
   text-shadow: 1px 1px 0 #fff;
   font: 11px/normal sans-serif;
+  font-size: 13px;
+  font-weight: bold;  
   color: #333;
   white-space: nowrap;
   cursor: pointer;

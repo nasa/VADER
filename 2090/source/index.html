@@ -27,6 +27,7 @@
 <body style="background-color: rgb(0,0,0); min-height: 100%">
 <!--[if	lt	IE	7]><p	class=chromeframe>Your	browser	is	<em>ancient	and	a	danger	to	security!</em>	<a	href="http://browsehappy.com/">Upgrade	to	a	different	browser</a>	or	<a	href="http://www.google.com/chromeframe/?redirect=true">install	Google	Chrome	Frame</a>	to	experience	this	site.</p><![endif]-->
 	<div id="source-container">
+		<div id="leftInput" class="inputText"></div>
 		<div id="widi" class="ui-widget-content source" data-input="1"></div>
 		
 		<div id="clickshare" class="ui-widget-content source" data-input="3"></div>
@@ -50,12 +51,16 @@
 			<!--<div class="sourcelabel">PC Screen 3</div>-->
 		</div>
 		
-		<div id="vader" class="ui-widget-content source" data-input="8"></div>		
+		<div id="vader" class="ui-widget-content source" data-input="8"></div>	
+
+		<div id="rightInput" class="inputText"></div>
+		
 	</div>
 	
 	<!-- Surrounded by the second blue border and contains all droppable boxes along with "default" and "help" buttons -->
 	<div id="outer-main-div">
 		<div id="main-container" >		
+				
 			<div id="leftLZ" class="lz" data-output="1">
 				<h2>Left TV</h2>
 				<div id="leftSource" class="inputSource"> </div>
@@ -134,10 +139,9 @@
 		$( '#centerLZ' ).height( $( '#centerLZ' ).width() * 0.55 );
 		$( '#leftLZ' ).height( $( '#leftLZ' ).width() * 0.8);
 		$( '#rightLZ' ).height( $( '#rightLZ' ).width() * 0.8);
-		//$( '#allLZ' ).height( $( '#widi' ).width() * 0.7);
 		$( '#allLZ' ).height( $( '#widi' ).width() * 0.99);
-		$( '#defaultButton' ).height( $( '#defaultButton' ).width() * .56);
-		$( '#helpButton' ).height( $( '#helpButton' ).width() * .56);
+		$( '#defaultButton' ).height( $( '#widi' ).width() * .99);
+		$( '#helpButton' ).height( $( '#widi' ).width() * .99);
 		$( '#leftPower' ).height( $( '#leftPower' ).width());
 		$( '#rightPower' ).height( $( '#rightPower' ).width());
 		$( '#centerPower' ).width( $( '#leftPower' ).width());
@@ -163,12 +167,18 @@
 		$( '#centerVolUp').height($('#centerVolUp').width() );
 		$( '#centerVolDown').width($('#leftPower').width() * 0.65);
 		$( '#centerVolDown').height($('#centerVolDown').width() );
+		$( '#leftInput').height($('#leftInput').width() * 3.5);
+		$( '#rightInput').height($('#rightInput').width() * 3.5);
+		$( '#leftOutput').height($('#leftOutput').width() * 3.5);
+		$( '#rightOutput').height($('#rightOutput').width() * 3.5);
 	  
 		$(window).resize(function() {
 			$( '#allLZ' ).height( $( '#widi' ).width() * 0.7);
 			$( '#centerLZ' ).height( $( '#centerLZ' ).width() * 0.55 );
 			$( '#leftLZ' ).height( $( '#leftLZ' ).width() * 0.8 );
 			$( '#rightLZ' ).height( $( '#rightLZ' ).width() * 0.8 );
+			$( '#defaultButton' ).height( $( '#widi' ).width() * .7);
+			$( '#helpButton' ).height( $( '#widi' ).width() * .7);	
 			$( '#atv1' ).height( $( '#atv1' ).width() );
 			$( '#atv2' ).height( $( '#atv2' ).width() );
 			$( '#widi' ).height( $( '#widi' ).width() );
@@ -177,8 +187,6 @@
 			$( '#pc2' ).height( $( '#pc2' ).width() );
 			$( '#pc3' ).height( $( '#pc3' ).width() );
 			$( '#vader' ).height( $( '#vader' ).width() );
-			$( '#defaultButton' ).height( $( '#defaultButton' ).width() * .56);
-			$( '#helpButton' ).height( $( '#helpButton' ).width() * .56);
 			$( '#leftPower' ).height( $( '#leftPower' ).width());
 			$( '#rightPower' ).height( $( '#rightPower' ).width());
 			$( '#centerPower' ).width( $( '#leftPower' ).width());
@@ -204,6 +212,11 @@
 			$( '#centerVolUp').height($('#centerVolUp').width() );
 			$( '#centerVolDown').width($('#leftPower').width() * 0.65);
 			$( '#centerVolDown').height($('#centerVolDown').width() );
+			$( '#leftInput').height($('#leftInput').width() * 3.5);
+			$( '#rightInput').height($('#rightInput').width() * 3.5);
+			$( '#leftOutput').height($('#leftOutput').width() * 3.5);
+			$( '#rightOutput').height($('#rightOutput').width() * 3.5);
+
 		});
 
 		
@@ -293,11 +306,13 @@
 			steps: [
 			  {
 				element: '#source-container',
-				intro: "Click or drag an input source."
+				intro: "Click or drag an input source.",
+				position: 'bottom'
 			  },
 			  {
 				element: '#main-container',
 				intro: "Click or drop the input onto any of these ouputs.",
+				position: 'top'
 			  },
 			  {
 				element: '#allLZ',
