@@ -158,23 +158,23 @@ nav a:hover{
    ========================================================================== */
 
 #outer-main-div{padding: 5px; -moz-border-radius: 20px; border-radius: 20px; border-style: solid; border-color: rgb(51, 153, 255);  background-color: rgb(11, 61, 145); background-color: rgba(11, 61, 145, 0.5); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)"; }
-#main-container {clear: both; overflow: hidden; background-image: url('../img/allDisplays2.png'); background-size: 100%; background-repeat: no-repeat; background-position: center top; height: 100%; }
+#main-container {clear: both; overflow: hidden; background-image: url('../img/allDisplays2.png'); background-size: 93%; background-repeat: no-repeat; background-position: center top; height: 98%; }
 .tv { width: 120px; height: 120px; padding: 0.5em; margin: 10px; -moz-background-size: contain; background-size: cover; opacity: 1.0; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; }
 #leftTV { float: right; }
 #projector { margin: auto; }
 #rightTV { float: left;}
 #inputText {  font-family:"Georgia", Georgia, serif; color: rgb(51, 153, 255); margin-bottom:0px; margin-left: 0 auto; margin-right: 0 auto;}
-#OutputText {  font-family:"Georgia", Georgia, serif; color: rgb(51, 153, 255); margin-bottom:0px; margin-left: 0 auto; margin-right: 0 auto;}
+#outputText {  font-family:"Georgia", Georgia, serif; color: rgb(51, 153, 255); margin-bottom:0px; margin-left: 0 auto; margin-right: 0 auto;}
 .source { width: 18%; height: 80px; padding: 0em; margin: 0.75% 0% 0.75% 1.25%; -moz-background-size: contain; background-size: contain; -moz-border-radius: 15px; border-radius: 15px; position: relative; -webkit-box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, .75); -moz-box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, .75); box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, .75);}
 #atv1 { float: left; background-image: url('../img/appletv2.png'); }
 #atv2 { float: left; background-image: url('../img/appletv3.png'); }
-#widi { float: left; background-image: url('../img/widi.jpg'); margin-left: 2%;}
+#widi { float: left; background-image: url('../img/widi.jpg'); margin-left: 1.5%;}
 #clickshare { float: left; background-image: url('../img/clickshare2.png'); }
 #pc1 { clear: left; float: left; background-image: url('../img/windows1.png'); }
 #pc2 { float: left; background-image: url('../img/windows2.png'); }
 #pc3 { float: left; background-image: url('../img/windows3.png'); }
 #vader { float: left; background-image: url('../img/vader.png'); }
-.lz {position: relative; height: auto; padding: 0em; margin: auto; border-style: dashed; -moz-border-radius: 15px; border-radius: 15px; border-width:5px; border-color: rgb(240, 240, 240); background-color: rgba(200, 200, 200, 0.3); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";}
+.lz {position: relative; height: auto; padding: 0em; margin: auto; border-style: dashed; -moz-border-radius: 15px; border-radius: 15px; border-width:5px; border-color: rgb(240, 240, 240); background-color: rgba(200, 200, 200, 0.2); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";}
 #leftLZ { float: left; width: 27.5%; padding-right: 0em; margin: 0.4% 1.5% 0.25% 0.5%; }
 #centerLZ { clear: none; width: 40%; padding-top: 0em; padding-left: 0em; padding-right: 0em; margin: 0.4% auto 0.25% auto; }
 #rightLZ { float: right; width: 27.5%; padding-left: 0em; margin: 0.4% 0.5% 0.25% 1.5%; }
@@ -194,7 +194,7 @@ nav a:hover{
 .theFront { z-index: 50;}
 .powerContainer { position: absolute; width:30%; bottom: 0; right: 0;}
 .btnPower { float:right; background-image: url('../img/btn_power.png'); background-size: cover; width:100%;} 
-.btnPowerOn {  position: absolute; background-image: url('../img/btn_power_on.png'); background-size: cover; width:20%; bottom: 0; right: 0;} 
+.btnPowerOn { position: absolute; background-image: url('../img/btn_power_on.png'); background-size: cover; width:20%; bottom: 0; right: 0;} 
 .powerOn {} 
 #leftMute {}
 #rightMute {}
@@ -207,6 +207,9 @@ nav a:hover{
 .inputText{ background-image: url('../img/inputText.png'); -moz-background-size: contain; background-size: contain; background-repeat: no-repeat; width: 3%;}
 #leftInput{ float: left; margin-left: 1%; margin-top: .75%;}
 #rightInput{ float: right; margin-top: .75%;}
+#outputs{  background-image: url('../img/outputText.png'); -moz-background-size: contain; background-size: contain; background-repeat: no-repeat; width: 9%; margin: 0% auto 0% auto; }
+
+
 
 .source:hover{
 	-webkit-box-shadow: 0px 0px 10px 5px rgba(255, 255, 0, .75); 

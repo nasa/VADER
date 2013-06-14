@@ -59,8 +59,8 @@
 	
 	<!-- Surrounded by the second blue border and contains all droppable boxes along with "default" and "help" buttons -->
 	<div id="outer-main-div">
-		<div id="main-container" >		
-				
+		<div id="main-container" >	
+			<div id="outputs"></div>
 			<div id="leftLZ" class="lz" data-output="1">
 				<h2>Left TV</h2>
 				<div id="leftSource" class="inputSource"> </div>
@@ -169,8 +169,7 @@
 		$( '#centerVolDown').height($('#centerVolDown').width() );
 		$( '#leftInput').height($('#leftInput').width() * 3.5);
 		$( '#rightInput').height($('#rightInput').width() * 3.5);
-		$( '#leftOutput').height($('#leftOutput').width() * 3.5);
-		$( '#rightOutput').height($('#rightOutput').width() * 3.5);
+		$( '#outputs').height($('#outputs').width() * .3);
 	  
 		$(window).resize(function() {
 			$( '#allLZ' ).height( $( '#widi' ).width() * 0.7);
@@ -214,8 +213,7 @@
 			$( '#centerVolDown').height($('#centerVolDown').width() );
 			$( '#leftInput').height($('#leftInput').width() * 3.5);
 			$( '#rightInput').height($('#rightInput').width() * 3.5);
-			$( '#leftOutput').height($('#leftOutput').width() * 3.5);
-			$( '#rightOutput').height($('#rightOutput').width() * 3.5);
+			$( '#outputs').height($('#outputs').width() * .3);
 
 		});
 
