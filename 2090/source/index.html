@@ -17,8 +17,12 @@
 	<link href="css/themes/base/jquery-ui.css" rel="stylesheet">
 	<link href="css/themes/dot-luv/jquery-ui.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/2090.css">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/introjs.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+	
+	<script	src="js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>  
 
-	<script	src="js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
 </head>
 <body style="background-color: rgb(0,0,0); min-height: 100%">
 <!--[if	lt	IE	7]><p	class=chromeframe>Your	browser	is	<em>ancient	and	a	danger	to	security!</em>	<a	href="http://browsehappy.com/">Upgrade	to	a	different	browser</a>	or	<a	href="http://www.google.com/chromeframe/?redirect=true">install	Google	Chrome	Frame</a>	to	experience	this	site.</p><![endif]-->
@@ -53,7 +57,7 @@
 	<div id="outer-main-div">
 		<div id="main-container" >		
 			<div id="leftLZ" class="lz" data-output="1">
-				<h2>Left TV</h2>
+				<div id="leftLZLabel">Left TV</div>
 				<div id="leftSource" class="inputSource"> </div>
 				<div class="soundPanel">
 					<div id="leftMute" class="btnMute"></div>
@@ -66,7 +70,7 @@
 			</div>
 			
 			<div id="rightLZ" class="lz" data-output="3">
-				<h2 style="text-align: right;">Right TV</h2>
+				<div id="rightLZLabel">Right TV</div>
 				<div id="rightSource" class="inputSource"> </div>
 				<div class="soundPanel">
 					<div id="rightMute" class="btnMute"></div>
@@ -93,20 +97,17 @@
 
 		</div>	
 		<div id="topbar">
-			<div id="reset" class="panicbutton">
-				<div style="margin: 5% auto;">DEFAULT<p style="margin: 0%; text-align:center;"> SETUP </p></div>
-			</div>
-			<!-- Minor fix for help button *margin:16% should be 23%*-->
-			<div id="helpButtonID" class="helpbutton" onclick="location.href='help.html'">
-				<div style="margin: 5% auto;">HELP</div>
-			</div>
+			<div id="defaultButton" class="bottomButtons"></div>
+			
+			<div id="helpButton" class="bottomButtons" href="javascript:void(0);"></div>
 			
 			<div id="allLZ" class="lz">
 				<div id="allLZlabel" style="text-align: center;">
 					<h2 style="text-align: center; margin: 3%;">All Displays</h2>
 				</div>
 			</div>
-		</div>		
+		</div>
+		
 	</div>
 	
 <script	src="js/libs/jquery-1.7.2.min.js"></script>
@@ -114,222 +115,251 @@
 <script	src="js/libs/jquery.ui.touch-punch.min.js"></script>
 <script src="js/libs/jquery.backgroundSize.js"></script>
 <script src="js/libs/jquery.fittext.js"></script>
-<script src="js/libs/bigtext.js"></script>
-<script src="../js/lib.xbmc.js"></script>
+<script src="js/libs/intro.js"></script>
 
-<script>
+<script type="text/javascript">
 	$(function() {
 		var activeInput = null;
 		var timeoutId = null;
 		var intervalId = null;
-		$( "#atv1" ).height( $( "#atv1" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='atv1' class='ui-widget-content source glowActive theFront' style='height: " + $( "#atv1" ).width() + "px;'></div>" ); } });
-		$( "#atv2" ).height( $( "#atv2" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='atv2' class='ui-widget-content source glowActive theFront' style='height: " + $( "#atv2" ).width() + "px;'></div>" ); }});
-		$( "#widi" ).height( $( "#widi" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='widi' class='ui-widget-content source glowActive theFront' style='height: " + $( "#widi" ).width() + "px;'></div>" ); }});
-		$( "#clickshare" ).height( $( "#clickshare" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='clickshare' class='ui-widget-content source glowActive theFront' style='height: " + $( "#clickshare" ).width() + "px;'></div>" ); }});
-		$( "#pc1" ).height( $( "#pc1" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='pc1' class='ui-widget-content source glowActive theFront' style='height: " + $( "#pc1" ).width() + "px;'></div>" ); }});
-		$( "#pc2" ).height( $( "#pc2" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='pc2' class='ui-widget-content source glowActive theFront' style='height: " + $( "#pc2" ).width() + "px;'></div>" ); }});
-		$( "#pc3" ).height( $( "#pc3" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='pc3' class='ui-widget-content source glowActive theFront' style='height: " + $( "#pc3" ).width() + "px;'></div>" ); }});
-		$( "#vader" ).height( $( "#vader" ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='vader' class='ui-widget-content source glowActive theFront' style='height: " + $( "#vader" ).width() + "px;'></div>" ); }});
+		$( '#atv1' ).height( $( '#atv1' ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='atv1' class='ui-widget-content source glowActive theFront' style='height: " + $( '#atv1' ).width() + "px;'></div>" ); } });
+		$( '#atv2' ).height( $( '#atv2' ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='atv2' class='ui-widget-content source glowActive theFront' style='height: " + $( '#atv2' ).width() + "px;'></div>" ); }});
+		$( '#widi' ).height( $( '#widi' ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='widi' class='ui-widget-content source glowActive theFront' style='height: " + $( '#widi' ).width() + "px;'></div>" ); }});
+		$( '#clickshare' ).height( $( '#clickshare' ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='clickshare' class='ui-widget-content source glowActive theFront' style='height: " + $( '#clickshare' ).width() + "px;'></div>" ); }});
+		$( '#pc1' ).height( $( '#pc1' ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='pc1' class='ui-widget-content source glowActive theFront' style='height: " + $( '#pc1' ).width() + "px;'></div>" ); }});
+		$( '#pc2' ).height( $( '#pc2' ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='pc2' class='ui-widget-content source glowActive theFront' style='height: " + $( '#pc2' ).width() + "px;'></div>" ); }});
+		$( '#pc3' ).height( $( '#pc3' ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='pc3' class='ui-widget-content source glowActive theFront' style='height: " + $( '#pc3' ).width() + "px;'></div>" ); }});
+		$( '#vader' ).height( $( '#vader' ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='vader' class='ui-widget-content source glowActive theFront' style='height: " + $( '#vader' ).width() + "px;'></div>" ); }});
 
-		$( "#atv1, #atv2, #widi, #clickshare, #pc1, #pc2, #pc3, #vader" ).click(function(){
+		$( '#centerLZ' ).height( $( '#centerLZ' ).width() * 0.55 );
+		$( '#leftLZ' ).height( $( '#leftLZ' ).width() * 0.8);
+		$( '#rightLZ' ).height( $( '#rightLZ' ).width() * 0.8);
+		//$( '#allLZ' ).height( $( '#widi' ).width() * 0.7);
+		$( '#allLZ' ).height( $( '#widi' ).width() * 0.99);
+		$( '#defaultButton' ).height( $( '#defaultButton' ).width() * .56);
+		$( '#helpButton' ).height( $( '#helpButton' ).width() * .56);
+		$( '#leftPower' ).height( $( '#leftPower' ).width());
+		$( '#rightPower' ).height( $( '#rightPower' ).width());
+		$( '#centerPower' ).width( $( '#leftPower' ).width());
+		$( '#centerPower' ).height( $( '#leftPower' ).width());
+		$( '#leftSource' ).height( $( '#leftSource' ).width());
+		$( '#rightSource' ).height( $( '#rightSource' ).width());
+		$( '#centerSource' ).height( $( '#centerSource' ).width());
+		$( '#leftMute').width($('#leftPower').width() * 0.65 );
+		$( '#leftMute').height($('#leftMute').width() );
+		$( '#leftVolUp').width($('#leftPower').width() * 0.65 );
+		$( '#leftVolUp').height($('#leftVolUp').width() );
+		$( '#leftVolDown').width($('#leftPower').width() * 0.65);
+		$( '#leftVolDown').height($('#leftVolDown').width() );
+		$( '#rightMute').width($('#leftPower').width() * 0.65 );
+		$( '#rightMute').height($('#rightMute').width() );
+		$( '#rightVolUp').width($('#leftPower').width() * 0.65 );
+		$( '#rightVolUp').height($('#rightVolUp').width() );
+		$( '#rightVolDown').width($('#leftPower').width() * 0.65);
+		$( '#rightVolDown').height($('#rightVolDown').width() );
+		$( '#centerMute').width($('#leftPower').width() * 0.65 );
+		$( '#centerMute').height($('#centerMute').width() );
+		$( '#centerVolUp').width($('#leftPower').width() * 0.65 );
+		$( '#centerVolUp').height($('#centerVolUp').width() );
+		$( '#centerVolDown').width($('#leftPower').width() * 0.65);
+		$( '#centerVolDown').height($('#centerVolDown').width() );
+	  
+		$(window).resize(function() {
+			$( '#allLZ' ).height( $( '#widi' ).width() * 0.7);
+			$( '#centerLZ' ).height( $( '#centerLZ' ).width() * 0.55 );
+			$( '#leftLZ' ).height( $( '#leftLZ' ).width() * 0.8 );
+			$( '#rightLZ' ).height( $( '#rightLZ' ).width() * 0.8 );
+			$( '#atv1' ).height( $( '#atv1' ).width() );
+			$( '#atv2' ).height( $( '#atv2' ).width() );
+			$( '#widi' ).height( $( '#widi' ).width() );
+			$( '#clickshare' ).height( $( '#clickshare' ).width() );
+			$( '#pc1' ).height( $( '#pc1' ).width() );
+			$( '#pc2' ).height( $( '#pc2' ).width() );
+			$( '#pc3' ).height( $( '#pc3' ).width() );
+			$( '#vader' ).height( $( '#vader' ).width() );
+			$( '#defaultButton' ).height( $( '#defaultButton' ).width() * .56);
+			$( '#helpButton' ).height( $( '#helpButton' ).width() * .56);
+			$( '#leftPower' ).height( $( '#leftPower' ).width());
+			$( '#rightPower' ).height( $( '#rightPower' ).width());
+			$( '#centerPower' ).width( $( '#leftPower' ).width());
+			$( '#centerPower' ).height( $( '#leftPower' ).width());
+			$( '#leftSource' ).height($( '#leftSource' ).width());
+			$( '#rightSource' ).height( $( '#rightSource' ).width());
+			$( '#centerSource' ).height( $( '#centerSource' ).width());		   
+			$( '#leftMute').width($('#leftPower').width() * 0.65 );
+			$( '#leftMute').height($('#leftMute').width() );
+			$( '#leftVolUp').width($('#leftPower').width() * 0.65 );
+			$( '#leftVolUp').height($('#leftVolUp').width() );
+			$( '#leftVolDown').width($('#leftPower').width() * 0.65);
+			$( '#leftVolDown').height($('#leftVolDown').width() );
+			$( '#rightMute').width($('#leftPower').width() * 0.65 );
+			$( '#rightMute').height($('#rightMute').width() );
+			$( '#rightVolUp').width($('#leftPower').width() * 0.65 );
+			$( '#rightVolUp').height($('#rightVolUp').width() );
+			$( '#rightVolDown').width($('#leftPower').width() * 0.65);
+			$( '#rightVolDown').height($('#rightVolDown').width() );
+			$( '#centerMute').width($('#leftPower').width() * 0.65 );
+			$( '#centerMute').height($('#centerMute').width() );
+			$( '#centerVolUp').width($('#leftPower').width() * 0.65 );
+			$( '#centerVolUp').height($('#centerVolUp').width() );
+			$( '#centerVolDown').width($('#leftPower').width() * 0.65);
+			$( '#centerVolDown').height($('#centerVolDown').width() );
+		});
+
+		
+		$( '#atv1, #atv2, #widi, #clickshare, #pc1, #pc2, #pc3, #vader' ).click(function(){
 			if ( activeInput == null) {
 				activeInput = $( this );
-				activeInput.addClass( "glowActive" );
-				$("#leftLZ").addClass("active");
-				$("#centerLZ").addClass("active");
-				$("#rightLZ").addClass("active");		
-				$("#allLZ").addClass("active");
+				activeInput.addClass( 'glowActive' );
+				$('#leftLZ').addClass('active');
+				$('#centerLZ').addClass('active');
+				$('#rightLZ').addClass('active');		
+				$('#allLZ').addClass('active');
 			}
 			else if ( activeInput.data('input') == $( this ).data('input') ) {
-				activeInput.removeClass( "glowActive" );
+				activeInput.removeClass( 'glowActive' );
 				activeInput = null;
+				$('#leftLZ').removeClass('active');
+				$('#centerLZ').removeClass('active');
+				$('#rightLZ').removeClass('active');		
+				$('#allLZ').removeClass('active');	
+				
 			}
 			else {
-				activeInput.removeClass( "glowActive" );
+				activeInput.removeClass( 'glowActive' );
 				activeInput = $( this );
-				activeInput.addClass( "glowActive" );
+				activeInput.addClass( 'glowActive' );
 			}
 		});
 
-		$( "#leftLZ, #centerLZ, #rightLZ" ).droppable({
-			activeClass: "active",
-			hoverClass: "hover",
+		$( '#leftLZ, #centerLZ, #rightLZ' ).droppable({
+			activeClass: 'active',
+			hoverClass: 'hover',
 			drop: function( event, ui ) {
-				//$( this )
-					//.addClass( "active" )
-					//.find( "div" )
-						//.html( $(ui.draggable).find( "p" ).html() )
-				// $( this ).find("div").css({ background: $(ui.draggable).css('background') });
-				// $( this ).find("div").css('background-size', 'contain' );
 				commandSwitch( ui.draggable, this);
 			}
 		});
 	  
-		$( "#allLZ" ).droppable({
-			activeClass: "active",
-			hoverClass: "hover",
+		$( '#allLZ' ).droppable({
+			activeClass: 'active',
+			hoverClass: 'hover',
 			drop: function( event, ui ) {
 				commandAllFront( ui.draggable );
 			}
 		});		  
 	  
-		$( "#leftLZ, #centerLZ, #rightLZ" ).click( function() {
+		$( '#leftLZ, #centerLZ, #rightLZ' ).click( function() {
 			if (activeInput != null) {
-				$(this).addClass("active");
+				$(this).addClass('active');
 				commandSwitch( activeInput, this );
-				activeInput.removeClass( "glowActive" );
+				activeInput.removeClass( 'glowActive' );
 				activeInput = null;
 			}
-			$("#leftLZ").removeClass("active");
-			$("#rightLZ").removeClass("active");
-			$("#centerLZ").removeClass("active");
-			$("#allLZ").removeClass("active")
+			$('#leftLZ').removeClass('active');
+			$('#rightLZ').removeClass('active');
+			$('#centerLZ').removeClass('active');
+			$('#allLZ').removeClass('active')
 
 		});
 	  
-		$( "#allLZ" ).click( function() {
+		$( '#allLZ' ).click( function() {
 			if (activeInput != null) {
 				commandAllFront( activeInput );
-				activeInput.removeClass( "glowActive" );
+				activeInput.removeClass( 'glowActive' );
 				activeInput = null;
 			}
-			$("#leftLZ").removeClass("active");
-			$("#rightLZ").removeClass("active");
-			$("#centerLZ").removeClass("active");
-			$("#allLZ").removeClass("active")
+			$('#leftLZ').removeClass('active');
+			$('#rightLZ').removeClass('active');
+			$('#centerLZ').removeClass('active');
+			$('#allLZ').removeClass('active')
 		});
-	  
-	  
-		$( "#centerLZ" ).height( $( "#centerLZ" ).width() * 0.55 );
-		$( "#leftLZ" ).height( $( "#leftLZ" ).width() * 0.8);
-		$( "#rightLZ" ).height( $( "#rightLZ" ).width() * 0.8);
-		//$( "#allLZ" ).height( $( "#widi" ).width() * 0.7);
-		$( "#allLZ" ).height( $( "#widi" ).width() * 0.8);
-		//$( "#reset" ).height( $( "#allLZ" ).height() * 0.6);
-		//$( "#helpbuttonID" ).height( $( "#allLZ" ).height() * 0.5);
-		$( "#leftPower" ).height( $( "#leftPower" ).width());
-		$( "#rightPower" ).height( $( "#rightPower" ).width());
-		$( "#centerPower" ).width( $( "#leftPower" ).width());
-		$( "#centerPower" ).height( $( "#leftPower" ).width());
-		$( "#leftSource" ).height( $( "#leftSource" ).width());
-		$( "#rightSource" ).height( $( "#rightSource" ).width());
-		$( "#centerSource" ).height( $( "#centerSource" ).width());
-		$( "#leftMute").width($("#leftPower").width() * 0.65 );
-		$( "#leftMute").height($("#leftMute").width() );
-		$( "#leftVolUp").width($("#leftPower").width() * 0.65 );
-		$( "#leftVolUp").height($("#leftVolUp").width() );
-		$( "#leftVolDown").width($("#leftPower").width() * 0.65);
-		$( "#leftVolDown").height($("#leftVolDown").width() );
-		$( "#rightMute").width($("#leftPower").width() * 0.65 );
-		$( "#rightMute").height($("#rightMute").width() );
-		$( "#rightVolUp").width($("#leftPower").width() * 0.65 );
-		$( "#rightVolUp").height($("#rightVolUp").width() );
-		$( "#rightVolDown").width($("#leftPower").width() * 0.65);
-		$( "#rightVolDown").height($("#rightVolDown").width() );
-		$( "#centerMute").width($("#leftPower").width() * 0.65 );
-		$( "#centerMute").height($("#centerMute").width() );
-		$( "#centerVolUp").width($("#leftPower").width() * 0.65 );
-		$( "#centerVolUp").height($("#centerVolUp").width() );
-		$( "#centerVolDown").width($("#leftPower").width() * 0.65);
-		$( "#centerVolDown").height($("#centerVolDown").width() );
-	  
-		$(window).resize(function() {
-			$( "#allLZ" ).height( $( "#widi" ).width() * 0.8);
-			$( "#centerLZ" ).height( $( "#centerLZ" ).width() * 0.55 );
-			$( "#leftLZ" ).height( $( "#leftLZ" ).width() * 0.8 );
-			$( "#rightLZ" ).height( $( "#rightLZ" ).width() * 0.8 );
-			$( "#atv1" ).height( $( "#atv1" ).width() );
-			$( "#atv2" ).height( $( "#atv2" ).width() );
-			$( "#widi" ).height( $( "#widi" ).width() );
-			$( "#clickshare" ).height( $( "#clickshare" ).width() );
-			$( "#pc1" ).height( $( "#pc1" ).width() );
-			$( "#pc2" ).height( $( "#pc2" ).width() );
-			$( "#pc3" ).height( $( "#pc3" ).width() );
-			$( "#vader" ).height( $( "#vader" ).width() );
-			//$( "#reset" ).height( $( "#allLZ" ).height() * .99 );
-			$( "#leftPower" ).height( $( "#leftPower" ).width());
-			$( "#rightPower" ).height( $( "#rightPower" ).width());
-			$( "#centerPower" ).width( $( "#leftPower" ).width());
-			$( "#centerPower" ).height( $( "#leftPower" ).width());
-			$( "#leftSource" ).height($( "#leftSource" ).width());
-			$( "#rightSource" ).height( $( "#rightSource" ).width());
-			$( "#centerSource" ).height( $( "#centerSource" ).width());		   
-			$( "#leftMute").width($("#leftPower").width() * 0.65 );
-			$( "#leftMute").height($("#leftMute").width() );
-			$( "#leftVolUp").width($("#leftPower").width() * 0.65 );
-			$( "#leftVolUp").height($("#leftVolUp").width() );
-			$( "#leftVolDown").width($("#leftPower").width() * 0.65);
-			$( "#leftVolDown").height($("#leftVolDown").width() );
-			$( "#rightMute").width($("#leftPower").width() * 0.65 );
-			$( "#rightMute").height($("#rightMute").width() );
-			$( "#rightVolUp").width($("#leftPower").width() * 0.65 );
-			$( "#rightVolUp").height($("#rightVolUp").width() );
-			$( "#rightVolDown").width($("#leftPower").width() * 0.65);
-			$( "#rightVolDown").height($("#rightVolDown").width() );
-			$( "#centerMute").width($("#leftPower").width() * 0.65 );
-			$( "#centerMute").height($("#centerMute").width() );
-			$( "#centerVolUp").width($("#leftPower").width() * 0.65 );
-			$( "#centerVolUp").height($("#centerVolUp").width() );
-			$( "#centerVolDown").width($("#leftPower").width() * 0.65);
-			$( "#centerVolDown").height($("#centerVolDown").width() );
-			
-			//$( "#helpbuttonID" ).height( $( "#allLZ" ).height() * 0.7 );
-		});
-	  
-		$("#reset").bigtext();
-		//$("#titlebar").bigtext();
-		$("#helpButtonID").bigtext();
-		$("#allLZlabel").fitText();
-	  
-		$("#reset").click(function() {
-			commandSwitch( $("#pc1"), $("#leftLZ"));
-			commandSwitch( $("#pc2"), $("#centerLZ"));
-			commandSwitch( $("#pc3"), $("#rightLZ"));
-		});
-	  
-		// Help button doesn't do anything at the moment
-		$("#helpbuttonID").click(function() {
+	  	  
 
+		$('#allLZlabel').fitText();
+		$('#leftLZLabel').fitText(0.35);
+		$('#rightLZLabel').fitText(0.35);
+	  
+		$('#defaultButton').click(function() {
+			commandSwitch( $('#pc1'), $('#leftLZ'));
+			commandSwitch( $('#pc2'), $('#centerLZ'));
+			commandSwitch( $('#pc3'), $('#rightLZ'));
 		});
+	  
+		$('#helpButton').click(function() {
+			startIntro();
+		});
+
+		function startIntro () {
+		  var intro = introJs();
+		  intro.setOptions({
+			steps: [
+			  {
+				element: '#source-container',
+				intro: "Click or drag an input source."
+			  },
+			  {
+				element: '#main-container',
+				intro: "Click or drop the input onto any of these ouputs.",
+			  },
+			  {
+				element: '#allLZ',
+				intro: "You can also click on or drag to All Displays to display you input on all three displays.",
+				position: 'top'
+			  },	
+			  {
+				element: '#defaultButton',
+				intro: "Click the Default Setup button before you leave the room to reset to the default state.",
+				position: 'top'
+			  }	
+			  ]
+		  });
+
+		  intro.start();
 		
-		$(".btnMute").mouseenter(function() {
-			$(this).effect('bounce',100);
-		});
-		$(".btnPower").mouseenter(function() {
-			$(this).effect('bounce',100);
-		});
+		}
 		
-		$(".btnVolDown").hover(function() {
-			$(this).effect('shake',100);
-		});
-		
-		$(".btnVolUp").mouseenter(function() {
-			$(this).effect('pulsate',500);
-		});
-			
-		$(".btnPower").click(function() {
+		$('.btnPower').click(function() {
 			clearInterval(timeoutId);
 			clearInterval(intervalId);
-			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().data('output') + '/power');
+			//$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().data('output') + '/power');
+			timeoutId = setTimeout( function() { mappings_get(); }, 5000);
+			intervalId = setInterval( function() { mappings_get(); }, 10000);
+		});
+		
+		$('.btnPowerOn').click(function() {
+			$('#centerPower').addClass('btnPowerOn');
+			clearInterval(timeoutId);
+			clearInterval(intervalId);
+			//$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().data('output') + '/power');
 			timeoutId = setTimeout( function() { mappings_get(); }, 5000);
 			intervalId = setInterval( function() { mappings_get(); }, 10000);
 		});
 
-		$(".btnMute").click(function() {
-			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().parent().data('output') + '/volume/mute');
+		$('.btnPower, .btnPowerOn, .btnMute, .btnVolUp, .btnVolDown').hover(function(){
+		if ( !$(this).data('bnc') ){
+			  $(this).effect('bounce', { direction: 'up', distance: 10, times: 1 })
+					 .data('bnc', true);
+		}
+		},function () {
+			 $(this).data('bnc', false);
+		});	
+				
+		$('.btnMute').click(function() {
+			//$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().parent().data('output') + '/volume/mute');
 		});	
 		
-		$(".btnVolUp").click(function() {
-			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().parent().data('output') + '/volume/+');
+		$('.btnVolUp').click(function() {
+			//$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().parent().data('output') + '/volume/+');
 		});	
 		
-		$(".btnVolDown").click(function() {
-			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().parent().data('output') + '/volume/-');
-		});				
+		$('.btnVolDown').click(function() {
+			//$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().parent().data('output') + '/volume/-');
+		});
+			
 		function commandSwitch( input, output ) {
 			clearInterval(timeoutId);
 			clearInterval(intervalId);
-			$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $(output).data('output'));
+			//$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $(output).data('output'));
 			$( output ).find('div.inputSource').css({ 'background-image': $(input).css('background-image') });
 			$( output ).find('div.inputSource').css('background-size', 'contain' );
 			timeoutId = setTimeout( function() { mappings_get(); }, 5000);
@@ -339,9 +369,9 @@
 		function commandAllFront( input ) {
 			clearInterval(timeoutId);
 			clearInterval(intervalId);
-			$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#leftLZ').data('output'));
-			$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#rightLZ').data('output'));
-			$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#centerLZ').data('output'));		  
+			//$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#leftLZ').data('output'));
+			//$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#rightLZ').data('output'));
+			//$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#centerLZ').data('output'));		  
 			$( "#leftLZ" ).find('div.inputSource').css( 'background-image', $(input).css('background-image') );
 			$( "#leftLZ" ).find('div.inputSource').css( 'background-size', 'contain' );
 			$( "#centerLZ" ).find('div.inputSource').css( 'background-image', $(input).css('background-image') );
@@ -364,10 +394,11 @@
 
 				//Add get power function status and update picture
 				if ( mappings.outputs[1].powerStatus == "ON") {
-					$("#centerPower").css('background-image', 'url(img/btn_power_on2.png)');
+					$("#centerPower").addClass("btnPowerOn");
+					$("#centerPower").removeClass("btnPower");					
 				} else {
-					$("#centerPower").css('background-image', 'url(img/btn_power.png)');
-
+					$("#centerPower").addClass("btnPower");
+					$("#centerPower").removeClass("btnPowerOn");										
 				}
 				
 			}, 'json' );
