@@ -61,7 +61,7 @@
 	<!-- Surrounded by the second blue border and contains all droppable boxes along with "default" and "help" buttons -->
 	<div id="outer-main-div">
 		<div id="main-container" >	
-			<div id="outputs"></div>
+			<div id="leftOutput" class="outputText"></div>
 			<div id="leftLZ" class="lz" data-output="1">
 				<h2>Left TV</h2>
 				<div id="leftSource" class="inputSource"> </div>
@@ -74,6 +74,8 @@
 					<div id="leftPower" class="btnPower"> </div>
 				</div>
 			</div>
+			
+			<div id="rightOutput" class="outputText"></div>
 			
 			<div id="rightLZ" class="lz" data-output="3">
 				<h2 style="text-align: right;">Right TV</h2>
@@ -100,7 +102,7 @@
 					<div id="centerPower" class="btnPower"> </div>
 				</div>
 			</div>
-
+			
 		</div>	
 		<div id="topbar">
 			<div id="defaultButton" class="bottomButtons"></div>
@@ -128,21 +130,21 @@
 		var activeInput = null;
 		var timeoutId = null;
 		var intervalId = null;
-		$( '#atv1' ).height( $( '#atv1' ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='atv1' class='ui-widget-content source glowActive theFront' style='height: " + $( '#atv1' ).width() + "px;'></div>" ); } });
-		$( '#atv2' ).height( $( '#atv2' ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='atv2' class='ui-widget-content source glowActive theFront' style='height: " + $( '#atv2' ).width() + "px;'></div>" ); }});
-		$( '#widi' ).height( $( '#widi' ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='widi' class='ui-widget-content source glowActive theFront' style='height: " + $( '#widi' ).width() + "px;'></div>" ); }});
-		$( '#clickshare' ).height( $( '#clickshare' ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='clickshare' class='ui-widget-content source glowActive theFront' style='height: " + $( '#clickshare' ).width() + "px;'></div>" ); }});
-		$( '#pc1' ).height( $( '#pc1' ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='pc1' class='ui-widget-content source glowActive theFront' style='height: " + $( '#pc1' ).width() + "px;'></div>" ); }});
-		$( '#pc2' ).height( $( '#pc2' ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='pc2' class='ui-widget-content source glowActive theFront' style='height: " + $( '#pc2' ).width() + "px;'></div>" ); }});
-		$( '#pc3' ).height( $( '#pc3' ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='pc3' class='ui-widget-content source glowActive theFront' style='height: " + $( '#pc3' ).width() + "px;'></div>" ); }});
-		$( '#vader' ).height( $( '#vader' ).width()).draggable({ revert: "invalid" , containment: "body" , helper: function( event ) { return $( "<div id='vader' class='ui-widget-content source glowActive theFront' style='height: " + $( '#vader' ).width() + "px;'></div>" ); }});
+		$( '#atv1' ).height( $( '#atv1' ).width()).draggable({ revert: "invalid" , containment: "window" , appendTo: "body" , helper: function( event ) { return $( "<div id='atv1' class='ui-widget-content source glowActive theFront' style='height: " + $( '#atv1' ).width() + "px;'></div>" ); } });
+		$( '#atv2' ).height( $( '#atv2' ).width()).draggable({ revert: "invalid" , containment: "window" , appendTo: "body" , helper: function( event ) { return $( "<div id='atv2' class='ui-widget-content source glowActive theFront' style='height: " + $( '#atv2' ).width() + "px;'></div>" ); }});
+		$( '#widi' ).height( $( '#widi' ).width()).draggable({ revert: "invalid" , containment: "window" , appendTo: "body" , helper: function( event ) { return $( "<div id='widi' class='ui-widget-content source glowActive theFront' style='height: " + $( '#widi' ).width() + "px;'></div>" ); }});
+		$( '#clickshare' ).height( $( '#clickshare' ).width()).draggable({ revert: "invalid" , containment: "window" , appendTo: "body" , helper: function( event ) { return $( "<div id='clickshare' class='ui-widget-content source glowActive theFront' style='height: " + $( '#clickshare' ).width() + "px;'></div>" ); }});
+		$( '#pc1' ).height( $( '#pc1' ).width()).draggable({ revert: "invalid" , containment: "window" , appendTo: "body" , helper: function( event ) { return $( "<div id='pc1' class='ui-widget-content source glowActive theFront' style='height: " + $( '#pc1' ).width() + "px;'></div>" ); }});
+		$( '#pc2' ).height( $( '#pc2' ).width()).draggable({ revert: "invalid" , containment: "window" , appendTo: "body" , helper: function( event ) { return $( "<div id='pc2' class='ui-widget-content source glowActive theFront' style='height: " + $( '#pc2' ).width() + "px;'></div>" ); }});
+		$( '#pc3' ).height( $( '#pc3' ).width()).draggable({ revert: "invalid" , containment: "window" , appendTo: "body" , helper: function( event ) { return $( "<div id='pc3' class='ui-widget-content source glowActive theFront' style='height: " + $( '#pc3' ).width() + "px;'></div>" ); }});
+		$( '#vader' ).height( $( '#vader' ).width()).draggable({ revert: "invalid" , containment: "window" , appendTo: "body" , helper: function( event ) { return $( "<div id='vader' class='ui-widget-content source glowActive theFront' style='height: " + $( '#vader' ).width() + "px;'></div>" ); }});
 
-		$( '#centerLZ' ).height( $( '#centerLZ' ).width() * 0.55 );
-		$( '#leftLZ' ).height( $( '#leftLZ' ).width() * 0.8);
-		$( '#rightLZ' ).height( $( '#rightLZ' ).width() * 0.8);
-		$( '#allLZ' ).height( $( '#widi' ).width() * 0.99);
-		$( '#defaultButton' ).height( $( '#widi' ).width() * .99);
-		$( '#helpButton' ).height( $( '#widi' ).width() * .99);
+		$( '#allLZ' ).height( $( '#widi' ).width() * 0.8);
+		$( '#centerLZ' ).height( $( '#centerLZ' ).width() * 0.6 );
+		$( '#leftLZ' ).height( $( '#leftLZ' ).width() * 0.94);
+		$( '#rightLZ' ).height( $( '#rightLZ' ).width() * 0.94);
+		$( '#defaultButton' ).height( $( '#widi' ).width() * .8);
+		$( '#helpButton' ).height( $( '#widi' ).width() * .8);
 		$( '#leftPower' ).height( $( '#leftPower' ).width());
 		$( '#rightPower' ).height( $( '#rightPower' ).width());
 		$( '#centerPower' ).width( $( '#leftPower' ).width());
@@ -170,13 +172,14 @@
 		$( '#centerVolDown').height($('#centerVolDown').width() );
 		$( '#leftInput').height($('#leftInput').width() * 3.5);
 		$( '#rightInput').height($('#rightInput').width() * 3.5);
-		$( '#outputs').height($('#outputs').width() * .3);
+		$( '#leftOutput').height($('#centerLZ').height());
+		$( '#rightOutput').height($('#centerLZ').height());
 	  
 		$(window).resize(function() {
 			$( '#allLZ' ).height( $( '#widi' ).width() * 0.7);
-			$( '#centerLZ' ).height( $( '#centerLZ' ).width() * 0.55 );
-			$( '#leftLZ' ).height( $( '#leftLZ' ).width() * 0.8 );
-			$( '#rightLZ' ).height( $( '#rightLZ' ).width() * 0.8 );
+			$( '#centerLZ' ).height( $( '#centerLZ' ).width() * 0.6 );
+			$( '#leftLZ' ).height( $( '#leftLZ' ).width() * 0.94 );
+			$( '#rightLZ' ).height( $( '#rightLZ' ).width() * 0.94 );
 			$( '#defaultButton' ).height( $( '#widi' ).width() * .7);
 			$( '#helpButton' ).height( $( '#widi' ).width() * .7);	
 			$( '#atv1' ).height( $( '#atv1' ).width() );
@@ -214,8 +217,8 @@
 			$( '#centerVolDown').height($('#centerVolDown').width() );
 			$( '#leftInput').height($('#leftInput').width() * 3.5);
 			$( '#rightInput').height($('#rightInput').width() * 3.5);
-			$( '#outputs').height($('#outputs').width() * .3);
-
+			$( '#leftOutput').height($('#centerLZ').height());
+			$( '#rightOutput').height($('#centerLZ').height());
 		});
 
 		

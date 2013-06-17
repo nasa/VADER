@@ -174,10 +174,10 @@ nav a:hover{
 #pc2 { float: left; background-image: url('../img/windows2.png'); }
 #pc3 { float: left; background-image: url('../img/windows3.png'); }
 #vader { float: left; background-image: url('../img/vader.png'); }
-.lz {position: relative; height: auto; padding: 0em; margin: auto; border-style: dashed; -moz-border-radius: 15px; border-radius: 15px; border-width:5px; border-color: rgb(240, 240, 240); background-color: rgba(200, 200, 200, 0.2); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";}
-#leftLZ { float: left; width: 27.5%; padding-right: 0em; margin: 0.4% 1.5% 0.25% 0.5%; }
+.lz {position: relative; height: auto; padding: 0em; margin: auto; border-style: dashed; -moz-border-radius: 15px; border-radius: 15px; border-width:3px; border-color: rgb(240, 240, 240); background-color: rgba(200, 200, 200, 0.2); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";}
+#leftLZ { float: left; width: 25.5%; padding-right: 0em; margin: 0.4% 1.5% 0.25% 0.5%; }
 #centerLZ { clear: none; width: 40%; padding-top: 0em; padding-left: 0em; padding-right: 0em; margin: 0.4% auto 0.25% auto; }
-#rightLZ { float: right; width: 27.5%; padding-left: 0em; margin: 0.4% 0.5% 0.25% 1.5%; }
+#rightLZ { float: right; width: 25.5%; padding-left: 0em; margin: 0.4% 0.5% 0.25% 1.5%; }
 #leftSource {right: 0%; top: 0%;}
 #rightSource {left: 0%; top: 0%;}
 #centerSource {left: 33%; top: 0%; width: 34.2%}
@@ -208,7 +208,9 @@ nav a:hover{
 #leftInput{ position: absolute; left: 3%; top: 20%; }
 #rightInput{ position: absolute; left: 93%; top: 20%; }
 #justSources{ clear: none; margin: 0 auto 0 8.75%; width: 100%; }
-#outputs{  background-image: url('../img/outputText.png'); -moz-background-size: contain; background-size: contain; background-repeat: no-repeat; width: 9%; margin: 0% auto 0% auto; }
+.outputText{  background-image: url('../img/outputText2-1.png'); -moz-background-size: contain; background-size: contain; background-repeat: no-repeat; background-position: left center; width: 2%; }
+#leftOutput{ position: relative; height: auto; float: left; }
+#rightOutput{ position: relative; height: auto; float: right; }
 
 
 
@@ -339,6 +341,7 @@ nav a:hover{
    #leftInput{ left: 1.5%; top: 5%; }
    #rightInput{ absolute; left: 97%; top: 5%; }
    #justSources{ clear: none; margin: 0 auto 0 5%; width: 100%; }
+   .lz { border-width:5px; }
    	
 }
 
