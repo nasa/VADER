@@ -63,7 +63,7 @@
 		<div id="main-container" >	
 			<div id="leftOutput" class="outputText"></div>
 			<div id="leftLZ" class="lz" data-output="1">
-				<h2>Left TV</h2>
+				<div id="leftLZLabel">Left TV</div>
 				<div id="leftSource" class="inputSource"> </div>
 				<div class="soundPanel">
 					<div id="leftMute" class="btnMute"></div>
@@ -78,7 +78,7 @@
 			<div id="rightOutput" class="outputText"></div>
 			
 			<div id="rightLZ" class="lz" data-output="3">
-				<h2 style="text-align: right;">Right TV</h2>
+				<div id="rightLZLabel">Right TV</div>
 				<div id="rightSource" class="inputSource"> </div>
 				<div class="soundPanel">
 					<div id="rightMute" class="btnMute"></div>
@@ -91,7 +91,7 @@
 			</div>
 			
 			<div id="centerLZ" class="lz" data-output="2">
-				<h2 style="text-align: center;">Projector</h2>
+				<div id="centerLZLabel">Projector</div>
 				<div id="centerSource" class="inputSource"></div>		
 				<div class="soundPanel">
 					<div id="centerMute" class="btnMute"></div>
@@ -110,9 +110,7 @@
 			<div id="helpButton" class="bottomButtons" href="javascript:void(0);"></div>
 			
 			<div id="allLZ" class="lz">
-				<div id="allLZlabel" style="text-align: center;">
-					<h2 style="text-align: center; margin: 3%;">All Displays</h2>
-				</div>
+				<div id="allLZlabel">All Displays</div>
 			</div>
 		</div>
 		
@@ -291,6 +289,9 @@
 	  	  
 
 		$('#allLZlabel').fitText();
+		$('#leftLZLabel').fitText(0.35, { minFontSize: '12px', maxFontSize: '58px' });
+		$('#rightLZLabel').fitText(0.35, { minFontSize: '12px', maxFontSize: '58px' });
+		$('#centerLZLabel').fitText(0.35, { minFontSize: '12px', maxFontSize: '58px' });
 	  
 		$('#defaultButton').click(function() {
 			commandSwitch( $('#pc1'), $('#leftLZ'));

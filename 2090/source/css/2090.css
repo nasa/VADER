@@ -163,8 +163,6 @@ nav a:hover{
 #leftTV { float: right; }
 #projector { margin: auto; }
 #rightTV { float: left;}
-#inputText {  font-family:"Georgia", Georgia, serif; color: rgb(51, 153, 255); margin-bottom:0px; margin-left: 0 auto; margin-right: 0 auto;}
-#outputText {  font-family:"Georgia", Georgia, serif; color: rgb(51, 153, 255); margin-bottom:0px; margin-left: 0 auto; margin-right: 0 auto;}
 .source { width: 18%; height: 80px; padding: 0em; margin: 0.75% 0% 0.75% 1.25%; -moz-background-size: contain; background-size: contain; -moz-border-radius: 15px; border-radius: 15px; position: relative; -webkit-box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, .75); -moz-box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, .75); box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, .75);}
 #atv1 { float: left; background-image: url('../img/appletv2.png'); }
 #atv2 { float: left; background-image: url('../img/appletv3.png'); }
@@ -181,13 +179,17 @@ nav a:hover{
 #leftSource {right: 0%; top: 0%;}
 #rightSource {left: 0%; top: 0%;}
 #centerSource {left: 33%; top: 0%; width: 34.2%}
+#leftLZLabel { position: absolute; color: rgb(255, 255, 255); left: 3%; top: 10%; width: 50%; display: inline-block; font-weight: bold; }
+#centerLZLabel { position: absolute; color: rgb(255, 255, 255); left: 28%; top: 55.5%; width: 34.2%; display: inline-block; font-weight: bold; text-align: center; }
+#rightLZLabel { position: absolute; color: rgb(255, 255, 255); right: 3%; top: 10%; width: 50%; display: inline-block; font-weight: bold; text-align: right; }
 .inputSource{position: absolute;  width: 50%; -moz-border-radius: 15px; border-radius: 15px; }
 .glowActive { -webkit-box-shadow: 0px 0px 10px 5px rgba(255, 255, 0, .75); -moz-box-shadow: 0px 0px 10px 5px rgba(255, 255, 0, .75); box-shadow: 0px 0px 10px 5px rgba(255, 255, 0, .75); }
 .active { border-color: rgb(255, 255, 0); }
 .hover { background-color: rgb(250, 250, 0); background-color: rgba(250,250,0,0.3); }
 .sourcelabel {position: absolute; padding-left:5%; bottom:0; right:1; font-size: 1.5em; }
-#topbar { padding-top: 2px; width: 100%; display: block; line-height: 0.6; margin-top:0.5%; background-image: url('../img/allDisplays2.png'); background-size: 45%; background-repeat: no-repeat; background-position: center bottom;}
+#topbar { padding-top: 2px; width: 100%; display: block; line-height: 0.9; margin-top:0.5%; background-image: url('../img/allDisplays2.png'); background-size: 45%; background-repeat: no-repeat; background-position: center bottom;}
 #allLZ { width: 54.5%; background-size: 100%;}
+#allLZlabel { color: rgb(255, 255, 255); text-align: center; font-weight: bold; }
 #source-container { position: relative; margin: 5px;  padding-bottom: 5px; clear: both; overflow: auto; -moz-border-radius: 20px; border-radius: 20px; border-style: solid; border-color: rgb(51, 153, 255); background-color: rgb(11, 61, 145); background-color: rgba(11, 61, 145, 0.5); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)"; }
 #helpButton { float: right; background-image: url('../img/Help.png'); }
 #defaultButton { float: left; background-image: url('../img/Default.png');} 
@@ -333,15 +335,16 @@ nav a:hover{
    /*#widi { margin-left: 1%; } */
    #pc1 { clear: none; }
    #source-container { -moz-border-radius: 30px; border-radius: 30px; }
-   #leftSource {right: 22%; top: 20%;}
-   #rightSource {left: 22%; top: 20%;}
-   #centerSource {left: 33%; top: 20%; width: 34.2%}
+   #leftSource {right: 22%; top: 25%;}
+   #rightSource {left: 22%; top: 25%;}
+   #centerSource {left: 33%; top: 25%; width: 34.2%}
    .powerContainer { width:20%; }
    .inputText{ width: 3%;}
    #leftInput{ left: 1.5%; top: 5%; }
    #rightInput{ absolute; left: 97%; top: 5%; }
    #justSources{ clear: none; margin: 0 auto 0 5%; width: 100%; }
    .lz { border-width:5px; }
+   #centerLZLabel { left: 32%; top: 10%; }
    	
 }
 
