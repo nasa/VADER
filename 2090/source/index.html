@@ -128,14 +128,14 @@
 		var activeInput = null;
 		var timeoutId = null;
 		var intervalId = null;
-		$( '#atv1' ).height( $( '#atv1' ).width()).draggable({ revert: "invalid" , containment: "window" , appendTo: "body" , helper: function( event ) { return $( "<div id='atv1' class='ui-widget-content source glowActive theFront' style='height: " + $( '#atv1' ).width() + "px;'></div>" ); } });
-		$( '#atv2' ).height( $( '#atv2' ).width()).draggable({ revert: "invalid" , containment: "window" , appendTo: "body" , helper: function( event ) { return $( "<div id='atv2' class='ui-widget-content source glowActive theFront' style='height: " + $( '#atv2' ).width() + "px;'></div>" ); }});
-		$( '#widi' ).height( $( '#widi' ).width()).draggable({ revert: "invalid" , containment: "window" , appendTo: "body" , helper: function( event ) { return $( "<div id='widi' class='ui-widget-content source glowActive theFront' style='height: " + $( '#widi' ).width() + "px;'></div>" ); }});
-		$( '#clickshare' ).height( $( '#clickshare' ).width()).draggable({ revert: "invalid" , containment: "window" , appendTo: "body" , helper: function( event ) { return $( "<div id='clickshare' class='ui-widget-content source glowActive theFront' style='height: " + $( '#clickshare' ).width() + "px;'></div>" ); }});
-		$( '#pc1' ).height( $( '#pc1' ).width()).draggable({ revert: "invalid" , containment: "window" , appendTo: "body" , helper: function( event ) { return $( "<div id='pc1' class='ui-widget-content source glowActive theFront' style='height: " + $( '#pc1' ).width() + "px;'></div>" ); }});
-		$( '#pc2' ).height( $( '#pc2' ).width()).draggable({ revert: "invalid" , containment: "window" , appendTo: "body" , helper: function( event ) { return $( "<div id='pc2' class='ui-widget-content source glowActive theFront' style='height: " + $( '#pc2' ).width() + "px;'></div>" ); }});
-		$( '#pc3' ).height( $( '#pc3' ).width()).draggable({ revert: "invalid" , containment: "window" , appendTo: "body" , helper: function( event ) { return $( "<div id='pc3' class='ui-widget-content source glowActive theFront' style='height: " + $( '#pc3' ).width() + "px;'></div>" ); }});
-		$( '#vader' ).height( $( '#vader' ).width()).draggable({ revert: "invalid" , containment: "window" , appendTo: "body" , helper: function( event ) { return $( "<div id='vader' class='ui-widget-content source glowActive theFront' style='height: " + $( '#vader' ).width() + "px;'></div>" ); }});
+		$( '#atv1' ).height( $( '#atv1' ).width()).draggable({ revert: "invalid" , containment: "window" , appendTo: "body" , helper: function( event ) { return $( "<div id='atv1' class='ui-widget-content source glowActive theFront' style='height: " + $( '#atv1' ).innerHeight() + "px; width: " + $( '#atv1' ).innerHeight() + "px;'></div>" ); } });
+		$( '#atv2' ).height( $( '#atv2' ).width()).draggable({ revert: "invalid" , containment: "window" , appendTo: "body" , helper: function( event ) { return $( "<div id='atv2' class='ui-widget-content source glowActive theFront' style='height: " + $( '#atv2' ).innerHeight() + "px; width: " + $( '#atv2' ).innerHeight() + "px;'></div>" ); }});
+		$( '#widi' ).height( $( '#widi' ).width()).draggable({ revert: "invalid" , containment: "window" , appendTo: "body" , helper: function( event ) { return $( "<div id='widi' class='ui-widget-content source glowActive theFront' style='height: " + $( '#widi' ).innerHeight() + "px; width: " + $( '#widi' ).innerHeight() + "px;'></div>" ); }});
+		$( '#clickshare' ).height( $( '#clickshare' ).width()).draggable({ revert: "invalid" , containment: "window" , appendTo: "body" , helper: function( event ) { return $( "<div id='clickshare' class='ui-widget-content source glowActive theFront' style='height: " + $( '#clickshare' ).innerHeight() + "px; width: " + $( '#clickshare' ).innerHeight() + "px;'></div>" ); }});
+		$( '#pc1' ).height( $( '#pc1' ).width()).draggable({ revert: "invalid" , containment: "window" , appendTo: "body" , helper: function( event ) { return $( "<div id='pc1' class='ui-widget-content source glowActive theFront' style='height: " + $( '#pc1' ).innerHeight() + "px; width: " + $( '#pc1' ).innerHeight() + "px;'></div>" ); }});
+		$( '#pc2' ).height( $( '#pc2' ).width()).draggable({ revert: "invalid" , containment: "window" , appendTo: "body" , helper: function( event ) { return $( "<div id='pc2' class='ui-widget-content source glowActive theFront' style='height: " + $( '#pc2' ).innerHeight() + "px; width: " + $( '#pc2' ).innerHeight() + "px;'></div>" ); }});
+		$( '#pc3' ).height( $( '#pc3' ).width()).draggable({ revert: "invalid" , containment: "window" , appendTo: "body" , helper: function( event ) { return $( "<div id='pc3' class='ui-widget-content source glowActive theFront' style='height: " + $( '#pc3' ).innerHeight() + "px; width: " + $( '#pc3' ).innerHeight() + "px;'></div>" ); }});
+		$( '#vader' ).height( $( '#vader' ).width()).draggable({ revert: "invalid" , containment: "window" , appendTo: "body" , helper: function( event ) { return $( "<div id='vader' class='ui-widget-content source glowActive theFront' style='height: " + $( '#vader' ).innerHeight() + "px; width: " + $( '#vader' ).innerHeight() + "px;'></div>" ); }});
 
 		$( '#allLZ' ).height( $( '#widi' ).width() * 0.8);
 		$( '#centerLZ' ).height( $( '#centerLZ' ).width() * 0.6 );
@@ -168,8 +168,8 @@
 		$( '#centerVolUp').height($('#centerVolUp').width() );
 		$( '#centerVolDown').width($('#leftPower').width() * 0.65);
 		$( '#centerVolDown').height($('#centerVolDown').width() );
-		$( '#leftInput').height($('#leftInput').width() * 3.5);
-		$( '#rightInput').height($('#rightInput').width() * 3.5);
+		$( '#leftInput').height($('#widi').height() );
+		$( '#rightInput').height($('#widi').height() );
 		$( '#leftOutput').height($('#centerLZ').height());
 		$( '#rightOutput').height($('#centerLZ').height());
 	  
@@ -213,8 +213,8 @@
 			$( '#centerVolUp').height($('#centerVolUp').width() );
 			$( '#centerVolDown').width($('#leftPower').width() * 0.65);
 			$( '#centerVolDown').height($('#centerVolDown').width() );
-			$( '#leftInput').height($('#leftInput').width() * 3.5);
-			$( '#rightInput').height($('#rightInput').width() * 3.5);
+			$( '#leftInput').height($('#widi').height() );
+			$( '#rightInput').height($('#widi').height() );
 			$( '#leftOutput').height($('#centerLZ').height());
 			$( '#rightOutput').height($('#centerLZ').height());
 		});
@@ -289,9 +289,9 @@
 	  	  
 
 		$('#allLZlabel').fitText();
-		$('#leftLZLabel').fitText(0.35, { minFontSize: '12px', maxFontSize: '58px' });
-		$('#rightLZLabel').fitText(0.35, { minFontSize: '12px', maxFontSize: '58px' });
-		$('#centerLZLabel').fitText(0.35, { minFontSize: '12px', maxFontSize: '58px' });
+		$('#leftLZLabel').fitText(0.35, { minFontSize: '12px', maxFontSize: '48px' });
+		$('#rightLZLabel').fitText(0.35, { minFontSize: '12px', maxFontSize: '48px' });
+		$('#centerLZLabel').fitText(0.35, { minFontSize: '12px', maxFontSize: '48px' });
 	  
 		$('#defaultButton').click(function() {
 			commandSwitch( $('#pc1'), $('#leftLZ'));
