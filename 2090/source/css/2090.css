@@ -181,7 +181,7 @@ nav a:hover{
 #centerSource {left: 33%; top: 0%; width: 32%}
 #leftLZLabel { position: absolute; color: rgb(255, 255, 255); left: 3%; top: 10%; width: 50%; display: inline-block; font-weight: bold; }
 #centerLZLabel { position: absolute; color: rgb(255, 255, 255); left: 28%; top: 55.5%; width: 34.2%; display: inline-block; font-weight: bold; text-align: center; }
-#rightLZLabel { position: absolute; color: rgb(255, 255, 255); right: 3%; top: 10%; width: 50%; display: inline-block; font-weight: bold; text-align: right; }
+#rightLZLabel { position: absolute; color: rgb(255, 255, 255); right: 12%; top: 10%; width: 50%; display: inline-block; font-weight: bold; text-align: right; }
 .inputSource{position: absolute;  width: 50%; -moz-border-radius: 10px; border-radius: 10px; }
 .glowActive { -webkit-box-shadow: 0px 0px 10px 5px rgba(255, 255, 0, .75); -moz-box-shadow: 0px 0px 10px 5px rgba(255, 255, 0, .75); box-shadow: 0px 0px 10px 5px rgba(255, 255, 0, .75); }
 .active { border-color: rgb(255, 255, 0); }
