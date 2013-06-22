@@ -367,7 +367,9 @@
           oldHelperNumberLayer.innerHTML = targetElement.step;
         }
         //set current tooltip text
-        oldtooltipLayer.innerHTML = targetElement.intro;
+        oldtooltipLayer.innerHTML = '<div class="introjs-tooltiptext">' +
+                               targetElement.intro + 
+                               '</div><div class="introjs-tooltipbuttons"></div>';
         //set the tooltip position
         _placeTooltip.call(self, targetElement.element, oldtooltipContainer, oldArrowLayer);
         //show the tooltip
@@ -392,7 +394,7 @@
 
       
       tooltipLayer.innerHTML = '<div class="introjs-tooltiptext">' +
-                               targetElement.intro +
+                               targetElement.intro + 
                                '</div><div class="introjs-tooltipbuttons"></div>';
 
       //add helper layer number
