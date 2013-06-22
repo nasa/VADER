@@ -8,7 +8,7 @@
 	<meta	http-equiv="X-UA-Compatible"	content="IE=edge,chrome=1">
 
 	<title>MOFDAC Media Control</title>
-	<meta name="description"	content="Control the front displays in the MOFDAC (30A/2090) using this website">
+	<meta name="description"	content="Control the front displays in the MSDAC (30A/2090) using this website">
 	<meta name="author"	content="DD12">
 
 	<meta name="viewport" content="width=device-width, height=device-height">
@@ -66,12 +66,12 @@
 				<div id="leftLZLabel">Left TV</div>
 				<div id="leftSource" class="inputSource"> </div>
 				<div class="soundPanel">
-					<div id="leftMute" class="btnMute"></div>
-					<div id="leftVolDown" class="btnVolDown"></div>
-					<div id="leftVolUp" class="btnVolUp"></div>
+					<div id="leftMute" class="btnMute" data-output="1"></div>
+					<div id="leftVolDown" class="btnVolDown" data-output="1"></div>
+					<div id="leftVolUp" class="btnVolUp" data-output="1"></div>
 				</div>
 				<div class="powerContainer">
-					<div id="leftPower" class="btnPower"> </div>
+					<div id="leftPower" class="btnPower" data-output="1"> </div>
 				</div>
 			</div>
 			
@@ -81,25 +81,28 @@
 				<div id="rightLZLabel">Right TV</div>
 				<div id="rightSource" class="inputSource"> </div>
 				<div class="soundPanel">
-					<div id="rightMute" class="btnMute"></div>
-					<div id="rightVolDown" class="btnVolDown"></div>
-					<div id="rightVolUp" class="btnVolUp"></div>
+					<div id="rightMute" class="btnMute" data-output="3"></div>
+					<div id="rightVolDown" class="btnVolDown" data-output="3"></div>
+					<div id="rightVolUp" class="btnVolUp" data-output="3"></div>
 				</div>
 				<div class="powerContainer">
-					<div id="rightPower" class="btnPower"> </div>
+					<div id="rightPower" class="btnPower" data-output="3"> </div>
 				</div>
 			</div>
 			
 			<div id="centerLZ" class="lz" data-output="2">
 				<div id="centerLZLabel">Projector</div>
-				<div id="centerSource" class="inputSource"></div>		
+				<div id="centerSource" class="inputSource">
+					<div id="helpAnchor" title="Choose your tour below:">
+					</div>
+				</div>	
 				<div class="soundPanel">
-					<div id="centerMute" class="btnMute"></div>
-					<div id="centerVolDown" class="btnVolDown"></div>
-					<div id="centerVolUp" class="btnVolUp"></div>
+					<div id="centerMute" class="btnMute" data-output="2"></div>
+					<div id="centerVolDown" class="btnVolDown" data-output="2"></div>
+					<div id="centerVolUp" class="btnVolUp" data-output="2"></div>
 				</div>
 				<div class="powerContainer">
-					<div id="centerPower" class="btnPower"> </div>
+					<div id="centerPower" class="btnPower"  data-output="2"> </div>
 				</div>
 			</div>
 			
@@ -300,44 +303,61 @@
 		});
 	  
 		$('#helpButton').click(function() {
-			startIntro();
+			var intro = introJs();
+			intro.setOptions({
+				steps: [
+					{
+						element: '#widi',
+						intro: 'This is how to connect your device to WiDi:<br><img src="img/widi.jpg" style="width: 100%;" />',
+						position: 'bottom'
+					},
+					{
+						element: '#widi',
+						intro: 'This is how to connect your device to WiDi:<br><img src="img/widiHelp.png" style="width: 100%;" />',
+						position: 'bottom'
+					},
+					{
+						element: '#source-container',
+						intro: "Click or drag an input source.",						
+						position: 'bottom'
+					},
+					{
+						element: '#main-container',
+						intro: "Click or drop the input onto any of these ouputs.",								
+						position: 'top'
+					},
+					{
+						element: '#allLZ',
+						intro: "You can also click on or drag to All Displays to display you input on all three displays.",				
+						position: 'top'
+					},	
+					{
+						element: '#defaultButton',
+						intro: "Click the Default Setup button before you leave the room to reset to the default state.",
+						position: 'top'
+					}	
+				]
+			});
+			$("#helpAnchor").dialog({
+			height: 140,
+			modal: true,
+			buttons: {
+				"Quick Help":function () {
+					$(this).dialog("close");
+					intro.goToStep(2).start();
+				},
+				"Full Tour": function() {
+					$(this).dialog("close");		
+					intro.start();
+				}
+			}
+			})
 		});
-
-		function startIntro () {
-		  var intro = introJs();
-		  intro.setOptions({
-			steps: [
-			  {
-				element: '#source-container',
-				intro: "Click or drag an input source.",
-				position: 'bottom'
-			  },
-			  {
-				element: '#main-container',
-				intro: "Click or drop the input onto any of these ouputs.",
-				position: 'top'
-			  },
-			  {
-				element: '#allLZ',
-				intro: "You can also click on or drag to All Displays to display you input on all three displays.",
-				position: 'top'
-			  },	
-			  {
-				element: '#defaultButton',
-				intro: "Click the Default Setup button before you leave the room to reset to the default state.",
-				position: 'top'
-			  }	
-			  ]
-		  });
-
-		  intro.start();
-		
-		}
 		
 		$('.btnPower').click(function() {
 			clearInterval(timeoutId);
 			clearInterval(intervalId);
-			//$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().parent().data('output') + '/power');
+			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).data('output') + '/power');
 			timeoutId = setTimeout( function() { mappings_get(); }, 5000);
 			intervalId = setInterval( function() { mappings_get(); }, 10000);
 		});
@@ -346,7 +366,7 @@
 			$('#centerPower').addClass('btnPowerOn');
 			clearInterval(timeoutId);
 			clearInterval(intervalId);
-			//$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().parent().data('output') + '/power');
+			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).data('output') + '/power');
 			timeoutId = setTimeout( function() { mappings_get(); }, 5000);
 			intervalId = setInterval( function() { mappings_get(); }, 10000);
 		});
@@ -361,21 +381,21 @@
 		});	
 				
 		$('.btnMute').click(function() {
-			//$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().parent().data('output') + '/volume/mute');
+			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).data('output') + '/volume/mute');
 		});	
 		
 		$('.btnVolUp').click(function() {
-			//$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().parent().data('output') + '/volume/+');
+			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).data('output') + '/volume/+');
 		});	
 		
 		$('.btnVolDown').click(function() {
-			//$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).parent().parent().data('output') + '/volume/-');
+			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).data('output') + '/volume/-');
 		});
 			
 		function commandSwitch( input, output ) {
 			clearInterval(timeoutId);
 			clearInterval(intervalId);
-			//$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $(output).data('output'));
+			$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $(output).data('output'));
 			$( output ).find('div.inputSource').css({ 'background-image': $(input).css('background-image') });
 			$( output ).find('div.inputSource').css('background-size', 'contain' );
 			timeoutId = setTimeout( function() { mappings_get(); }, 5000);
@@ -385,9 +405,9 @@
 		function commandAllFront( input ) {
 			clearInterval(timeoutId);
 			clearInterval(intervalId);
-			//$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#leftLZ').data('output'));
-			//$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#rightLZ').data('output'));
-			//$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#centerLZ').data('output'));		  
+			$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#leftLZ').data('output'));
+			$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#rightLZ').data('output'));
+			$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#centerLZ').data('output'));		  
 			$( "#leftLZ" ).find('div.inputSource').css( 'background-image', $(input).css('background-image') );
 			$( "#leftLZ" ).find('div.inputSource').css( 'background-size', 'contain' );
 			$( "#centerLZ" ).find('div.inputSource').css( 'background-image', $(input).css('background-image') );
