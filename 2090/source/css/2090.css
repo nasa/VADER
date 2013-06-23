@@ -179,9 +179,9 @@ nav a:hover{
 #leftSource {right: 0%; top: 0%;}
 #rightSource {left: 0%; top: 0%;}
 #centerSource {left: 33%; top: 0%; width: 32%}
-#leftLZLabel { position: absolute; color: rgb(255, 255, 255); left: 3%; top: 10%; width: 50%; display: inline-block; font-weight: bold; }
+#leftLZLabel { position: absolute; color: rgb(255, 255, 255); left: 3%; top: 8%; width: 50%; display: inline-block; font-weight: bold; }
 #centerLZLabel { position: absolute; color: rgb(255, 255, 255); left: 28%; top: 55.5%; width: 34.2%; display: inline-block; font-weight: bold; text-align: center; }
-#rightLZLabel { position: absolute; color: rgb(255, 255, 255); right: 12%; top: 10%; width: 50%; display: inline-block; font-weight: bold; text-align: right; }
+#rightLZLabel { position: absolute; color: rgb(255, 255, 255); right: 12%; top: 8%; width: 50%; display: inline-block; font-weight: bold; text-align: right; }
 .inputSource{position: absolute;  width: 50%; -moz-border-radius: 10px; border-radius: 10px; }
 .glowActive { -webkit-box-shadow: 0px 0px 10px 5px rgba(255, 255, 0, .75); -moz-box-shadow: 0px 0px 10px 5px rgba(255, 255, 0, .75); box-shadow: 0px 0px 10px 5px rgba(255, 255, 0, .75); }
 .active { border-color: rgb(255, 255, 0); }
@@ -336,16 +336,16 @@ nav a:hover{
    #pc1 { clear: none; }
    #source-container { -moz-border-radius: 30px; border-radius: 30px; }
    .inputSource{ -moz-border-radius: 15px; border-radius: 15px; }
-   #leftSource {right: 22%; top: 25%;}
-   #rightSource {left: 22%; top: 25%;}
-   #centerSource {left: 33%; top: 25%; }
+   #leftSource {right: 22%; top: 21%;}
+   #rightSource {left: 22%; top: 21%;}
+   #centerSource {left: 33%; top: 21%; }
    .powerContainer { width:20%; }
    .inputText{ width: 2%;}
    #leftInput{ z-index: 5; left: 1.5%; top: 5%; }
    #rightInput{ z-index: 5; left: 97%; top: 5%; }
    #justSources{ clear: none; margin: 0 0 0 9%;}
    .lz { border-width:5px; }
-   #centerLZLabel { left: 32%; top: 10%; }
+   #centerLZLabel { left: 31%; top: 8%; }
    	
 }
 
