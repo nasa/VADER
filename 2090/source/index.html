@@ -1,0 +1,614 @@
+<!doctype html>
+<!--[if lt IE 7]>	<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta	charset="utf-8">
+	<meta	http-equiv="X-UA-Compatible"	content="IE=edge,chrome=1">
+
+	<title>MOFDAC Media Control</title>
+	<meta name="description"	content="Control the front displays in the MSDAC (30A/2090) using this website">
+	<meta name="author"	content="DD12">
+
+	<meta name="viewport" content="width=device-width, height=device-height">
+	<meta name="HandheldFriendly" content="True">
+
+	<!--[if lt IE 9]> <script src="js/libs/jquery.backgroundSize.js"></script> <![endif]-->
+	
+	<link href="css/themes/base/jquery-ui.css" rel="stylesheet">
+	<link href="css/themes/dot-luv/jquery-ui.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/2090.css">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/introjs.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+	
+	<script	src="js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>  
+
+</head>
+<body style="background-color: rgb(0,0,0); min-height: 100%">
+<!--[if	lt	IE	9]><p	class=chromeframe>Your	browser	is so <em>NOT STANDARDS-COMPLIANT</em> that it's not worth developing for! See if Chrome or Firefox is installed on this machine, <a	href="http://browsehappy.com/">upgrade	to	a	different	browser</a>	or	<a	href="http://www.google.com/chromeframe/?redirect=true">install	Google	Chrome	Frame</a>	to	experience	this	site.</p><![endif]-->
+	<div id="source-container">
+		<div id="leftInput" class="inputText"></div>
+		<div id="justSources">
+			<div id="widi" class="ui-widget-content source" data-input="1"></div>
+			
+			<div id="clickshare" class="ui-widget-content source" data-input="3"></div>
+			
+			<div id="atv1" class="ui-widget-content source" data-input="2">
+				<!--<div class="sourcelabel">MOFDAC 1</div>-->
+			</div>		
+			<div id="atv2" class="ui-widget-content source" data-input="4">
+				<!--<div class="sourcelabel">MOFDAC 2</div>-->
+			</div>
+			
+			<div id="pc1" class="ui-widget-content source" data-input="5">
+				<!--<div class="sourcelabel">PC Screen 1</div>-->
+			</div>
+
+			<div id="pc2" class="ui-widget-content source" data-input="6">
+				<!--<div class="sourcelabel">PC Screen 2</div>-->
+			</div>
+			
+			<div id="pc3" class="ui-widget-content source" data-input="7">
+				<!--<div class="sourcelabel">PC Screen 3</div>-->
+			</div>
+			
+			<div id="vader" class="ui-widget-content source" data-input="8"></div>
+		</div>
+		<div id="rightInput" class="inputText"></div>
+		
+	</div>
+	
+	<!-- Surrounded by the second blue border and contains all droppable boxes along with "default" and "help" buttons -->
+	<div id="outer-main-div">
+		<div id="main-container" >	
+			<div id="leftOutput" class="outputText"></div>
+			<div id="leftLZ" class="lz" data-output="1">
+				<div id="leftLZLabel">Left&nbsp;TV</div>
+				<div id="leftSource" class="inputSource"> </div>
+				<div class="soundPanel">
+					<div id="leftMute" class="btnMute" data-output="1"></div>
+					<div id="leftVolDown" class="btnVolDown" data-output="1"></div>
+					<div id="leftVolUp" class="btnVolUp" data-output="1"></div>
+				</div>
+				<div class="powerContainer">
+					<div id="leftPower" class="btnPower" data-output="1"> </div>
+				</div>
+			</div>
+			
+			<div id="rightOutput" class="outputText"></div>
+			
+			<div id="rightLZ" class="lz" data-output="3">
+				<div id="rightLZLabel">Right&nbsp;TV</div>
+				<div id="rightSource" class="inputSource"> </div>
+				<div class="soundPanel">
+					<div id="rightMute" class="btnMute" data-output="3"></div>
+					<div id="rightVolDown" class="btnVolDown" data-output="3"></div>
+					<div id="rightVolUp" class="btnVolUp" data-output="3"></div>
+				</div>
+				<div class="powerContainer">
+					<div id="rightPower" class="btnPower" data-output="3"> </div>
+				</div>
+			</div>
+			
+			<div id="centerLZ" class="lz" data-output="2">
+				<div id="centerLZLabel">Projector</div>
+				<div id="centerSource" class="inputSource">
+					<div id="helpAnchor" title="Choose your tour below:">
+					</div>
+				</div>	
+				<div class="soundPanel">
+					<div id="centerMute" class="btnMute" data-output="2"></div>
+					<div id="centerVolDown" class="btnVolDown" data-output="2"></div>
+					<div id="centerVolUp" class="btnVolUp" data-output="2"></div>
+				</div>
+				<div class="powerContainer">
+					<div id="centerPower" class="btnPower"  data-output="2"> </div>
+				</div>
+			</div>
+			
+		</div>	
+		<div id="topbar">
+			<div id="defaultButton" class="bottomButtons"></div>
+			
+			<div id="helpButton" class="bottomButtons" href="javascript:void(0);"></div>
+			
+			<div id="allLZ" class="lz">
+				<div id="allLZlabel">All Displays</div>
+			</div>
+		</div>
+		
+	</div>
+	
+<script	src="js/libs/jquery-1.10.1.min.js"></script>
+<script	src="js/libs/jquery-ui.min.js"></script>
+<script	src="js/libs/jquery.ui.touch-punch.min.js"></script>
+<script src="js/libs/jquery.fittext.js"></script>
+<script src="js/libs/intro.js"></script>
+
+<script type="text/javascript">
+	$(function() {
+		var activeInput = null;
+		var timeoutId = null;
+		var intervalId = null;
+		$( '#atv1' ).height( $( '#atv1' ).width()).draggable({ revert: "invalid" , containment: "window" , appendTo: "body" , helper: function( event ) { return $( "<div id='atv1' class='ui-widget-content source glowActive theFront' style='height: " + $( '#atv1' ).innerHeight() + "px; width: " + $( '#atv1' ).innerHeight() + "px;'></div>" ); } });
+		$( '#atv2' ).height( $( '#atv2' ).width()).draggable({ revert: "invalid" , containment: "window" , appendTo: "body" , helper: function( event ) { return $( "<div id='atv2' class='ui-widget-content source glowActive theFront' style='height: " + $( '#atv2' ).innerHeight() + "px; width: " + $( '#atv2' ).innerHeight() + "px;'></div>" ); }});
+		$( '#widi' ).height( $( '#widi' ).width()).draggable({ revert: "invalid" , containment: "window" , appendTo: "body" , helper: function( event ) { return $( "<div id='widi' class='ui-widget-content source glowActive theFront' style='height: " + $( '#widi' ).innerHeight() + "px; width: " + $( '#widi' ).innerHeight() + "px;'></div>" ); }});
+		$( '#clickshare' ).height( $( '#clickshare' ).width()).draggable({ revert: "invalid" , containment: "window" , appendTo: "body" , helper: function( event ) { return $( "<div id='clickshare' class='ui-widget-content source glowActive theFront' style='height: " + $( '#clickshare' ).innerHeight() + "px; width: " + $( '#clickshare' ).innerHeight() + "px;'></div>" ); }});
+		$( '#pc1' ).height( $( '#pc1' ).width()).draggable({ revert: "invalid" , containment: "window" , appendTo: "body" , helper: function( event ) { return $( "<div id='pc1' class='ui-widget-content source glowActive theFront' style='height: " + $( '#pc1' ).innerHeight() + "px; width: " + $( '#pc1' ).innerHeight() + "px;'></div>" ); }});
+		$( '#pc2' ).height( $( '#pc2' ).width()).draggable({ revert: "invalid" , containment: "window" , appendTo: "body" , helper: function( event ) { return $( "<div id='pc2' class='ui-widget-content source glowActive theFront' style='height: " + $( '#pc2' ).innerHeight() + "px; width: " + $( '#pc2' ).innerHeight() + "px;'></div>" ); }});
+		$( '#pc3' ).height( $( '#pc3' ).width()).draggable({ revert: "invalid" , containment: "window" , appendTo: "body" , helper: function( event ) { return $( "<div id='pc3' class='ui-widget-content source glowActive theFront' style='height: " + $( '#pc3' ).innerHeight() + "px; width: " + $( '#pc3' ).innerHeight() + "px;'></div>" ); }});
+		$( '#vader' ).height( $( '#vader' ).width()).draggable({ revert: "invalid" , containment: "window" , appendTo: "body" , helper: function( event ) { return $( "<div id='vader' class='ui-widget-content source glowActive theFront' style='height: " + $( '#vader' ).innerHeight() + "px; width: " + $( '#vader' ).innerHeight() + "px;'></div>" ); }});
+
+		$( '#allLZ' ).height( $( '#widi' ).width() * 0.8);
+		$( '#centerLZ' ).height( $( '#centerLZ' ).width() * 0.6 );
+		$( '#leftLZ' ).height( $( '#leftLZ' ).width() * 0.94);
+		$( '#rightLZ' ).height( $( '#rightLZ' ).width() * 0.94);
+		$( '#defaultButton' ).height( $( '#widi' ).width() * .8);
+		$( '#helpButton' ).height( $( '#widi' ).width() * .8);
+		$( '#leftPower' ).height( $( '#leftPower' ).width());
+		$( '#rightPower' ).height( $( '#rightPower' ).width());
+		$( '#centerPower' ).width( $( '#leftPower' ).width());
+		$( '#centerPower' ).height( $( '#leftPower' ).width());
+		$( '#leftSource' ).height( $( '#leftSource' ).width());
+		$( '#rightSource' ).height( $( '#rightSource' ).width());
+		$( '#centerSource' ).height( $( '#centerSource' ).width());
+		$( '#leftMute').width($('#leftPower').width() * 0.65 );
+		$( '#leftMute').height($('#leftMute').width() );
+		$( '#leftVolUp').width($('#leftPower').width() * 0.65 );
+		$( '#leftVolUp').height($('#leftVolUp').width() );
+		$( '#leftVolDown').width($('#leftPower').width() * 0.65);
+		$( '#leftVolDown').height($('#leftVolDown').width() );
+		$( '#rightMute').width($('#leftPower').width() * 0.65 );
+		$( '#rightMute').height($('#rightMute').width() );
+		$( '#rightVolUp').width($('#leftPower').width() * 0.65 );
+		$( '#rightVolUp').height($('#rightVolUp').width() );
+		$( '#rightVolDown').width($('#leftPower').width() * 0.65);
+		$( '#rightVolDown').height($('#rightVolDown').width() );
+		$( '#centerMute').width($('#leftPower').width() * 0.65 );
+		$( '#centerMute').height($('#centerMute').width() );
+		$( '#centerVolUp').width($('#leftPower').width() * 0.65 );
+		$( '#centerVolUp').height($('#centerVolUp').width() );
+		$( '#centerVolDown').width($('#leftPower').width() * 0.65);
+		$( '#centerVolDown').height($('#centerVolDown').width() );
+		$( '#leftInput').height($('#widi').height() );
+		$( '#rightInput').height($('#widi').height() );
+		$( '#leftOutput').height($('#centerLZ').height());
+		$( '#rightOutput').height($('#centerLZ').height());
+	  
+		$(window).resize(function() {
+			$( '#allLZ' ).height( $( '#widi' ).width() * 0.7);
+			$( '#centerLZ' ).height( $( '#centerLZ' ).width() * 0.6 );
+			$( '#leftLZ' ).height( $( '#leftLZ' ).width() * 0.94 );
+			$( '#rightLZ' ).height( $( '#rightLZ' ).width() * 0.94 );
+			$( '#defaultButton' ).height( $( '#widi' ).width() * .7);
+			$( '#helpButton' ).height( $( '#widi' ).width() * .7);	
+			$( '#atv1' ).height( $( '#atv1' ).width() );
+			$( '#atv2' ).height( $( '#atv2' ).width() );
+			$( '#widi' ).height( $( '#widi' ).width() );
+			$( '#clickshare' ).height( $( '#clickshare' ).width() );
+			$( '#pc1' ).height( $( '#pc1' ).width() );
+			$( '#pc2' ).height( $( '#pc2' ).width() );
+			$( '#pc3' ).height( $( '#pc3' ).width() );
+			$( '#vader' ).height( $( '#vader' ).width() );
+			$( '#leftPower' ).height( $( '#leftPower' ).width());
+			$( '#rightPower' ).height( $( '#rightPower' ).width());
+			$( '#centerPower' ).width( $( '#leftPower' ).width());
+			$( '#centerPower' ).height( $( '#leftPower' ).width());
+			$( '#leftSource' ).height($( '#leftSource' ).width());
+			$( '#rightSource' ).height( $( '#rightSource' ).width());
+			$( '#centerSource' ).height( $( '#centerSource' ).width());		   
+			$( '#leftMute').width($('#leftPower').width() * 0.65 );
+			$( '#leftMute').height($('#leftMute').width() );
+			$( '#leftVolUp').width($('#leftPower').width() * 0.65 );
+			$( '#leftVolUp').height($('#leftVolUp').width() );
+			$( '#leftVolDown').width($('#leftPower').width() * 0.65);
+			$( '#leftVolDown').height($('#leftVolDown').width() );
+			$( '#rightMute').width($('#leftPower').width() * 0.65 );
+			$( '#rightMute').height($('#rightMute').width() );
+			$( '#rightVolUp').width($('#leftPower').width() * 0.65 );
+			$( '#rightVolUp').height($('#rightVolUp').width() );
+			$( '#rightVolDown').width($('#leftPower').width() * 0.65);
+			$( '#rightVolDown').height($('#rightVolDown').width() );
+			$( '#centerMute').width($('#leftPower').width() * 0.65 );
+			$( '#centerMute').height($('#centerMute').width() );
+			$( '#centerVolUp').width($('#leftPower').width() * 0.65 );
+			$( '#centerVolUp').height($('#centerVolUp').width() );
+			$( '#centerVolDown').width($('#leftPower').width() * 0.65);
+			$( '#centerVolDown').height($('#centerVolDown').width() );
+			$( '#leftInput').height($('#widi').height() );
+			$( '#rightInput').height($('#widi').height() );
+			$( '#leftOutput').height($('#centerLZ').height());
+			$( '#rightOutput').height($('#centerLZ').height());
+		});
+
+		
+		$( '#atv1, #atv2, #widi, #clickshare, #pc1, #pc2, #pc3, #vader' ).click(function(){
+			if ( activeInput == null) {
+				activeInput = $( this );
+				activeInput.addClass( 'glowActive' );
+				$('#leftLZ').addClass('active');
+				$('#centerLZ').addClass('active');
+				$('#rightLZ').addClass('active');		
+				$('#allLZ').addClass('active');
+			}
+			else if ( activeInput.data('input') == $( this ).data('input') ) {
+				activeInput.removeClass( 'glowActive' );
+				activeInput = null;
+				$('#leftLZ').removeClass('active');
+				$('#centerLZ').removeClass('active');
+				$('#rightLZ').removeClass('active');		
+				$('#allLZ').removeClass('active');	
+				
+			}
+			else {
+				activeInput.removeClass( 'glowActive' );
+				activeInput = $( this );
+				activeInput.addClass( 'glowActive' );
+			}
+		});
+
+		$( '#leftLZ, #centerLZ, #rightLZ' ).droppable({
+			activeClass: 'active',
+			hoverClass: 'hover',
+			drop: function( event, ui ) {
+				commandSwitch( ui.draggable, this);
+			}
+		});
+	  
+		$( '#allLZ' ).droppable({
+			activeClass: 'active',
+			hoverClass: 'hover',
+			drop: function( event, ui ) {
+				commandAllFront( ui.draggable );
+			}
+		});		  
+	  
+		$( '#leftLZ, #centerLZ, #rightLZ' ).click( function() {
+			if (activeInput != null) {
+				$(this).addClass('active');
+				commandSwitch( activeInput, this );
+				activeInput.removeClass( 'glowActive' );
+				activeInput = null;
+			}
+			$('#leftLZ').removeClass('active');
+			$('#rightLZ').removeClass('active');
+			$('#centerLZ').removeClass('active');
+			$('#allLZ').removeClass('active')
+
+		});
+	  
+		$( '#allLZ' ).click( function() {
+			if (activeInput != null) {
+				commandAllFront( activeInput );
+				activeInput.removeClass( 'glowActive' );
+				activeInput = null;
+			}
+			$('#leftLZ').removeClass('active');
+			$('#rightLZ').removeClass('active');
+			$('#centerLZ').removeClass('active');
+			$('#allLZ').removeClass('active')
+		});
+	  	  
+
+		$('#allLZlabel').fitText();
+		$('#leftLZLabel').fitText(0.35, { minFontSize: '12px', maxFontSize: '96px' });
+		$('#rightLZLabel').fitText(0.35, { minFontSize: '12px', maxFontSize: '96px' });
+		$('#centerLZLabel').fitText(0.35, { minFontSize: '12px', maxFontSize: '96px' });
+	  
+		$('#defaultButton').click(function() {
+			commandSwitch( $('#pc1'), $('#leftLZ'));
+			commandSwitch( $('#pc2'), $('#centerLZ'));
+			commandSwitch( $('#pc3'), $('#rightLZ'));
+		});
+	  
+		$('#helpButton').click(function() {
+			var introLong = introJs();
+			var introShort = introJs();
+			introLong.setOptions({
+				showStepNumbers: false,
+				steps: [
+					{
+						element: '#atv2,#widi,#atv1,#clickshare',
+						intro: '<br><br>These four inputs are for mobile devices like laptops, tablets, and smartphones that you brought into the room.',
+						position: 'right'
+					},	
+					{
+						element: '#pc1,#pc2,#pc3,#vader',
+						intro: '<br><br>These four inputs will never leave the room.',
+						position: 'left'
+					},										
+					{
+						element: '#widi',
+						intro: '<br><br>WiDi is a specific Intel chipset installed in many modern laptops. It allows the user of that laptop to wirelessly connect to a WiDi receiver, which is connected to a display, therefore enabling the user to wirelessly display their screen on a different monitor.<br><br><img src="img/widiOverview.png" style="width: 80%; margin: 0% 10% 0% 10%;" />',
+						position: 'right'
+					},					
+					{
+						element: '#widi',
+						intro: '<br><br>1) Make sure your laptop is WiDi compatible by searching on your computer for &#34;Intel WiDi&#34;. If you are WiDi compatible Double Click on the Intel program.<br><br><img src="img/widi1.png" style="width: 80%; margin: 0% 10% 0% 10%;" />',
+						position: 'right'
+					},
+					{
+						element: '#widi',
+						intro: '<br><br>2) It will automatically scan for WiDi receivers within range.<br><br><img src="img/widi2.png" style="width: 80%; margin: 0% 10% 0% 10%;" />',
+						position: 'right'
+					},
+					{
+						element: '#widi',
+						intro: '<br><br>3) Select &#34;CR 2090&#34; and click Connect.<br><br><img src="img/widi3.png" style="width: 80%; margin: 0% 10% 0% 10%;" />',
+						position: 'right'
+					},
+					{
+						element: '#widi',
+						intro: '<br><br>4) The first time you connect to this WiDi receiver enter the 8 digit code (shown on the TV) into the Intel prompt on your computer.',
+						position: 'right'
+					},
+					{
+						element: '#widi',
+						intro: '<br><br>5) When connected the status will say &#34;Connected&#34;. You can now share your screen.<br><br><img src="img/widi4.png" style="width: 80%; margin: 0% 10% 0% 10%;" />',
+						position: 'right'
+					},			
+					{
+						element: '#clickshare',
+						intro: '<br><br>ClickShare is a new product that uses a USB dongle to output the user&#39;s laptop display to the monitor connected to the ClickShare receiver. It allows most all laptops with a USB port to wirelessly display. It also allows 4 laptops to display on the output display at any one time.<br><br><img src="img/clickshareOverview.png" style="width: 80%; margin: 0% 10% 0% 10%;" />',
+						position: 'right'
+					},	
+					{
+						element: '#clickshare',
+						intro: '<br><br>1) Plug in the USB puck into your laptop&#39;s USB port.<br><br><img src="img/clickshare1.png" style="width: 80%; margin: 0% 10% 0% 10%;" />',
+						position: 'right'
+					},										
+					{
+						element: '#clickshare',
+						intro: '<br><br>2) Navigate to My Computer on your laptop and select ClickShare.<br><br><img src="img/clickshare2.png" style="width: 80%; margin: 0% 10% 0% 10%;" />',
+						position: 'right'
+					},	
+					{
+						element: '#clickshare',
+						intro: '<br><br>3) Now run the ClickShare.exe file. (Note: If you are on a Mac you will see ClickShare file for MacOSX)<br><br><img src="img/clickshare3.png" style="width: 80%; margin: 0% 10% 0% 10%;" />',
+						position: 'right'
+					},										
+					{
+						element: '#clickshare',
+						intro: '<br><br>4) Once the LED on the USB puck is solid white, press the button to share your screen. Once the light is solid red, you will be able to display your screen.<br><br><img src="img/clickshare4.png" style="width: 80%; margin: 0% 10% 0% 10%;" />',
+						position: 'right'
+					},	
+					{
+						element: '#atv2,#atv1',
+						intro: '<br><br>Apple TV uses an Apple technology called Airplay, which allows user devices that are on the same wireless network as an Apple TV to wirelessly connect and display to that Apple TV&#39;s monitor.<br><br><img src="img/atvOverview.png" style="width: 80%; margin: 0% 10% 0% 10%;" />',
+						position: 'right'
+					},	
+					{
+						element: '#atv2,#atv1',
+						intro: '<br><br>1) Make sure your Apple Device is connected to the NASA Wireless network.<br><br><img src="img/atv1.png" style="width: 80%; margin: 0% 10% 0% 10%;" />',
+						position: 'right'
+					},
+					{
+						element: '#atv2,#atv1',
+						intro: '<br><br>2) From an unlocked screen double click the home button.<br><br><img src="img/atv2.png" style="width: 80%; margin: 0% 10% 0% 10%;" />',
+						position: 'right'
+					},			
+					{
+						element: '#atv2,#atv1',
+						intro: '<br><br>3) In the bottom Menu scroll to the left until you find the Airplay icon.<br><br><img src="img/atv3.png" style="width: 80%; margin: 0% 10% 0% 10%;" />',
+						position: 'right'
+					},									
+					{
+						element: '#atv2,#atv1',
+						intro: '<br><br>4) From the Airplay menu, select &#34;CR 2090 1&#34; or &#34;CR 2090 2&#34; and turn Mirroring ON.<br><br><img src="img/atv4.png" style="width: 80%; margin: 0% 10% 0% 10%;" />',
+						position: 'right'
+					},		
+					{
+						element: '#atv2,#atv1',
+						intro: '<br><br>5) You can now share your screen.',
+						position: 'right'
+					},		
+					{
+						element: '#pc1,#pc2,#pc3',
+						intro: '<br><br>These three Windows symbols are representative of the three monitors from the PC in the back of the conference room. (See matching icons on each monitor)',
+						position: 'left'
+					},		
+					{
+						element: '#vader',
+						intro: '<br><br>VADER or Video Audio Digital Enterprise Resource, is the brain to this conference room solution. It is mostly used for administrative tasks, but you can also check out the weather on it.',
+						position: 'left'
+					},
+					{
+						element: '#source-container',
+						intro: '<br><br>Once you have connected your device to one of these inputs, or if you are using the Windows PC in the back of the room, then you can click on or drag that input source.',
+						position: 'bottom'
+					},
+					{
+						element: '#main-container',
+						intro: '<br><br>Click or drop the input onto any of these ouputs.',								
+						position: 'top'
+					},
+					{
+						element: '#allLZ',
+						intro: '<br><br>You can also click on or drag to All Displays to display you input on all three displays.',				
+						position: 'top'
+					},	
+					{
+						element: '#defaultButton',
+						intro: '<br><br>Click the Default Setup button before you leave the room to reset to the default state.',
+						position: 'top'
+					}	
+				]
+			});					
+			var introShort = introJs();
+			introShort.setOptions({
+				showStepNumbers: false,
+				steps: [
+					{
+						element: '#atv2,#widi,#atv1,#clickshare',
+						intro: '<br><br>These four inputs are for mobile devices like laptops, tablets, and smartphones that you brought into the room.',
+						position: 'right'
+					},	
+					{
+						element: '#pc1,#pc2,#pc3,#vader',
+						intro: '<br><br>These four inputs will never leave the room.',
+						position: 'left'
+					},										
+				
+					{
+						element: '#widi',
+						intro: '<br><br>WiDi is a specific Intel chipset installed in many modern laptops. It allows the user of that laptop to wirelessly connect to a WiDi receiver, which is connected to a display, therefore enabling the user to wirelessly display their screen on a different monitor.<br><br><img src="img/widiOverview.png" style="width: 80%; margin: 0% 10% 0% 10%;" />',
+						position: 'right'
+					},			
+					{
+						element: '#clickshare',
+						intro: '<br><br>ClickShare is a new product that uses a USB dongle to output the user&#39;s laptop display to the monitor connected to the ClickShare receiver. It allows most all laptops with a USB port to wirelessly display. It also allows 4 laptops to display on the output display at any one time.<br><br><img src="img/clickshareOverview.png" style="width: 80%; margin: 0% 10% 0% 10%;" />',
+						position: 'right'
+					},				
+					{
+						element: '#atv2,#atv1',
+						intro: '<br><br>Apple TV uses an Apple technology called Airplay, which allows user devices that are on the same wireless network as an Apple TV to wirelessly connect and display to that Apple TV&#39;s monitor.<br><br><img src="img/atvOverview.png" style="width: 80%; margin: 0% 10% 0% 10%;" />',
+						position: 'right'
+					},			
+					{
+						element: '#pc1,#pc2,#pc3',
+						intro: '<br><br>These three Windows symbols are representative of the three monitors from the PC in the back of the conference room. (See matching icons on each monitor)',
+						position: 'left'
+					},		
+					{
+						element: '#vader',
+						intro: '<br><br>VADER or Video Audio Digital Enterprise Resource, is the brain to this conference room solution. It is mostly used for administrative tasks, but you can also check out the weather on it.',
+						position: 'left'
+					},						
+					{
+						element: '#source-container',
+						intro: '<br><br>Once you have connected your device to one of these inputs, or if you are using the Windows PC in the back of the room, then you can click on or drag that input source.',
+						position: 'bottom'
+					},
+					{
+						element: '#main-container',
+						intro: '<br><br>Click or drop the input onto any of these ouputs.',								
+						position: 'top'
+					},
+					{
+						element: '#allLZ',
+						intro: '<br><br>You can also click on or drag to All Displays to display you input on all three displays.',				
+						position: 'top'
+					},	
+					{
+						element: '#defaultButton',
+						intro: '<br><br>Click the Default Setup button before you leave the room to reset to the default state.',
+						position: 'top'
+					}	
+				]
+			});	
+			$("#helpAnchor").dialog({
+			height: 140,
+			modal: true,
+			buttons: {
+				"Quick Help":function () {
+					$(this).dialog("close");
+					introShort.start();
+				},
+				"Full Tour": function() {
+					$(this).dialog("close");		
+					introLong.start();
+				}
+			}
+			});
+		});
+		
+		$('.btnPower').click(function() {
+			clearInterval(timeoutId);
+			clearInterval(intervalId);
+			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).data('output') + '/power');
+			timeoutId = setTimeout( function() { mappings_get(); }, 5000);
+			intervalId = setInterval( function() { mappings_get(); }, 10000);
+		});
+		
+		$('.btnPowerOn').click(function() {
+			$('#centerPower').addClass('btnPowerOn');
+			clearInterval(timeoutId);
+			clearInterval(intervalId);
+			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).data('output') + '/power');
+			timeoutId = setTimeout( function() { mappings_get(); }, 5000);
+			intervalId = setInterval( function() { mappings_get(); }, 10000);
+		});
+
+		$('.btnPower, .btnPowerOn, .btnMute, .btnVolUp, .btnVolDown').hover(function(){
+		if ( !$(this).data('bnc') ){
+			  $(this).effect('bounce', { direction: 'up', distance: 10, times: 1 })
+					 .data('bnc', true);
+		}
+		},function () {
+			 $(this).data('bnc', false);
+		});	
+				
+		$('.btnMute').click(function() {
+			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).data('output') + '/volume/mute');
+		});	
+		
+		$('.btnVolUp').click(function() {
+			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).data('output') + '/volume/+');
+		});	
+		
+		$('.btnVolDown').click(function() {
+			$.get('http://mofdac.vader.jsc.nasa.gov:8000/display/' + $(this).data('output') + '/volume/-');
+		});
+			
+		function commandSwitch( input, output ) {
+			clearInterval(timeoutId);
+			clearInterval(intervalId);
+			$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $(output).data('output'));
+			$( output ).find('div.inputSource').css({ 'background-image': $(input).css('background-image') });
+			$( output ).find('div.inputSource').css('background-size', 'contain' );
+			timeoutId = setTimeout( function() { mappings_get(); }, 5000);
+			intervalId = setInterval( function() { mappings_get(); }, 10000);
+		};
+	  
+		function commandAllFront( input ) {
+			clearInterval(timeoutId);
+			clearInterval(intervalId);
+			$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#leftLZ').data('output'));
+			$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#rightLZ').data('output'));
+			$.get('http://mofdac.vader.jsc.nasa.gov:8000/switch/' + $(input).data('input') + '/' + $('#centerLZ').data('output'));		  
+			$( "#leftLZ" ).find('div.inputSource').css( 'background-image', $(input).css('background-image') );
+			$( "#leftLZ" ).find('div.inputSource').css( 'background-size', 'contain' );
+			$( "#centerLZ" ).find('div.inputSource').css( 'background-image', $(input).css('background-image') );
+			$( "#centerLZ" ).find('div.inputSource').css('background-size', 'contain' );
+			$( "#rightLZ" ).find('div.inputSource').css( 'background-image', $(input).css('background-image') );
+			$( "#rightLZ" ).find('div.inputSource').css('background-size', 'contain' );
+			timeoutId = setTimeout( function() { mappings_get(); }, 5000);
+			intervalId = setInterval( function() { mappings_get(); }, 10000);
+		};
+
+		function mappings_get() {
+			$.get( "http://mofdac.vader.jsc.nasa.gov:8000/json", function( mappings ) {
+
+				$( "#leftLZ" ).find('div.inputSource').css( 'background-image', $('div').find('[data-input="' + mappings.outputs[0].inputNumber + '"]').css('background-image'));
+				$( "#leftLZ" ).find('div.inputSource').css('background-size', 'contain' ); 
+				$( "#centerLZ" ).find('div.inputSource').css( 'background-image', $('div').find('[data-input="' + mappings.outputs[1].inputNumber + '"]').css('background-image'));
+				$( "#centerLZ" ).find('div.inputSource').css('background-size', 'contain' ); 
+				$( "#rightLZ" ).find('div.inputSource').css( 'background-image', $('div').find('[data-input="' + mappings.outputs[2].inputNumber + '"]').css('background-image'));
+				$( "#rightLZ" ).find('div.inputSource').css('background-size', 'contain' ); 
+
+				//Add get power function status and update picture
+				if ( mappings.outputs[1].powerStatus == "ON") {
+					$("#centerPower").addClass("btnPowerOn");
+					$("#centerPower").removeClass("btnPower");					
+				} else {
+					$("#centerPower").addClass("btnPower");
+					$("#centerPower").removeClass("btnPowerOn");										
+				}
+				
+			}, 'json' );
+		};	  
+	
+		mappings_get();
+		intervalId = setInterval( function() { mappings_get(); }, 10000); // Yes, Virginia, there really is a Santa Claus. It really is this easy. And a pure javascript call even.
+	});
+</script>
+
+<!-- scripts concatenated and minified via ant build script-->
+<script	src="js/plugins.js"></script>
+<script	src="js/script.js"></script>
+<!-- end scripts-->
+
+</body>
+</html>

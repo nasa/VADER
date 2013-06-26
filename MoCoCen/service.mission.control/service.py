@@ -31,8 +31,8 @@ sys.path.append(__resource__)
 import serial
 
 PORT = 8000
-SWITCH_COM = 2
-DISPLAY_COM = 12
+SWITCH_COM = 6
+DISPLAY_COM = 7
 
 class ThreadedTCPServer(SocketServer.ThreadingMixIn, SocketServer.TCPServer):
     pass
@@ -42,7 +42,7 @@ class DeviceStatus(SimpleHTTPServer.SimpleHTTPRequestHandler):
     def do_GET(self):
         if self.path == '/':
             print >>self.wfile, "<html><body>" + str(theCounter) + "<a href='/json'>Patient Test</a>" + str(theStatus) + "</body></html>"
-		if self.path == '/counter':
+        if self.path == '/counter':
             print >>self.wfile, "<html><body>" + str(theCounter) + "</body></html>"
         if 'json' in self.path:
             self.send_response(200)
@@ -70,7 +70,7 @@ if (__name__ == "__main__"):
     xbmc.log('Version %s started' % __addonversion__)
     theCommandQueue = deque()
     theCounter = 0
-    theInputs = {"1":{"name":"VADER","hexChar":'\x01\xa5'},"2":{"name":"WiDi","hexChar":'\x02\x47'},"3":{"name":"Wireless HDMI","hexChar":'\x03\x19'},"4":{"name":"Apple TV","hexChar":'\x04\x9a'},"5":{"name":"ClickShare","hexChar":'\x05\xc4'},"6":{"name":"Multi-Display","hexChar":'\x06\x26'},"0":{"name":"N/A","hexChar":'\x00'}}
+    theInputs = {"1":{"name":"VADER","hexChar":'\x01\xa5'},"2":{"name":"WiDi","hexChar":'\x02\x47'},"3":{"name":"Wireless HDMI","hexChar":'\x03\x19'},"4":{"name":"Apple TV","hexChar":'\x04\x9a'},"5":{"name":"ClickShare","hexChar":'\x05\xc4'},"6":{"name":"Multi-Display","hexChar":'\x06\x26'},"7":{"name":"Table Input","hexChar":'\x07\x78'},"8":{"name":"Input8","hexChar":'\x08\x39'},"0":{"name":"N/A","hexChar":'\x00'}}
     theOutputs = {"1":{"name":"TV","hexChar":'\x00',"comPort":DISPLAY_COM}}
     theStatus = {"outputs":[{"outputName":"TV","outputNumber":"1","inputNumber":"1","inputName":"VADER"}]}
     #theStatus = {'left': 1, 'center1': 1, 'center2': 2, 'right1': 1, 'right2':2, 'actionCenter': 3, 'HEVS1': 5, 'HEVS2': 6}
@@ -107,10 +107,19 @@ if (__name__ == "__main__"):
                     ser.close()
             elif command[0] == 'display':
                 if command[2] == 'power':
-                    # print theOutputs[command[1]]["comPort"]
-                    ser = serial.Serial(int(theOutputs[command[1]]["comPort"]), 9600, timeout=0.3)
-                    ser.write('\x08\x22\x00\x00\x00\x00\xd6')
-                    ser.close()
+                    if len(command) == 4:
+						if command[3] == 'on':
+							ser = serial.Serial(int(theOutputs[command[1]]["comPort"]), 9600, timeout=0.3)
+							ser.write('\x08\x22\x00\x00\x00\x02\xd4')
+							ser.close()
+						elif command[3] == 'off':
+							ser = serial.Serial(int(theOutputs[command[1]]["comPort"]), 9600, timeout=0.3)
+							ser.write('\x08\x22\x00\x00\x00\x01\xd5')
+							ser.close()
+                    else:
+                        ser = serial.Serial(int(theOutputs[command[1]]["comPort"]), 9600, timeout=0.3)
+                        ser.write('\x08\x22\x00\x00\x00\x00\xd6')
+                        ser.close()
                 elif command[2] == 'volume':
                     if command[3] == '+':
                         ser = serial.Serial(int(theOutputs[command[1]]["comPort"]), 9600, timeout=0.3)
