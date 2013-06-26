@@ -1,3 +1,5 @@
+0.6 Initial Stable version for MoCoCen
+
 0.5 Working configuration for OS1
 
 0.4 Tuner code stabilized.
