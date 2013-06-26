@@ -62,7 +62,17 @@
         //set the step
         currentItem.step = i + 1;
         //grab the element with given selector from the page
-        currentItem.element = document.querySelector(currentItem.element);
+		var elements = currentItem.element.toString().split(",");
+        currentItem.element = document.querySelector(elements[0]);
+		if (elements.length > 1) {
+			elements.shift();
+			currentItem.otherElements = elements;
+			for (var j = 0, otherElmsLength = currentItem.otherElements.length; j < otherElmsLength; j++) {
+				currentItem.otherElements[j] = document.querySelector(currentItem.otherElements[j]);
+			}
+		} else {
+			currentItem.otherElements = new Array();
+		}
         introItems.push(currentItem);
       }
 
@@ -127,6 +137,7 @@
 
       self._onResize = function(e) {
         _setHelperLayerPosition.call(self, document.querySelector('.introjs-helperLayer'));
+		//put other layer stuff here
       };
 
       if (window.addEventListener) {
@@ -226,11 +237,16 @@
     if (helperLayer) {
       helperLayer.parentNode.removeChild(helperLayer);
     }
+	//destroy old other layers
+	otherLayers = document.querySelectorAll('.introjs-otherLayer');
+	for (var i = 0; i < otherLayers.length ; i++) {
+		otherLayers[i].parentNode.removeChild(otherLayers[i])
+	}
     //remove `introjs-showElement` class from the element
-    var showElement = document.querySelector('.introjs-showElement');
-    if (showElement) {
-      showElement.className = showElement.className.replace(/introjs-[a-zA-Z]+/g, '').replace(/^\s+|\s+$/g, ''); // This is a manual trim.
-    }
+    var showElements = document.querySelectorAll('.introjs-showElement');
+	  for (var i = 0; i < showElements.length ; i++) {
+		showElements[i].className = showElements[i].className.replace(/introjs-[a-zA-Z]+/g, '').replace(/^\s+|\s+$/g, '');
+	}
 
     //remove `introjs-fixParent` class from the elements
     var fixParents = document.querySelectorAll('.introjs-fixParent');
@@ -302,15 +318,41 @@
    */
   function _setHelperLayerPosition(helperLayer) {
     if(helperLayer) {
-      //prevent error when `this._currentStep` in undefined
-      if(!this._introItems[this._currentStep]) return;
+		//prevent error when `this._currentStep` in undefined
+		if(!this._introItems[this._currentStep]) return;
 
-      var elementPosition = _getOffset(this._introItems[this._currentStep].element);
-      //set new position to helper layer
-      helperLayer.setAttribute('style', 'width: ' + (elementPosition.width  + 10)  + 'px; ' +
+		var elementPosition = _getOffset(this._introItems[this._currentStep].element);
+		//set new position to helper layer
+		helperLayer.setAttribute('style', 'width: ' + (elementPosition.width  + 10)  + 'px; ' +
                                         'height:' + (elementPosition.height + 10)  + 'px; ' +
                                         'top:'    + (elementPosition.top    - 5)   + 'px;' +
                                         'left: '  + (elementPosition.left   - 5)   + 'px;');
+    }
+  }
+  
+  /**
+   * Update the position of the other element layers on the screen
+   *
+   * @api private
+   * @method _setOtherLayerPositions
+   * @param {Object} otherLayers
+   */
+  function _setOtherLayerPositions(otherLayers) {
+    if(otherLayers) {
+		//prevent error when `this._currentStep` in undefined
+		if(!this._introItems[this._currentStep]) return;
+
+		for (var i = 0, otherElmsLength = this._introItems[this._currentStep].otherElements.length; i < otherElmsLength; i++) {
+			otherLayers[i] = document.createElement('div');
+			otherLayers[i].className = 'introjs-otherLayer';
+			var elementPosition = _getOffset(this._introItems[this._currentStep].otherElements[i]);
+			//set new position to helper layer
+			otherLayers[i].setAttribute('style', 'width: ' + (elementPosition.width  + 10)  + 'px; ' +
+												 'height:' + (elementPosition.height + 10)  + 'px; ' +
+												 'top:'    + (elementPosition.top    - 5)   + 'px;' +
+												 'left: '  + (elementPosition.left   - 5)   + 'px;');
+		}
+		
     }
   }
 
@@ -338,13 +380,29 @@
           oldtooltipContainer  = oldHelperLayer.querySelector('.introjs-tooltip'),
           skipTooltipButton    = oldHelperLayer.querySelector('.introjs-skipbutton'),
           prevTooltipButton    = oldHelperLayer.querySelector('.introjs-prevbutton'),
-          nextTooltipButton    = oldHelperLayer.querySelector('.introjs-nextbutton');
+          nextTooltipButton    = oldHelperLayer.querySelector('.introjs-nextbutton'),
+		  oldOtherLayers	   = document.querySelectorAll('.introjs-otherLayer');
 
       //hide the tooltip
       oldtooltipContainer.style.opacity = 0;
 
       //set new position to helper layer
       _setHelperLayerPosition.call(self, oldHelperLayer);
+	  
+	  //destroy old other layers
+	  for (var i = 0; i < oldOtherLayers.length ; i++) {
+		oldOtherLayers[i].parentNode.removeChild(oldOtherLayers[i])
+	  }
+	  
+	  var otherLayers  = new Array();
+	  
+	  //set new positions for other layers
+	  _setOtherLayerPositions.call(self, otherLayers);
+	  
+	  //add other layers to target elements
+	  for (var i = 0, otherElmsLength = targetElement.otherElements.length; i < otherElmsLength; i++) {
+		this._targetElement.appendChild(otherLayers[i]);
+	  }
 
       //remove `introjs-fixParent` class from the elements
       var fixParents = document.querySelectorAll('.introjs-fixParent');
@@ -355,8 +413,10 @@
       }
 
       //remove old classes
-      var oldShowElement = document.querySelector('.introjs-showElement');
-      oldShowElement.className = oldShowElement.className.replace(/introjs-[a-zA-Z]+/g, '').replace(/^\s+|\s+$/g, '');
+      var oldShowElements = document.querySelectorAll('.introjs-showElement');
+	  for (var i = 0; i < oldShowElements.length ; i++) {
+		oldShowElements[i].className = oldShowElements[i].className.replace(/introjs-[a-zA-Z]+/g, '').replace(/^\s+|\s+$/g, '');
+	  }
       //we should wait until the CSS3 transition is competed (it's 0.3 sec) to prevent incorrect `height` and `width` calculation
       if (self._lastShowElementTimer) {
         clearTimeout(self._lastShowElementTimer);
@@ -367,9 +427,7 @@
           oldHelperNumberLayer.innerHTML = targetElement.step;
         }
         //set current tooltip text
-        oldtooltipLayer.innerHTML = '<div class="introjs-tooltiptext">' +
-                               targetElement.intro + 
-                               '</div><div class="introjs-tooltipbuttons"></div>';
+        oldtooltipLayer.innerHTML = targetElement.intro;
         //set the tooltip position
         _placeTooltip.call(self, targetElement.element, oldtooltipContainer, oldArrowLayer);
         //show the tooltip
@@ -380,6 +438,7 @@
       var helperLayer  = document.createElement('div'),
           arrowLayer   = document.createElement('div'),
           tooltipLayer = document.createElement('div');
+	  var otherLayers  = new Array();
 
       helperLayer.className = 'introjs-helperLayer';
 
@@ -388,13 +447,21 @@
 
       //add helper layer to target element
       this._targetElement.appendChild(helperLayer);
+	  
+	  //set new positions for other layers
+	  _setOtherLayerPositions.call(self, otherLayers);
+	  
+	  //add other layers to target elements
+	  for (var i = 0, otherElmsLength = targetElement.otherElements.length; i < otherElmsLength; i++) {
+		this._targetElement.appendChild(otherLayers[i]);
+	  }
 
       arrowLayer.className = 'introjs-arrow';
       tooltipLayer.className = 'introjs-tooltip';
 
       
       tooltipLayer.innerHTML = '<div class="introjs-tooltiptext">' +
-                               targetElement.intro + 
+                               targetElement.intro +
                                '</div><div class="introjs-tooltipbuttons"></div>';
 
       //add helper layer number
@@ -495,6 +562,28 @@
       }
       parentElm = parentElm.parentNode;
     }
+	
+	for (var i = 0, otherElmsLength = targetElement.otherElements.length; i < otherElmsLength; i++) {
+		targetElement.otherElements[i].className += ' introjs-showElement';
+		
+		var currentElementPosition = _getPropValue(targetElement.otherElements[i], 'position');
+		if (currentElementPosition !== 'absolute' &&
+			currentElementPosition !== 'relative') {
+		  //change to new intro item
+		  targetElement.otherElements[i].className += ' introjs-relativePosition';
+		}
+	
+		var parentElm = targetElement.otherElements[i].parentNode;
+		while(parentElm != null) {
+		  if(parentElm.tagName.toLowerCase() === 'body') break;
+
+		  var zIndex = _getPropValue(parentElm, 'z-index');
+		  if(/[0-9]+/.test(zIndex)) {
+			parentElm.className += ' introjs-fixParent';
+		  }
+		  parentElm = parentElm.parentNode;
+		}
+	}
 
     if (!_elementInViewport(targetElement.element)) {
       var rect = targetElement.element.getBoundingClientRect(),

@@ -45,6 +45,20 @@
           transition: all 0.3s ease-out;
 }
 
+.introjs-otherLayer {
+  position: absolute;
+  z-index: 9999998;
+  background-color: #8ee5ee;
+  background-color: rgba(11,61,145,.5);
+  border-radius: 20px;
+  box-shadow: 0 2px 15px rgba(0,0,0,.4);
+  -webkit-transition: all 0.3s ease-out;
+     -moz-transition: all 0.3s ease-out;
+      -ms-transition: all 0.3s ease-out;
+       -o-transition: all 0.3s ease-out;
+          transition: all 0.3s ease-out;
+}
+
 .introjs-helperNumberLayer {
   position: absolute;
   bottom: 98%;
@@ -75,12 +89,12 @@
 }
 
 .introjs-arrow {
-  border: 15px solid white;
+  border: 5px solid white;
   content:'';
   position: absolute;
 }
 .introjs-arrow.top {
-  top: -30px;
+  top: -10px;
   border-top-color:transparent;
   border-right-color:transparent;
   border-bottom-color:#cde0ff;
@@ -114,8 +128,8 @@
   position: absolute;
   padding: 10px;
   background-color: #cde0ff;
-  min-width: 300px;
-  max-width: 400px;
+  min-width: 500px;
+  max-width: 700px;
   border-radius: 3px;
   box-shadow: 0 1px 10px rgba(0,0,0,.4);
   -webkit-transition: opacity 0.1s ease-out;
@@ -126,7 +140,9 @@
 }
 
 .introjs-tooltipbuttons {
-  text-align: right;
+  position: absolute;
+  top: 0px;
+  right: 10px;
 }
 
 /* 
